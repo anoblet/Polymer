@@ -1,0 +1,6 @@
+{
+  "name": "government",
+  "short_name": "government",
+  "start_url": "/",
+  "display": "standalone"
+}
