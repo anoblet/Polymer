@@ -16,7 +16,7 @@
 
 <dom-module id="government-app">
     <template>
-        <style include="iron-flex">
+        <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors">
             :host {
                 display: block;
                 height: 100vh;
@@ -47,57 +47,41 @@
                 overflow: auto;
             }
 
-            :root {
-
-            --paper-input-container {
-                padding: 0;
-            }
+            paper-input {
+                --paper-input-container: {
+                    padding: 0px 0 0px 0;
+                    background-color: var(--google-blue-300);
+                    color: #fff;
+                };
+                --paper-input-container-underline: {
+                    display: none;
+                };
+                --paper-input-container-underline-focus: {
+                    display: none;
+                };
+                --paper-input-container-underline-disabled: {
+                    display: none;
+                };
+                --paper-input-container-input-color: {
+                    color: #fff;
+                };
 
             }
         </style>
-        <custom-style>
-            <style is="custom-style">
-                body {
-                    margin: 0;
-                    font-family: 'Roboto', 'Noto', sans-serif;
-                    background-color: #eee;
-                }
-
-                #search {
-                    background-color: var(--google-blue-300);
-                }
-
-                #search #container {
-                    padding: 0;
-                }
-
-                paper-input-container {
-                    padding: 0;
-                }
-
-                --paper-input-container {
-                    padding: 0;
-                }
-
-                :root {
-                    --paper-input-container {
-                        padding: 0;
-                    }
-                }
-            </style>
-        </custom-style>
         <app-header-layout>
             <app-header fixed effects="waterfall" slot="header">
                 <app-toolbar>
-                    <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
-                    <div class="flex">Inbox</div>
-                    <div class="layout center flex">
+                    <div class="flex-2">
+                        <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
+                        Inbox
+                    </div>
+                    <div class="flex-5">
                         <paper-input id="search" no-label-float>
                             <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear"
                                                title="clear"></paper-icon-button>
                         </paper-input>
                     </div>
-                    <div class="flex">
+                    <div class="flex-2" style="text-align: right">
                         <a href="#/account" tabindex="-1" selectable-item>
                             <paper-icon-button icon="account-circle"></paper-icon-button>
                         </a>
