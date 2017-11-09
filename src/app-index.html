@@ -12,9 +12,12 @@
 <link rel="import" href="../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../../bower_components/polymer/lib/elements/custom-style.html">
 
-<dom-module id="government-app">
+<link rel="import" href="content/app-home.html">
+
+<dom-module id="app-index">
     <template>
         <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors">
             :host {
@@ -67,24 +70,40 @@
                 };
 
             }
+
+            #logo {
+                vertical-align: middle;
+            }
+
+            .padding {
+                padding: 1em;
+            }
+
+            paper-card {
+                --paper-card: {
+                    margin: 1em;
+                }
+            }
         </style>
         <app-header-layout>
             <app-header fixed effects="waterfall" slot="header">
                 <app-toolbar>
-                    <div class="flex-2">
+                    <div class="flex-auto layout center">
                         <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
-                        Inbox
+                        <span id="logo">Government</span>
                     </div>
-                    <div class="flex-5">
-                        <paper-input id="search" no-label-float>
-                            <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear"
-                                               title="clear"></paper-icon-button>
-                        </paper-input>
-                    </div>
-                    <div class="flex-2" style="text-align: right">
-                        <a href="#/account" tabindex="-1" selectable-item>
-                            <paper-icon-button icon="account-circle"></paper-icon-button>
-                        </a>
+                    <iron-media-query query="(min-width: 800px)" query-matches="{{wide}}"></iron-media-query>
+                    <template is="dom-if" if="{{wide}}">
+                        <div class="flex-2">
+                            <paper-input id="search" no-label-float>
+                                <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear"
+                                                   title="clear"></paper-icon-button>
+                            </paper-input>
+                        </div>
+                    </template>
+                    <div class="flex" style="color: #fff; text-align: right">
+                        <paper-icon-button icon="account-circle"></paper-icon-button>
+                        <paper-icon-button icon="more-vert"></paper-icon-button>
                     </div>
                 </app-toolbar>
             </app-header>
@@ -92,36 +111,38 @@
                 <app-drawer id="drawer" slot="drawer">
                     <div class="drawer-content">
                         <paper-icon-item>
-                            <iron-icon icon="inbox" slot="item-icon"></iron-icon>
+                            <paper-icon-button icon="inbox" slot="item-icon"></paper-icon-button>
                             <span>Inbox</span>
                         </paper-icon-item>
                         <paper-icon-item>
-                            <iron-icon icon="query-builder" slot="item-icon"></iron-icon>
+                            <paper-icon-button icon="query-builder" slot="item-icon"></paper-icon-button>
                             <span>Snoozed</span>
                         </paper-icon-item>
                         <paper-icon-item>
-                            <iron-icon icon="done" slot="item-icon"></iron-icon>
+                            <paper-icon-button icon="done" slot="item-icon"></paper-icon-button>
                             <span>Done</span>
                         </paper-icon-item>
                         <paper-icon-item>
-                            <iron-icon icon="drafts" slot="item-icon"></iron-icon>
+                            <paper-icon-button icon="drafts" slot="item-icon"></paper-icon-button>
                             <span>Drafts</span>
                         </paper-icon-item>
                         <paper-icon-item>
-                            <iron-icon icon="send" slot="item-icon"></iron-icon>
+                            <paper-icon-button icon="send" slot="item-icon"></paper-icon-button>
                             <span>Sent</span>
                         </paper-icon-item>
                         <paper-icon-item>
-                            <iron-icon icon="delete" slot="item-icon"></iron-icon>
+                            <paper-icon-button icon="delete" slot="item-icon"></paper-icon-button>
                             <span>Trash</span>
                         </paper-icon-item>
                         <paper-icon-item>
-                            <iron-icon icon="report" slot="item-icon"></iron-icon>
+                            <paper-icon-button icon="report" slot="item-icon"></paper-icon-button>
                             <span>Spam</span>
                         </paper-icon-item>
                     </div>
                 </app-drawer>
-                <div>hgyfgyfyfyuiguihuiohoiuhuihoiuh</div>
+                <div class="padding">
+                    <app-home></app-home>
+                </div>
             </app-drawer-layout>
         </app-header-layout>
     </template>
@@ -131,9 +152,9 @@
          * @customElement
          * @polymer
          */
-        class GovernmentApp extends Polymer.Element {
+        class AppIndex extends Polymer.Element {
             static get is() {
-                return 'government-app';
+                return 'app-index';
             }
 
             _toggleDrawer() {
@@ -146,6 +167,6 @@
             }
         }
 
-        window.customElements.define(GovernmentApp.is, GovernmentApp);
+        window.customElements.define(AppIndex.is, AppIndex);
     </script>
 </dom-module>

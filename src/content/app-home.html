@@ -1,0 +1,51 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+<dom-module id="app-home">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <paper-card heading="Emmental" image="http://placehold.it/350x75/c6dafc/000000" alt="Emmental">
+            <div class="card-content">
+                Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental,
+                Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
+            </div>
+            <div class="card-actions">
+                <paper-button>Share</paper-button>
+                <paper-button>Explore!</paper-button>
+            </div>
+        </paper-card>
+        <paper-card heading="Emmental" image="http://placehold.it/350x75/FFC107/000000" alt="Emmental">
+            <div class="card-content">
+                Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental,
+                Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
+            </div>
+            <div class="card-actions">
+                <paper-button>Share</paper-button>
+                <paper-button>Explore!</paper-button>
+            </div>
+        </paper-card>
+    </template>
+
+    <script>
+        /**
+         * `app-home`
+         *
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        class AppHome extends Polymer.Element {
+            static get is() {
+                return 'app-home';
+            }
+        }
+
+        window.customElements.define(AppHome.is, AppHome);
+    </script>
+</dom-module>

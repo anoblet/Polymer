@@ -13,8 +13,8 @@
     <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
     <link rel="import" href="bower_components/polymer/lib/elements/custom-style.html">
 
-    <link rel="import" href="/src/government-app/government-app.html">
-
+    <link rel="import" href="/src/app-index.html">
+<custom-style>
     <style is="custom-style">
         body {
             margin: 0;
@@ -26,10 +26,15 @@
             background-color: var(--google-blue-300);
             margin: .5em;
         }
-
+        :root {
+            --paper-card: {
+                margin: 1em;
+            }
+        }
     </style>
+</custom-style>
 </head>
 <body>
-<government-app></government-app>
+<app-index></app-index>
 </body>
 </html>
