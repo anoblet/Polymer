@@ -1,34 +1,21 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="app-register.html">
 
 <dom-module id="app-home">
     <template>
-        <style>
+        <style include="iron-flex iron-positioning">
             :host {
                 display: block;
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
             }
         </style>
-        <paper-card heading="Emmental" image="http://placehold.it/350x75/c6dafc/000000" alt="Emmental">
-            <div class="card-content">
-                Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental,
-                Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
-            </div>
-            <div class="card-actions">
-                <paper-button>Share</paper-button>
-                <paper-button>Explore!</paper-button>
-            </div>
-        </paper-card>
-        <paper-card heading="Emmental" image="http://placehold.it/350x75/FFC107/000000" alt="Emmental">
-            <div class="card-content">
-                Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental,
-                Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
-            </div>
-            <div class="card-actions">
-                <paper-button>Share</paper-button>
-                <paper-button>Explore!</paper-button>
-            </div>
-        </paper-card>
+        <app-register></app-register>
     </template>
 
     <script>

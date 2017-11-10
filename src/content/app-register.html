@@ -1,0 +1,85 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+<dom-module id="app-register">
+    <template>
+        <style include="iron-flex iron-flex-alignment iron-positioning">
+            :host {
+                display: block;
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
+            }
+
+            paper-card {
+                --paper-card-header: {
+                    background-color: var(--google-blue-500);
+                };
+                --paper-card-header-text: {
+                    color: #fff;
+                }
+                background-color: #fff;
+                margin: auto;
+                width: 50%;
+                height: 50%;
+            }
+
+            paper-button {
+                --paper-button: {
+                    background-color: var(--google-blue-300);
+                    color: #fff;
+                }
+            }
+
+            .card-content {
+                background-color: #fff;
+            }
+
+            #register {
+                margin: auto;
+                width: 75%;
+            }
+
+            .card-actions {
+                @apply(--layout-horizontal);
+                @apply(--layout-end-justified);
+                background-color: #fff;
+            }
+
+        </style>
+        <paper-card heading="Register">
+            <div class="card-content">
+                <iron-form>
+                    <form method="get" action="/form/handler">
+                        <paper-input label="Email"></paper-input>
+                        <paper-input label="Password"></paper-input>
+
+                    </form>
+                </iron-form>
+            </div>
+            <div class="card-actions">
+                <paper-button raised>Next</paper-button>
+            </div>
+        </paper-card>
+    </template>
+
+    <script>
+        /**
+         * `app-register`
+         *
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        class AppRegister extends Polymer.Element {
+            static get is() {
+                return 'app-register';
+            }
+        }
+
+        window.customElements.define(AppRegister.is, AppRegister);
+    </script>
+</dom-module>

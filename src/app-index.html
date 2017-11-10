@@ -1,6 +1,10 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
 <link rel="import" href="../bower_components/font-roboto/roboto.html">
+
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
@@ -20,10 +24,9 @@
 
 <dom-module id="app-index">
     <template>
-        <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors">
+        <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors iron-positioning">
             :host {
                 display: block;
-                height: 100vh;
             }
 
             app-header {
@@ -46,7 +49,7 @@
             }
 
             .drawer-content {
-                margin-top: 80px;
+                margin-top: 64px;
                 height: calc(100% - 80px);
                 overflow: auto;
             }
@@ -69,7 +72,6 @@
                 --paper-input-container-input-color: {
                     color: #fff;
                 };
-
             }
 
             #logo {
@@ -85,7 +87,23 @@
                     margin: 1em;
                 }
             }
+            :root {
+                .w-75 {
+                    width: 75%;
+                }
+                .w-100 {
+                    width: 100%;
+                }
+            }
+            .content {
+                height: calc(100vh - 64px);
+            }
         </style>
+
+        <app-location route="{{route}}"></app-location>
+
+        <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
         <app-header-layout>
             <app-header fixed effects="waterfall" slot="header">
                 <app-toolbar>
@@ -111,10 +129,12 @@
             <app-drawer-layout id="drawerLayout">
                 <app-drawer id="drawer" slot="drawer">
                     <div class="drawer-content">
-                        <paper-icon-item>
-                            <paper-icon-button icon="inbox" slot="item-icon"></paper-icon-button>
-                            <span>Inbox</span>
-                        </paper-icon-item>
+                        <a href="#inbox" tabindex="-1">
+                            <paper-icon-item>
+                                <paper-icon-button icon="inbox" slot="item-icon"></paper-icon-button>
+                                <span>Inbox</span>
+                            </paper-icon-item>
+                        </a>
                         <paper-icon-item>
                             <paper-icon-button icon="query-builder" slot="item-icon"></paper-icon-button>
                             <span>Snoozed</span>
@@ -141,7 +161,7 @@
                         </paper-icon-item>
                     </div>
                 </app-drawer>
-                <div class="padding">
+                <div class="layout horizontal content">
                     <app-home></app-home>
                 </div>
             </app-drawer-layout>
