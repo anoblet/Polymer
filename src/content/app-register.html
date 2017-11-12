@@ -8,9 +8,10 @@
     <template>
         <style include="iron-flex iron-flex-alignment iron-positioning">
             :host {
-                display: block;
                 @apply(--layout-horizontal);
                 @apply(--layout-flex);
+                @apply(--layout-center);
+                @apply(--layout-center-justified);
             }
 
             paper-card {
@@ -19,33 +20,33 @@
                 };
                 --paper-card-header-text: {
                     color: #fff;
-                }
+                    font-size: 20px;
+                };
                 background-color: #fff;
-                margin: auto;
-                width: 50%;
-                height: 50%;
             }
 
             paper-button {
                 --paper-button: {
-                    background-color: var(--google-blue-300);
+                    background-color: var(--google-blue-500);
                     color: #fff;
                 }
             }
 
             .card-content {
                 background-color: #fff;
-            }
-
-            #register {
-                margin: auto;
-                width: 75%;
+                padding: 2em;
             }
 
             .card-actions {
                 @apply(--layout-horizontal);
                 @apply(--layout-end-justified);
                 background-color: #fff;
+                padding: 1em;
+            }
+
+            #register {
+                margin: auto;
+                width: 75%;
             }
 
         </style>
@@ -55,11 +56,11 @@
                     <form method="get" action="/form/handler">
                         <paper-input label="Email"></paper-input>
                         <paper-input label="Password"></paper-input>
-
                     </form>
                 </iron-form>
             </div>
             <div class="card-actions">
+                <google-signin brand="google" client-id="1007906209983-nbu0r39n694tlahr51mck2el5gdvtv0k.apps.googleusercontent.com" width="wide"></google-signin>
                 <paper-button raised>Next</paper-button>
             </div>
         </paper-card>
