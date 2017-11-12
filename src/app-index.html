@@ -124,51 +124,48 @@
         <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
         <app-location route="{{route}}"></app-location>
 
-            <app-header fixed effects="waterfall" slot="header">
-                <app-toolbar>
-                    <div class="flex layout center">
-                        <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
-                        <span id="logo">Government</span>
-                    </div>
-                    <iron-media-query query="(min-width: 640px)" query-matches="{{wide}}"></iron-media-query>
-                    <template is="dom-if" if="{{wide}}">
-                        <div class="flex">
-                            <paper-input id="search" no-label-float>
-                                <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear"
-                                                   title="clear"></paper-icon-button>
-                            </paper-input>
-                        </div>
-                    </template>
-                    <div class="flex" style="color: #fff; text-align: right">
-                        <paper-menu-button vertical-align="bottom" horizontal-align="right">
-                            <paper-icon-button icon="more-vert" slot="dropdown-trigger" alt="bottom align"></paper-icon-button>
-                            <div slot="dropdown-content">
-                                <paper-icon-button icon="account-circle"></paper-icon-button>
-                            </div>
-                        </paper-menu-button>
-                    </div>
-                </app-toolbar>
-            </app-header>
-                <app-drawer id="drawer" slot="drawer">
-                    <div class="drawer-content">
-                        <a href="/" class="paper-item-link" tabindex="-1">
-                            <paper-icon-item>
-                                <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                <span>Home</span>
-                            </paper-icon-item>
-                        </a>
-                    </div>
-                </app-drawer>
-                <div class="layout horizontal content">
-                    <iron-pages
-                            selected="[[page]]"
-                            attr-for-selected="name"
-                            fallback-selection="view404"
-                            role="main">
-                        <app-home name="home"></app-home>
-                    </iron-pages>
-                    <app-home></app-home>
+        <app-header fixed effects="waterfall" slot="header">
+            <app-toolbar>
+                <div class="flex layout center">
+                    <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
+                    <span id="logo">Government</span>
                 </div>
+                <iron-media-query query="(min-width: 640px)" query-matches="{{wide}}"></iron-media-query>
+                <template is="dom-if" if="{{wide}}">
+                    <div class="flex">
+                        <paper-input id="search" no-label-float>
+                            <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear"
+                                               title="clear"></paper-icon-button>
+                        </paper-input>
+                    </div>
+                </template>
+                <div class="flex" style="color: #fff; text-align: right">
+                    <paper-icon-button icon="more-vert" slot="dropdown-trigger" alt="bottom align"></paper-icon-button>
+                </div>
+            </app-toolbar>
+        </app-header>
+        <app-drawer-layout id="drawerLayout" force-narrow>
+            <app-drawer id="drawer" slot="drawer">
+                <div class="drawer-content">
+                    <a href="/" class="paper-item-link" tabindex="-1">
+                        <paper-icon-item>
+                            <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
+                            <span>Home</span>
+                        </paper-icon-item>
+                    </a>
+                </div>
+            </app-drawer>
+            <div class="layout horizontal content">
+                <iron-pages
+                        selected="[[page]]"
+                        attr-for-selected="name"
+                        fallback-selection="view404"
+                        role="main">
+                    <app-home name="home"></app-home>
+                </iron-pages>
+                <app-home></app-home>
+            </div>
+        </app-drawer-layout>
     </template>
     <script>
         /**
@@ -182,13 +179,14 @@
 
             _toggleDrawer() {
                 var drawerLayout = this.$.drawerLayout;
+                drawerLayout.narrow = !drawerLayout.narrow
+
                 if (drawerLayout.forceNarrow || !drawerLayout.narrow) {
                     drawerLayout.forceNarrow = !drawerLayout.forceNarrow;
                     this.$.drawer.toggle();
                 } else {
                     this.$.drawer.toggle();
                 }
-                this.$.drawer.toggle();
             }
         }
 
