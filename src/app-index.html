@@ -1,7 +1,7 @@
-// Polymer
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-// Routing
+<link rel="import" href="../bower_components/polymer/lib/elements/custom-style.html">
+
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 
@@ -15,25 +15,39 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
-<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/google-signin/google-signin.html">
-
 <link rel="import" href="../bower_components/font-roboto/roboto.html">
-<link rel="import" href="../bower_components/polymer/lib/elements/custom-style.html">
 
-<link rel="import" href="content/app-home.html">
+<!--<link rel="lazy-import" href="content/app-home.html">-->
+<link rel="import" href="components/app-footer.html">
 
 <dom-module id="app-index">
     <template>
         <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors iron-positioning">
             :host {
-                display: block;
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
+                height: 100%;
+                background: url("../../images/pexels-photo-290562.jpeg");
+                background-size: 100%;
+
+                --paper-card: {
+                    margin: 2em;
+                    padding: 2em;
+                    opacity: .95;
+                };
+            }
+
+            app-header-layout {
+                @apply(--layout-vertical);
+                @apply(--layout-flex);
             }
 
             app-header {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
                 background-color: #4285f4;
                 color: #fff;
             }
@@ -43,11 +57,12 @@
             }
 
             app-drawer-layout {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
                 --app-drawer-layout-content-transition: margin 0.2s;
             }
 
             app-drawer {
-
                 top: 64px;
                 bottom: 0;
                 --app-drawer-content-container: {
@@ -57,12 +72,6 @@
                     @apply(--layout-flex);
                 };
                 --app-drawer-scrim-background: none;
-            }
-
-            .drawer-content {
-                @apply(--layout-flex);
-                padding: -120px;
-                overflow: auto;
             }
 
             paper-input {
@@ -89,29 +98,16 @@
                 vertical-align: middle;
             }
 
-            .padding {
-                padding: 1em;
-            }
-
-            paper-card {
-                --paper-card: {
-                    margin: 1em;
-                }
-            }
-
-            :root {
-
-            .w-75 {
-                width: 75%;
-            }
-
-            .w-100 {
+            #content {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
                 width: 100%;
+                height: 100%;
             }
 
-            }
-            .content {
-                height: calc(100vh - 64px);
+            .drawer-content {
+                @apply(--layout-flex);
+                padding: -120px;
                 overflow: auto;
             }
 
@@ -119,67 +115,179 @@
                 color: inherit;
                 text-decoration: none;
             }
+
+            .white {
+                color: white;
+            }
+
+            .no-underline {
+                text-decoration: none;
+            }
+
+            .padding {
+                padding: 1em;
+            }
+
+            .t-1 {
+                font-size: .75em;
+            }
+
+            #contentContainer {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
+            }
         </style>
 
         <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
         <app-location route="{{route}}"></app-location>
 
-        <app-header fixed effects="waterfall" slot="header">
-            <app-toolbar>
-                <div class="flex layout center">
-                    <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
-                    <span id="logo">Government</span>
-                </div>
-                <iron-media-query query="(min-width: 640px)" query-matches="{{wide}}"></iron-media-query>
-                <template is="dom-if" if="{{wide}}">
-                    <div class="flex">
-                        <paper-input id="search" no-label-float>
-                            <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear"
-                                               title="clear"></paper-icon-button>
-                        </paper-input>
+        <app-header-layout>
+            <app-header fixed effects="waterfall" slot="header">
+                <app-toolbar>
+                    <div class="flex layout center">
+                        <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
+                        <a href="/" class="white no-underline"><span id="logo">Government</span></a>
                     </div>
-                </template>
-                <div class="flex" style="color: #fff; text-align: right">
-                    <paper-icon-button icon="more-vert" slot="dropdown-trigger" alt="bottom align"></paper-icon-button>
-                </div>
-            </app-toolbar>
-        </app-header>
-        <app-drawer-layout id="drawerLayout" force-narrow>
-            <app-drawer id="drawer" slot="drawer">
-                <div class="drawer-content">
-                    <a href="/" class="paper-item-link" tabindex="-1">
-                        <paper-icon-item>
-                            <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                            <span>Home</span>
-                        </paper-icon-item>
-                    </a>
-                </div>
-            </app-drawer>
-            <div class="layout horizontal content">
-                <iron-pages
-                        selected="[[page]]"
-                        attr-for-selected="name"
-                        fallback-selection="view404"
-                        role="main">
-                    <app-home name="home"></app-home>
-                </iron-pages>
-                <app-home></app-home>
-            </div>
-        </app-drawer-layout>
+                    <iron-media-query query="(min-width: 640px)" query-matches="{{wide}}"></iron-media-query>
+                    <template is="dom-if" if="{{wide}}">
+                        <div class="flex">
+                            <paper-input id="search" no-label-float>
+                                <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear" title="clear"></paper-icon-button>
+                            </paper-input>
+                        </div>
+                    </template>
+                    <div class="flex" style="color: #fff; text-align: right">
+                    <span class="t-1">
+                        <a href="/login" class="white no-underline">Sign in</a>
+                         |
+                        <a href="/register" class="white no-underline">Register</a>
+                    </span>
+                        <paper-icon-button icon="more-vert" slot="dropdown-trigger" alt="bottom align"></paper-icon-button>
+                    </div>
+                </app-toolbar>
+            </app-header>
+            <app-drawer-layout id="drawerLayout" force-narrow>
+                <app-drawer id="drawer" slot="drawer">
+                    <div class="drawer-content">
+                        <!--<a href="/" name="home" class="paper-item-link" tabindex="-1">
+                            <paper-icon-item>
+                                <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
+                                <span>Home</span>
+                            </paper-icon-item>
+                        </a>-->
+                        <a href="/login" name="login" class="paper-item-link" tabindex="-1">
+                            <paper-icon-item>
+                                <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
+                                <span>Login</span>
+                            </paper-icon-item>
+                        </a>
+                        <a href="/g" name="home" class="paper-item-link" tabindex="-1">
+                            <paper-icon-item>
+                                <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
+                                <span>Sign Out</span>
+                            </paper-icon-item>
+                        </a>
+                    </div>
+                </app-drawer>
+                <div id="content"></div>
+            </app-drawer-layout>
+        </app-header-layout>
     </template>
     <script>
-        /**
-         * @customElement
-         * @polymer
-         */
         class AppIndex extends Polymer.Element {
             static get is() {
                 return 'app-index';
             }
 
+            static get properties() {
+                return {
+                    page: {
+                        type: String,
+                        reflectToAttribute: true,
+                        observer: '_pageChanged',
+                    },
+                    routeData: Object,
+                    subroute: String,
+                    rootPath: String,
+                };
+            }
+
+            static get observers() {
+                return [
+                    '_routePageChanged(routeData.page)',
+                    '_import(routeData)'
+                ];
+            }
+
+            _routePageChanged(page) {
+                this.page = page || '';
+
+                if (!this.$.drawer.persistent) {
+                    this.$.drawer.close();
+                }
+            }
+
+            _import(routeData) {
+                console.log(routeData);
+            }
+
+            _pageChanged(page) {
+                var r;
+
+                var map = [
+                    {
+                        href: "",
+                        src: "content/app-home.html",
+                        tag: "app-home"
+                    },
+                    {
+                        href: "login",
+                        src: "components/app-login.html",
+                        tag: "app-login"
+                    },
+                    {
+                        href: "register",
+                        src: "components/app-register.html",
+                        tag: "app-register"
+                    },
+                    {
+                        href: "page",
+                        src: "components/app-page.html",
+                        tag: "app-page"
+                    }
+                ];
+
+                map.forEach(function (route) {
+                    if (page == route.href) {
+                        r = route;
+                    }
+                })
+
+                Polymer.importHref(this.resolveUrl(r.src), null, this._showPage404.bind(this), true);
+
+                var myElement = document.createElement(r.tag);
+                this._removeElement();
+                this.$.content.appendChild(myElement);
+            }
+
+            _addElement(tag) {
+
+            }
+
+            _removeElement() {
+                var element = this.$.content.querySelector("*");
+                if (element) {
+                    element.parentNode.removeChild(element);
+                }
+            }
+
+            _showPage404() {
+                this.page = 'view404';
+            }
+
             _toggleDrawer() {
                 var drawerLayout = this.$.drawerLayout;
-                drawerLayout.narrow = !drawerLayout.narrow
+                // drawerLayout.responsiveWidth = 0;
 
                 if (drawerLayout.forceNarrow || !drawerLayout.narrow) {
                     drawerLayout.forceNarrow = !drawerLayout.forceNarrow;

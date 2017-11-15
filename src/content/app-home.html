@@ -4,7 +4,7 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="app-register.html">
+<link rel="import" href="../components/app-register.html">
 
 <dom-module id="app-home">
     <template>
@@ -13,20 +13,13 @@
                 display: block;
                 @apply(--layout-horizontal);
                 @apply(--layout-flex);
+
             }
         </style>
         <app-register></app-register>
     </template>
 
     <script>
-        /**
-         * `app-home`
-         *
-         *
-         * @customElement
-         * @polymer
-         * @demo demo/index.html
-         */
         class AppHome extends Polymer.Element {
             static get is() {
                 return 'app-home';

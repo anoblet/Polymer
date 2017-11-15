@@ -5,18 +5,34 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
     <title>Government</title>
+
+    <base href="/">
+
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="icon" sizes="192x192" href="images/favicon.ico">
+
+    <meta name="application-name" content="A">
     <meta name="description" content="government description">
-
-    <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="/manifest.json">
-
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="My App">
+
+    <script>
+        window.Polymer = {rootPath: '/'};
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js', {
+                    scope: Polymer.rootPath,
+                });
+            });
+        }
+    </script>
 
     <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-    <link rel="import" href="bower_components/polymer/lib/elements/custom-style.html">
 
-    <link rel="import" href="/src/app-index.html">
+    <!--<link rel="import" href="bower_components/polymer/lib/elements/custom-style.html">-->
+
+    <link rel="import" href="src/app-index.html">
 
     <custom-style>
         <style is="custom-style">
@@ -28,17 +44,6 @@
                 margin: 0;
                 font-family: 'Roboto', 'Noto', sans-serif;
                 background-color: #eee;
-            }
-
-            #search {
-                background-color: var(--google-blue-300);
-                margin: .5em;
-            }
-
-            :root {
-                --paper-card: {
-                    margin: 1em;
-                }
             }
         </style>
     </custom-style>
