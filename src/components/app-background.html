@@ -2,23 +2,25 @@
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
-<dom-module id="app-config">
+<dom-module id="app-background">
     <template>
         <style include="iron-flex">
             :host {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
             }
         </style>
     </template>
 
     <script>
-        class AppConfig extends Polymer.Element {
+        class AppBackground extends Polymer.Element {
             static get is() {
-                return 'app-config';
+                return 'app-background';
             }
 
             static get properties() {
                 return {
-                    routes: {
+                    source: {
                         type: Array,
                         value: [
                             {
@@ -35,8 +37,18 @@
                     }
                 };
             }
+
+            constructor() {
+                this.cycleBackground();
+            }
+
+            cycleBackground() {
+                this.sources;
+                for()
+                this.background = k;
+            }
         }
 
-        window.customElements.define(AppConfig.is, AppConfig);
+        window.customElements.define(AppBackground.is, AppBackground);
     </script>
 </dom-module>

@@ -21,6 +21,7 @@
 <link rel="import" href="../bower_components/font-roboto/roboto.html">
 
 <!--<link rel="lazy-import" href="content/app-home.html">-->
+<link rel="import" href="components/app-config.html">
 <link rel="import" href="components/app-footer.html">
 
 <dom-module id="app-index">
@@ -34,7 +35,7 @@
                 background-size: 100%;
 
                 --paper-card: {
-                    margin: 2em;
+                    margin: 1em;
                     padding: 2em;
                     opacity: .95;
                 };
@@ -138,6 +139,8 @@
             }
         </style>
 
+        <app-config></app-config>
+
         <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
         <app-location route="{{route}}"></app-location>
 
@@ -169,19 +172,19 @@
             <app-drawer-layout id="drawerLayout" force-narrow>
                 <app-drawer id="drawer" slot="drawer">
                     <div class="drawer-content">
-                        <!--<a href="/" name="home" class="paper-item-link" tabindex="-1">
+                        <a href="/" class="paper-item-link" tabindex="-1">
                             <paper-icon-item>
                                 <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
                                 <span>Home</span>
                             </paper-icon-item>
-                        </a>-->
-                        <a href="/login" name="login" class="paper-item-link" tabindex="-1">
+                        </a>
+                        <a href="/user/login" class="paper-item-link" tabindex="-1">
                             <paper-icon-item>
                                 <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
                                 <span>Login</span>
                             </paper-icon-item>
                         </a>
-                        <a href="/g" name="home" class="paper-item-link" tabindex="-1">
+                        <a href="/user/logout" class="paper-item-link" tabindex="-1">
                             <paper-icon-item>
                                 <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
                                 <span>Sign Out</span>
@@ -215,11 +218,13 @@
             static get observers() {
                 return [
                     '_routePageChanged(routeData.page)',
-                    '_import(routeData)'
+
                 ];
             }
 
             _routePageChanged(page) {
+                console.log(page.routeData);
+
                 this.page = page || '';
 
                 if (!this.$.drawer.persistent) {
@@ -227,12 +232,8 @@
                 }
             }
 
-            _import(routeData) {
-                console.log(routeData);
-            }
-
             _pageChanged(page) {
-                var r;
+                var config;
 
                 var map = [
                     {
@@ -246,7 +247,7 @@
                         tag: "app-login"
                     },
                     {
-                        href: "register",
+                        href: "user/register",
                         src: "components/app-register.html",
                         tag: "app-register"
                     },
@@ -257,32 +258,35 @@
                     }
                 ];
 
+                // map = document.querySelector("app-config").routes;
+console.log(page);
                 map.forEach(function (route) {
                     if (page == route.href) {
-                        r = route;
+                        config = route;
                     }
                 })
 
-                Polymer.importHref(this.resolveUrl(r.src), null, this._showPage404.bind(this), true);
+                Polymer.importHref(this.resolveUrl(config.src), null, this._showPage404.bind(this), true);
 
-                var myElement = document.createElement(r.tag);
-                this._removeElement();
+                var myElement = document.createElement(config.tag);
+                this._removeElements();
                 this.$.content.appendChild(myElement);
             }
 
-            _addElement(tag) {
+            _showPage404() {
 
             }
 
-            _removeElement() {
+            _addElement(tag) {
+                var myElement = document.createElement(config.tag);
+                this.$.content.appendChild(myElement);
+            }
+
+            _removeElements() {
                 var element = this.$.content.querySelector("*");
                 if (element) {
                     element.parentNode.removeChild(element);
                 }
-            }
-
-            _showPage404() {
-                this.page = 'view404';
             }
 
             _toggleDrawer() {
