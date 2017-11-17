@@ -37,6 +37,7 @@
     <custom-style>
         <style is="custom-style">
             html {
+                box-sizing: border-box;
                 height: 100%;
             }
             body {
@@ -44,6 +45,11 @@
                 margin: 0;
                 font-family: 'Roboto', 'Noto', sans-serif;
                 background-color: #eee;
+            }
+            *,
+            *::before,
+            *::after {
+                box-sizing: inherit;
             }
         </style>
     </custom-style>

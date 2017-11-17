@@ -29,7 +29,7 @@
 
 <dom-module id="app-index">
     <template>
-        <style include="app-style iron-flex iron-flex-alignmentiron-positioning">
+        <style include="app-style iron-flex iron-flex-alignment iron-positioning">
             :host {
                 @apply(--layout-horizontal);
                 @apply(--layout-flex);
@@ -65,9 +65,10 @@
             }
 
             app-drawer {
+                @apply(--layout-horizontal);
+                position: relative;
                 top: 0;
                 bottom: 0;
-                position: relative;
                 --app-drawer-scrim-background: none;
             }
 
@@ -129,11 +130,6 @@
             .t-1 {
                 font-size: .75em;
             }
-
-            #contentContainer {
-                @apply(--layout-horizontal);
-                @apply(--layout-flex);
-            }
         </style>
 
         <app-config id="config"></app-config>
@@ -141,8 +137,8 @@
         <app-route route="{{route}}" pattern="[[rootPath]]:path" data="{{routeData}}" tail="{{subroute}}"></app-route>
         <app-location route="{{route}}"></app-location>
 
-        <app-header-layout>
-            <app-header fixed effects="waterfall" slot="header">
+        <app-header-layout has-scrolling-region>
+            <app-header effects="waterfall" slot="header">
                 <app-toolbar>
                     <div class="flex layout center">
                         <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
@@ -169,12 +165,6 @@
             <app-drawer-layout id="drawerLayout" force-narrow>
                 <app-drawer id="drawer" slot="drawer">
                     <div class="drawer-content">
-                        <!--<a href="/" class="paper-item-link" tabindex="-1">
-                            <paper-icon-item>
-                                <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                <span>Home</span>
-                            </paper-icon-item>
-                        </a>-->
                         <a href="/city" class="paper-item-link" tabindex="-1">
                         <paper-icon-item>
                             <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
@@ -187,10 +177,10 @@
                                 <span>State</span>
                             </paper-icon-item>
                         </a>
-                        <a href="/city" class="paper-item-link" tabindex="-1">
+                        <a href="/country" class="paper-item-link" tabindex="-1">
                             <paper-icon-item>
                                 <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                <span>City</span>
+                                <span>Country</span>
                             </paper-icon-item>
                         </a>
                         <a href="/page" class="paper-item-link" tabindex="-1">
@@ -264,9 +254,10 @@
                 if (config) {
                     Polymer.importHref(this.resolveUrl(config.src), null, this._showPage404.bind(this), true);
 
-                    var myElement = document.createElement(config.tag);
+                    // var myElement = document.createElement(config.tag);
                     this._removeElements();
-                    this.$.content.appendChild(myElement);
+                    this._addElement(config.tag);
+                    // this.$.content.appendChild(myElement);
                     document.title = this.baseTitle + " - " + config.title;
                 }
                 else {
@@ -279,7 +270,7 @@
             }
 
             _addElement(tag) {
-                var myElement = document.createElement(config.tag);
+                var myElement = document.createElement(tag);
                 this.$.content.appendChild(myElement);
             }
 

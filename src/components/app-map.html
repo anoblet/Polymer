@@ -1,0 +1,87 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/google-map/google-map.html">
+<link rel="import" href="../../bower_components/google-apis/google-maps-api.html">
+
+<link rel="import" href="app-style.html">
+
+
+<dom-module id="app-map">
+    <template>
+        <style include="app-style iron-flex">
+            :host {
+                @apply(--layout-vertical);
+                @apply(--layout-flex);
+                @apply(--layout-center-justified);
+            }
+
+            google-map {
+                width: 100%;
+            }
+        </style>
+        <paper-card heading="Sign in">
+            <input id="autocomplete" placeholder="Enter your address first time" type="text" class="form-control"></input>
+        </paper-card>
+        <google-map id="map" latitude="37.77493" longitude="-122.41942" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk"></google-map>
+        <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
+
+    </template>
+
+    <script>
+        class AppMap extends Polymer.Element {
+            static get is() {
+                return 'app-map';
+            }
+
+            static get properties() {
+                return {
+                    name: {
+                        type: String,
+                        value: "Map"
+                    },
+                    autocomplete: {
+                        type: Object
+                    },
+                };
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                document.title = this.name;
+
+                var map = this.$.map;
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+
+                        map.latitude = position.coords.latitude;
+                        map.longitude = position.coords.longitude;
+
+                        // map.setCenter(pos);
+                    }, function () {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
+                }
+            }
+            mapApiLoaded() {
+                this.autocomplete= new google.maps.places.Autocomplete(this.$.autocomplete);
+                this.autocomplete.addListener('place_changed', function() {
+                    var place = this.autocomplete.getPlace();
+                    console.log(this.autocomplete);
+                    this.location=place.formatted_address
+                }.bind(this));
+            }
+        }
+
+        window.customElements.define(AppMap.is, AppMap);
+    </script>
+</dom-module>
