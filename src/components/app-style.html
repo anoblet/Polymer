@@ -7,6 +7,14 @@
                 @apply(--layout-horizontal);
                 @apply(--layout-flex);
 
+                --app-drawer-content-container: {
+                    @apply(--layout-horizontal);
+                    @apply(--layout-flex);
+                    background: #ddd;
+                    margin: 0;
+                    padding: 0;
+                };
+
                 --paper-card: {
                     @apply(--layout-vertical);
                     margin: 1em;
@@ -16,18 +24,18 @@
                 --paper-card-header: {
                     @apply(--layout-horizontal);
                     @apply(--layout-center);
-                    padding: 1em 1em 2em 1em;
-                    border-bottom: 1px solid var(--google-grey-700);
+                    padding: 1em 1em 0 1em;
+                    <!--border-bottom: 1px solid var(--google-grey-300);-->
                 };
 
                 --paper-card-header-text: {
                     padding: 0;
                     font-size: 18px;
-                    color: var(--google-grey-700);
+                    color: var(--google-blue-700);
                 };
 
                 --paper-card-content: {
-                    padding: 1em;
+                    padding: 2em 2em 1em 2em;
                 };
 
                 --paper-card-actions: {
