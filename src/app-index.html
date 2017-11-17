@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="../bower_components/polymer/lib/elements/custom-style.html">
+<link rel="import" href="components/app-config.html">
 
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
@@ -8,37 +8,38 @@
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
+
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+
 <link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+
 <link rel="import" href="../bower_components/google-signin/google-signin.html">
 <link rel="import" href="../bower_components/font-roboto/roboto.html">
 
-<!--<link rel="lazy-import" href="content/app-home.html">-->
-<link rel="import" href="components/app-config.html">
+<link rel="import" href="components/app-style.html">
+
 <link rel="import" href="components/app-footer.html">
 
 <dom-module id="app-index">
     <template>
-        <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-factors iron-positioning">
+        <style include="app-style iron-flex iron-flex-alignmentiron-positioning">
             :host {
                 @apply(--layout-horizontal);
                 @apply(--layout-flex);
                 height: 100%;
                 background: url("../../images/pexels-photo-290562.jpeg");
                 background-size: 100%;
+            }
 
-                --paper-card: {
-                    margin: 1em;
-                    padding: 2em;
-                    opacity: .95;
-                };
+            .card-header {
+                font-weight: bold;
             }
 
             app-header-layout {
@@ -102,6 +103,7 @@
             #content {
                 @apply(--layout-horizontal);
                 @apply(--layout-flex);
+                overflow: auto;
                 width: 100%;
                 height: 100%;
             }
@@ -139,9 +141,9 @@
             }
         </style>
 
-        <app-config></app-config>
+        <app-config id="config"></app-config>
 
-        <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+        <app-route route="{{route}}" pattern="[[rootPath]]:path" data="{{routeData}}" tail="{{subroute}}"></app-route>
         <app-location route="{{route}}"></app-location>
 
         <app-header-layout>
@@ -178,10 +180,10 @@
                                 <span>Home</span>
                             </paper-icon-item>
                         </a>
-                        <a href="/user/login" class="paper-item-link" tabindex="-1">
+                        <a href="/page" class="paper-item-link" tabindex="-1">
                             <paper-icon-item>
                                 <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                <span>Login</span>
+                                <span>Page</span>
                             </paper-icon-item>
                         </a>
                         <a href="/user/logout" class="paper-item-link" tabindex="-1">
@@ -204,10 +206,13 @@
 
             static get properties() {
                 return {
-                    page: {
+                    baseTitle: {
+                        value: "Government"
+                    },
+                    path: {
                         type: String,
                         reflectToAttribute: true,
-                        observer: '_pageChanged',
+                        observer: '_pathChanged',
                     },
                     routeData: Object,
                     subroute: String,
@@ -217,60 +222,43 @@
 
             static get observers() {
                 return [
-                    '_routePageChanged(routeData.page)',
-
+                    '_routePageChanged(routeData.path)'
                 ];
             }
 
-            _routePageChanged(page) {
-                console.log(page.routeData);
+            _routePageChanged(path) {
+                console.log(path);
 
-                this.page = page || '';
+                this.path = path || '';
 
                 if (!this.$.drawer.persistent) {
                     this.$.drawer.close();
                 }
             }
 
-            _pageChanged(page) {
+            _pathChanged(path) {
                 var config;
 
-                var map = [
-                    {
-                        href: "",
-                        src: "content/app-home.html",
-                        tag: "app-home"
-                    },
-                    {
-                        href: "login",
-                        src: "components/app-login.html",
-                        tag: "app-login"
-                    },
-                    {
-                        href: "user/register",
-                        src: "components/app-register.html",
-                        tag: "app-register"
-                    },
-                    {
-                        href: "page",
-                        src: "components/app-page.html",
-                        tag: "app-page"
-                    }
-                ];
-
                 // map = document.querySelector("app-config").routes;
-console.log(page);
+                var map = this.$.config.routes;
+
                 map.forEach(function (route) {
-                    if (page == route.href) {
+                    if (path == route.href) {
                         config = route;
                     }
                 })
 
-                Polymer.importHref(this.resolveUrl(config.src), null, this._showPage404.bind(this), true);
+                if (config) {
+                    Polymer.importHref(this.resolveUrl(config.src), null, this._showPage404.bind(this), true);
 
-                var myElement = document.createElement(config.tag);
-                this._removeElements();
-                this.$.content.appendChild(myElement);
+                    var myElement = document.createElement(config.tag);
+                    this._removeElements();
+                    this.$.content.appendChild(myElement);
+                    document.title = this.baseTitle + " - " + config.title;
+                }
+                else {
+
+                }
             }
 
             _showPage404() {

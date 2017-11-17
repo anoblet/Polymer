@@ -1,0 +1,63 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="app-style">
+    <template>
+        <style>
+            :host {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
+
+                --paper-card: {
+                    @apply(--layout-vertical);
+                    margin: 1em;
+                    padding: 1em 2em 1em 2em;
+                };
+
+                --paper-card-header: {
+                    @apply(--layout-horizontal);
+                    @apply(--layout-center);
+                    padding: 1em 1em 2em 1em;
+                    border-bottom: 1px solid var(--google-grey-700);
+                };
+
+                --paper-card-header-text: {
+                    padding: 0;
+                    font-size: 18px;
+                    color: var(--google-grey-700);
+                };
+
+                --paper-card-content: {
+                    padding: 1em;
+                };
+
+                --paper-card-actions: {
+                    @apply(--layout-horizontal);
+                    @apply(--layout-center);
+                    margin-top: 1em;
+                    padding: 1em 1em 0 1em;
+                };
+
+                --paper-button: {
+                    background-color: var(--google-blue-500);
+                    color: #fff;
+                }
+            }
+
+            .card-header {
+                padding: 1em;
+                font-weight: bold;
+                border-bottom: 1px solid #e8e8e8;
+            }
+        </style>
+    </template>
+
+    <script>
+        class AppStyle extends Polymer.Element {
+            static get is() {
+                return 'app-style';
+            }
+        }
+
+        window.customElements.define(AppStyle.is, AppStyle);
+    </script>
+</dom-module>

@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="app-settings">
+    <template>
+        <style include="iron-flex">
+            :host {
+            }
+        </style>
+    </template>
+
+    <script>
+        class AppSettings extends Polymer.Element {
+            static get is() {
+                return 'app-config';
+            }
+
+            static get properties() {
+                return {
+                    orientation: {
+                        value: "right"
+                    },
+                    routes: {
+                        type: Array,
+                        value: ""
+                    }
+                };
+            }
+        }
+
+        window.customElements.define(AppSettings.is, AppSettings);
+    </script>
+</dom-module>
