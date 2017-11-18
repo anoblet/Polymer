@@ -1,0 +1,67 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
+<link rel="import" href="app-style.html">
+
+<dom-module id="x-header">
+    <template>
+        <style include="app-style">
+            :host {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
+                @apply(--layout-center);
+                @apply(--layout-center-justified);
+            }
+        </style>
+        <app-toolbar>
+            <div class="flex layout center">
+                <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
+                <a href="/" class="white no-underline"><span id="logo">Government</span></a>
+            </div>
+            <iron-media-query query="(min-width: 640px)" query-matches="{{wide}}"></iron-media-query>
+            <template is="dom-if" if="{{wide}}">
+                <div class="flex">
+                    <paper-input id="search" no-label-float>
+                        <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear" title="clear"></paper-icon-button>
+                    </paper-input>
+                </div>
+            </template>
+            <div class="flex" style="color: #fff; text-align: right">
+                    <span class="t-1">
+                        <a href="/login" class="white no-underline">Sign in</a>
+                         |
+                        <a href="/register" class="white no-underline">Register</a>
+                    </span>
+                <paper-icon-button icon="more-vert" slot="dropdown-trigger" alt="bottom align"></paper-icon-button>
+            </div>
+        </app-toolbar>
+    </template>
+
+    <script>
+        class XHeader extends Polymer.Element {
+            static get is() {
+                return 'x-header';
+            }
+
+            _toggleDrawer() {
+                var drawerLayout = this.$.drawerLayout;
+                // drawerLayout.responsiveWidth = 0;
+
+                if (drawerLayout.forceNarrow || !drawerLayout.narrow) {
+                    drawerLayout.forceNarrow = !drawerLayout.forceNarrow;
+                    this.$.drawer.toggle();
+                } else {
+                    this.$.drawer.toggle();
+                }
+            }
+        }
+
+        window.customElements.define(XHeader.is, XHeader);
+    </script>
+</dom-module>

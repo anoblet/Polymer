@@ -18,6 +18,16 @@
 
             static get properties() {
                 return {
+                    namespace: {
+                        type: String,
+                        value: "app"
+                    },
+                    componentFolder: {
+                        value: "components"
+                    },
+                    baseTitle: {
+                        value: "Government"
+                    },
                     routes: {
                         type: Array,
                         value: [

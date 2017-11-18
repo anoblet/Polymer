@@ -183,18 +183,24 @@
                                 <span>Country</span>
                             </paper-icon-item>
                         </a>
+                        <a href="/map" class="paper-item-link" tabindex="-1">
+                            <paper-icon-item>
+                                <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
+                                <span>Map</span>
+                            </paper-icon-item>
+                        </a>
                         <a href="/page" class="paper-item-link" tabindex="-1">
                             <paper-icon-item>
                                 <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
                                 <span>Page</span>
                             </paper-icon-item>
                         </a>
-                        <!--<a href="/user/logout" class="paper-item-link" tabindex="-1">
+                        <a href="/user" class="paper-item-link" tabindex="-1">
                             <paper-icon-item>
                                 <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                <span>Sign Out</span>
+                                <span>User</span>
                             </paper-icon-item>
-                        </a>-->
+                        </a>
                     </div>
                 </app-drawer>
                 <div id="content"></div>
@@ -209,8 +215,11 @@
 
             static get properties() {
                 return {
-                    baseTitle: {
-                        value: "Government"
+                    config: {
+                        type: Object
+                    },
+                    routes: {
+                        type: Object
                     },
                     path: {
                         type: String,
@@ -243,13 +252,14 @@
                 var config;
 
                 // map = document.querySelector("app-config").routes;
-                var map = this.$.config.routes;
-
-                map.forEach(function (route) {
+                var routes = this.$.config.routes;
+                routes.forEach(function (route) {
                     if (path == route.href) {
                         config = route;
                     }
                 })
+
+                // var src = this.config.componentFolder + "/" + this.config.namespace +  "-" + component + ".html";
 
                 if (config) {
                     Polymer.importHref(this.resolveUrl(config.src), null, this._showPage404.bind(this), true);
@@ -258,7 +268,8 @@
                     this._removeElements();
                     this._addElement(config.tag);
                     // this.$.content.appendChild(myElement);
-                    document.title = this.baseTitle + " - " + config.title;
+                    // alert(this.config);
+                    document.title = this.config.baseTitle + " - " + config.title;
                 }
                 else {
 
@@ -291,6 +302,13 @@
                 } else {
                     this.$.drawer.toggle();
                 }
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+
+                this.config = this.$.config;
+                // this.config = this.shadowRoot.querySelector("app-config");
             }
         }
 

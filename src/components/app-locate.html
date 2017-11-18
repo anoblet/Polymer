@@ -1,0 +1,90 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/google-apis/google-maps-api.html">
+
+<link rel="import" href="app-style.html">
+
+
+<dom-module id="app-locate">
+    <template>
+        <style include="app-style">
+            :host {
+                @apply(--layout-vertical);
+                @apply(--layout-flex);
+            }
+        </style>
+        <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
+        <paper-card id="locate" heading="Address">
+            <paper-input id="autocomplete" placeholder="Enter your address" type="text" class="form-control"></paper-input>
+        </paper-card>
+    </template>
+
+    <script>
+        class AppLocate extends Polymer.Element {
+            static get is() {
+                return 'app-locate';
+            }
+
+            constructor() {
+                super();
+            }
+
+            static get properties() {
+                return {
+                    app: {
+                        type: Object
+                    }
+                }
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+
+                this.app = this.$.app;
+                // document.title = this.name;
+
+                var locate = this.$.locate;
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+
+                        locate.latitude = position.coords.latitude;
+                        locate.longitude = position.coords.longitude;
+
+                        // locate.setCenter(pos);
+                    }, function () {
+                        handleLocationError(true, infoWindow, locate.getCenter());
+                    });
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, locate.getCenter());
+                }
+            }
+
+            mapApiLoaded() {
+                var autocomplete = new google.maps.places.Autocomplete(this.$.autocomplete);
+                google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                    var place = autocomplete.getPlace();
+
+                    for (var i = 0; i < place.address_components.length; i++) {
+                        if (place.address_components[i].types[0] == 'locality') {
+                            var city = place.address_components[i].long_name;
+                        }
+                        if (place.address_components[i].types[0] == 'administrative_area_level_1') {
+                            var state = place.address_components[i].long_name;
+                        }
+                    }
+
+                    alert(city + ", " + state);
+                });
+            }
+        }
+
+        window.customElements.define(AppLocate.is, AppLocate);
+    </script>
+</dom-module>
