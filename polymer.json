@@ -3,7 +3,8 @@
   "shell": "src/app-index.html",
   "fragments": [
     "src/components/app-home.html",
-    "src/components/app-register.html"
+    "src/components/app-register.html",
+    "src/components/app-map.html"
   ],
   "sources": [
     "src/**/*",

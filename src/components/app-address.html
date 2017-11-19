@@ -26,11 +26,6 @@
                 return 'app-address';
             }
 
-            constructor() {
-                super();
-                this.app = this.$.app;
-            }
-
             static get properties() {
                 return {
                     app: {
@@ -42,27 +37,7 @@
             connectedCallback() {
                 super.connectedCallback();
                 // document.title = this.name;
-
-                var address = this.$.address;
-
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        var pos = {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude
-                        };
-
-                        address.latitude = position.coords.latitude;
-                        address.longitude = position.coords.longitude;
-
-                        // address.setCenter(pos);
-                    }, function () {
-                        handleLocationError(true, infoWindow, address.getCenter());
-                    });
-                } else {
-                    // Browser doesn't support Geolocation
-                    handleLocationError(false, infoWindow, address.getCenter());
-                }
+                this.app = this.$.app;
             }
 
             mapApiLoaded() {

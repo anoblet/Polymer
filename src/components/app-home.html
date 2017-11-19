@@ -1,27 +1,49 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="../../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="app-locate.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+<link rel="import" href="x-address.html">
 
 <dom-module id="app-home">
     <template>
-        <style include="iron-flex iron-positioning">
+        <style include="iron-flex">
             :host {
                 @apply(--layout-horizontal);
                 @apply(--layout-flex);
             }
         </style>
-        <app-locate></app-locate>
+        <x-address scope="{{this.scope}}"></x-address>
     </template>
 
     <script>
         class AppHome extends Polymer.Element {
             static get is() {
                 return 'app-home';
+            }
+
+            static get properties() {
+                return {
+                    scope: {
+                        type: Object
+                    }
+                }
+            }
+
+            ready(){
+                super.ready();
+
+                this.shadowRoot.querySelector("x-address").scope = this.scope;
+                console.log(this.scope);
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+
+                this.shadowRoot.querySelector("x-address").scope = this.scope;
+                console.log(this.scope);
             }
         }
 

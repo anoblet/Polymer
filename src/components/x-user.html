@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="x-user">
+    <template>
+        <style>
+            :host {
+            }
+        </style>
+    </template>
+    <script>
+        class XUser extends Polymer.Element {
+            static get is() {
+                return 'x-user';
+            }
+
+            static get properties() {
+                return {
+                    city: {
+                        type: Object,
+                        value: {}
+                    },
+                    state: {
+                        type: Object,
+                        value: {}
+                    }
+                };
+            }
+        }
+
+        window.customElements.define(XUser.is, XUser);
+    </script>
+</dom-module>

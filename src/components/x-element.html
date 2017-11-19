@@ -1,0 +1,13 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="x-element">
+    <script>
+        class XElement extends Polymer.Element {
+            static get is() {
+                return 'x-element';
+            }
+        }
+
+        window.customElements.define(XElement.is, XElement);
+    </script>
+</dom-module>

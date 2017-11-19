@@ -1,0 +1,26 @@
+<dom-module id="x-location">
+    <script>
+        class XLocation extends Polymer.Element {
+            static get is() {
+                return 'x-location';
+            }
+
+            static get properties() {
+                return {
+                    city: {
+                        type: String,
+                        reflectToAttribute: true,
+                        value: "Washington"
+                    },
+                    state: {
+                        type: String,
+                        reflectToAttribute: true,
+                        value: "District of Columbia"
+                    }
+                }
+            }
+        }
+
+        window.customElements.define(XLocation.is, XLocation);
+    </script>
+</dom-module>

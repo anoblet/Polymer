@@ -36,6 +36,11 @@
 
     <custom-style>
         <style is="custom-style">
+            *,
+            *::before,
+            *::after {
+                box-sizing: inherit;
+            }
             html {
                 box-sizing: border-box;
                 height: 100%;
@@ -47,15 +52,14 @@
                 font-family: 'Roboto', 'Noto', sans-serif;
                 background-color: #eee;
             }
-            *,
-            *::before,
-            *::after {
-                box-sizing: inherit;
-            }
         </style>
     </custom-style>
 </head>
 <body>
 <app-index></app-index>
+<script>
+    var app = document.querySelector("app-index");
+    console.log(app.path);
+</script>
 </body>
 </html>
