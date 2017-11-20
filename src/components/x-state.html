@@ -1,0 +1,32 @@
+<link rel="import" href="x-element.html">
+
+<dom-module id="x-state">
+    <script>
+        class XState extends XElement {
+            static get is() {
+                return 'x-state';
+            }
+
+            static get properties() {
+                return {
+                    scope: {
+                        type: Object,
+                        reflectToAttribute: true
+                    },
+                    isReady: {
+                        type: Boolean
+                    }
+                }
+            }
+
+            ready(){
+                super.ready();
+
+                this.isReady = true;
+            }
+
+        }
+
+        window.customElements.define(XState.is, XState);
+    </script>
+</dom-module>

@@ -1,0 +1,28 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="./app-style.html">
+
+<dom-module id="x-sitemap">
+    <template>
+        <style include="app-style">
+            :host {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
+            }
+        </style>
+        <ul>
+            <li>
+                <a href="page">Page</a>
+            </li>
+        </ul>
+    </template>
+
+    <script>
+        class XSitemap extends Polymer.Element {
+            static get is() {
+                return 'x-sitemap';
+            }
+        }
+        window.customElements.define(XSitemap.is, XSitemap);
+    </script>
+</dom-module>

@@ -7,6 +7,10 @@
 
             static get properties() {
                 return {
+                    scope: {
+                        type: Object,
+                        reflectToAttribute: true
+                    },
                     city: {
                         type: String,
                         reflectToAttribute: true,

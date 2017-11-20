@@ -1,36 +1,30 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="components/app-config.html">
-
-<link rel="import" href="../bower_components/app-route/app-route.html">
-<link rel="import" href="../bower_components/app-route/app-location.html">
-
-<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
-<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
-<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
-
-<link rel="import" href="../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-
-<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/google-signin/google-signin.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-location/iron-location.html">
+<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
 
-<link rel="import" href="../bower_components/google-signin/google-signin.html">
-<link rel="import" href="../bower_components/font-roboto/roboto.html">
-
+<link rel="import" href="components/app-config.html">
+<link rel="import" href="components/app-footer.html">
 <link rel="import" href="components/app-style.html">
 
 <link rel="import" href="components/x-background.html">
+<link rel="import" href="components/x-element.html">
 <link rel="import" href="components/x-location.html">
 <link rel="import" href="components/x-user.html">
-
-
-<link rel="import" href="components/app-footer.html">
 
 <dom-module id="app-index">
     <template>
@@ -138,86 +132,93 @@
         </style>
 
         <app-config id="config"></app-config>
-        <app-route route="{{route}}" pattern="[[rootPath]]:path" data="{{routeData}}" tail="{{subroute}}"></app-route>
-        <app-location route="{{route}}"></app-location>
 
-        <x-location city="{{city}}" state="{{state}}"></x-location>
+        <x-state scope="{{scope}}"></x-state>
+        <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
+        <x-location id="location" scope="{{scope}}" city="{{city}}" state="{{state}}"></x-location>
+
         <x-user></x-user>
 
         <!--<x-background>-->
-            <app-header-layout has-scrolling-region>
-                <app-header effects="waterfall" slot="header">
-                    <app-toolbar>
-                        <div class="flex layout center">
-                            <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
-                            <a href="/" class="white no-underline"><span id="logo">Government</span></a>
+        <app-header-layout has-scrolling-region>
+            <app-header effects="waterfall" slot="header">
+                <app-toolbar>
+                    <div class="flex layout center">
+                        <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
+                        <a href="/" class="white no-underline"><span id="logo">Government</span></a>
+                    </div>
+                    <iron-media-query query="(min-width: 640px)" query-matches="{{wide}}"></iron-media-query>
+                    <template is="dom-if" if="{{wide}}">
+                        <div class="flex">
+                            <paper-input id="search" no-label-float>
+                                <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear" title="clear"></paper-icon-button>
+                            </paper-input>
                         </div>
-                        <iron-media-query query="(min-width: 640px)" query-matches="{{wide}}"></iron-media-query>
-                        <template is="dom-if" if="{{wide}}">
-                            <div class="flex">
-                                <paper-input id="search" no-label-float>
-                                    <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear" title="clear"></paper-icon-button>
-                                </paper-input>
-                            </div>
-                        </template>
-                        <div class="flex" style="color: #fff; text-align: right">
+                    </template>
+                    <div class="flex" style="color: #fff; text-align: right">
                         <span class="t-1">
                             <a href="/login" class="white no-underline">Sign in</a>
                              |
                             <a href="/register" class="white no-underline">Register</a>
                         </span>
-                            <paper-icon-button icon="more-vert" slot="dropdown-trigger" alt="bottom align"></paper-icon-button>
-                        </div>
-                    </app-toolbar>
-                </app-header>
-                <app-drawer-layout id="drawerLayout" force-narrow>
-                    <app-drawer id="drawer" slot="drawer">
-                        <div class="drawer-content">
-                            <a href="/city" class="paper-item-link" tabindex="-1">
+                        <paper-icon-button icon="more-vert" slot="dropdown-trigger" alt="bottom align"></paper-icon-button>
+                    </div>
+                </app-toolbar>
+            </app-header>
+            <app-drawer-layout id="drawerLayout" force-narrow>
+                <app-drawer id="drawer" slot="drawer">
+                    <div class="drawer-content">
+                        <a href="/city" class="paper-item-link" tabindex="-1">
                             <paper-icon-item>
                                 <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
                                 <span>City</span>
                             </paper-icon-item>
-                            </a>
-                            <a href="/state" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>State</span>
-                                </paper-icon-item>
-                            </a>
-                            <a href="/country" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>Country</span>
-                                </paper-icon-item>
-                            </a>
-                            <a href="/map" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>Map</span>
-                                </paper-icon-item>
-                            </a>
-                            <a href="/page" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>Page</span>
-                                </paper-icon-item>
-                            </a>
-                            <a href="/user" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>User</span>
-                                </paper-icon-item>
-                            </a>
-                        </div>
-                    </app-drawer>
-                    <div id="content"></div>
-                </app-drawer-layout>
-            </app-header-layout>
+                        </a>
+                        <a href="/state" class="paper-item-link" tabindex="-1">
+                            <paper-icon-item>
+                                <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
+                                <span>State</span>
+                            </paper-icon-item>
+                        </a>
+                        <a href="/country" class="paper-item-link" tabindex="-1">
+                            <paper-icon-item>
+                                <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
+                                <span>Country</span>
+                            </paper-icon-item>
+                        </a>
+                        <a href="/map" class="paper-item-link" tabindex="-1">
+                            <paper-icon-item>
+                                <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
+                                <span>Map</span>
+                            </paper-icon-item>
+                        </a>
+                        <a href="/page" class="paper-item-link" tabindex="-1">
+                            <paper-icon-item>
+                                <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
+                                <span>Page</span>
+                            </paper-icon-item>
+                        </a>
+                        <a href="/user" class="paper-item-link" tabindex="-1">
+                            <paper-icon-item>
+                                <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
+                                <span>User</span>
+                            </paper-icon-item>
+                        </a>
+                        <a href="/sitemap" class="paper-item-link" tabindex="-1">
+                            <paper-icon-item>
+                                <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
+                                <span>Sitemap</span>
+                            </paper-icon-item>
+                        </a>
+                    </div>
+                </app-drawer>
+                <div id="content"></div>
+            </app-drawer-layout>
+        </app-header-layout>
         <!--</x-background>-->
     </template>
     <script>
-        class AppIndex extends Polymer.Element {
+        class AppIndex extends XElement {
             static get is() {
                 return 'app-index';
             }
@@ -227,68 +228,39 @@
                     scope: {
                         type: Object
                     },
-                    config: {
-                        type: Object
-                    },
-                    user: {
-                        type: Object
-                    },
-                    routes: {
-                        type: Object
-                    },
-                    path: {
-                        type: String,
-                        reflectToAttribute: true,
-                        observer: '_pathChanged',
-                    },
-                    routeData: Object,
-                    subroute: String,
-                    rootPath: String,
+                    __path: {
+                        type: String
+                    }
                 };
             }
 
             static get observers() {
                 return [
-                    '_routePageChanged(routeData.path)'
+                    '__pathChanged(__path)'
                 ];
             }
 
-            constructor() {
-                super();
-            }
-
-            ready(){
+            ready() {
                 super.ready();
 
-                // this.config = document.shadowRoot.querySelector("app-config");
-                // this.config = this.$.config;
-                console.log(this.config);
-                alert("ready");
+                this.scope = this;
+                this.config = this.$.config;
+                var routes = this.$.config.routes;
+
+                this.addEventListener('updateLocation', this.updateLocation);
             }
 
             connectedCallback() {
                 super.connectedCallback();
-
-                this.config = this.shadowRoot.querySelector("app-config");
-                // this.config = this.$.config;
-                console.log(this.config);
             }
 
-            _routePageChanged(path) {
-                this.scope = this;
-
-                this.path = path;
-
-                if (!this.$.drawer.persistent) {
-                    this.$.drawer.close();
-                }
-            }
-
-            _pathChanged(path) {
+            __pathChanged(path) {
                 var config;
-
-                // map = document.shadowRoot("app-config").routes;
                 var routes = this.$.config.routes;
+
+                console.log("Path: " + path);
+                path = path.slice(1);
+
                 routes.forEach(function (route) {
                     if (path == route.href) {
                         config = route;
@@ -304,12 +276,16 @@
                     this._removeElements();
                     this._addElement(config.tag);
                     // this.$.content.appendChild(myElement);
-                    // alert(this.config);
-                    document.title = this.config.baseTitle + " - " + config.title;
+
+                    document.title = this.$.config.baseTitle + " - " + config.title;
                 }
                 else {
 
                 }
+            }
+
+            updateLocation() {
+                console.log("Updating location: ");
             }
 
             _showPage404() {

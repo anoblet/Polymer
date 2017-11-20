@@ -1,0 +1,32 @@
+<link rel="import" href="x-element.html">
+
+<dom-module id="x-config">
+    <script>
+        class XConfig extends XElement {
+            static get is() {
+                return 'x-config';
+            }
+
+            static get properties() {
+                return {
+                    scope: {
+                        type: Object,
+                        reflectToAttribute: true
+                    },
+                    isReady: {
+                        type: Boolean
+                    }
+                }
+            }
+
+            ready(){
+                super.ready();
+
+                this.isReady = true;
+            }
+
+        }
+
+        window.customElements.define(XConfig.is, XConfig);
+    </script>
+</dom-module>

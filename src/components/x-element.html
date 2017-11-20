@@ -6,6 +6,21 @@
             static get is() {
                 return 'x-element';
             }
+
+            constructor() {
+                super();
+                console.log("Construct");
+            }
+
+            ready() {
+                super.ready();
+                console.log("Ready");
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                console.log("Connected");
+            }
         }
 
         window.customElements.define(XElement.is, XElement);

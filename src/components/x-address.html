@@ -42,6 +42,9 @@
                     },
                     state: {
                         type: String
+                    },
+                    isReady: {
+                        type: Boolean
                     }
                 }
             }
@@ -50,54 +53,70 @@
                 super.ready();
 
                 console.log(this.scope);
+                this.isReady = true;
             }
 
             connectedCallback() {
                 super.connectedCallback();
+
+                // this._autocomplete();
+                console.log(this.scope);
+            }
+
+            _autocomplete() {
+                console.log(this.scope);
+                // var google = google || '';
+
+
+                if(google) {
+                    var autocomplete = new google.maps.places.Autocomplete(this.$.autocomplete);
+
+                    var location = this.scope.$.location;
+
+                    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                        var place = autocomplete.getPlace();
+
+                        for (var i = 0; i < place.address_components.length; i++) {
+                            if (place.address_components[i].types[0] == 'locality') {
+                                var city = place.address_components[i].long_name;
+                                location.city = place.address_components[i].long_name;
+                            }
+                            if (place.address_components[i].types[0] == 'administrative_area_level_1') {
+                                var state = place.address_components[i].long_name;
+                                location.state = place.address_components[i].long_name;
+                            }
+                        }
+
+                        alert(city + ", " + state);
+                    });
+                }
             }
 
             locate() {
-                console.log(this.scope);
-                console.log(this.parentElement);
+                var location = this.scope.$.location;
 
-                var location = this.scope.shadowRoot.querySelector("x-location");
-                console.log(location);
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (position) {
-                        console.log(position);
-
                         location.latitude = position.coords.latitude;
                         location.longitude = position.coords.longitude;
+
                     }, function () {
-                        handleLocationError(true, infoWindow, locate.getCenter());
+                        handleLocationError(true, infoWindow, map.getCenter());
                     });
                 } else {
                     // Browser doesn't support Geolocation
-                    handleLocationError(false, infoWindow, locate.getCenter());
+                    handleLocationError(false, infoWindow, map.getCenter());
                 }
             }
 
             mapApiLoaded() {
+                if(this.isReady) {
+                    this._autocomplete();
+                }
+            }
+
+            attached() {
                 console.log(this.scope);
-                var autocomplete = new google.maps.places.Autocomplete(this.$.autocomplete);
-                var location = this.scope.shadowRoot.querySelector("x-location");
-
-                google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                    var place = autocomplete.getPlace();
-
-                    for (var i = 0; i < place.address_components.length; i++) {
-                        if (place.address_components[i].types[0] == 'locality') {
-                            var city = place.address_components[i].long_name;
-                            location.city = place.address_components[i].long_name;
-                        }
-                        if (place.address_components[i].types[0] == 'administrative_area_level_1') {
-                            var state = place.address_components[i].long_name;
-                            location.state = place.address_components[i].long_name;
-                        }
-                    }
-
-                    alert(city + ", " + state);
-                });
             }
         }
 

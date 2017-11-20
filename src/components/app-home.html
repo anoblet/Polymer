@@ -15,7 +15,7 @@
                 @apply(--layout-flex);
             }
         </style>
-        <x-address scope="{{this.scope}}"></x-address>
+        <x-address id="address" scope="{{this.scope}}"></x-address>
     </template>
 
     <script>
@@ -34,7 +34,7 @@
 
             ready(){
                 super.ready();
-
+                this.$.address.scope = this.scope;
                 this.shadowRoot.querySelector("x-address").scope = this.scope;
                 console.log(this.scope);
             }
@@ -42,6 +42,7 @@
             connectedCallback() {
                 super.connectedCallback();
 
+                this.$.address.scope = this.scope;
                 this.shadowRoot.querySelector("x-address").scope = this.scope;
                 console.log(this.scope);
             }
