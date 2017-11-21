@@ -18,8 +18,8 @@
         </style>
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
 
-        <paper-card id="locate" heading="Address">
-            <paper-input id="autocomplete" placeholder="Enter your address" type="text" class="form-control">
+        <paper-card id="address" heading="Address">
+            <paper-input id="autocomplete" placeholder="[[city]], [[state]]" type="text" class="form-control">
                 <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
             </paper-input>
         </paper-card>
@@ -37,6 +37,9 @@
                         type: Object,
                         reflectToAttribute: true
                     },
+                    apiLoaded: {
+                        type: Boolean,
+                    },
                     city: {
                         type: String
                     },
@@ -52,23 +55,18 @@
             ready(){
                 super.ready();
 
-                console.log(this.scope);
-                this.isReady = true;
             }
 
             connectedCallback() {
                 super.connectedCallback();
 
                 // this._autocomplete();
-                console.log(this.scope);
             }
 
             _autocomplete() {
                 console.log(this.scope);
-                // var google = google || '';
 
-
-                if(google) {
+                if(this.apiLoaded) {
                     var autocomplete = new google.maps.places.Autocomplete(this.$.autocomplete);
 
                     var location = this.scope.$.location;
@@ -110,9 +108,8 @@
             }
 
             mapApiLoaded() {
-                if(this.isReady) {
-                    this._autocomplete();
-                }
+                this.apiLoaded = true;
+                this._autocomplete();
             }
 
             attached() {

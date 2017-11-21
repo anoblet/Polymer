@@ -228,6 +228,9 @@
                     scope: {
                         type: Object
                     },
+                    location: {
+                        type: Object
+                    },
                     __path: {
                         type: String
                     }
@@ -245,6 +248,7 @@
 
                 this.scope = this;
                 this.config = this.$.config;
+                this.location = this.$.location;
                 var routes = this.$.config.routes;
 
                 this.addEventListener('updateLocation', this.updateLocation);
@@ -282,6 +286,7 @@
                 else {
 
                 }
+                this.$.drawer.close();
             }
 
             updateLocation() {
