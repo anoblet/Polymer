@@ -20,7 +20,7 @@
 
         <paper-card heading="Address">
             <!--<paper-input id="autocomplete" placeholder="[[city]], [[state]]" type="text" class="form-control">-->
-            <paper-input id="city" placeholder="[[scope.location.city]], [[scope.location.state]]" type="text" class="form-control">
+            <paper-input id="address" placeholder="[[scope.location.city]], [[scope.location.state]]" type="text" class="form-control">
             <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
             </paper-input>
         </paper-card>
@@ -56,25 +56,34 @@
 
             _autocomplete() {
                 var location = this.scope.location;
-                var autocomplete = new google.maps.places.Autocomplete(this.$.city);
+                var address = this.$.address;
+
+                var autocomplete = new google.maps.places.Autocomplete(this.$.address);
 
                 google.maps.event.addListener(autocomplete, 'place_changed', function () {
                     var result = autocomplete.getPlace();
 
+                    location.latitude = result.geometry.location.lat;
+                    location.longitude = result.geometry.location.lng;
+
+                    console.log(result);
+
                     for (var i = 0; i < result.address_components.length; i++) {
                         if (result.address_components[i].types[0] == 'locality') {
+                            // this.set();
                             location.city = result.address_components[i].long_name;
                         }
                         if (result.address_components[i].types[0] == 'administrative_area_level_1') {
                             location.state = result.address_components[i].long_name;
                         }
                     }
+                    address.value = location.city + ", " + location.state;
                 });
             }
 
             locate() {
                 var location = this.scope.location;
-                var city = this.$.city;
+                var address = this.$.address;
 
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (position) {
@@ -102,11 +111,10 @@
                                         location.state = result.address_components[i].long_name;
                                     }
                                 }
+
+                                address.value = location.city + ", " + location.state;
                             }
                         });
-
-                        city.value = location.city + ", " + location.state;
-
                     }, function () {
                         handleLocationError(true, infoWindow, map.getCenter());
                     });
