@@ -27,7 +27,7 @@
     </template>
 
     <script>
-        class XAddress extends XElement {
+        class XAddress extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'x-address';
             }
@@ -36,6 +36,7 @@
                 return {
                     scope: {
                         type: Object,
+                        notify: true,
                         reflectToAttribute: true
                     },
                     city: {
@@ -70,8 +71,14 @@
 
                     for (var i = 0; i < result.address_components.length; i++) {
                         if (result.address_components[i].types[0] == 'locality') {
-                            // this.set();
                             location.city = result.address_components[i].long_name;
+                            var city = result.address_components[i].long_name;
+                            this.set('location.city', city);
+                        }
+                        if (result.address_components[i].types[0] == 'locality') {
+                            location.city = result.address_components[i].long_name;
+                            var city = result.address_components[i].long_name;
+                            this.set('location.city', city);
                         }
                         if (result.address_components[i].types[0] == 'administrative_area_level_1') {
                             location.state = result.address_components[i].long_name;

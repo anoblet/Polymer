@@ -19,6 +19,7 @@
 
 <link rel="import" href="components/app-config.html">
 <link rel="import" href="components/app-footer.html">
+<link rel="import" href="components/app-nav.html">
 <link rel="import" href="components/app-style.html">
 
 <link rel="import" href="components/x-background.html">
@@ -111,6 +112,7 @@
                 @apply(--layout-flex);
                 padding: -120px;
                 overflow: auto;
+                background: #fff;
             }
 
             .paper-item-link {
@@ -137,9 +139,9 @@
 
         <app-config id="config"></app-config>
 
-        <x-state scope="{{scope}}"></x-state>
         <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
         <x-location id="location" scope="{{scope}}" city="{{city}}" state="{{state}}"></x-location>
+        <x-state scope="{{scope}}"></x-state>
         <x-user scope="{{scope}}"></x-user>
 
         <x-background>
@@ -171,63 +173,7 @@
             <app-drawer-layout id="drawerLayout" force-narrow>
                 <app-drawer id="drawer" slot="drawer">
                     <div class="drawer-content">
-                        <ul>
-                            <li>
-                            <a href="/city" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>City</span>
-                                </paper-icon-item>
-                            </a>
-                                <ul>
-                                    <li>
-                                        Officials
-                                    </li>
-                                </ul>
-                            </li>
-                            <a href="/state" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>County</span>
-                                </paper-icon-item>
-                            </a>
-                            <a href="/state" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>State</span>
-                                </paper-icon-item>
-                            </a>
-                            <a href="/country" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>Country</span>
-                                </paper-icon-item>
-                            </a>
-                            <a href="/map" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>Map</span>
-                                </paper-icon-item>
-                            </a>
-                            <a href="/page" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>Page</span>
-                                </paper-icon-item>
-                            </a>
-                            <a href="/user" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>User</span>
-                                </paper-icon-item>
-                            </a>
-                            <a href="/sitemap" class="paper-item-link" tabindex="-1">
-                                <paper-icon-item>
-                                    <paper-icon-button icon="home" slot="item-icon"></paper-icon-button>
-                                    <span>Sitemap</span>
-                                </paper-icon-item>
-                            </a>
-                        </ul>
+                        <app-nav id="nav" scope="{{scope}}" location="[[location]]"></app-nav>
                     </div>
                 </app-drawer>
                 <div id="content"></div>
@@ -243,14 +189,16 @@
 
             static get properties() {
                 return {
-                    scope: {
-                        type: Object
-                    },
                     location: {
-                        type: Object
+                        type: Object,
+                        notify: true
                     },
                     __path: {
                         type: String
+                    },
+                    isReady: {
+                        type: Boolean,
+                        value: false
                     }
                 };
             }
@@ -264,16 +212,24 @@
             ready() {
                 super.ready();
 
-                this.scope = this;
+                this.set('scope',this);
+
                 this.config = this.$.config;
                 this.location = this.$.location;
+                this.$.nav.scope = this;
+
                 var routes = this.$.config.routes;
 
                 this.addEventListener('updateLocation', this.updateLocation);
+                this.isReady = true;
             }
 
             connectedCallback() {
                 super.connectedCallback();
+
+                this.scope = this;
+                this.location = this.$.location;
+                this.$.nav.location = this.location;
             }
 
             __pathChanged(path) {
@@ -316,7 +272,8 @@
 
             _addElement(tag) {
                 var myElement = document.createElement(tag);
-                myElement.scope = this;
+                this.scope = this;
+                myElement.scope = this.scope;
 
                 this.$.content.appendChild(myElement);
             }

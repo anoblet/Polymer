@@ -1,0 +1,99 @@
+<link rel="import" href="x-element.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/app-menu/app-menu.html">
+<link rel="import" href="../../bower_components/app-menu/app-submenu.html">
+
+<link rel="import" href="app-style.html">
+
+
+<dom-module id="app-nav">
+    <template>
+        <style include="app-style">
+            :host {
+                @apply(--layout-vertical);
+                @apply(--layout-flex);
+            }
+        </style>
+        <a href="{{scope.location.state}}/[[scope.location.city]]">k</a>
+        <app-menu selected="0">
+            <app-submenu>
+                <div class="app-menu-item" slot="submenu-trigger">
+                    <app-menu-icon-item icon="icons:account-balance">City</app-menu-icon-item>
+                    <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                </div>
+                <app-menu slot="submenu-content">
+                    <a class="app-menu-item" href="/[[scope.location.state]]/[[scope.location.city]]">Overview</a>
+                    <a class="app-menu-item" href="javascript:void(0)">Officials</a>
+                    <a class="app-menu-item" href="/city">Static</a>
+                </app-menu>
+            </app-submenu>
+            <app-submenu>
+                <div class="app-menu-item" slot="submenu-trigger">
+                    <app-menu-icon-item icon="icons:account-balance">County</app-menu-icon-item>
+                    <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                </div>
+                <app-menu slot="submenu-content">
+                    <a class="app-menu-item" href="javascript:void(0)">Officials</a>
+                </app-menu>
+            </app-submenu>
+            <app-submenu>
+                <div class="app-menu-item" slot="submenu-trigger">
+                    <app-menu-icon-item icon="chrome-reader-mode">State</app-menu-icon-item>
+                    <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                </div>
+                <app-menu slot="submenu-content">
+                    <a class="app-menu-item" href="javascript:void(0)">Officials</a>
+                    <a class="app-menu-item" href="/city">State</a>
+                </app-menu>
+            </app-submenu>
+            <app-submenu>
+                <div class="app-menu-item" slot="submenu-trigger">
+                    <app-menu-icon-item icon="chrome-reader-mode">Country</app-menu-icon-item>
+                    <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                </div>
+                <app-menu slot="submenu-content">
+                    <a class="app-menu-item" href="javascript:void(0)">Officials</a>
+                </app-menu>
+            </app-submenu>
+            <a class="app-menu-item" href="/map">
+                <app-menu-icon-item icon="icons:build">Map</app-menu-icon-item>
+            </a>
+        </app-menu>
+    </template>
+
+    <script>
+        class AppNav extends XElement {
+            static get is() {
+                return 'app-nav';
+            }
+
+            static get properties() {
+                return {
+                    state: {
+                        type: Object,
+                        notify: true
+                    },
+                    __path: {
+                        type: String
+                    },
+                    city: {
+                        type: Boolean,
+                        value: false
+                    }
+                };
+            }
+
+            ready() {
+                super.ready();
+                console.log(this);
+            }
+
+            connectedCallback() {
+                console.log(this.scope);
+            }
+        }
+
+        window.customElements.define(AppNav.is, AppNav);
+    </script>
+</dom-module>

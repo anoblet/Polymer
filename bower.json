@@ -17,7 +17,8 @@
     "paper-menu-button": "PolymerElements/paper-menu-button#^2.0.0",
     "iron-pages": "PolymerElements/iron-pages#^2.0.0",
     "google-apis": "GoogleWebComponents/google-apis#^2.0.0",
-    "google-map": "GoogleWebComponents/google-map#^2.0.2"
+    "google-map": "GoogleWebComponents/google-map#^2.0.2",
+    "app-menu": "oyeharry/app-menu#^2.1.1"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",

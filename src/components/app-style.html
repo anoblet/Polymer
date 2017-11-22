@@ -5,11 +5,12 @@
         <style>
             :host {
                 --app-drawer-content-container: {
-                    @apply(--layout-horizontal);
-                    @apply(--layout-center);
-                    box-sizing: border-box;
-                    background: #ddd;
+                    @apply(--layout-vertical);
+                    @apply(--layout-flex);
+                    /* @apply(--layout-center); */
+                    background: #fff;
                     margin: 0;
+                    padding: 0;
                 };
 
                 --paper-card: {
@@ -21,7 +22,7 @@
                     @apply(--layout-horizontal);
                     @apply(--layout-center);
                     padding: 1rem 1rem 0 1rem;
-                    <!--border-bottom: 1px solid var(--google-grey-300);-->
+                <!--border-bottom: 1px solid var(--google-grey-300);-->
                 };
 
                 --paper-card-header-text: {
@@ -44,7 +45,17 @@
                 --paper-button: {
                     background-color: var(--google-blue-500);
                     color: #fff;
-                }
+                };
+
+                --app-menu: {
+                    background: inherit;
+                };
+                --app-menu-focused-item: {
+                    background: inherit;
+                };
+                --app-menu-selected-item: {
+                    background: inherit;
+                };
             }
 
             .card-header {
