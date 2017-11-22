@@ -36,30 +36,21 @@
                 };
             }
 
+            ready() {
+                super.ready();
+
+                var location = this.scope.location;
+                var map = this.$.map;
+
+                console.log(location);
+
+                map.latitude = location.latitude;
+                map.longitude = location.longitude;
+            }
+
             connectedCallback() {
                 super.connectedCallback();
                 document.title = this.name;
-
-                var map = this.$.map;
-
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        var pos = {
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude
-                        };
-
-                        map.latitude = position.coords.latitude;
-                        map.longitude = position.coords.longitude;
-
-                        // map.setCenter(pos);
-                    }, function () {
-                        handleLocationError(true, infoWindow, map.getCenter());
-                    });
-                } else {
-                    // Browser doesn't support Geolocation
-                    handleLocationError(false, infoWindow, map.getCenter());
-                }
             }
         }
 

@@ -49,6 +49,7 @@
             app-header {
                 @apply(--layout-horizontal);
                 @apply(--layout-flex);
+                width: 100%;
                 background-color: #4285f4;
                 color: #fff;
             }
@@ -61,6 +62,7 @@
                 @apply(--layout-horizontal);
                 @apply(--layout-flex);
                 --app-drawer-layout-content-transition: margin 0.2s;
+                height: 100%;
             }
 
             app-drawer {
@@ -259,34 +261,33 @@
             }
 
             __pathChanged(path) {
-                var config;
-                var routes = this.$.config.routes;
+                this.config = this.$.config;
 
                 console.log("Path: " + path);
                 path = path.slice(1);
 
-                routes.forEach(function (route) {
-                    if (path == route.href) {
-                        config = route;
+                for (var i = 0; i < this.config.routes.length; i++) {
+                    if (path == this.config.routes[i].href) {
+                        var route = this.config.routes[i];
                     }
-                })
+                }
 
                 // var src = this.config.componentFolder + "/" + this.config.namespace +  "-" + component + ".html";
+                // this.$.drawer.close();
 
-                if (config) {
-                    Polymer.importHref(this.resolveUrl(config.src), null, this._showPage404.bind(this), true);
+                if (route) {
+                    Polymer.importHref(this.resolveUrl(route.src), null, this._showPage404.bind(this), true);
 
                     // var myElement = document.createElement(config.tag);
                     this._removeElements();
-                    this._addElement(config.tag);
+                    this._addElement(route.tag);
                     // this.$.content.appendChild(myElement);
 
-                    document.title = this.$.config.baseTitle + " - " + config.title;
+                    document.title = this.$.config.baseTitle + " - " + route.title;
                 }
                 else {
 
                 }
-                this.$.drawer.close();
             }
 
             updateLocation() {

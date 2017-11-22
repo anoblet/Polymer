@@ -18,9 +18,10 @@
         </style>
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
 
-        <paper-card id="address" heading="Address">
-            <paper-input id="autocomplete" placeholder="[[city]], [[state]]" type="text" class="form-control">
-                <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
+        <paper-card heading="Address">
+            <!--<paper-input id="autocomplete" placeholder="[[city]], [[state]]" type="text" class="form-control">-->
+            <paper-input id="city" placeholder="[[scope.location.city]], [[scope.location.state]]" type="text" class="form-control">
+            <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
             </paper-input>
         </paper-card>
     </template>
@@ -37,66 +38,74 @@
                         type: Object,
                         reflectToAttribute: true
                     },
-                    apiLoaded: {
-                        type: Boolean,
-                    },
                     city: {
                         type: String
                     },
                     state: {
                         type: String
-                    },
-                    isReady: {
-                        type: Boolean
                     }
                 }
             }
 
-            ready(){
+            ready() {
                 super.ready();
 
-            }
-
-            connectedCallback() {
-                super.connectedCallback();
-
-                // this._autocomplete();
+                this.city = this.scope.location.city;
+                this.state = this.scope.location.state;
             }
 
             _autocomplete() {
-                console.log(this.scope);
+                var location = this.scope.location;
+                var autocomplete = new google.maps.places.Autocomplete(this.$.city);
 
-                if(this.apiLoaded) {
-                    var autocomplete = new google.maps.places.Autocomplete(this.$.autocomplete);
+                google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                    var result = autocomplete.getPlace();
 
-                    var location = this.scope.$.location;
-
-                    google.maps.event.addListener(autocomplete, 'place_changed', function () {
-                        var place = autocomplete.getPlace();
-
-                        for (var i = 0; i < place.address_components.length; i++) {
-                            if (place.address_components[i].types[0] == 'locality') {
-                                var city = place.address_components[i].long_name;
-                                location.city = place.address_components[i].long_name;
-                            }
-                            if (place.address_components[i].types[0] == 'administrative_area_level_1') {
-                                var state = place.address_components[i].long_name;
-                                location.state = place.address_components[i].long_name;
-                            }
+                    for (var i = 0; i < result.address_components.length; i++) {
+                        if (result.address_components[i].types[0] == 'locality') {
+                            location.city = result.address_components[i].long_name;
                         }
-
-                        alert(city + ", " + state);
-                    });
-                }
+                        if (result.address_components[i].types[0] == 'administrative_area_level_1') {
+                            location.state = result.address_components[i].long_name;
+                        }
+                    }
+                });
             }
 
             locate() {
-                var location = this.scope.$.location;
+                var location = this.scope.location;
+                var city = this.$.city;
 
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (position) {
                         location.latitude = position.coords.latitude;
                         location.longitude = position.coords.longitude;
+
+                        var geocoder = new google.maps.Geocoder();
+                        var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+                        geocoder.geocode({'latLng': geolocate}, function(results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                var result;
+                                if (results.length > 1) {
+                                    result = results[1];
+                                } else {
+                                    result = results[0];
+                                }
+
+                                for (var i = 0; i < result.address_components.length; i++) {
+                                    if (result.address_components[i].types[0] == 'locality') {
+                                        var city = result.address_components[i].long_name;
+                                        location.city = result.address_components[i].long_name;
+                                    }
+                                    if (result.address_components[i].types[0] == 'administrative_area_level_1') {
+                                        location.state = result.address_components[i].long_name;
+                                    }
+                                }
+                            }
+                        });
+
+                        city.value = location.city + ", " + location.state;
 
                     }, function () {
                         handleLocationError(true, infoWindow, map.getCenter());
@@ -107,13 +116,16 @@
                 }
             }
 
-            mapApiLoaded() {
-                this.apiLoaded = true;
-                this._autocomplete();
+            setCity(result) {
+                for (var i = 0; i < result.address_components.length; i++) {
+                    if (result.address_components[i].types[0] == 'locality') {
+                        location.city = result.address_components[i].long_name;
+                    }
+                }
             }
 
-            attached() {
-                console.log(this.scope);
+            mapApiLoaded() {
+                this._autocomplete();
             }
         }
 

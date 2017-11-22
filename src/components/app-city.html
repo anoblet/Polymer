@@ -12,7 +12,7 @@
                 @apply(--layout-flex);
             }
         </style>
-        <paper-card heading="[[city]]" class="flex">
+        <paper-card heading="[[scope.location.city]]" class="flex">
         </paper-card>
     </template>
 
@@ -35,10 +35,6 @@
                 super.ready();
 
                 this.city = this.scope.location.city;
-                console.log(this.scope);
-            }
-            connectedCallback () {
-                super.connectedCallback();
                 document.title = this.name;
             }
         }
