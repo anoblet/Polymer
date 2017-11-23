@@ -69,7 +69,7 @@
 
             app-drawer {
                 @apply(--layout-horizontal);
-                position: relative;
+                position: absolute;
                 top: 0;
                 bottom: 0;
                 --app-drawer-scrim-background: none;
@@ -140,7 +140,7 @@
         <app-config id="config"></app-config>
 
         <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
-        <x-location id="location" scope="{{scope}}" city="{{city}}" state="{{state}}"></x-location>
+        <x-location id="location" scope="{{scope}}" state="{{state}}" city="{{city}}" state="{{state}}"></x-location>
         <x-state scope="{{scope}}"></x-state>
         <x-user scope="{{scope}}"></x-user>
 
@@ -173,7 +173,7 @@
             <app-drawer-layout id="drawerLayout" force-narrow>
                 <app-drawer id="drawer" slot="drawer">
                     <div class="drawer-content">
-                        <app-nav id="nav" scope="{{scope}}" location="[[location]]"></app-nav>
+                        <app-nav id="nav" scope="{{scope}}" state="{{state}}"></app-nav>
                     </div>
                 </app-drawer>
                 <div id="content"></div>
@@ -189,6 +189,20 @@
 
             static get properties() {
                 return {
+                    scope: {
+                        type: Object,
+                        value: function () {
+                            return this;
+                        },
+                        notify: true
+                    },
+                    state: {
+                        type: Object,
+                        value: function () {
+                            return {};
+                        },
+                        notify: true
+                    },
                     location: {
                         type: Object,
                         notify: true
@@ -205,14 +219,16 @@
 
             static get observers() {
                 return [
-                    '__pathChanged(__path)'
+                    '__pathChanged(__path)',
+                    '__scopeChanged(scope)'
                 ];
             }
 
             ready() {
                 super.ready();
 
-                this.set('scope',this);
+                this.state.config = this.$.config;
+                this.state.location = this.$.location;
 
                 this.config = this.$.config;
                 this.location = this.$.location;
@@ -221,13 +237,15 @@
                 var routes = this.$.config.routes;
 
                 this.addEventListener('updateLocation', this.updateLocation);
+
+                this.set('scope',this);
                 this.isReady = true;
             }
 
             connectedCallback() {
                 super.connectedCallback();
 
-                this.scope = this;
+                // this.scope = this;
                 this.location = this.$.location;
                 this.$.nav.location = this.location;
             }
@@ -262,7 +280,12 @@
                 }
             }
 
-            updateLocation() {
+            __scopeChanged(scope) {
+                this.$.nav.scope = this;
+            }
+
+
+                updateLocation() {
                 console.log("Updating location: ");
             }
 
