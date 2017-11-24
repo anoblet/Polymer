@@ -2,9 +2,22 @@
 
 <dom-module id="x-element">
     <script>
-        class XElement extends Polymer.Element {
+        class XElement extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'x-element';
+            }
+
+            static get properties() {
+                return {
+                    scope: {
+                        type: Object,
+                        notify: true
+                    },
+                    isReady: {
+                        type: Boolean,
+                        value: false
+                    }
+                };
             }
 
             constructor() {

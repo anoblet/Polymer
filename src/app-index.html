@@ -69,7 +69,7 @@
 
             app-drawer {
                 @apply(--layout-horizontal);
-                position: absolute;
+                position: relative;
                 top: 0;
                 bottom: 0;
                 --app-drawer-scrim-background: none;
@@ -173,7 +173,7 @@
             <app-drawer-layout id="drawerLayout" force-narrow>
                 <app-drawer id="drawer" slot="drawer">
                     <div class="drawer-content">
-                        <app-nav id="nav" scope="{{scope}}" state="{{state}}"></app-nav>
+                        <app-nav id="nav" scope="[[scope]]"></app-nav>
                     </div>
                 </app-drawer>
                 <div id="content"></div>
@@ -182,7 +182,7 @@
         </x-background>
     </template>
     <script>
-        class AppIndex extends XElement {
+        class AppIndex extends Polymer.Element {
             static get is() {
                 return 'app-index';
             }
@@ -195,14 +195,14 @@
                             return this;
                         },
                         notify: true
-                    },
+                    },/*
                     state: {
                         type: Object,
                         value: function () {
                             return {};
                         },
                         notify: true
-                    },
+                    },*/
                     location: {
                         type: Object,
                         notify: true
@@ -220,25 +220,41 @@
             static get observers() {
                 return [
                     '__pathChanged(__path)',
-                    '__scopeChanged(scope)'
+                    '__scopeChanged(scope)',
+                    'isReadyChanged(isReady)'
+
                 ];
+            }
+
+            constructor() {
+                super();
+
+                window.addEventListener('WebComponentsReady', function() {
+                    this.set('isReady', true);
+                }.bind(this));
+            }
+
+            isReadyChanged() {
+                console.log("Path");
             }
 
             ready() {
                 super.ready();
-
-                this.state.config = this.$.config;
-                this.state.location = this.$.location;
+                this.scope.config = this.$.config;
+                // this.set('state.config', this.$.config);
+                // this.notifyPath('state.config');
+                this.set('scope.location', this.$.location);
+                this.notifyPath('scope.location');
 
                 this.config = this.$.config;
                 this.location = this.$.location;
-                this.$.nav.scope = this;
+                //this.$.nav.scope = this;
 
                 var routes = this.$.config.routes;
 
                 this.addEventListener('updateLocation', this.updateLocation);
 
-                this.set('scope',this);
+                // this.set('scope',this);
                 this.isReady = true;
             }
 
@@ -281,7 +297,8 @@
             }
 
             __scopeChanged(scope) {
-                this.$.nav.scope = this;
+                console.log(scope);
+                // this.$.nav.scope = this;
             }
 
 
@@ -322,5 +339,7 @@
         }
 
         window.customElements.define(AppIndex.is, AppIndex);
+
+
     </script>
 </dom-module>

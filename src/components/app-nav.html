@@ -22,7 +22,7 @@
                     <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
                 </div>
                 <app-menu slot="submenu-content">
-                    <a class="app-menu-item" href="/[[state.location.state]]/[[scope.$.location.city]]">Overview</a>
+                    <a class="app-menu-item" href="/[[scope.location.state]]/[[scope.location.city]]">Overview</a>
                     <a class="app-menu-item" href="javascript:void(0)">Officials</a>
                     <a class="app-menu-item" href="/city">Static</a>
                 </app-menu>
@@ -71,8 +71,11 @@
                 return {
                     scope: {
                         type: Object,
-                        reflectToAttribute: true,
                         notify: true
+                    },
+                    city: {
+                        type: Boolean,
+                        value: false
                     },
                     state: {
                         type: Object,
@@ -83,24 +86,24 @@
                         reflectToAttribute: true,
                         notify: true
                     },
-                    city: {
-                        type: Boolean,
-                        value: false
-                    }
+
                 };
             }
 
             ready() {
                 super.ready();
 
-                console.log(this.location);
+                this.city = this.scope.$.location.city;
                 console.log(this.state);
-                console.log(this.scope.$.location);
+                console.log(this.scope);
+                console.log(this.scope.location);
+                // console.log(this.state.location);
             }
 
             connectedCallback() {
                 super.connectedCallback();
                 console.log(this.scope);
+                // console.log(this.state.location);
             }
         }
 

@@ -26,7 +26,7 @@
     </template>
 
     <script>
-        class XAddress extends Polymer.Element {
+        class XAddress extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'x-address';
             }
@@ -55,11 +55,9 @@
             }
 
             _autocomplete() {
+                var scope = this.scope;
                 var location = this.scope.location;
-                var location = this.state.location;
-
                 var address = this.$.address;
-
                 var autocomplete = new google.maps.places.Autocomplete(this.$.address);
 
                 google.maps.event.addListener(autocomplete, 'place_changed', function () {
@@ -75,11 +73,17 @@
                             location.city = result.address_components[i].long_name;
                             var city = result.address_components[i].long_name;
                             this.set('location.city', city);
+                            this.set('scope.location.city', city);
+                            scope.notifyPath('scope.location.city');
+
                         }
                         if (result.address_components[i].types[0] == 'locality') {
                             location.city = result.address_components[i].long_name;
                             var state = result.address_components[i].long_name;
                             this.set('location.state', state);
+                            this.set('scope.location.state', state);
+                            scope.notifyPath('scope.location.state');
+
                         }
                         if (result.address_components[i].types[0] == 'administrative_area_level_1') {
                             location.state = result.address_components[i].long_name;
