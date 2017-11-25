@@ -1,10 +1,10 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
-<dom-module id="x-element">
+<dom-module id="my-element">
     <script>
-        class XElement extends Polymer.Element {
+        class MyElement extends Polymer.Element {
             static get is() {
-                return 'x-element';
+                return 'my-element';
             }
 
             static get properties() {
@@ -25,6 +25,7 @@
                 super.ready();
 
                 this.scope = this.scope || this;
+
                 console.log("Ready");
             }
 
@@ -34,6 +35,6 @@
             }
         }
 
-        window.customElements.define(XElement.is, XElement);
+        window.customElements.define(MyElement.is, MyElement);
     </script>
 </dom-module>

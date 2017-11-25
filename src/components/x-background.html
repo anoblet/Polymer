@@ -6,11 +6,7 @@
     <template>
         <style include="iron-flex">
             :host {
-                background: url("../../images/pexels-photo-290562.jpeg");
-            }
-
-            .background {
-                background: url("../../images/pexels-photo-290562.jpeg");
+                /* background: url("../../images/pexels-photo-290562.jpeg"); */
             }
         </style>
         <slot></slot>
@@ -20,6 +16,11 @@
         class XBackground extends Polymer.Element {
             static get is() {
                 return 'x-background';
+            }
+
+            ready() {
+                super.ready();
+
             }
 
             cycleBackground() {

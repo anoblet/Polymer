@@ -1,8 +1,15 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="../../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+
+
 <dom-module id="x-location">
+    <template>
+        <app-localstorage-document key="city" data="{{scope.location.city}}"></app-localstorage-document>
+        <app-localstorage-document key="state" data="{{scope.location.state}}"></app-localstorage-document>
+    </template>
     <script>
-        class XLocation extends Polymer.Element {
+        class XLocation extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'x-location';
             }
@@ -11,7 +18,7 @@
                 return {
                     scope: {
                         type: Object,
-                        reflectToAttribute: true
+                        notify: true
                     },
                     latitude: {
                         type: Number,
@@ -44,6 +51,14 @@
                         value: "State"
                     }
                 }
+            }
+
+            ready() {
+                super.ready();
+
+                //this.set('city', this.city);
+                //this.scope.notifyPath('scope.location.city');
+                //this.scope.notifyPath('scope');
             }
         }
 

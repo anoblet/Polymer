@@ -1,8 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 
 <link rel="import" href="x-address.html">
@@ -11,7 +9,7 @@
     <template>
         <style include="iron-flex">
             :host {
-                @apply(--layout-horizontal);
+                @apply(--layout-vertical);
                 @apply(--layout-flex);
             }
         </style>
@@ -19,7 +17,7 @@
     </template>
 
     <script>
-        class AppHome extends Polymer.Element {
+        class AppHome extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'app-home';
             }
@@ -28,6 +26,7 @@
                 return {
                     scope: {
                         type: Object,
+                        reflectToAttribute: true,
                         notify: true
                     }
                 }

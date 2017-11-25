@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
-<dom-module id="app-style">
+<dom-module id="my-style">
     <template>
         <style>
             :host {
@@ -14,7 +14,7 @@
                 };
 
                 --paper-card: {
-                    margin: 1rem;
+                    margin: 1rem 3rem 1rem 3rem;
                     padding: 1rem 2rem 1rem 2rem;
                 };
 
@@ -67,16 +67,30 @@
             .text-center {
                 text-align: center;
             }
+
+            app-drawer {
+                @apply(--layout-horizontal);
+                position: relative;
+                top: 0;
+                bottom: 0;
+                --app-drawer-scrim-background: none;
+                overflow: auto;
+            }
+
+            app-header-layout {
+                @apply(--layout-vertical);
+                @apply(--layout-flex);
+            }
         </style>
     </template>
 
     <script>
-        class AppStyle extends Polymer.Element {
+        class MyStyle extends Polymer.Element {
             static get is() {
-                return 'app-style';
+                return 'my-style';
             }
         }
 
-        window.customElements.define(AppStyle.is, AppStyle);
+        window.customElements.define(MyStyle.is, MyStyle);
     </script>
 </dom-module>
