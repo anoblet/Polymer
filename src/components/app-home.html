@@ -29,14 +29,15 @@
             static get properties() {
                 return {
                     scope: {
-                        type: Object
+                        type: Object,
+                        reflectToAttribute: true
                     }
                 }
             }
 
             connectedCallback() {
                 super.connectedCallback();
-                console.log(this.scope);
+                console.log(this.scope.location);
             }
         }
 

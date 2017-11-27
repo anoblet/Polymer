@@ -103,15 +103,18 @@
                         var city = result.address_components[i].long_name;
                         location.set('scope.location.city', city);
                         location.notifyPath('scope.location.city');
-
+                        t.set('scope.location.city', city);
+                        t.notifyPath('scope.location.city');
                     }
                     if (result.address_components[i].types[0] == 'administrative_area_level_1') {
                         var state = result.address_components[i].long_name;
                         location.state = state;
                         location.set('state', state);
+                        location.notifyPath('state')
                         location.set('scope.location.state', state);
+                        t.set('scope.location.state', state);
+                        t.notifyPath('scope.location.state');
                         scope.notifyPath('scope.location.state');
-
                     }
                 }
             }
