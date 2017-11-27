@@ -4,6 +4,7 @@
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
 
 <link rel="import" href="app-style.html">
 
@@ -35,14 +36,7 @@
                 return {
                     scope: {
                         type: Object,
-                        notify: true,
-                        // reflectToAttribute: true
-                    },
-                    city: {
-                        type: String
-                    },
-                    state: {
-                        type: String
+                        notify: true
                     }
                 }
             }
@@ -98,6 +92,7 @@
 
             setLocation(result) {
                 var scope = this.scope;
+                var t = this;
                 var location = this.scope.location;
 
                 location.latitude = result.geometry.location.lat;
@@ -106,13 +101,13 @@
                 for (var i = 0; i < result.address_components.length; i++) {
                     if (result.address_components[i].types[0] == 'locality') {
                         var city = result.address_components[i].long_name;
-                        scope.set('scope.location.city', city);
-                        scope.notifyPath('scope.location.city');
+                        location.set('scope.location.city', city);
+                        location.notifyPath('scope.location.city');
 
                     }
                     if (result.address_components[i].types[0] == 'administrative_area_level_1') {
-                        location.state = result.address_components[i].long_name;
                         var state = result.address_components[i].long_name;
+                        location.state = state;
                         location.set('state', state);
                         location.set('scope.location.state', state);
                         scope.notifyPath('scope.location.state');

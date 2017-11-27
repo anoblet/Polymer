@@ -2,6 +2,7 @@
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
 
 <link rel="import" href="x-address.html">
 
@@ -13,6 +14,9 @@
                 @apply(--layout-flex);
             }
         </style>
+        <iron-meta key="info" value="foo/bar"></iron-meta>
+        [[scope.location.city]]
+        [[scope.location.state]]
         <x-address id="address" scope="{{scope}}"></x-address>
     </template>
 
@@ -25,11 +29,14 @@
             static get properties() {
                 return {
                     scope: {
-                        type: Object,
-                        reflectToAttribute: true,
-                        notify: true
+                        type: Object
                     }
                 }
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                console.log(this.scope);
             }
         }
 

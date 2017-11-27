@@ -169,6 +169,9 @@
         </x-background>
     </template>
     <script>
+
+        var data = {};
+
         class AppIndex extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'app-index';
@@ -182,30 +185,11 @@
                             return this;
                         },
                         notify: true
-                    }, /*
-                    state: {
-                        type: Object,
-                        value: function () {
-                            return {};
-                        },
-                        notify: true
-                    },*/
-                    /*location: {
-                        type: Object,
-                        notify: true
-                    },*/
-                    __path: {
-                        type: String
                     },
-                    /*
-                    isReady: {
-                        type: Boolean,
-                        value: false
-                    },
-                    __data: {
-                        type: Object
+                    data: {
+                        type: Object,
+                        va1ue: data
                     }
-                    */
                 };
             }
 
@@ -213,7 +197,6 @@
                 return [
                     '__pathChanged(__path)',
                     '__scopeChanged(scope)',
-                    'isReadyChanged(isReady)'
                 ];
             }
 
@@ -226,7 +209,7 @@
             }
 
             /**
-                @deprecate
+             @deprecate
              */
             isReadyChanged() {
                 console.log("Path");
@@ -236,10 +219,10 @@
                 super.ready();
 
                 this.location = this.$.location;
-                this.set('scope.config',this.$.config);
+                this.set('scope.config', this.$.config);
                 this.scope.config = this.$.config;
                 this.scope.location = this.$.location;
-                this.set('scope.location',this.$.config);
+                this.set('scope.location', this.$.config);
             }
 
             connectedCallback() {
@@ -247,10 +230,13 @@
 
                 // this.set('location', this.$.location);
                 // this.notifyPath('location');
-                this.set('scope.config',this.$.config);
+                this.set('scope.config', this.$.config);
                 this.scope.config = this.$.config;
                 this.scope.location = this.$.location;
-                this.set('scope.location',this.$.config);
+                this.set('scope.location', this.$.location);
+                this.notifyPath('scope.location.state');
+                this.location = this.$.location;
+                this.scope = this;
             }
 
             __pathChanged(path) {
@@ -289,20 +275,13 @@
                 // this.$.nav.scope = this;
             }
 
-
-            updateLocation() {
-                console.log("Updating location: ");
-            }
-
             _showPage404() {
 
             }
 
             _addElement(tag) {
                 var myElement = document.createElement(tag);
-                this.scope = this;
                 myElement.scope = this.scope;
-
                 this.$.content.appendChild(myElement);
             }
 
