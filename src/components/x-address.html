@@ -95,28 +95,31 @@
                 var t = this;
                 var location = this.scope.location;
 
-                location.latitude = result.geometry.location.lat;
-                location.longitude = result.geometry.location.lng;
+                var latitude = result.geometry.location.lat;
+                var longitude = result.geometry.location.lng;
 
                 for (var i = 0; i < result.address_components.length; i++) {
                     if (result.address_components[i].types[0] == 'locality') {
                         var city = result.address_components[i].long_name;
-                        location.set('scope.location.city', city);
-                        location.notifyPath('scope.location.city');
                         t.set('scope.location.city', city);
                         t.notifyPath('scope.location.city');
+                        scope.notifyPath('scope.location.city');
+
                     }
                     if (result.address_components[i].types[0] == 'administrative_area_level_1') {
                         var state = result.address_components[i].long_name;
                         location.state = state;
-                        location.set('state', state);
-                        location.notifyPath('state')
-                        location.set('scope.location.state', state);
+                        // location.set('state', state);
+                        // location.notifyPath('state')
                         t.set('scope.location.state', state);
                         t.notifyPath('scope.location.state');
-                        scope.notifyPath('scope.location.state');
                     }
                 }
+
+                t.set('scope.location.latitude', latitude);
+                t.notifyPath('scope.location.latitude');
+                t.set('scope.location.longitude', longitude);
+                t.notifyPath('scope.location.longitude');
             }
 
             mapApiLoaded() {

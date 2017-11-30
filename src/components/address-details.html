@@ -1,0 +1,47 @@
+<link rel="import" href="x-element.html">
+
+<link rel="import" href="../../bower_components/google-apis/google-maps-api.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
+
+<link rel="import" href="app-style.html">
+
+<dom-module id="address-details">
+    <template>
+        <style include="app-style">
+            :host {
+                @apply(--layout-vertical);
+                @apply(--layout-flex);
+            }
+        </style>
+        <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
+
+        <paper-card heading="Address">
+            <!--<paper-input id="autocomplete" placeholder="[[city]], [[state]]" type="text" class="form-control">-->
+            <paper-input id="address" placeholder="[[scope.location.city]], [[scope.location.state]]" type="text" class="form-control">
+                <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
+            </paper-input>
+        </paper-card>
+    </template>
+
+    <script>
+        class AddressDetails extends Polymer.MutableData(Polymer.Element) {
+            static get is() {
+                return 'address-details';
+            }
+
+            static get properties() {
+                return {
+                    scope: {
+                        type: Object,
+                        notify: true
+                    }
+                }
+            }
+        }
+
+        window.customElements.define(AddressDetails.is, AddressDetails);
+    </script>
+</dom-module>

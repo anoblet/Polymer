@@ -218,10 +218,7 @@
             ready() {
                 super.ready();
 
-                this.location = this.$.location;
                 this.set('scope.config', this.$.config);
-                this.scope.config = this.$.config;
-                this.scope.location = this.$.location;
                 this.set('scope.location', this.$.config);
             }
 
@@ -231,11 +228,7 @@
                 // this.set('location', this.$.location);
                 // this.notifyPath('location');
                 this.set('scope.config', this.$.config);
-                this.scope.config = this.$.config;
-                this.scope.location = this.$.location;
                 this.set('scope.location', this.$.location);
-                this.notifyPath('scope.location.state');
-                this.location = this.$.location;
                 this.scope = this;
             }
 
@@ -271,8 +264,6 @@
 
             __scopeChanged(scope) {
                 console.log("c");
-                this.notifyPath('scope');
-                // this.$.nav.scope = this;
             }
 
             _showPage404() {
