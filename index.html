@@ -3,10 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
     <title>Government</title>
+
     <base href="/">
+
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" sizes="192x192" href="images/favicon.ico">
     <meta name="mobile-web-app-capable" content="yes">
 
     <script>
@@ -23,31 +25,30 @@
 
     <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 
-    <link rel="import" href="bower_components/polymer/lib/elements/custom-style.html">
     <link rel="import" href="src/app-index.html">
 
-    <custom-style>
-        <style is="custom-style">
-            *,
-            *::before,
-            *::after {
-                box-sizing: inherit;
-            }
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+        }
 
-            html {
-                box-sizing: border-box;
-                height: 100%;
-                font-size: 62.5%;
-            }
+        html, body {
+            height: 100%;
+        }
 
-            body {
-                height: 100%;
-                margin: 0;
-                font-family: 'Roboto', 'Noto', sans-serif;
-                background-color: #eee;
-            }
-        </style>
-    </custom-style>
+        html {
+            box-sizing: border-box;
+            font-size: 62.5%;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', 'Noto', sans-serif;
+            background-color: #eee;
+        }
+    </style>
 </head>
 <body>
 <app-index></app-index>
