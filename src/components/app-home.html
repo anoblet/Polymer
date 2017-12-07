@@ -2,9 +2,8 @@
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
 
-<link rel="import" href="x-address.html">
+<link rel="import" href="x-locate.html">
 
 <dom-module id="app-home">
     <template>
@@ -15,13 +14,13 @@
             }
         </style>
         <paper-card heading="Address">
-            [[scope.location.city]], [[scope.location.state]]
+            [[state.user.location.city]], [[state.user.location.state]]
         </paper-card>
-        <x-address id="address" scope="{{scope}}"></x-address>
+        <x-locate id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></x-locate>
     </template>
 
     <script>
-        class AppHome extends Polymer.MutableData(Polymer.Element) {
+        class AppHome extends XStateMixin(Polymer.Element) {
             static get is() {
                 return 'app-home';
             }
@@ -30,14 +29,13 @@
                 return {
                     scope: {
                         type: Object,
-                        reflectToAttribute: true
+                        notify: true
+                    },
+                    state: {
+                        type: Object,
+                        notify: true
                     }
                 }
-            }
-
-            connectedCallback() {
-                super.connectedCallback();
-                console.log(this.scope.location);
             }
         }
 

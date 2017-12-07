@@ -25,8 +25,11 @@
 <link rel="import" href="components/my-style.html">
 
 <link rel="import" href="components/x-background.html">
+<link rel="import" href="components/x-content.html">
+<link rel="import" href="components/x-data.html">
 <link rel="import" href="components/x-location.html">
 <link rel="import" href="components/x-style.html">
+<link rel="import" href="components/x-state.html">
 <link rel="import" href="components/x-user.html">
 
 <dom-module id="app-index">
@@ -124,12 +127,13 @@
                 font-size: .75em;
             }
         </style>
-
         <app-config id="config"></app-config>
         <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
-        <x-location id="location" scope="{{scope}}" city="{{city}}" state="{{state}}"></x-location>
+        <!-- <x-location id="location" scope="{{scope}}" state="[[state]]"></x-location> -->
         <x-state scope="{{scope}}"></x-state>
         <x-user scope="{{scope}}"></x-user>
+        <app-localstorage-document key="city" data="{{state.user.location.city}}"></app-localstorage-document>
+        <app-localstorage-document key="state" data="{{state.user.location.state}}"></app-localstorage-document>
 
         <x-background scope="[[scope]]">
             <app-header-layout fullbleed>
@@ -160,76 +164,85 @@
                 <app-drawer-layout id="drawerLayout" force-narrow>
                     <app-drawer id="drawer" slot="drawer">
                         <div class="drawer-content">
-                            <app-nav id="nav" scope="[[scope]]"></app-nav>
+                            <app-nav id="nav" app="[[app]]" scope="[[app]]" state="[[state]]" location="[[scope.location]]"></app-nav>
                         </div>
                     </app-drawer>
-                    <div id="content"></div>
+                    <x-content id="content"></x-content>
                 </app-drawer-layout>
             </app-header-layout>
         </x-background>
     </template>
     <script>
-
-        var data = {};
-
-        class AppIndex extends Polymer.MutableData(Polymer.Element) {
+        class AppIndex extends Polymer.MutableData(XElement) {
             static get is() {
                 return 'app-index';
             }
 
             static get properties() {
                 return {
+                    app: {
+                        type: Object,
+                        value: function () {
+                            return this;
+                        }
+                    },
                     scope: {
                         type: Object,
                         value: function () {
                             return this;
-                        },
-                        notify: true
+                        }
                     },
-                    data: {
+                    state: {
                         type: Object,
-                        va1ue: data
+                        value: {
+                            user: {
+                                location: {
+                                    city: "C",
+                                        state: "S"
+                                }
+                            }
+                        }
+                    },
+                    isReady: {
+                        type: Boolean,
+                        value: false
                     }
                 };
             }
 
             static get observers() {
                 return [
+                    '__scopeChanged(scope.*)',
+                    'stateChanged(state.*)',
                     '__pathChanged(__path)',
-                    '__scopeChanged(scope)',
+                    'isReadyChanged(isReady)',
                 ];
             }
 
             constructor() {
                 super();
-
                 window.addEventListener('WebComponentsReady', function () {
                     this.set('isReady', true);
                 }.bind(this));
             }
 
-            /**
-             @deprecate
-             */
-            isReadyChanged() {
-                console.log("Path");
-            }
-
-            ready() {
-                super.ready();
-
-                this.set('scope.config', this.$.config);
-                this.set('scope.location', this.$.config);
-            }
-
             connectedCallback() {
                 super.connectedCallback();
 
-                // this.set('location', this.$.location);
-                // this.notifyPath('location');
+                data.location = this.$.location;
+
+                console.log("A connected");
+                this.data = this.$.data;
+                // console.log(this.data.user);
+                this.scope = this;
                 this.set('scope.config', this.$.config);
                 this.set('scope.location', this.$.location);
                 this.scope = this;
+            }
+
+            isReadyChanged() {
+                console.log('ready')
+                this.location = this.$.location;
             }
 
             __pathChanged(path) {
@@ -263,7 +276,11 @@
             }
 
             __scopeChanged(scope) {
-                console.log("c");
+                console.log("Scope changed");
+            }
+
+            stateChanged(change) {
+                console.log("state");
             }
 
             _showPage404() {
@@ -271,9 +288,14 @@
             }
 
             _addElement(tag) {
-                var myElement = document.createElement(tag);
-                myElement.scope = this.scope;
-                this.$.content.appendChild(myElement);
+                var element = document.createElement(tag);
+
+                element.app = this.app;
+                element.scope = this.scope;
+                element.state = this.state;
+                element.data = this.data;
+
+                this.shadowRoot.querySelector("x-content").appendChild(element);
             }
 
             _removeElements() {
@@ -297,7 +319,5 @@
         }
 
         window.customElements.define(AppIndex.is, AppIndex);
-
-
     </script>
 </dom-module>

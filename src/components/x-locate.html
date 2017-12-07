@@ -1,3 +1,4 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="x-element.html">
 
 <link rel="import" href="../../bower_components/google-apis/google-maps-api.html">
@@ -6,52 +7,53 @@
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
 
-<link rel="import" href="app-style.html">
+<link rel="import" href="my-style.html">
 
-<dom-module id="x-address">
+<dom-module id="x-locate">
     <template>
-        <style include="app-style">
+        <style include="my-style">
             :host {
                 @apply(--layout-vertical);
                 @apply(--layout-flex);
             }
         </style>
+
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
 
-        <paper-card heading="Address">
+        <paper-card heading="Locate">
             <!--<paper-input id="autocomplete" placeholder="[[city]], [[state]]" type="text" class="form-control">-->
-            <paper-input id="address" placeholder="[[scope.location.city]], [[scope.location.state]]" type="text" class="form-control">
+            <paper-input id="locate" placeholder="[[state.user.location.city]], [[state.user.location.state]]" type="text" class="form-control">
             <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
             </paper-input>
         </paper-card>
     </template>
 
     <script>
-        class XAddress extends Polymer.MutableData(Polymer.Element) {
+        class XLocate extends Polymer.MutableData(XElement) {
             static get is() {
-                return 'x-address';
+                return 'x-locate';
             }
 
             static get properties() {
                 return {
+                    app: {
+                        type: Object
+                    },
                     scope: {
+                        type: Object,
+                        notify: true
+                    },
+                    state: {
                         type: Object,
                         notify: true
                     }
                 }
             }
 
-            ready() {
-                super.ready();
-
-                this.city = this.scope.location.city;
-                this.state = this.scope.location.state;
-            }
-
             _autocomplete() {
-                var address = this.$.address;
+                var locate = this.$.locate;
                 var t = this;
-                var autocomplete = new google.maps.places.Autocomplete(this.$.address);
+                var autocomplete = new google.maps.places.Autocomplete(this.$.locate);
 
                 google.maps.event.addListener(autocomplete, 'place_changed', function () {
                     var result = autocomplete.getPlace();
@@ -62,7 +64,7 @@
             locate() {
                 var scope = this.scope;
                 var location = this.scope.location;
-                var address = this;
+                var locate = this;
 
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (position) {
@@ -78,7 +80,7 @@
                                     result = results[0];
                                 }
 
-                                address.setLocation(result);
+                                locate.setLocation(result);
                             }
                         });
                     }, function () {
@@ -92,34 +94,31 @@
 
             setLocation(result) {
                 var scope = this.scope;
-                var t = this;
                 var location = this.scope.location;
 
                 var latitude = result.geometry.location.lat;
                 var longitude = result.geometry.location.lng;
 
-                for (var i = 0; i < result.address_components.length; i++) {
-                    if (result.address_components[i].types[0] == 'locality') {
-                        var city = result.address_components[i].long_name;
-                        t.set('scope.location.city', city);
-                        t.notifyPath('scope.location.city');
-                        scope.notifyPath('scope.location.city');
-
+                for (var i = 0; i < result.locate_components.length; i++) {
+                    if (result.locate_components[i].types[0] == 'locality') {
+                        var city = result.locate_components[i].long_name;
                     }
-                    if (result.address_components[i].types[0] == 'administrative_area_level_1') {
-                        var state = result.address_components[i].long_name;
-                        location.state = state;
-                        // location.set('state', state);
-                        // location.notifyPath('state')
-                        t.set('scope.location.state', state);
-                        t.notifyPath('scope.location.state');
+
+                    if (result.locate_components[i].types[0] == 'administrative_area_level_1') {
+                        var state = result.locate_components[i].long_name;
                     }
                 }
 
-                t.set('scope.location.latitude', latitude);
-                t.notifyPath('scope.location.latitude');
-                t.set('scope.location.longitude', longitude);
-                t.notifyPath('scope.location.longitude');
+                //this.scope.set('location.city', city);
+                //this.scope.location.set('state', state);
+                //this.set('scope.location.city', city);
+                //this.set('scope.location.state', state);
+                //this.set('scope.location.latitude', latitude);
+                //this.set('scope.location.longitude', longitude);
+
+                this.set('state.user.location.city', city);
+                this.set('state.user.location.state', state);
+                this.scope.notifyPath('state');
             }
 
             mapApiLoaded() {
@@ -127,6 +126,6 @@
             }
         }
 
-        window.customElements.define(XAddress.is, XAddress);
+        window.customElements.define(XLocate.is, XLocate);
     </script>
 </dom-module>

@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<dom-module id="app-content">
+    <template>
+        <style include="app-style iron-flex">
+            :host {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
+            }
+        </style>
+    </template>
+
+    <script>
+        class AppContent extends Polymer.Element {
+            static get is() {
+                return 'app-content';
+            }
+
+            static get properties() {
+                return {
+                    scope: {
+                        type: Object,
+                        notify: true
+                    }
+                };
+            }
+        }
+
+        window.customElements.define(AppContent.is, AppContent);
+    </script>
+</dom-module>

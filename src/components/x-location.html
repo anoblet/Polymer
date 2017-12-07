@@ -5,8 +5,8 @@
 
 <dom-module id="x-location">
     <template>
-        <app-localstorage-document key="city" data="{{scope.location.city}}"></app-localstorage-document>
-        <app-localstorage-document key="state" data="{{scope.location.state}}"></app-localstorage-document>
+        <app-localstorage-document key="city" data="{{state.user.location.city}}"></app-localstorage-document>
+        <app-localstorage-document key="state" data="{{state.user.location.state}}"></app-localstorage-document>
     </template>
     <script>
         class XLocation extends Polymer.MutableData(Polymer.Element) {
@@ -41,24 +41,13 @@
                     county: {
                         type: String,
                         notify: true,
-                        reflectToAttribute: true,
                         value: "County"
                     },
                     state: {
                         type: String,
-                        notify: true,
-                        reflectToAttribute: true,
-                        value: "State"
+                        notify: true
                     }
                 }
-            }
-
-            ready() {
-                super.ready();
-
-                //this.set('city', this.city);
-                //this.scope.notifyPath('scope.location.city');
-                //this.scope.notifyPath('scope');
             }
         }
 

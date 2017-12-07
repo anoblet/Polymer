@@ -4,12 +4,11 @@
 <link rel="import" href="../../bower_components/app-menu/app-menu.html">
 <link rel="import" href="../../bower_components/app-menu/app-submenu.html">
 
-<link rel="import" href="app-style.html">
-
+<link rel="import" href="my-style.html">
 
 <dom-module id="app-nav">
     <template>
-        <style include="app-style">
+        <style include="my-style">
             :host {
                 @apply(--layout-vertical);
                 @apply(--layout-flex);
@@ -31,6 +30,7 @@
                     <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
                 </div>
                 <app-menu slot="submenu-content">
+                    <a class="app-menu-item" href="[[state.user.location.state]]">Overview</a>
                     <a class="app-menu-item" href="javascript:void(0)">Officials</a>
                     <a class="app-menu-item" href="/state">Static</a>
                 </app-menu>
@@ -41,7 +41,7 @@
                     <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
                 </div>
                 <app-menu slot="submenu-content">
-                    <a class="app-menu-item" href="javascript:void(0)">Officials</a>
+                    <a class="app-menu-item" href="{{country}}">Officials</a>
                 </app-menu>
             </app-submenu>
             <app-submenu>
@@ -50,7 +50,7 @@
                     <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
                 </div>
                 <app-menu slot="submenu-content">
-                    <a class="app-menu-item" href="/[[scope.location.state]]/[[scope.location.city]]">Overview</a>
+                    <a class="app-menu-item" href="/[[state.user.location.state]]/[[state.user.location.city]]">Overview</a>
                     <a class="app-menu-item" href="javascript:void(0)">Officials</a>
                     <a class="app-menu-item" href="/city">Static</a>
                 </app-menu>
@@ -62,7 +62,7 @@
     </template>
 
     <script>
-        class AppNav extends Polymer.Element {
+        class AppNav extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'app-nav';
             }
@@ -70,40 +70,13 @@
             static get properties() {
                 return {
                     scope: {
-                        type: Object,
-                        notify: true
-                    },
-                    city: {
-                        type: Boolean,
-                        value: false
+                        type: Object
                     },
                     state: {
-                        type: Object,
-                        notify: true
-                    },
-                    location: {
-                        type: Object,
-                        reflectToAttribute: true,
-                        notify: true
-                    },
+                        type: Object
+                    }
 
                 };
-            }
-
-            ready() {
-                super.ready();
-
-                // this.city = this.scope.$.location.city;
-                console.log(this.scope);
-                console.log(this.scope.location);
-                // console.log(this.state.location);
-            }
-
-            connectedCallback() {
-                super.connectedCallback();
-                console.log(this.scope);
-                console.log(this.scope.location);
-                // console.log(this.state.location);
             }
         }
 

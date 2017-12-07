@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="x-element.html">
+
+
+<dom-module id="x-data">
+    <script>
+        class XData extends XElement {
+            static get is() {
+                return 'x-data';
+            }
+
+            static get properties() {
+                return {
+                    user: function() {
+                        return {
+                            location: {
+                                city: "a"
+                            }
+                        }
+                    }
+                }
+            }
+
+            static get observers() {
+                return [
+                    '__dataChanged(data.*, user.*)'
+                ];
+            }
+
+            __dataChanged () {
+                console.log("Here");
+            }
+
+        }
+
+        window.customElements.define(XData.is, XData);
+    </script>
+</dom-module>
