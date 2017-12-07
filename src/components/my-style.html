@@ -14,7 +14,7 @@
                 };
 
                 --paper-card: {
-                    margin: 1rem 3rem 1rem 3rem;
+                    margin: 3rem 3rem 0 3rem;
                     padding: 1rem 2rem 1rem 2rem;
                 };
 
@@ -22,7 +22,7 @@
                     @apply(--layout-horizontal);
                     @apply(--layout-center);
                     padding: 1rem 1rem 0 1rem;
-                <!--border-bottom: 1px solid var(--google-grey-300);-->
+                    /* border-bottom: 1 px solid var(--google-grey-300); */
                 };
 
                 --paper-card-header-text: {
@@ -80,6 +80,22 @@
             app-header-layout {
                 @apply(--layout-vertical);
                 @apply(--layout-flex);
+            }
+
+            .white {
+                color: white;
+            }
+
+            .no-underline {
+                text-decoration: none;
+            }
+
+            .padding {
+                padding: 1em;
+            }
+
+            .t-1 {
+                font-size: .75em;
             }
         </style>
     </template>

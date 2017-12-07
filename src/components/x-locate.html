@@ -53,7 +53,7 @@
             _autocomplete() {
                 var locate = this.$.locate;
                 var t = this;
-                var autocomplete = new google.maps.places.Autocomplete(this.$.locate);
+                var autocomplete = new google.maps.places.Autocomplete(locate);
 
                 google.maps.event.addListener(autocomplete, 'place_changed', function () {
                     var result = autocomplete.getPlace();
@@ -99,13 +99,13 @@
                 var latitude = result.geometry.location.lat;
                 var longitude = result.geometry.location.lng;
 
-                for (var i = 0; i < result.locate_components.length; i++) {
-                    if (result.locate_components[i].types[0] == 'locality') {
-                        var city = result.locate_components[i].long_name;
+                for (var i = 0; i < result.address_components.length; i++) {
+                    if (result.address_components[i].types[0] == 'locality') {
+                        var city = result.address_components[i].long_name;
                     }
 
-                    if (result.locate_components[i].types[0] == 'administrative_area_level_1') {
-                        var state = result.locate_components[i].long_name;
+                    if (result.address_components[i].types[0] == 'administrative_area_level_1') {
+                        var state = result.address_components[i].long_name;
                     }
                 }
 

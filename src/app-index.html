@@ -25,6 +25,7 @@
 <link rel="import" href="components/my-style.html">
 
 <link rel="import" href="components/x-background.html">
+<link rel="import" href="components/x-config.html">
 <link rel="import" href="components/x-content.html">
 <link rel="import" href="components/x-data.html">
 <link rel="import" href="components/x-location.html">
@@ -38,15 +39,12 @@
             :host {
                 @apply(--layout-horizontal);
                 @apply(--layout-flex);
-                height: 100%;
-                background-size: 100%;
             }
 
             app-header {
                 @apply(--layout-horizontal);
                 @apply(--layout-flex);
-                width: 100%;
-                background-color: #4285f4;
+                background: var(--google-blue-500);
                 color: #fff;
             }
 
@@ -111,23 +109,8 @@
                 text-decoration: none;
             }
 
-            .white {
-                color: white;
-            }
-
-            .no-underline {
-                text-decoration: none;
-            }
-
-            .padding {
-                padding: 1em;
-            }
-
-            .t-1 {
-                font-size: .75em;
-            }
         </style>
-        <app-config id="config"></app-config>
+        <x-config id="config"></x-config>
         <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
         <!-- <x-location id="location" scope="{{scope}}" state="[[state]]"></x-location> -->
         <x-state scope="{{scope}}"></x-state>
@@ -173,6 +156,8 @@
         </x-background>
     </template>
     <script>
+        window.MyApp = window.MyApp || {};
+
         class AppIndex extends Polymer.MutableData(XElement) {
             static get is() {
                 return 'app-index';
@@ -229,7 +214,7 @@
             connectedCallback() {
                 super.connectedCallback();
 
-                data.location = this.$.location;
+                // data.location = this.$.location;
 
                 console.log("A connected");
                 this.data = this.$.data;

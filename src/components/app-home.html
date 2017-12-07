@@ -1,8 +1,6 @@
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
-
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
-
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="x-locate.html">
 
 <dom-module id="app-home">
@@ -14,7 +12,9 @@
             }
         </style>
         <paper-card heading="Address">
-            [[state.user.location.city]], [[state.user.location.state]]
+            <div class="card-content">
+                [[state.user.location.city]], [[state.user.location.state]]
+            </div>
         </paper-card>
         <x-locate id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></x-locate>
     </template>
