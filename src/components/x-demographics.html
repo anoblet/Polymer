@@ -1,28 +1,30 @@
-<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="app-overview.html">
-<link rel="import" href="x-locate.html">
+<link rel="import" href="x-element.html">
 
-<dom-module id="app-home">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="my-style.html">
+
+<dom-module id="x-demographics">
     <template>
-        <style include="iron-flex">
+        <style include="my-style">
             :host {
-                @apply(--layout-horizontal);
+                @apply(--layout-vertical);
                 @apply(--layout-flex);
             }
         </style>
-        <app-overview state="[[state]]"></app-overview>
     </template>
-
     <script>
-        class AppHome extends XStateMixin(Polymer.Element) {
+        class XDemographics extends Polymer.MutableData(XElement) {
             static get is() {
-                return 'app-home';
+                return 'x-demographics';
             }
 
             static get properties() {
                 return {
+                    app: {
+                        type: Object
+                    },
                     scope: {
                         type: Object,
                         notify: true
@@ -35,6 +37,6 @@
             }
         }
 
-        window.customElements.define(AppHome.is, AppHome);
+        window.customElements.define(XDemographics.is, XDemographics);
     </script>
 </dom-module>

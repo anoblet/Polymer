@@ -121,6 +121,8 @@
         <x-user scope="{{scope}}"></x-user>
         <app-localstorage-document key="city" data="{{state.user.location.city}}"></app-localstorage-document>
         <app-localstorage-document key="state" data="{{state.user.location.state}}"></app-localstorage-document>
+        <app-localstorage-document key="latitude" data="{{state.user.location.latitude}}"></app-localstorage-document>
+        <app-localstorage-document key="longitude" data="{{state.user.location.longitude}}"></app-localstorage-document>
 
         <x-background scope="[[scope]]">
             <app-header-layout fullbleed>

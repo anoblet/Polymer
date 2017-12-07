@@ -1,0 +1,88 @@
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="./my-style.html">
+
+<link rel="import" href="city-info.html">
+
+<link rel="import" href="x-locate.html">
+<link rel="import" href="x-map.html">
+
+<dom-module id="app-overview">
+    <template>
+        <style include="my-style iron-flex">
+            :host {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
+            }
+
+            paper-card {
+                @apply(--layout-flex);
+            }
+
+            .card-content {
+                @apply(--layout-vertical);
+                @apply(--layout-flex);
+            }
+        </style>
+        <div class="container">
+            <div class="row">
+                <div class="column">
+                    <paper-card heading="Locate">
+                        <div class="card-content">
+                            <x-locate id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></x-locate>
+                        </div>
+                    </paper-card>
+                    <paper-card heading="Demographics">
+                        <div class="card-content">
+                            <x-demographics state="[[state]]"></x-demographics>
+                        </div>
+                    </paper-card>
+                </div>
+                <div class="column">
+                    <paper-card heading="Map">
+                        <div class="card-content">
+                            <x-map state="[[state]]"></x-map>
+                        </div>
+                    </paper-card>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                </div>
+                <div class="column">
+                    <paper-card heading="Locate">
+                        <div class="card-content">
+                            <city-info id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></city-info>
+                        </div>
+                    </paper-card>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        class AppOverview extends XStateMixin(Polymer.Element) {
+            static get is() {
+                return 'app-overview';
+            }
+
+            static get properties() {
+                return {
+                    scope: {
+                        type: Object,
+                        notify: true
+                    },
+                    state: {
+                        type: Object,
+                        notify: true
+                    }
+                }
+            }
+        }
+
+        window.customElements.define(AppOverview.is, AppOverview);
+    </script>
+</dom-module>

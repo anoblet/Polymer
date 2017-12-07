@@ -21,7 +21,7 @@
                 --paper-card-header: {
                     @apply(--layout-horizontal);
                     @apply(--layout-center);
-                    padding: 1rem 1rem 0 1rem;
+                    padding: 1rem;
                     /* border-bottom: 1 px solid var(--google-grey-300); */
                 };
 
@@ -32,8 +32,7 @@
                 };
 
                 --paper-card-content: {
-                    padding: 2rem 2rem 1rem 2rem;
-                    font-size: 2rem;
+                    padding: 1rem;
                 };
 
                 --paper-card-actions: {
@@ -97,6 +96,21 @@
 
             .t-1 {
                 font-size: .75em;
+            }
+
+            .container {
+                @apply(--layout-flex);
+            }
+
+            .row {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
+                margin-bottom: 1rem;
+            }
+
+            .column {
+                @apply(--layout-vertical);
+                @apply(--layout-flex);
             }
         </style>
     </template>
