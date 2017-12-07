@@ -3,26 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-
     <title>Government</title>
-
     <base href="/">
-
     <link rel="manifest" href="manifest.json">
-
     <link rel="icon" sizes="192x192" href="images/favicon.ico">
-
-    <!--
-    <meta name="application-name" content="A">
-    <meta name="description" content="government description">
-    -->
     <meta name="mobile-web-app-capable" content="yes">
 
     <script>
         window.Polymer = {rootPath: '/'};
 
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
+            window.addEventListener('load', function () {
                 navigator.serviceWorker.register('service-worker.js', {
                     scope: Polymer.rootPath,
                 });
@@ -42,11 +33,13 @@
             *::after {
                 box-sizing: inherit;
             }
+
             html {
                 box-sizing: border-box;
                 height: 100%;
                 font-size: 62.5%;
             }
+
             body {
                 height: 100%;
                 margin: 0;

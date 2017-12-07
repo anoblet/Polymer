@@ -17,11 +17,22 @@
         <app-menu selected="0">
             <app-submenu>
                 <div class="app-menu-item" slot="submenu-trigger">
-                    <app-menu-icon-item icon="chrome-reader-mode">My Country</app-menu-icon-item>
+                    <app-menu-icon-item icon="icons:account-balance">My City</app-menu-icon-item>
                     <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
                 </div>
                 <app-menu slot="submenu-content">
+                    <a class="app-menu-item" href="/[[state.user.location.state]]/[[state.user.location.city]]">Overview</a>
                     <a class="app-menu-item" href="javascript:void(0)">Officials</a>
+                    <a class="app-menu-item" href="/city">Static</a>
+                </app-menu>
+            </app-submenu>
+            <app-submenu>
+                <div class="app-menu-item" slot="submenu-trigger">
+                    <app-menu-icon-item icon="icons:account-balance">My County</app-menu-icon-item>
+                    <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                </div>
+                <app-menu slot="submenu-content">
+                    <a class="app-menu-item" href="{{country}}">Officials</a>
                 </app-menu>
             </app-submenu>
             <app-submenu>
@@ -37,22 +48,11 @@
             </app-submenu>
             <app-submenu>
                 <div class="app-menu-item" slot="submenu-trigger">
-                    <app-menu-icon-item icon="icons:account-balance">My County</app-menu-icon-item>
+                    <app-menu-icon-item icon="chrome-reader-mode">My Country</app-menu-icon-item>
                     <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
                 </div>
                 <app-menu slot="submenu-content">
-                    <a class="app-menu-item" href="{{country}}">Officials</a>
-                </app-menu>
-            </app-submenu>
-            <app-submenu>
-                <div class="app-menu-item" slot="submenu-trigger">
-                    <app-menu-icon-item icon="icons:account-balance">My City</app-menu-icon-item>
-                    <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
-                </div>
-                <app-menu slot="submenu-content">
-                    <a class="app-menu-item" href="/[[state.user.location.state]]/[[state.user.location.city]]">Overview</a>
                     <a class="app-menu-item" href="javascript:void(0)">Officials</a>
-                    <a class="app-menu-item" href="/city">Static</a>
                 </app-menu>
             </app-submenu>
             <a class="app-menu-item" href="/map">

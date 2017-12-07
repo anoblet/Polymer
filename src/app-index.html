@@ -1,3 +1,7 @@
+<script>
+    window.MyApp = window.MyApp || {};
+</script>
+
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <!-- includes  -->
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
@@ -156,8 +160,6 @@
         </x-background>
     </template>
     <script>
-        window.MyApp = window.MyApp || {};
-
         class AppIndex extends Polymer.MutableData(XElement) {
             static get is() {
                 return 'app-index';

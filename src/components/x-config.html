@@ -2,6 +2,8 @@
 
 <dom-module id="x-config">
     <script>
+        MyApp.config = MyApp.config || {};
+
         class XConfig extends XElement {
             static get is() {
                 return 'x-config';
