@@ -37,7 +37,7 @@
 <link rel="import" href="components/x-state.html">
 <link rel="import" href="components/x-user.html">
 
-<dom-module id="app-index">
+<dom-module id="my-app">
     <template>
         <style include="my-style iron-flex iron-flex-alignment">
             :host {
@@ -160,9 +160,9 @@
         </x-background>
     </template>
     <script>
-        class AppIndex extends Polymer.MutableData(XElement) {
+        class MyApp extends Polymer.MutableData(XElement) {
             static get is() {
-                return 'app-index';
+                return 'my-app';
             }
 
             static get properties() {
@@ -305,6 +305,6 @@
             }
         }
 
-        window.customElements.define(AppIndex.is, AppIndex);
+        window.customElements.define(MyApp.is, MyApp);
     </script>
 </dom-module>
