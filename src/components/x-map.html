@@ -1,0 +1,42 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/google-map/google-map.html">
+
+<link rel="import" href="./my-style.html">
+
+<dom-module id="x-map">
+    <template>
+        <style include="my-style iron-flex">
+            :host {
+                position: relative;
+            }
+            google-map {
+                min-height: 25rem;
+                min-width: 25rem;
+            }
+        </style>
+        <google-map latitude="[[state.user.location.latitude]]" longitude="[[state.user.location.longitude]]" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk"></google-map>
+    </template>
+
+    <script>
+        class XMap extends Polymer.Element {
+            static get is() {
+                return 'x-map';
+            }
+            static get properties() {
+                return {
+                    state: {
+                        type: Object,
+                        notify: true
+                    }
+                };
+            }
+            connectedCallback() {
+                super.connectedCallback();
+                console.log(this.state);
+            }
+        }
+        window.customElements.define(XMap.is, XMap);
+    </script>
+</dom-module>
