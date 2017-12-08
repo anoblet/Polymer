@@ -1,18 +1,22 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="app-overview.html">
 <link rel="import" href="x-locate.html">
 
 <dom-module id="app-home">
     <template>
         <style include="iron-flex">
             :host {
-                @apply(--layout-horizontal);
+                @apply(--layout-vertical);
                 @apply(--layout-flex);
             }
         </style>
-        <app-overview state="[[state]]"></app-overview>
+        <paper-card heading="Address">
+            <div class="card-content">
+                [[state.user.location.city]], [[state.user.location.state]]
+            </div>
+        </paper-card>
+        <x-locate id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></x-locate>
     </template>
 
     <script>
