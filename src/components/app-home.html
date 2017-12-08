@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="x-locate.html">
+<link rel="import" href="app-overview.html">
 
 <dom-module id="app-home">
     <template>
@@ -16,7 +17,7 @@
                 [[state.user.location.city]], [[state.user.location.state]]
             </div>
         </paper-card>
-        <x-locate id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></x-locate>
+        <app-overview scope="{{scope}}" state="{{state}}"></app-overview>
     </template>
 
     <script>

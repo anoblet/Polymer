@@ -1,0 +1,113 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="app-style">
+    <template>
+        <style>
+            :host {
+                --app-drawer-content-container: {
+                    @apply(--layout-vertical);
+                    @apply(--layout-flex);
+                    /* @apply(--layout-center); */
+                    background: #fff;
+                    margin: 0;
+                    padding: 0;
+                };
+
+                --paper-card: {
+                    margin: 3rem 3rem 0 3rem;
+                    padding: 1rem 2rem 1rem 2rem;
+                };
+
+                --paper-card-header: {
+                    @apply(--layout-horizontal);
+                    @apply(--layout-center);
+                    padding: 1rem 1rem 0 1rem;
+                    /* border-bottom: 1 px solid var(--google-grey-300); */
+                };
+
+                --paper-card-header-text: {
+                    padding: 0;
+                    font-size: 18px;
+                    color: var(--google-blue-700);
+                };
+
+                --paper-card-content: {
+                    padding: 2rem 2rem 1rem 2rem;
+                    font-size: 2rem;
+                };
+
+                --paper-card-actions: {
+                    @apply(--layout-horizontal);
+                    @apply(--layout-center);
+                    margin-top: 1rem;
+                    padding: 1rem 1rem 0 1rem;
+                };
+
+                --paper-button: {
+                    background-color: var(--google-blue-500);
+                    color: #fff;
+                };
+
+                --app-menu: {
+                    background: inherit;
+                };
+                --app-menu-focused-item: {
+                    background: inherit;
+                };
+                --app-menu-selected-item: {
+                    background: inherit;
+                };
+            }
+
+            .card-header {
+                padding: 1rem;
+                font-weight: bold;
+                border-bottom: 1px solid #e8e8e8;
+            }
+
+            .text-center {
+                text-align: center;
+            }
+
+            app-drawer {
+                @apply(--layout-horizontal);
+                position: relative;
+                top: 0;
+                bottom: 0;
+                --app-drawer-scrim-background: none;
+                overflow: auto;
+            }
+
+            app-header-layout {
+                @apply(--layout-vertical);
+                @apply(--layout-flex);
+            }
+
+            .white {
+                color: white;
+            }
+
+            .no-underline {
+                text-decoration: none;
+            }
+
+            .padding {
+                padding: 1em;
+            }
+
+            .t-1 {
+                font-size: .75em;
+            }
+        </style>
+    </template>
+
+    <script>
+        class AppStyle extends Polymer.Element {
+            static get is() {
+                return 'app-style';
+            }
+        }
+
+        window.customElements.define(AppStyle.is, AppStyle);
+    </script>
+</dom-module>
