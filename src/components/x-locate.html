@@ -93,8 +93,8 @@
                 var scope = this.scope;
                 var location = this.scope.location;
 
-                var latitude = result.geometry.location.lat;
-                var longitude = result.geometry.location.lng;
+                var latitude = result.geometry.location.lat();
+                var longitude = result.geometry.location.lng();
 
                 for (var i = 0; i < result.address_components.length; i++) {
                     if (result.address_components[i].types[0] == 'locality') {
@@ -115,6 +115,8 @@
 
                 this.set('state.user.location.city', city);
                 this.set('state.user.location.state', state);
+                this.set('state.user.location.latitude', latitude);
+                this.set('state.user.location.longitude', longitude);
                 this.scope.notifyPath('state');
             }
 
