@@ -11,6 +11,18 @@
                 flex-shrink: 0;
                 flex-wrap: wrap;
                 width: 100%;
+                padding-left: 2em;
+                padding-right: 2em;
+            }
+            :host ::slotted(x-grid-column) {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            :host ::slotted(x-grid-column:first-child) {
+                padding-left: 0;
+            }
+            :host ::slotted(x-grid-column:last-child) {
+                padding-right: 0;
             }
         </style>
         <slot></slot>
