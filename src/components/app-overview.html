@@ -5,10 +5,11 @@
 
 <link rel="import" href="./app-style.html">
 
-<link rel="import" href="city-info.html">
-
+<link rel="import" href="x-grid/x-grid.html">
+<link rel="import" href="x-grid/x-grid-cell.html">
 <link rel="import" href="x-locate.html">
 <link rel="import" href="x-map.html">
+<link rel="import" href="x-demographic.html">
 
 <link rel="import" href="app-style.html">
 
@@ -18,69 +19,64 @@
             :host {
                 @apply(--flex);
                 @apply(--flex-auto);
+                @apply(--flex-column);
+                @apply(--flex-shrink-disable);
             }
         </style>
-        <div class="container">
-            <div class="row">
-                <paper-card heading="Address">
-                    <div class="card-content">
-                        [[state.user.location.city]], [[state.user.location.state]]
-                    </div>
-                </paper-card>
-            </div>
-            <div class="row">
-                <paper-card heading="Locate">
-                    <div class="card-content">
-                        <x-locate id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></x-locate>
-                    </div>
-                </paper-card>
-            </div>
-            <div class="row">
-                <div class="column">
-                    <div class="row">
-                        <paper-card heading="Demographics">
+        <x-grid>
+            <x-grid-cell>1</x-grid-cell>
+            <x-grid-cell>2</x-grid-cell>
+            <x-grid-cell>3</x-grid-cell>
+            <x-grid-cell>4</x-grid-cell>
+            <x-grid-cell>5</x-grid-cell>
+            <x-grid-cell>6</x-grid-cell>
+            <x-grid-cell>7</x-grid-cell>
+            <x-grid-cell>8</x-grid-cell>
+            <x-grid-cell>9</x-grid-cell>
+            <x-grid-cell>10</x-grid-cell>
+            <x-grid-cell>11</x-grid-cell>
+            <x-grid-cell>12</x-grid-cell>
+        </x-grid>
+        <x-grid>
+            <x-grid-row>
+                <x-grid-cell>
+                    <paper-card heading="Address">
+                        <div class="card-content">
+                            [[state.user.location.city]], [[state.user.location.state]]
+                        </div>
+                    </paper-card>
+                </x-grid-cell>
+            </x-grid-row>
+            <x-grid-row>
+                <x-grid-cell>
+                    <paper-card heading="Locate">
+                        <div class="card-content">
+                            <x-locate id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></x-locate>
+                        </div>
+                    </paper-card>
+                </x-grid-cell>
+            </x-grid-row>
+            <x-grid-row>
+                <x-grid-column>
+                    <x-grid-cell flex-disabled>
+                        <paper-card heading="Demographic">
                             <div class="card-content">
-                                <x-demographics state="[[state]]">T</x-demographics>
+                                <x-demographic state="[[state]]"></x-demographic>
                             </div>
                         </paper-card>
-                    </div>
-                </div>
-                <div class="column">
-                    <paper-card heading="Map">
-                        <div class="card-content">
-                            <x-map state="[[state]]"></x-map>
-                        </div>
-                    </paper-card>
-                </div>
-            </div>
-            <div class="row">
-                <div class="column">
-                    <paper-card heading="Locate">
-                        <div class="card-content">
-                            <city-info id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></city-info>
-                        </div>
-                    </paper-card>
-                </div>
-            </div>
-            <div class="row">
-                <div class="column">
-                    <paper-card heading="Locate">
-                        <div class="card-content">
-                            <city-info id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></city-info>
-                        </div>
-                    </paper-card>
-                </div>
-            </div>
-            <div class="row">
-                <div class="column">
-                    <paper-card heading="Locate">
-                        <div class="card-content">
-                            <city-info id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></city-info>
-                        </div>
-                    </paper-card>
-                </div>
-            </div>
-        </div>
+                    </x-grid-cell>
+                </x-grid-column>
+                <x-grid-column>
+                    <x-grid-cell>
+                        <paper-card heading="Map">
+                            <div class="card-content">
+                                <x-map state="[[state]]"></x-map>
+                            </div>
+                        </paper-card>
+                    </x-grid-cell>
+                </x-grid-column>
+            </x-grid-row>
+        </x-grid>
     </template>
 
     <script>

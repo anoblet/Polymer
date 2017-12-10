@@ -1,0 +1,30 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../app-style.html">
+
+<dom-module id="x-grid-column">
+    <template>
+        <style include="app-style">
+            :host {
+                @apply(--flex);
+                @apply(--flex-auto);
+                flex-basis: 0;
+            }
+        </style>
+        <slot></slot>
+    </template>
+    <script>
+        class XGridColumn extends Polymer.Element {
+            static get is() {
+                return 'x-grid-column';
+            }
+
+            static get properties() {
+                return {
+                }
+            }
+        }
+
+        window.customElements.define(XGridColumn.is, XGridColumn);
+    </script>
+</dom-module>

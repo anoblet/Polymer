@@ -1,0 +1,32 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../app-style.html">
+
+<dom-module id="x-grid-row">
+    <template>
+        <style include="app-style">
+            :host {
+                @apply(--flex);
+                @apply(--flex-auto);
+                flex-shrink: 0;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+        </style>
+        <slot></slot>
+    </template>
+    <script>
+        class XGridRow extends Polymer.Element {
+            static get is() {
+                return 'x-grid-row';
+            }
+
+            static get properties() {
+                return {
+                }
+            }
+        }
+
+        window.customElements.define(XGridRow.is, XGridRow);
+    </script>
+</dom-module>

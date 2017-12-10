@@ -10,7 +10,6 @@
             }
 
             :host {
-                display: flex;
                 box-sizing: border-box;
 
                 --app-drawer-content-container: {
@@ -31,8 +30,7 @@
                 };
 
                 --paper-card-header: {
-                    @apply(--layout-horizontal);
-                    @apply(--layout-center);
+                    @apply(--flex);
                     padding: 1rem 1rem 0 1rem;
                     /* border-bottom: 1 px solid var(--google-grey-300); */
                 };
@@ -105,9 +103,9 @@
                     flex-wrap: wrap;
                 };
 
-                --flex-shrink-disable {
+                --flex-shrink-disable: {
                     flex-shrink: 0;
-                }
+                };
             }
 
             .card-header {
