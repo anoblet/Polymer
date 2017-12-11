@@ -59,23 +59,42 @@
             <x-grid-row>
                 <x-grid-column>
                     <x-grid-cell flex-disabled>
-                        <paper-card heading="Statistics">
-                            <div class="card-content">
-                                <x-demographic state="[[state]]"></x-demographic>
-                            </div>
-                        </paper-card>
+                        <x-grid>
+                            <x-grid-row>
+                                <x-grid-cell flex-disabled>
+                                    <paper-card heading="Statistics">
+                                        <div class="card-content">
+                                            <x-demographic state="[[state]]"></x-demographic>
+                                        </div>
+                                    </paper-card>
+                                </x-grid-cell>
+                            </x-grid-row>
+                            <x-grid-row>
+                                <x-grid-cell flex-disabled>
+                                    <paper-card heading="Demographic">
+                                        <div class="card-content">
+                                            <x-demographic state="[[state]]"></x-demographic>
+                                        </div>
+                                    </paper-card>
+                                </x-grid-cell>
+                            </x-grid-row>
+                        </x-grid>
                     </x-grid-cell>
+                </x-grid-column>
+                <x-grid-column>
                     <x-grid-cell flex-disabled>
-                        <paper-card heading="Demographic">
+                        <paper-card heading="Map">
                             <div class="card-content">
-                                <x-demographic state="[[state]]"></x-demographic>
+                                <x-map state="[[state]]"></x-map>
                             </div>
                         </paper-card>
                     </x-grid-cell>
                 </x-grid-column>
+            </x-grid-row>
+            <x-grid-row>
                 <x-grid-column>
                     <x-grid-cell>
-                        <paper-card heading="Map">
+                        <paper-card heading="Census">
                             <div class="card-content">
                                 <x-map state="[[state]]"></x-map>
                             </div>

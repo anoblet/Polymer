@@ -10,15 +10,13 @@
         <style include="app-style iron-flex">
             :host {
                 position: relative;
-                @apply(--layout-horizontal);
-                @apply(--layout-flex);
+                @apply(--flex);
+                @apply(--flex-auto);
             }
+
             google-map {
-                @apply(--layout-horizontal);
-                @apply(--layout-flex);
-                width: 100%;
-            }
-            google-map {
+                @apply(--flex);
+                @apply(--flex-auto);
                 padding-top: 100%;
             }
         </style>
@@ -30,6 +28,7 @@
             static get is() {
                 return 'x-map';
             }
+
             static get properties() {
                 return {
                     state: {
@@ -38,11 +37,13 @@
                     }
                 };
             }
+
             connectedCallback() {
                 super.connectedCallback();
                 console.log(this.state);
             }
         }
+
         window.customElements.define(XMap.is, XMap);
     </script>
 </dom-module>
