@@ -1,30 +1,36 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="x-grid-cell.html">
+
 <link rel="import" href="../app-style.html">
 
 <dom-module id="x-grid-cell">
     <template>
-        <style include="iron-flex">
+        <style include="app-style">
             :host {
-                @apply(--flex);
-                @apply(--flex-auto);
+                display: grid;
+                grid-template-columns: repeat(4, [col] auto ) ;
             }
-            :host([flex-disabled]) {
-                display: initial;
+
+            :host ::slotted(.s2) {
+                grid-column: span 2;
             }
         </style>
         <slot></slot>
     </template>
-
     <script>
-        class XGridItem extends Polymer.Element {
+        class XGridCell extends Polymer.Element {
             static get is() {
                 return 'x-grid-cell';
             }
 
             static get properties() {
                 return {
-                    flexDisabled: {
+                    row: {
+                        type: Boolean,
+                        value: false
+                    },
+                    column: {
                         type: Boolean,
                         value: false
                     }
@@ -32,6 +38,6 @@
             }
         }
 
-        window.customElements.define(XGridItem.is, XGridItem);
+        window.customElements.define(XGridCell.is, XGridCell);
     </script>
 </dom-module>

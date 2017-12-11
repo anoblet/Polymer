@@ -5,6 +5,7 @@
 
 <link rel="import" href="./app-style.html">
 
+<link rel="import" href="my-grid.html">
 <link rel="import" href="x-grid/x-grid.html">
 <link rel="import" href="x-grid/x-grid-cell.html">
 <link rel="import" href="x-locate.html">
@@ -23,6 +24,27 @@
                 @apply(--flex-shrink-disable);
             }
         </style>
+        <x-grid>
+            <x-grid-cell span-2>
+                <paper-card heading="Statistics">
+                    <div class="card-content">
+                        <x-demographic state="[[state]]"></x-demographic>
+                    </div>
+                </paper-card>
+            </x-grid-cell>
+            <x-grid-cell span-2>1</x-grid-cell>
+            <x-grid-cell>1</x-grid-cell>
+            <x-grid-cell>1</x-grid-cell>
+            <x-grid-cell>1</x-grid-cell>
+            <x-grid-cell>1</x-grid-cell>
+            <x-grid-cell>1</x-grid-cell>
+            <x-grid-cell span-2>1</x-grid-cell>
+            <x-grid-cell>1</x-grid-cell>
+            <x-grid-cell>1</x-grid-cell>
+            <x-grid-cell>1</x-grid-cell>
+            <x-grid-cell>1</x-grid-cell>
+            <x-grid-cell>1</x-grid-cell>
+        </x-grid>
         <x-grid>
             <x-grid-cell>1</x-grid-cell>
             <x-grid-cell>2</x-grid-cell>
