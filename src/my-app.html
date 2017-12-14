@@ -31,10 +31,13 @@
 <link rel="import" href="components/x-config.html">
 <link rel="import" href="components/x-content.html">
 <link rel="import" href="components/x-data.html">
+<link rel="import" href="components/x-footer.html">
 <link rel="import" href="components/x-location.html">
 <link rel="import" href="components/x-style.html">
 <link rel="import" href="components/x-state.html">
 <link rel="import" href="components/x-user.html">
+
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-if.html">
 
 <dom-module id="my-app">
     <template>
@@ -158,6 +161,9 @@
                     <x-content id="content"></x-content>
                 </app-drawer-layout>
             </app-header-layout>
+            <template is="dom-if" if="[[app.config.footerNav]]">
+                Test<x-footer></x-footer>
+            </template>
         </x-background>
     </template>
     <script>
@@ -170,8 +176,10 @@
                 return {
                     app: {
                         type: Object,
-                        value: function () {
-                            return this;
+                        value: () => {
+                            config: {
+                                footerNav: true
+                            }
                         }
                     },
                     scope: {
@@ -183,6 +191,9 @@
                     state: {
                         type: Object,
                         value: {
+                            config: {
+                              footerNav: true
+                            },
                             user: {
                                 location: {
                                     city: "C",

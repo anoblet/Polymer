@@ -4,6 +4,7 @@
   "description": "Government",
   "main": "index.html",
   "scripts": {
+    "start": "npm run dev",
     "dev": "polymer serve | npm run watch",
     "lint": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "npm run lint && polymer test",
