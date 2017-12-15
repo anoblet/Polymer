@@ -12,11 +12,11 @@
                 @apply(--layout-flex);
             }
         </style>
-        <app-overview scope="{{scope}}" state="{{state}}"></app-overview>
+        <app-overview app="{{app}}" scope="[[scope]]" state="{{state}}"></app-overview>
     </template>
 
     <script>
-        class AppHome extends XStateMixin(Polymer.Element) {
+        class AppHome extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'app-home';
             }

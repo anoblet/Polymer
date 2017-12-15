@@ -34,7 +34,6 @@
 <link rel="import" href="components/x-footer.html">
 <link rel="import" href="components/x-location.html">
 <link rel="import" href="components/x-style.html">
-<link rel="import" href="components/x-state.html">
 <link rel="import" href="components/x-user.html">
 
 <link rel="import" href="../bower_components/polymer/lib/elements/dom-if.html">
@@ -119,7 +118,6 @@
         <x-config id="config"></x-config>
         <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
         <!-- <x-location id="location" scope="{{scope}}" state="[[state]]"></x-location> -->
-        <x-state scope="{{scope}}"></x-state>
         <x-user scope="{{scope}}"></x-user>
         <app-localstorage-document key="city" data="{{state.user.location.city}}"></app-localstorage-document>
         <app-localstorage-document key="state" data="{{state.user.location.state}}"></app-localstorage-document>
@@ -162,11 +160,15 @@
                 </app-drawer-layout>
             </app-header-layout>
             <template is="dom-if" if="[[app.config.footerNav]]">
-                Test<x-footer></x-footer>
+                Test
+                <x-footer></x-footer>
             </template>
         </x-background>
+        <x-data></x-data>
     </template>
     <script>
+        window.App = window.App || {};
+
         class MyApp extends Polymer.MutableData(XElement) {
             static get is() {
                 return 'my-app';
@@ -176,10 +178,14 @@
                 return {
                     app: {
                         type: Object,
-                        value: () => {
+                        value: {
+                            instance: () => {
+                                return this;
+                            },
                             config: {
                                 footerNav: true
-                            }
+                            },
+                            user: {}
                         }
                     },
                     scope: {
@@ -192,14 +198,26 @@
                         type: Object,
                         value: {
                             config: {
-                              footerNav: true
+                                footerNav: true
+                            },
+                            location: {
+                                city: "C",
+                                state: "S",
+                                latitude: "",
+                                longitude: "",
+                                census: {
+                                    stateCode: ""
+                                }
                             },
                             user: {
                                 location: {
                                     city: "C",
                                     state: "S",
                                     latitude: "",
-                                    longitude: ""
+                                    longitude: "",
+                                    census: {
+                                        stateCode: ""
+                                    }
                                 }
                             }
                         }
@@ -227,18 +245,16 @@
                 }.bind(this));
             }
 
+            ready() {
+                super.ready();
+            }
+
             connectedCallback() {
                 super.connectedCallback();
 
-                // data.location = this.$.location;
+                App = App || this.app;
 
                 console.log("A connected");
-                this.data = this.$.data;
-                // console.log(this.data.user);
-                this.scope = this;
-                this.set('scope.config', this.$.config);
-                this.set('scope.location', this.$.location);
-                this.scope = this;
             }
 
             isReadyChanged() {
