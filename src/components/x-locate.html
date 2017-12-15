@@ -7,11 +7,11 @@
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
 
-<link rel="import" href="my-style.html">
+<link rel="import" href="app-style.html">
 
 <dom-module id="x-locate">
     <template>
-        <style include="my-style">
+        <style include="app-style">
             :host {
                 @apply(--layout-vertical);
                 @apply(--layout-flex);
@@ -20,12 +20,9 @@
 
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
 
-        <paper-card heading="Locate">
-            <!--<paper-input id="autocomplete" placeholder="[[city]], [[state]]" type="text" class="form-control">-->
-            <paper-input id="locate" placeholder="[[state.user.location.city]], [[state.user.location.state]]" type="text" class="form-control">
+        <paper-input id="locate" placeholder="[[state.user.location.city]], [[state.user.location.state]]" type="text" class="form-control">
             <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
-            </paper-input>
-        </paper-card>
+        </paper-input>
     </template>
 
     <script>
@@ -71,7 +68,7 @@
                         var geocoder = new google.maps.Geocoder();
                         var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-                        geocoder.geocode({'latLng': geolocate}, function(results, status) {
+                        geocoder.geocode({'latLng': geolocate}, function (results, status) {
                             if (status == google.maps.GeocoderStatus.OK) {
                                 var result;
                                 if (results.length > 1) {
@@ -96,8 +93,8 @@
                 var scope = this.scope;
                 var location = this.scope.location;
 
-                var latitude = result.geometry.location.lat;
-                var longitude = result.geometry.location.lng;
+                var latitude = result.geometry.location.lat();
+                var longitude = result.geometry.location.lng();
 
                 for (var i = 0; i < result.address_components.length; i++) {
                     if (result.address_components[i].types[0] == 'locality') {
@@ -118,6 +115,8 @@
 
                 this.set('state.user.location.city', city);
                 this.set('state.user.location.state', state);
+                this.set('state.user.location.latitude', latitude);
+                this.set('state.user.location.longitude', longitude);
                 this.scope.notifyPath('state');
             }
 

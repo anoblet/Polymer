@@ -4,6 +4,7 @@
   "description": "Government",
   "main": "index.html",
   "scripts": {
+    "start": "npm run dev",
     "dev": "polymer serve | npm run watch",
     "lint": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "npm run lint && polymer test",
@@ -23,7 +24,8 @@
     "browser-sync": "^2.18.13"
   },
   "dependencies": {
-    "eslint": "^4.12.1",
-    "polymer": "^0.5.0"
+    "eslint": "^4.13.0",
+    "polymer": "^0.5.0",
+    "x-grid": "git+https://github.com/anoblet/x-grid.git"
   }
 }

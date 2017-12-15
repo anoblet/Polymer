@@ -9,8 +9,10 @@
     <base href="/">
 
     <link rel="manifest" href="manifest.json">
-    <meta name="mobile-web-app-capable" content="yes">
 
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Progressive Web App">
+    <link rel="icon" sizes="192x192" href="images/icons/chrome-touch-icon-192x192.png">
     <script>
         window.Polymer = {rootPath: '/'};
 
@@ -25,14 +27,14 @@
 
     <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 
-    <link rel="import" href="src/app-index.html">
+    <link rel="import" href="src/my-app.html">
 
     <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: inherit;
-        }
+            *,
+            *::before,
+            *::after {
+                box-sizing: inherit;
+            }
 
         html, body {
             height: 100%;
@@ -51,6 +53,6 @@
     </style>
 </head>
 <body>
-<app-index></app-index>
+<my-app></my-app>
 </body>
 </html>

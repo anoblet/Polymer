@@ -3,69 +3,110 @@
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="./my-style.html">
+<link rel="import" href="x-grid/x-grid.html">
 
-<link rel="import" href="city-info.html">
-
+<link rel="import" href="x-census.html">
+<link rel="import" href="x-demographic.html">
 <link rel="import" href="x-locate.html">
 <link rel="import" href="x-map.html">
 
+<link rel="import" href="app-style.html">
+
 <dom-module id="app-overview">
     <template>
-        <style include="my-style iron-flex">
+        <style include="app-style iron-flex">
             :host {
-                @apply(--layout-horizontal);
-                @apply(--layout-flex);
-            }
-            paper-card {
-                @apply(--layout-flex);
-            }
-            .card-content {
-                @apply(--layout-vertical);
-                @apply(--layout-flex);
+                @apply(--flex);
+                @apply(--flex-auto);
+                @apply(--flex-column);
+                @apply(--flex-shrink-disable);
             }
         </style>
-        <div class="container">
-            <div class="row">
-                <div class="column">
+        <x-grid>
+            <x-grid-row>
+                <x-grid-cell>
+                    <paper-card heading="Address">
+                        <div class="card-content">
+                            [[state.user.location.city]], [[state.user.location.state]]
+                        </div>
+                    </paper-card>
+                </x-grid-cell>
+            </x-grid-row>
+            <x-grid-row>
+                <x-grid-cell>
                     <paper-card heading="Locate">
                         <div class="card-content">
                             <x-locate id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></x-locate>
                         </div>
                     </paper-card>
-                    <paper-card heading="Demographics">
-                        <div class="card-content">
-                            <x-demographics state="[[state]]"></x-demographics>
-                        </div>
-                    </paper-card>
-                </div>
-                <div class="column">
-                    <paper-card heading="Map">
-                        <div class="card-content">
-                            <x-map state="[[state]]"></x-map>
-                        </div>
-                    </paper-card>
-                </div>
-            </div>
-            <div class="row">
-                <div class="column">
-                </div>
-                <div class="column">
-                    <paper-card heading="Locate">
-                        <div class="card-content">
-                            <city-info id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></city-info>
-                        </div>
-                    </paper-card>
-                </div>
-            </div>
-        </div>
+                </x-grid-cell>
+            </x-grid-row>
+            <x-grid-row>
+                <x-grid-column>
+                    <x-grid-cell flex-disabled>
+                        <x-grid>
+                            <x-grid-row>
+                                <x-grid-cell flex-disabled>
+                                    <paper-card heading="Statistics">
+                                        <div class="card-content">
+                                            <x-statistics state="[[state]]"></x-statistics>
+                                        </div>
+                                    </paper-card>
+                                </x-grid-cell>
+                            </x-grid-row>
+                            <x-grid-row>
+                                <x-grid-cell flex-disabled>
+                                    <paper-card heading="Demographic">
+                                        <div class="card-content">
+                                            <x-demographic state="[[state]]"></x-demographic>
+                                        </div>
+                                    </paper-card>
+                                </x-grid-cell>
+                            </x-grid-row>
+                        </x-grid>
+                    </x-grid-cell>
+                </x-grid-column>
+                <x-grid-column>
+                    <x-grid-cell flex-disabled>
+                        <paper-card heading="Map">
+                            <div class="card-content">
+                                <x-map state="[[state]]"></x-map>
+                            </div>
+                        </paper-card>
+                    </x-grid-cell>
+                </x-grid-column>
+            </x-grid-row>
+            <x-grid-row>
+                <x-grid-column>
+                    <x-grid-cell>
+                        <paper-card heading="Census">
+                            <div class="card-content">
+                                <x-census app="{{app}}" state="[[state]]"></x-census>
+                            </div>
+                        </paper-card>
+                    </x-grid-cell>
+                </x-grid-column>
+            </x-grid-row>
+            <x-grid-row>
+                <x-grid-column>
+                    <x-grid-cell>
+                        <paper-card heading="Wikipedia">
+                            <div class="card-content">
+                                <wikipedia-query search="[[state.user.location.city]]"></wikipedia-query>
+                            </div>
+                        </paper-card>
+                    </x-grid-cell>
+                </x-grid-column>
+            </x-grid-row>
+        </x-grid>
     </template>
 
     <script>
-        class AppOverview extends XStateMixin(Polymer.Element) {
+        class AppOverview extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'app-overview';
             }
+
             static get properties() {
                 return {
                     scope: {
@@ -75,10 +116,22 @@
                     state: {
                         type: Object,
                         notify: true
+                    },
+                    blocks: {
+                        type: Object,
+                        value: () => [
+                            'x-address',
+                            'x-locate',
+                            'x-statistics',
+                            'x-demographics',
+                            'x-map',
+                            'x-demographics'
+                        ]
                     }
                 }
             }
         }
+
         window.customElements.define(AppOverview.is, AppOverview);
     </script>
 </dom-module>

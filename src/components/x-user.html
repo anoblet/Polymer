@@ -15,15 +15,16 @@
 
             static get properties() {
                 return {
-                    city: {
-                        type: Object,
-                        value: {}
-                    },
-                    state: {
-                        type: Object,
-                        value: {}
+                    location: {
+
                     }
                 };
+            }
+
+            connectedCallBack() {
+                super.connectedCallback();
+
+                this.app;
             }
         }
 

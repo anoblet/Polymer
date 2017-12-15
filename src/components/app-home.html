@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="x-locate.html">
+<link rel="import" href="app-overview.html">
 
 <dom-module id="app-home">
     <template>
@@ -11,16 +12,11 @@
                 @apply(--layout-flex);
             }
         </style>
-        <paper-card heading="Address">
-            <div class="card-content">
-                [[state.user.location.city]], [[state.user.location.state]]
-            </div>
-        </paper-card>
-        <x-locate id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></x-locate>
+        <app-overview app="{{app}}" scope="[[scope]]" state="{{state}}"></app-overview>
     </template>
 
     <script>
-        class AppHome extends XStateMixin(Polymer.Element) {
+        class AppHome extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'app-home';
             }

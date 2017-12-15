@@ -2,8 +2,7 @@
     window.MyApp = window.MyApp || {};
 </script>
 
-<link rel="import" href="../bower_components/polymer/polymer-element.html">
-<!-- includes  -->
+<link rel="import" href="../bower_components/polymer/polymer-element.html"><!-- includes  -->
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
@@ -26,20 +25,22 @@
 <link rel="import" href="components/app-nav.html">
 
 <link rel="import" href="components/my-element.html">
-<link rel="import" href="components/my-style.html">
+<link rel="import" href="components/app-style.html">
 
 <link rel="import" href="components/x-background.html">
 <link rel="import" href="components/x-config.html">
 <link rel="import" href="components/x-content.html">
 <link rel="import" href="components/x-data.html">
+<link rel="import" href="components/x-footer.html">
 <link rel="import" href="components/x-location.html">
 <link rel="import" href="components/x-style.html">
-<link rel="import" href="components/x-state.html">
 <link rel="import" href="components/x-user.html">
 
-<dom-module id="app-index">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-if.html">
+
+<dom-module id="my-app">
     <template>
-        <style include="my-style iron-flex iron-flex-alignment">
+        <style include="app-style iron-flex iron-flex-alignment">
             :host {
                 @apply(--layout-horizontal);
                 @apply(--layout-flex);
@@ -117,10 +118,11 @@
         <x-config id="config"></x-config>
         <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
         <!-- <x-location id="location" scope="{{scope}}" state="[[state]]"></x-location> -->
-        <x-state scope="{{scope}}"></x-state>
         <x-user scope="{{scope}}"></x-user>
         <app-localstorage-document key="city" data="{{state.user.location.city}}"></app-localstorage-document>
         <app-localstorage-document key="state" data="{{state.user.location.state}}"></app-localstorage-document>
+        <app-localstorage-document key="latitude" data="{{state.user.location.latitude}}"></app-localstorage-document>
+        <app-localstorage-document key="longitude" data="{{state.user.location.longitude}}"></app-localstorage-document>
 
         <x-background scope="[[scope]]">
             <app-header-layout fullbleed>
@@ -157,20 +159,33 @@
                     <x-content id="content"></x-content>
                 </app-drawer-layout>
             </app-header-layout>
+            <template is="dom-if" if="[[app.config.footerNav]]">
+                Test
+                <x-footer></x-footer>
+            </template>
         </x-background>
+        <x-data></x-data>
     </template>
     <script>
-        class AppIndex extends Polymer.MutableData(XElement) {
+        window.App = window.App || {};
+
+        class MyApp extends Polymer.MutableData(XElement) {
             static get is() {
-                return 'app-index';
+                return 'my-app';
             }
 
             static get properties() {
                 return {
                     app: {
                         type: Object,
-                        value: function () {
-                            return this;
+                        value: {
+                            instance: () => {
+                                return this;
+                            },
+                            config: {
+                                footerNav: true
+                            },
+                            user: {}
                         }
                     },
                     scope: {
@@ -182,10 +197,27 @@
                     state: {
                         type: Object,
                         value: {
+                            config: {
+                                footerNav: true
+                            },
+                            location: {
+                                city: "C",
+                                state: "S",
+                                latitude: "",
+                                longitude: "",
+                                census: {
+                                    stateCode: ""
+                                }
+                            },
                             user: {
                                 location: {
                                     city: "C",
-                                        state: "S"
+                                    state: "S",
+                                    latitude: "",
+                                    longitude: "",
+                                    census: {
+                                        stateCode: ""
+                                    }
                                 }
                             }
                         }
@@ -213,18 +245,16 @@
                 }.bind(this));
             }
 
+            ready() {
+                super.ready();
+            }
+
             connectedCallback() {
                 super.connectedCallback();
 
-                // data.location = this.$.location;
+                App = App || this.app;
 
                 console.log("A connected");
-                this.data = this.$.data;
-                // console.log(this.data.user);
-                this.scope = this;
-                this.set('scope.config', this.$.config);
-                this.set('scope.location', this.$.location);
-                this.scope = this;
             }
 
             isReadyChanged() {
@@ -305,6 +335,6 @@
             }
         }
 
-        window.customElements.define(AppIndex.is, AppIndex);
+        window.customElements.define(MyApp.is, MyApp);
     </script>
 </dom-module>
