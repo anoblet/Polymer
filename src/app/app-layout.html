@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="app-header.html">
+<link rel="import" href="app-footer.html">
+<link rel="import" href="../components/x-content.html">
+
+<link rel="import" href="app-style.html">
+
+<dom-module id="app-layout">
+    <template>
+        <style include="app-style">
+            :host {
+                @apply(--flex);
+                @apply(--flex-horizontal);
+                @apply(--flex-grow);
+            }
+        </style>
+        <app-header></app-header>
+        <app-drawer></app-drawer>
+        <x-content></x-content>
+        <app-footer></app-footer>
+    </template>
+
+    <script>
+        class AppLayout extends Polymer.MutableData(Polymer.Element) {
+            static get is() {
+                return 'app-layout';
+            }
+        }
+
+        window.customElements.define(AppLayout.is, AppLayout);
+    </script>
+</dom-module>

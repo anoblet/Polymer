@@ -1,0 +1,23 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="app-style.html">
+
+<dom-module id="app-x">
+    <template>
+        <style>
+            :host {
+                @apply(--flex);
+            }
+        </style>
+        <script>
+            class AppX extends Polymer.Element {
+                static get is() {
+                    return 'app-x';
+                }
+            }
+
+            window.customElements.define(AppX.is, AppX);
+
+        </script>
+    </template>
+</dom-module>

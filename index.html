@@ -27,14 +27,14 @@
 
     <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 
-    <link rel="import" href="src/my-app.html">
+    <link rel="import" href="src/app-index.html">
 
     <style>
-            *,
-            *::before,
-            *::after {
-                box-sizing: inherit;
-            }
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+        }
 
         html, body {
             height: 100%;
@@ -49,10 +49,12 @@
             margin: 0;
             font-family: 'Roboto', 'Noto', sans-serif;
             background-color: #eee;
+            display: flex;
+            flex: 1;
         }
     </style>
 </head>
 <body>
-<my-app></my-app>
+<app-index></app-index>
 </body>
 </html>

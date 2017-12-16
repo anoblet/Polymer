@@ -1,8 +1,12 @@
 <script>
-    window.MyApp = window.MyApp || {};
+    window.App = window.App || {};
+    <!-- window.AppShell = window.AppShell || {}; -->
 </script>
 
-<link rel="import" href="../bower_components/polymer/polymer-element.html"><!-- includes  -->
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="app/app-layout.html">
+
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
@@ -38,7 +42,7 @@
 
 <link rel="import" href="../bower_components/polymer/lib/elements/dom-if.html">
 
-<dom-module id="my-app">
+<dom-module id="app-shell">
     <template>
         <style include="app-style iron-flex iron-flex-alignment">
             :host {
@@ -124,68 +128,22 @@
         <app-localstorage-document key="latitude" data="{{state.user.location.latitude}}"></app-localstorage-document>
         <app-localstorage-document key="longitude" data="{{state.user.location.longitude}}"></app-localstorage-document>
 
-        <x-background scope="[[scope]]">
-            <app-header-layout fullbleed>
-                <app-header effects="waterfall" slot="header">
-                    <app-toolbar>
-                        <div class="flex layout center">
-                            <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
-                            <a href="/" class="white no-underline"><span id="logo">Government</span></a>
-                        </div>
-                        <iron-media-query query="(min-width: 640px)" query-matches="{{wide}}"></iron-media-query>
-                        <template is="dom-if" if="{{wide}}">
-                            <div class="flex">
-                                <paper-input id="search" no-label-float>
-                                    <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear" title="clear"></paper-icon-button>
-                                </paper-input>
-                            </div>
-                        </template>
-                        <div class="flex" style="color: #fff; text-align: right">
-                        <span class="t-1">
-                            <a href="/login" class="white no-underline">Sign in</a>
-                             |
-                            <a href="/register" class="white no-underline">Register</a>
-                        </span>
-                            <paper-icon-button icon="more-vert"></paper-icon-button>
-                        </div>
-                    </app-toolbar>
-                </app-header>
-                <app-drawer-layout id="drawerLayout" force-narrow>
-                    <app-drawer id="drawer" slot="drawer">
-                        <div class="drawer-content">
-                            <app-nav id="nav" app="[[app]]" scope="[[app]]" state="[[state]]" location="[[scope.location]]"></app-nav>
-                        </div>
-                    </app-drawer>
-                    <x-content id="content"></x-content>
-                </app-drawer-layout>
-            </app-header-layout>
-            <template is="dom-if" if="[[app.config.footerNav]]">
-                Test
-                <x-footer></x-footer>
-            </template>
-        </x-background>
-        <x-data></x-data>
+        <app-layout app="{{app}}"></app-layout>
     </template>
     <script>
         window.App = window.App || {};
 
-        class MyApp extends Polymer.MutableData(XElement) {
+        class AppShell extends Polymer.MutableData(XElement) {
             static get is() {
-                return 'my-app';
+                return 'app-shell';
             }
 
             static get properties() {
                 return {
                     app: {
                         type: Object,
-                        value: {
-                            instance: () => {
-                                return this;
-                            },
-                            config: {
-                                footerNav: true
-                            },
-                            user: {}
+                        value: () => {
+                            return this;
                         }
                     },
                     scope: {
@@ -220,7 +178,8 @@
                                     }
                                 }
                             }
-                        }
+                        },
+                        notify: true
                     },
                     isReady: {
                         type: Boolean,
@@ -239,7 +198,8 @@
             }
 
             constructor() {
-                super();
+                super()
+                window.App = this;
                 window.addEventListener('WebComponentsReady', function () {
                     this.set('isReady', true);
                 }.bind(this));
@@ -335,6 +295,6 @@
             }
         }
 
-        window.customElements.define(MyApp.is, MyApp);
+        window.customElements.define(AppShell.is, AppShell);
     </script>
 </dom-module>
