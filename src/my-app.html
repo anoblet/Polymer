@@ -1,0 +1,141 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="components/anoblet/my-layout.html">
+
+<link rel="import" href="../bower_components/iron-location/iron-location.html">
+
+<dom-module id="my-app">
+    <template>
+        <style include="app-style">
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+        </style>
+        <my-layout id="layout"></my-layout>
+        <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
+    </template>
+    <script>
+        window.App = window.App || {}
+
+        class MyApp extends Polymer.MutableData(Polymer.Element) {
+            static get is() {
+                return 'my-app';
+            }
+
+            static get properties() {
+                return {
+                    app: {
+                        type: Object
+                    },
+                    config: {
+                        type: Object,
+                        value: {
+                            routes: [
+                                {
+                                    href: "",
+                                    title: "Home",
+                                    src: "components/app-home.html",
+                                    tag: "app-home"
+                                },
+                                {
+                                    href: "city",
+                                    title: "City",
+                                    src: "components/app-city.html",
+                                    tag: "app-city"
+                                },
+                                {
+                                    href: "state",
+                                    title: "State",
+                                    src: "components/app-state.html",
+                                    tag: "app-state"
+                                },
+                                {
+                                    href: "login",
+                                    title: "Login",
+                                    src: "components/app-login.html",
+                                    tag: "app-login"
+                                },
+                                {
+                                    href: "register",
+                                    title: "Register",
+                                    src: "components/app-register.html",
+                                    tag: "app-register"
+                                },
+                                {
+                                    href: "page",
+                                    title: "Home",
+                                    src: "components/app-page.html",
+                                    tag: "app-page"
+                                },
+                                {
+                                    href: "map",
+                                    title: "Home",
+                                    src: "components/app-map.html",
+                                    tag: "app-map"
+                                },
+                                {
+                                    href: "sitemap",
+                                    title: "Home",
+                                    src: "components/x-sitemap.html",
+                                    tag: "x-sitemap"
+                                },
+                                {
+                                    href: "address",
+                                    title: "Home",
+                                    src: "components/x-address.html",
+                                    tag: "x-address"
+                                }
+                            ]
+                        }
+                    }/*,
+                    routes: {
+                        type: Array,
+                        value: {}
+                    }*/
+                }
+            }
+
+            static get observers() {
+                return ['pathChanged(__path)']
+            }
+
+            constructor() {
+                super();
+
+                window.App = this;
+            }
+
+            pathChanged(path) {
+                path = path.slice(1);
+                var routes = this.config.routes;
+
+                for (var i = 0; i < routes.length; i++) {
+                    if (path == routes[i].href) {
+                        var route = routes[i];
+                    }
+                }
+
+                if (route) {
+                    Polymer.importHref(this.resolveUrl(route.src), null, true);
+
+                    this._removeElements();
+                    var element = document.createElement(route.tag);
+                    this.$.layout.appendChild(element);
+                    // this.shadowRoot.querySelector("x-content").appendChild(element);
+                    // this._addElement(route.tag);
+                    // document.title = this.$.config.baseTitle + " - " + route.title;
+                }
+            }
+
+            _removeElements() {
+                var element = this.$.layout.querySelector("*");
+                if (element) {
+                    element.parentNode.removeChild(element);
+                }
+            }
+        }
+
+        window.customElements.define(MyApp.is, MyApp);
+    </script>
+</dom-module>

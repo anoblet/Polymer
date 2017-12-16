@@ -1,0 +1,36 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+
+<link rel="import" href="my-styles.html">
+
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="my-footer">
+    <template>
+        <style include="app-style my-styles">
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+                background: var(--primary);
+
+                --paper-icon-button: {
+                    color: #fff;
+                }
+            }
+        </style>
+        <paper-icon-button icon="menu"></paper-icon-button>
+        Brand
+        Search
+        <i class="material-icons">face</i>
+    </template>
+
+    <script>
+        class MyFooter extends Polymer.Element {
+            static get is() {
+                return 'my-footer';
+            }
+        }
+
+        window.customElements.define(MyFooter.is, MyFooter);
+    </script>
+</dom-module>

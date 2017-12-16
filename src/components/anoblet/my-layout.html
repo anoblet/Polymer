@@ -1,0 +1,60 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<!-- <link rel="import" href="layout/layout-layout.html"> --><!-- <link rel="import" href="layout/layout-style.html"> -->
+
+<link rel="import" href="../app-style.html">
+<link rel="import" href="my-styles.html">
+
+<link rel="import" href="my-header.html">
+<link rel="import" href="my-drawer.html">
+<link rel="import" href="my-footer.html">
+
+<link rel="import" href="../x-grid/x-grid.html">
+
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+
+<dom-module id="my-layout">
+    <template>
+        <style include="app-style my-styles">
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+        </style>
+        <x-grid>
+            <x-grid-row>
+                <my-header v-align-center></my-header>
+            </x-grid-row>
+            <x-grid-row grow>
+                <x-grid-column grow-disabled>
+                    <my-drawer id="drawer" hidden></my-drawer>
+                </x-grid-column>
+                <x-grid-column scroll>
+                    <slot></slot>
+                </x-grid-column>
+            </x-grid-row>
+            <x-grid-row>
+                <my-footer></my-footer>
+            </x-grid-row>
+        </x-grid>
+    </template>
+    <script>
+        class MyLayout extends Polymer.Element {
+            static get is() {
+                return 'my-layout';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            connectedCallback() {
+                this.addEventListener('toggleDrawer', function (e) {
+                    this.$.drawer.toggle();
+                });
+            }
+        }
+
+        window.customElements.define(MyLayout.is, MyLayout);
+    </script>
+</dom-module>

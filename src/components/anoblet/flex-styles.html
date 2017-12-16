@@ -1,0 +1,49 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="flex-styles">
+    <template>
+        <style>
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+
+            :host([flex]) {
+                display: flex;
+            }
+
+            :host([grow]) {
+                flex-grow: 1;
+            }
+
+            :host([grow-disabled]) {
+                flex-grow: 0;
+            }
+
+            :host([shrink-disabled]) {
+                flex-shrink: 0;
+            }
+
+            :host([v-align-center]) {
+                align-items: center;
+            }
+
+            :host([grid]) {
+
+            }
+        </style>
+    </template>
+    <script>
+        class FlexStyles extends Polymer.Element {
+            static get is() {
+                return 'flex-styles';
+            }
+
+            static get properties() {
+                return {}
+            }
+        }
+
+        window.customElements.define(FlexStyles.is, FlexStyles);
+    </script>
+</dom-module>

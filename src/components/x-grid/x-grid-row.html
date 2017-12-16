@@ -7,13 +7,16 @@
         <style include="app-style">
             :host {
                 @apply(--flex);
-                @apply(--flex-auto);
                 flex-shrink: 0;
                 flex-wrap: wrap;
-                width: 100%;
                 /* padding-left: 2em; */
                 /* padding-right: 2em; */
             }
+
+            :host([grow]) {
+                @apply(--flex-grow);
+            }
+
             /*:host ::slotted(x-grid-column) {
                 padding-left: 2rem;
                 padding-right: 2rem;
