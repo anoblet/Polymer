@@ -35,7 +35,8 @@
             static get properties() {
                 return {
                     app: {
-                        type: Object
+                        type: Object,
+                        notify: true
                     },
                     scope: {
                         type: Object,
@@ -114,10 +115,25 @@
                 //this.set('scope.location.latitude', latitude);
                 //this.set('scope.location.longitude', longitude);
 
+                /*
                 this.set('state.user.location.city', city);
                 this.set('state.user.location.state', state);
                 this.set('state.user.location.latitude', latitude);
                 this.set('state.user.location.longitude', longitude);
+                */
+
+                var location = {
+                    city: city,
+                    state: state,
+                    latitude: latitude,
+                    longitude: longitude
+                };
+
+                this.dispatchEvent(new CustomEvent('locationChanged', {detail: location, bubbles: true, composed: true}));
+                App.notifyPath('data');
+                this.set('app.state.location.state', state);
+                // this.app.notifyPath('state');
+
                 this.scope.notifyPath('state');
             }
 

@@ -27,7 +27,7 @@
                 <x-grid-cell>
                     <paper-card heading="Address">
                         <div class="card-content">
-                            [[state.user.location.city]], [[state.user.location.state]]
+                            [[data.location]], [[data.location.state]]
                         </div>
                     </paper-card>
                 </x-grid-cell>
@@ -127,9 +127,18 @@
                             'x-map',
                             'x-demographics'
                         ]
+                    },
+                    data: {
+                        type: Object
                     }
                 }
             }
+
+            connectedCallback() {
+                super.connectedCallback();
+                console.log(this.data);
+            }
+
         }
 
         window.customElements.define(AppOverview.is, AppOverview);

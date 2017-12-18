@@ -4,16 +4,25 @@
     <template>
         <style>
             :host {
-                @apply(--flex);
-                @apply(--flex-grow);
+                --flex: {
+                    display: flex;
+                };
+
+                --flex-grow: {
+                    flex-grow: 1;
+                }
             }
 
             :host([flex]) {
-                display: flex;
+                @apply(--flex);
             }
 
             :host([grow]) {
                 flex-grow: 1;
+            }
+
+            :host([flex][auto]) {
+                flex: auto;
             }
 
             :host([grow-disabled]) {

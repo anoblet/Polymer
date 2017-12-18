@@ -1,5 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="../x-locate.html">
+
 <link rel="import" href="my-styles.html">
 
 <link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
@@ -13,23 +15,40 @@
                 @apply(--flex-grow);
                 background: #2196f3;
                 padding: 1rem;
+                color: #fff;
 
                 --paper-icon-button: {
+                    color: #fff;
+                };
+
+                --paper-input-container: {
+                    border-color: red;
+                  color: red;
+                };
+
+                --paper-input-container-color: #fff;
+
+                --paper-input-container-input: {
                     color: #fff;
                 }
             }
         </style>
         <x-grid>
             <x-grid-row>
-                <x-grid-column grow-disabled>
-                    <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
+                <x-grid-column>
+                    <x-grid-column grow-disabled v-align-center>
+                        <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
+                    </x-grid-column>
+                    <x-grid-column grow-disabled v-align-center>
+                        <span style="width: max-content">
+                        [[title]]
+                        </span>
+                    </x-grid-column>
                 </x-grid-column>
                 <x-grid-column v-align-center>
-                    [[title]]
+                    <x-locate app="{{scope}}" v-align-center></x-locate>
                 </x-grid-column>
-                <x-grid-column v-align-center>
-                    Search
-                </x-grid-column>
+                <x-grid-column></x-grid-column>
             </x-grid-row>
         </x-grid>
     </template>

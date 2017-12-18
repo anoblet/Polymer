@@ -9,9 +9,9 @@
 <link rel="import" href="my-drawer.html">
 <link rel="import" href="my-footer.html">
 
-<link rel="import" href="../x-grid/x-grid.html">
+<link rel="import" href="../x-content.html">
 
-<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../x-grid/x-grid.html">
 
 <dom-module id="my-layout">
     <template>
@@ -21,16 +21,17 @@
                 @apply(--flex-grow);
             }
         </style>
+        [[data.location.city]]
         <x-grid>
             <x-grid-row>
                 <my-header v-align-center></my-header>
             </x-grid-row>
-            <x-grid-row grow>
+            <x-grid-row grow no-height>
                 <x-grid-column grow-disabled>
                     <my-drawer id="drawer" hidden></my-drawer>
                 </x-grid-column>
                 <x-grid-column scroll>
-                    <slot></slot>
+                    <x-content data="[[data]]" flex grow scroll><slot></slot></x-content>
                 </x-grid-column>
             </x-grid-row>
             <x-grid-row>
@@ -39,13 +40,21 @@
         </x-grid>
     </template>
     <script>
-        class MyLayout extends Polymer.Element {
+        class MyLayout extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'my-layout';
             }
 
             static get properties() {
-                return {}
+                return {
+                    scope: {
+                        type: Object,
+                        notify: true
+                    },
+                    data: {
+                        type: Object,
+                    }
+                }
             }
 
             connectedCallback() {
