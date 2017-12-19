@@ -8,6 +8,8 @@
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
 
+<link rel="import" href="x-state.html">
+
 <link rel="import" href="app-style.html">
 
 <dom-module id="x-locate">
@@ -24,6 +26,8 @@
         <paper-input id="locate" placeholder="[[state.user.location.city]], [[state.user.location.state]]" type="text" class="form-control">
             <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
         </paper-input>
+
+        <x-state id="state" data="{{state}}"></x-state>
     </template>
 
     <script>
@@ -36,6 +40,9 @@
                 return {
                     app: {
                         type: Object,
+                        value: function() {
+                            return App;
+                        },
                         notify: true
                     },
                     scope: {
@@ -44,9 +51,21 @@
                     },
                     state: {
                         type: Object,
+                        value: {},
+                        notify: true
+                    },
+                    data: {
+                        type: Object,
                         notify: true
                     }
                 }
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.state = this.shadowRoot.querySelector('x-state').data;
+                // this.state = this.$.state.data;
+                this.state.location = this.state.location || {}
             }
 
             _autocomplete() {
@@ -93,7 +112,8 @@
 
             setLocation(result) {
                 var scope = this.scope;
-                var location = this.scope.location;
+
+                var _location = {};
 
                 var latitude = result.geometry.location.lat();
                 var longitude = result.geometry.location.lng();
@@ -101,10 +121,12 @@
                 for (var i = 0; i < result.address_components.length; i++) {
                     if (result.address_components[i].types[0] == 'locality') {
                         var city = result.address_components[i].long_name;
+                        _location.city = result.address_components[i].long_name;
                     }
 
                     if (result.address_components[i].types[0] == 'administrative_area_level_1') {
                         var state = result.address_components[i].long_name;
+                        _location.state = result.address_components[i].long_name;
                     }
                 }
 
@@ -129,12 +151,15 @@
                     longitude: longitude
                 };
 
-                this.dispatchEvent(new CustomEvent('locationChanged', {detail: location, bubbles: true, composed: true}));
+                // this.dispatchEvent(new CustomEvent('locationChanged', {detail: location, bubbles: true, composed: true}));
+                App.set('data.location', _location);
+                // this.state.location = _location;
                 App.notifyPath('data');
-                this.set('app.state.location.state', state);
+                // this.set('app.state.location.state', state);
                 // this.app.notifyPath('state');
 
                 this.scope.notifyPath('state');
+                this.scope.notifyPath('data');
             }
 
             mapApiLoaded() {

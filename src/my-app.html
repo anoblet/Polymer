@@ -113,7 +113,8 @@
                             location: {
                                 state: "a"
                             }
-                        }
+                        },
+                        notify: true
                     },
                     subscribers: {
                         type: Array,
@@ -125,6 +126,7 @@
             static get observers() {
                 return [
                     'stateChanged(state.*)',
+                    'dataChanged(data.*)',
                     'pathChanged(__path)'
                 ]
             }
@@ -141,17 +143,30 @@
                 this.addEventListener('locationChanged', function (e) {
                     var _location = e.detail;
                     this.set('data.location', _location);
-                    this.notifyPath('data.location');
-                    this.data.location = _location;
-                    this.shadowRoot.querySelector('my-layout').data = this.data;
+                    this.notifyPath('data');
+                    this.shadowRoot.querySelector('my-layout').querySelector('*').data = this.data;
+                    // this.shadowRoot.querySelector('app-home').data = this.data;
+                    this.data = this.data;
                 });
-                // this.set('data.location', l);
-                // this.notifyPath('data');
-                console.log('a');
             };
 
             stateChanged(state) {
                 console.log('Here');
+            }
+
+            dataChanged(data) {
+                console.log('Data changed');
+                // this.app.data = this.data;
+                //this.data = this.data;
+                // this.app = this.app;
+                // this.set('app', App);
+                // this.notifyPath('app');
+                // this.notifyPath('data');
+                App = this;
+                var element = this.shadowRoot.querySelector('my-layout').querySelector('*');
+                if (element) {
+                    this.shadowRoot.querySelector('my-layout').querySelector('*').data = this.data;
+                }
             }
 
             pathChanged(path) {

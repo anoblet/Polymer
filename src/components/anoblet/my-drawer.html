@@ -24,6 +24,7 @@
                 visibility: hidden;
             }
         </style>
+        [[data.location.city]]
         <app-nav></app-nav>
     </template>
 
@@ -34,9 +35,21 @@
             }
 
             static get properties() {
-                return () => {
+                return {
+                    app: {
+                        type: Object,
+                        value: function() {
+                            return App;
+                        }
+                    },
+                    data: {
+                        type: Object,
+                        value: function() {
+                            return App.data;
+                        }
+                    },
                     hidden: {
-                        type: Object
+                        type: Boolean,
                         value: true
                     }
                 }

@@ -4,6 +4,8 @@
 
 <link rel="import" href="anoblet/flex-styles.html">
 
+<link rel="import" href="x-state.html">
+
 <link rel="import" href="anoblet/my-styles.html">
 
 <dom-module id="app-home">
@@ -11,11 +13,11 @@
         <style include="flex-styles my-styles">
             :host {
                 @apply(--flex);
-                @apply(--grow);
+                @apply(--flex-grow);
             }
         </style>
-        [[data.location.state]]
         <app-overview app="{{app}}" data="[[data]]" scope="[[scope]]" state="{{state}}"></app-overview>
+        <x-state data="{{state}}"></x-state>
     </template>
 
     <script>
@@ -38,6 +40,12 @@
                         type: Object
                     }
                 }
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.state = this.shadowRoot.querySelector('x-state').data;
+                console.log(this.state.location.city);
             }
         }
 

@@ -21,17 +21,18 @@
                 @apply(--flex-grow);
             }
         </style>
-        [[data.location.city]]
         <x-grid>
             <x-grid-row>
                 <my-header v-align-center></my-header>
             </x-grid-row>
             <x-grid-row grow no-height>
                 <x-grid-column grow-disabled>
-                    <my-drawer id="drawer" hidden></my-drawer>
+                    <my-drawer id="drawer" data="[[data]]" hidden></my-drawer>
                 </x-grid-column>
                 <x-grid-column scroll>
-                    <x-content data="[[data]]" flex grow scroll><slot></slot></x-content>
+                    <x-content data="[[data]]" flex grow scroll>
+                        <slot></slot>
+                    </x-content>
                 </x-grid-column>
             </x-grid-row>
             <x-grid-row>
@@ -47,6 +48,12 @@
 
             static get properties() {
                 return {
+                    app: {
+                        type: Object,
+                        value: function() {
+                            return App;
+                        }
+                    },
                     scope: {
                         type: Object,
                         notify: true

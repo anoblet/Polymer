@@ -4,7 +4,7 @@
     <script>
         (function () {
 
-            let stateInstance = null;
+            let data = {};
 
             class XState extends XElement {
                 static get is() {
@@ -13,10 +13,9 @@
 
                 static get properties() {
                     return {
-                        state: () => {
-                            location: {
-                                city: "A"
-                            }
+                        data: {
+                            type: Object,
+                            value: {}
                         },
                         subscribers: {
                             type: Array,
@@ -34,7 +33,7 @@
                 constructor() {
                     super();
 
-                    if (!stateInstance) stateInstance = this;
+                    // if (!stateInstance) stateInstance = this;
                 }
 
                 register(subscriber) {
@@ -52,6 +51,11 @@
                     for (var i = 0; i < this.subscribers.length; i++) {
                         this.subscribers[i].notifyPath(change.path);
                     }
+                }
+
+                connectedCallback() {
+                    super.connectedCallback();
+                    this.data = data;
                 }
             }
 
