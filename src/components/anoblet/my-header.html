@@ -2,6 +2,7 @@
 
 <link rel="import" href="../x-locate.html">
 
+<link rel="import" href="global-styles.html">
 <link rel="import" href="my-styles.html">
 
 <link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
@@ -9,7 +10,7 @@
 
 <dom-module id="my-header">
     <template>
-        <style include="app-style my-styles">
+        <style include="app-style global-styles my-styles">
             :host {
                 @apply(--flex);
                 @apply(--flex-grow);
@@ -22,15 +23,26 @@
                 };
 
                 --paper-input-container: {
-                    border-color: red;
-                  color: red;
+                    color: #fff;
                 };
 
                 --paper-input-container-color: #fff;
 
                 --paper-input-container-input: {
                     color: #fff;
+                };
+
+                --paper-input-container-label: {
+                    display: none;
+                };
+
+                --paper-input-container-label-floating: {
+                    display: none;
                 }
+            }
+
+            a {
+                color: #fff;
             }
         </style>
         <x-grid>
@@ -41,14 +53,20 @@
                     </x-grid-column>
                     <x-grid-column grow-disabled v-align-center>
                         <span style="width: max-content">
-                        [[title]]
+                            <a href="/">[[title]]</a>
                         </span>
                     </x-grid-column>
                 </x-grid-column>
                 <x-grid-column v-align-center>
                     <x-locate app="{{scope}}" v-align-center></x-locate>
                 </x-grid-column>
-                <x-grid-column></x-grid-column>
+                <x-grid-column justify-content-flex-end v-align-center>
+                    <x-grid-column></x-grid-column>
+                    <x-grid-column></x-grid-column>
+                    <x-grid-column>
+                        <paper-icon-button icon="icons:account-circle"></paper-icon-button>
+                    </x-grid-column>
+                </x-grid-column>
             </x-grid-row>
         </x-grid>
     </template>

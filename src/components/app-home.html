@@ -16,6 +16,8 @@
                 @apply(--flex-grow);
             }
         </style>
+        [[data.location.city]]a
+        [[state.location.city]]
         <app-overview app="{{app}}" data="[[data]]" scope="[[scope]]" state="{{state}}"></app-overview>
         <x-state data="{{state}}"></x-state>
     </template>
@@ -37,7 +39,8 @@
                         notify: true
                     },
                     data: {
-                        type: Object
+                        type: Object,
+                        notify: true
                     }
                 }
             }

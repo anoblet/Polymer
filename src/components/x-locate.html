@@ -23,7 +23,7 @@
 
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
 
-        <paper-input id="locate" placeholder="[[state.user.location.city]], [[state.user.location.state]]" type="text" class="form-control">
+        <paper-input id="locate" placeholder="[[state.user.location.city]], [[state.user.location.state]]" type="text">
             <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
         </paper-input>
 
@@ -64,6 +64,7 @@
             connectedCallback() {
                 super.connectedCallback();
                 this.state = this.shadowRoot.querySelector('x-state').data;
+                this.data = this.state.location;
                 // this.state = this.$.state.data;
                 this.state.location = this.state.location || {}
             }
@@ -153,7 +154,7 @@
 
                 // this.dispatchEvent(new CustomEvent('locationChanged', {detail: location, bubbles: true, composed: true}));
                 App.set('data.location', _location);
-                // this.state.location = _location;
+                this.state.location = _location;
                 App.notifyPath('data');
                 // this.set('app.state.location.state', state);
                 // this.app.notifyPath('state');
