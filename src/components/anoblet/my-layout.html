@@ -11,6 +11,8 @@
 
 <link rel="import" href="../x-content.html">
 
+<link rel="import" href="../x-state.html">
+
 <link rel="import" href="../x-grid/x-grid.html">
 
 <dom-module id="my-layout">
@@ -21,9 +23,12 @@
                 @apply(--flex-grow);
             }
         </style>
+        <x-state id="state" data="{{state}}}"></x-state>
+        Location: [[state.location]]
+        Location: [[data.location.city]]
         <x-grid>
             <x-grid-row>
-                <my-header v-align-center></my-header>
+                <my-header data="{{data}}" v-align-center></my-header>
             </x-grid-row>
             <x-grid-row grow no-height>
                 <x-grid-column grow-disabled>

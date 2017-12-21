@@ -1,7 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
+<!-- My imports -->
 <link rel="import" href="components/anoblet/my-layout.html">
 
+<link rel="import" href="components/anoblet/global-styles.html">
+<link rel="import" href="components/anoblet/my-styles.html">
+
+<!-- Dependencies -->
 <link rel="import" href="../bower_components/iron-location/iron-location.html">
 
 <dom-module id="my-app">
@@ -12,16 +17,18 @@
                 @apply(--flex-grow);
             }
         </style>
-        <!-- elements -->
-        <my-layout data="[[data]]"></my-layout>
-        <!-- end elements -->
+        <!-- Blocks -->
+        <my-layout id="layout" data="[[data]]"></my-layout>
+        <!-- End Blocks -->
 
         <!-- Dependencies -->
-        <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
+        <iron-location path="{{path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
         <!-- End Dependencies -->
     </template>
     <script>
-        window.App = window.App || {}
+        (function () {
+            window.App = window.App || {}
+        })();
 
         class MyApp extends Polymer.MutableData(Polymer.Element) {
             static get is() {
@@ -42,97 +49,92 @@
                             return this;
                         }
                     },
-                    config: {
-                        type: Object,
-                        value: {
-                            routes: [
-                                {
-                                    href: "",
-                                    title: "Home",
-                                    src: "components/app-home.html",
-                                    tag: "app-home"
-                                },
-                                {
-                                    href: "city",
-                                    title: "City",
-                                    src: "components/app-city.html",
-                                    tag: "app-city"
-                                },
-                                {
-                                    href: "state",
-                                    title: "State",
-                                    src: "components/app-state.html",
-                                    tag: "app-state"
-                                },
-                                {
-                                    href: "login",
-                                    title: "Login",
-                                    src: "components/app-login.html",
-                                    tag: "app-login"
-                                },
-                                {
-                                    href: "register",
-                                    title: "Register",
-                                    src: "components/app-register.html",
-                                    tag: "app-register"
-                                },
-                                {
-                                    href: "page",
-                                    title: "Home",
-                                    src: "components/app-page.html",
-                                    tag: "app-page"
-                                },
-                                {
-                                    href: "map",
-                                    title: "Home",
-                                    src: "components/app-map.html",
-                                    tag: "app-map"
-                                },
-                                {
-                                    href: "sitemap",
-                                    title: "Home",
-                                    src: "components/x-sitemap.html",
-                                    tag: "x-sitemap"
-                                },
-                                {
-                                    href: "address",
-                                    title: "Home",
-                                    src: "components/x-address.html",
-                                    tag: "x-address"
-                                }
-                            ]
-                        }
-                    },
-                    state: {
-                        type: Object,
-                        value: {}
-                    },
                     data: {
                         type: Object,
                         value: {
+                            config: {
+                                routes: [
+                                    {
+                                        href: "",
+                                        title: "Home",
+                                        src: "components/app-home.html",
+                                        tag: "app-home"
+                                    },
+                                    {
+                                        href: "city",
+                                        title: "City",
+                                        src: "components/app-city.html",
+                                        tag: "app-city"
+                                    },
+                                    {
+                                        href: "state",
+                                        title: "State",
+                                        src: "components/app-state.html",
+                                        tag: "app-state"
+                                    },
+                                    {
+                                        href: "login",
+                                        title: "Login",
+                                        src: "components/app-login.html",
+                                        tag: "app-login"
+                                    },
+                                    {
+                                        href: "register",
+                                        title: "Register",
+                                        src: "components/app-register.html",
+                                        tag: "app-register"
+                                    },
+                                    {
+                                        href: "page",
+                                        title: "Home",
+                                        src: "components/app-page.html",
+                                        tag: "app-page"
+                                    },
+                                    {
+                                        href: "map",
+                                        title: "Home",
+                                        src: "components/app-map.html",
+                                        tag: "app-map"
+                                    },
+                                    {
+                                        href: "sitemap",
+                                        title: "Home",
+                                        src: "components/x-sitemap.html",
+                                        tag: "x-sitemap"
+                                    },
+                                    {
+                                        href: "address",
+                                        title: "Home",
+                                        src: "components/x-address.html",
+                                        tag: "x-address"
+                                    }
+                                ]
+                            },
                             location: {
                                 state: "a"
                             }
                         },
                         notify: true
                     },
-                    subscribers: {
-                        type: Array,
-                        value: []
+                    state: {
+                        type: Object,
+                        value: {}
                     }
                 }
             }
 
             static get observers() {
                 return [
-                    'stateChanged(state.*)',
                     'dataChanged(data.*)',
-                    'pathChanged(__path)'
+                    'stateChanged(state.*)',
+                    'pathChanged(path)'
                 ]
             }
 
             constructor() {
                 super();
+
+                // Add app instance to the window
                 window.App = this;
             }
 
@@ -141,37 +143,31 @@
 
                 // Location
                 this.addEventListener('locationChanged', function (e) {
-                    var _location = e.detail;
-                    this.set('data.location', _location);
-                    this.notifyPath('data');
+                    this.set('data.location', e.detail);
                     this.shadowRoot.querySelector('my-layout').querySelector('*').data = this.data;
-                    // this.shadowRoot.querySelector('app-home').data = this.data;
-                    this.data = this.data;
                 });
             };
 
             stateChanged(state) {
-                console.log('Here');
+                console.log('State changed');
             }
 
             dataChanged(data) {
                 console.log('Data changed');
-                // this.app.data = this.data;
-                //this.data = this.data;
-                // this.app = this.app;
-                // this.set('app', App);
-                // this.notifyPath('app');
-                // this.notifyPath('data');
-                App = this;
+                this.data = this.data;
+
                 var element = this.shadowRoot.querySelector('my-layout').querySelector('*');
                 if (element) {
-                    this.shadowRoot.querySelector('my-layout').querySelector('*').data = this.data;
+                    var layout = this.$.layout;
+                    layout.querySelector('*').set('data', this.data);
+                    //  element.set('data', this.data);
+                    element.notifyPath('data');
                 }
             }
 
             pathChanged(path) {
                 path = path.slice(1);
-                var routes = this.config.routes;
+                var routes = this.data.config.routes;
 
                 for (var i = 0; i < routes.length; i++) {
                     if (path == routes[i].href) {
@@ -185,8 +181,8 @@
                     this._removeElements();
                     var element = document.createElement(route.tag);
                     element.data = this.data;
-
-                    this.shadowRoot.querySelector('my-layout').appendChild(element);
+                    var a = this.shadowRoot.querySelector('my-layout').appendChild(element);
+                    // a.set('data', this.data);
                     // this.shadowRoot.querySelector('my-layout').shadowRoot.querySelector('x-content').appendChild(element);
                     // this.$.layout.appendChild(element);
                     // // this.shadowRoot.querySelector("x-content").appendChild(element);

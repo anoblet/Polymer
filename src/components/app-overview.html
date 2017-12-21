@@ -9,6 +9,7 @@
 <link rel="import" href="x-demographic.html">
 <link rel="import" href="x-locate.html">
 <link rel="import" href="x-map.html">
+<link rel="import" href="x-state.html">
 
 <link rel="import" href="app-style.html">
 
@@ -27,6 +28,7 @@
                 <x-grid-cell>
                     <paper-card heading="Address">
                         <div class="card-content">
+                            [[state.location.city]]
                             [[data.location.city]], [[data.location.state]]
                         </div>
                     </paper-card>
@@ -99,6 +101,7 @@
                 </x-grid-column>
             </x-grid-row>
         </x-grid>
+        <x-state id="state" data="{{state}}"></x-state>
     </template>
 
     <script>
@@ -114,8 +117,7 @@
                         notify: true
                     },
                     state: {
-                        type: Object,
-                        notify: true
+                        type: Object
                     },
                     blocks: {
                         type: Object,
@@ -134,9 +136,17 @@
                 }
             }
 
+            ready() {
+                super.ready();
+                this.state = this.$.state.data;
+            }
+
             connectedCallback() {
                 super.connectedCallback();
-                console.log(this.data);
+                // this.set('state', this.$.state.data);
+                console.log(this.state);
+                alert('Me');
+                // this.state = this.$.state.data;
             }
 
         }

@@ -6,7 +6,7 @@
 
             let data = {};
 
-            class XState extends XElement {
+            class XState extends Polymer.MutableData(XElement) {
                 static get is() {
                     return 'x-state';
                 }
@@ -15,73 +15,21 @@
                     return {
                         data: {
                             type: Object,
-                            value: {}
-                        },
-                        subscribers: {
-                            type: Array,
-                            value: () => []
                         }
                     }
                 }
 
-                static get observers() {
-                    return [
-                        'stateChanged(state.*)'
-                    ]
-                }
-
-                constructor() {
-                    super();
-
-                    // if (!stateInstance) stateInstance = this;
-                }
-
-                register(subscriber) {
-                    this.subscribers.push(subscriber);
-                    subscriber.options = this.options;
-                    subscriber.notifyPath('options');
-                }
-
-                unregister(subscriber) {
-                    var i = this.subscribers.indexOf(subscriber);
-                    if (i > -1) this.subscribers.splice(i, 1)
-                }
-
-                stateChanged(change) {
-                    for (var i = 0; i < this.subscribers.length; i++) {
-                        this.subscribers[i].notifyPath(change.path);
-                    }
+                ready() {
+                    super.ready();
+                    this.data = data;
                 }
 
                 connectedCallback() {
                     super.connectedCallback();
-                    this.data = data;
+                    // this.data = data;
                 }
             }
-
             window.customElements.define(XState.is, XState);
-
-            XStateMixin = (superClass) => {
-                return class extends superClass {
-                    static get properties() {
-                        return {
-                            state: {
-                                type: Object
-                            }
-                        }
-                    }
-
-                    connectedCallback() {
-                        super.connectedCallback();
-                        stateInstance.register(this);
-                    }
-
-                    disconnectedCallback() {
-                        super.disconnectedCallback();
-                        stateInstance.unregister(this);
-                    }
-                }
-            }
         }());
     </script>
 </dom-module>

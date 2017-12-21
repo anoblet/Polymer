@@ -23,7 +23,7 @@
 
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
 
-        <paper-input id="locate" placeholder="[[state.user.location.city]], [[state.user.location.state]]" type="text">
+        <paper-input id="locate" placeholder="[[state.location.city]], [[state.location.state]]" type="text">
             <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
         </paper-input>
 
@@ -51,22 +51,29 @@
                     },
                     state: {
                         type: Object,
-                        value: {},
                         notify: true
                     },
                     data: {
                         type: Object,
+                        value: {
+                            city: "Port Chester",
+                            state: "New York"
+                        },
                         notify: true
                     }
                 }
             }
 
+            ready() {
+                super.ready();
+                this.state = this.$.state.data;
+                this.state.location = this.data;
+            }
+
             connectedCallback() {
                 super.connectedCallback();
-                this.state = this.shadowRoot.querySelector('x-state').data;
-                this.data = this.state.location;
-                // this.state = this.$.state.data;
-                this.state.location = this.state.location || {}
+                // this.state = this.shadowRoot.querySelector('x-state').data;
+                //this.state = this.$.state.data;
             }
 
             _autocomplete() {
@@ -112,55 +119,22 @@
             }
 
             setLocation(result) {
-                var scope = this.scope;
-
                 var _location = {};
 
-                var latitude = result.geometry.location.lat();
-                var longitude = result.geometry.location.lng();
+                _location.latitude = result.geometry.location.lat();
+                _location.longitude = result.geometry.location.lng();
 
                 for (var i = 0; i < result.address_components.length; i++) {
                     if (result.address_components[i].types[0] == 'locality') {
-                        var city = result.address_components[i].long_name;
                         _location.city = result.address_components[i].long_name;
                     }
 
                     if (result.address_components[i].types[0] == 'administrative_area_level_1') {
-                        var state = result.address_components[i].long_name;
                         _location.state = result.address_components[i].long_name;
                     }
                 }
 
-                //this.scope.set('location.city', city);
-                //this.scope.location.set('state', state);
-                //this.set('scope.location.city', city);
-                //this.set('scope.location.state', state);
-                //this.set('scope.location.latitude', latitude);
-                //this.set('scope.location.longitude', longitude);
-
-                /*
-                this.set('state.user.location.city', city);
-                this.set('state.user.location.state', state);
-                this.set('state.user.location.latitude', latitude);
-                this.set('state.user.location.longitude', longitude);
-                */
-
-                var location = {
-                    city: city,
-                    state: state,
-                    latitude: latitude,
-                    longitude: longitude
-                };
-
-                // this.dispatchEvent(new CustomEvent('locationChanged', {detail: location, bubbles: true, composed: true}));
                 App.set('data.location', _location);
-                this.state.location = _location;
-                App.notifyPath('data');
-                // this.set('app.state.location.state', state);
-                // this.app.notifyPath('state');
-
-                this.scope.notifyPath('state');
-                this.scope.notifyPath('data');
             }
 
             mapApiLoaded() {
