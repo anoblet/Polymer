@@ -17,6 +17,9 @@
                 @apply(--flex-grow);
             }
         </style>
+        <x-state data="[[state]]"></x-state>
+        State: [[state.location.city]]
+        Data: [[data.location.city]]
         <!-- Blocks -->
         <my-layout id="layout" data="[[data]]"></my-layout>
         <!-- End Blocks -->
@@ -118,7 +121,6 @@
                     },
                     state: {
                         type: Object,
-                        value: {}
                     }
                 }
             }
