@@ -1,0 +1,51 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-location">
+    <template>
+        <style></style>
+        <!-- [[app.data.location.city]] -->
+        <!-- [[data.city]] -->
+    </template>
+
+    <script>
+        (function () {
+            let data = {
+                city: "c"
+            };
+
+            class MyLocation extends Polymer.MutableData(Polymer.Element) {
+                static get is() {
+                    return 'my-location';
+                }
+
+                static get properties() {
+                    return {
+                        app: {
+                            type: Object,
+                            value: function() {
+                                return App;
+                            }
+                        },
+                        data: {
+                            type: Object,
+                            notify: true
+                        }
+                    }
+                }
+
+                connectedCallback() {
+                    super.connectedCallback();
+
+                    // console.log(data);
+
+                    this.data = data;
+                    // this.set('data', data);
+
+                    // console.log(this.data);
+                }
+            }
+
+            window.customElements.define(MyLocation.is, MyLocation);
+        })();
+    </script>
+</dom-module>

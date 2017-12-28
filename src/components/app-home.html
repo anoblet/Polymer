@@ -17,7 +17,7 @@
             }
         </style>
         <x-state data="{{state}}"></x-state>
-        test [[state]] [[data.location.city]]
+        <!-- [[data.location.city]] -->
 
         <app-overview app="{{app}}" data="[[data]]" scope="[[scope]]" state="{{state}}"></app-overview>
     </template>
@@ -52,7 +52,8 @@
             }
 
             dataChanged(data) {
-                console.log('a');
+                // console.log('a');
+                // this.notifyPath('data');
                 // this.set('data', data)
             };
         }

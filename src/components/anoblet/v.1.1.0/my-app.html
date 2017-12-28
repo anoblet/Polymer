@@ -1,0 +1,199 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../../../bower_components/iron-location/iron-location.html">
+
+<link rel="import" href="../global-styles.html">
+
+<link rel="import" href="../my-layout.html">
+
+<link rel="import" href="my-config.html">
+<link rel="import" href="my-location.html">
+<link rel="import" href="../test/test-a.html">
+
+<dom-module id="my-app">
+    <template>
+        <style include="global-styles">
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+        </style>
+        <my-config></my-config>
+        <my-location id="location" data="{{data.location}}"></my-location>
+        <iron-location path="{{__path}}"></iron-location>
+        <my-layout data="{{data}}"></my-layout>
+        <test-a data="[[data]]"></test-a>
+    </template>
+    <script>
+        (function () {
+            let data = {};
+            let model = {};
+
+            window.App = {};
+
+            class MyApp extends Polymer.MutableData(Polymer.Element) {
+                static get is() {
+                    return 'my-app';
+                }
+
+                static get properties() {
+                    return {
+                        /*
+                        app: {
+                            type: Object,
+                            value: function() {
+                                return App;
+                            }
+                        },
+                        */
+                        data: {
+                            type: Object,
+                            value: {
+                                config: {
+                                    routes: [
+                                        {
+                                            href: "",
+                                            title: "Home",
+                                            src: "components/app-home.html",
+                                            tag: "app-home"
+                                        },
+                                        {
+                                            href: "city",
+                                            title: "City",
+                                            src: "components/app-city.html",
+                                            tag: "app-city"
+                                        },
+                                        {
+                                            href: "state",
+                                            title: "State",
+                                            src: "components/app-state.html",
+                                            tag: "app-state"
+                                        },
+                                        {
+                                            href: "login",
+                                            title: "Login",
+                                            src: "components/app-login.html",
+                                            tag: "app-login"
+                                        },
+                                        {
+                                            href: "register",
+                                            title: "Register",
+                                            src: "components/app-register.html",
+                                            tag: "app-register"
+                                        },
+                                        {
+                                            href: "page",
+                                            title: "Home",
+                                            src: "components/app-page.html",
+                                            tag: "app-page"
+                                        },
+                                        {
+                                            href: "map",
+                                            title: "Home",
+                                            src: "components/app-map.html",
+                                            tag: "app-map"
+                                        },
+                                        {
+                                            href: "sitemap",
+                                            title: "Home",
+                                            src: "components/x-sitemap.html",
+                                            tag: "x-sitemap"
+                                        },
+                                        {
+                                            href: "address",
+                                            title: "Home",
+                                            src: "components/x-address.html",
+                                            tag: "x-address"
+                                        }
+                                    ]
+                                }
+                            },
+                            notify: true
+                        },
+                        model: {
+                            type: Object
+                        },
+                        dependants: {
+                            type: Array,
+                            value: []
+                        }
+                    }
+                }
+
+                static get observers() {
+                    return [
+                        '__dataChanged(data.*)',
+                        '__pathChanged(__path)'
+                    ]
+                }
+
+                __dataChanged(data) {
+                    console.log('Data changed');
+                    var e = this.shadowRoot.querySelector('test-a');
+                    if (e) {
+                        // e.set('app', App);
+                        e.set('data', this.data);
+                    }
+                    var l = this.shadowRoot.querySelector('my-layout');
+                    var e = l.querySelector('*');
+                    console.log(e);
+                    var _t = this;
+                    if(this.dependants) {
+                        for (var i = 0; i < this.dependants.length; i++) {
+                            _t.dependants[i].set('data', this.data);
+                        }
+                    }
+                }
+
+                __pathChanged(__path) {
+                    __path = __path.slice(1);
+
+                    var _t = this;
+
+                    var routes = this.data.config.routes;
+
+                    for (var i = 0; i < routes.length; i++) {
+                        if (__path == routes[i].href) {
+                            var route = routes[i];
+                        }
+                    }
+
+                    Polymer.importHref(this.resolveUrl("/src/" + route.src), function (e) {
+                        var e = document.createElement(route.tag);
+                        var a = _t.shadowRoot.querySelector('my-layout');
+                        var l = a.appendChild(e);
+                        _t.dependants.push(l);
+                        l.set('data', _t.data);
+                    });
+                }
+
+                ready() {
+                    super.ready();
+
+                    // App = this;
+                }
+
+                connectedCallback() {
+                    super.connectedCallback();
+
+                    this.config = this.shadowRoot.querySelector('my-config').data;
+
+                    // this.location = this.shadowRoot.querySelector('my-location').data;
+                    // this.data.location = this.shadowRoot.querySelector('my-location').data;
+
+                    window.App = this;
+
+                    var e = document.createElement('test-a');
+                    var a = this.shadowRoot.appendChild(e);
+                    a.set('data', this.data);
+                    //console.log(a.data);
+                    console.log(this.data);
+                }
+            }
+
+            window.customElements.define(MyApp.is, MyApp);
+        })();
+
+
+    </script>
+</dom-module>

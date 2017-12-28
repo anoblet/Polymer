@@ -1,14 +1,14 @@
-<link rel="import" href="x-element.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 
-<dom-module id="x-state">
+<dom-module id="my-data">
+    <template>
+        <style></style>
+    </template>
     <script>
         (function () {
-
-            let data = {};
-
-            class XState extends Polymer.MutableData(XElement) {
+            class MyData extends Polymer.Element {
                 static get is() {
-                    return 'x-state';
+                    return 'my-data';
                 }
 
                 static get properties() {
@@ -19,17 +19,20 @@
                     }
                 }
 
-                ready() {
-                    super.ready();
-                    // this.data = data;
-                }
-
                 connectedCallback() {
                     super.connectedCallback();
+
                     this.data = data;
                 }
             }
-            window.customElements.define(XState.is, XState);
-        }());
+
+            let data = {
+                routes: {
+
+                }
+            };
+
+            window.customElements.define(MyData.is, MyData);
+        })();
     </script>
 </dom-module>

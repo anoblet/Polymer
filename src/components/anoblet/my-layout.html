@@ -1,31 +1,22 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-
-<!-- <link rel="import" href="layout/layout-layout.html"> --><!-- <link rel="import" href="layout/layout-style.html"> -->
-
+<link rel="import" href="global-styles.html">
 <link rel="import" href="../app-style.html">
 <link rel="import" href="my-styles.html">
-
 <link rel="import" href="my-header.html">
 <link rel="import" href="my-drawer.html">
 <link rel="import" href="my-footer.html">
-
-<link rel="import" href="../x-content.html">
-
-<link rel="import" href="../x-state.html">
-
 <link rel="import" href="../x-grid/x-grid.html">
+<link rel="import" href="../x-content.html"><!-- <link rel="import" href="v.1.1.1/user-location.html"> -->
+<link rel="import" href="v.1.1.1/LocationMixin.html"><!-- <link rel="import" href="../x-state.html"> -->
 
 <dom-module id="my-layout">
     <template>
-        <style include="app-style my-styles">
+        <style include="app-style my-styles global-styles">
             :host {
                 @apply(--flex);
                 @apply(--flex-grow);
             }
         </style>
-        <x-state id="state" data="{{state}}}"></x-state>
-        Location: [[state.location]]
-        Location: [[data.location.city]]
         <x-grid>
             <x-grid-row>
                 <my-header data="{{data}}" v-align-center></my-header>
@@ -35,7 +26,7 @@
                     <my-drawer id="drawer" data="[[data]]" hidden></my-drawer>
                 </x-grid-column>
                 <x-grid-column scroll>
-                    <x-content data="[[data]]" flex grow scroll>
+                    <x-content flex grow>
                         <slot></slot>
                     </x-content>
                 </x-grid-column>
@@ -46,7 +37,7 @@
         </x-grid>
     </template>
     <script>
-        class MyLayout extends Polymer.MutableData(Polymer.Element) {
+        class MyLayout extends LocationMixin(Polymer.MutableData(Polymer.Element)) {
             static get is() {
                 return 'my-layout';
             }
@@ -55,7 +46,7 @@
                 return {
                     app: {
                         type: Object,
-                        value: function() {
+                        value: function () {
                             return App;
                         }
                     },
@@ -65,11 +56,15 @@
                     },
                     data: {
                         type: Object,
+                    },
+                    city: {
+                        type: String
                     }
                 }
             }
 
             connectedCallback() {
+                super.connectedCallback();
                 this.addEventListener('toggleDrawer', function (e) {
                     this.$.drawer.toggle();
                 });

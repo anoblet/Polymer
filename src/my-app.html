@@ -6,6 +6,8 @@
 <link rel="import" href="components/anoblet/global-styles.html">
 <link rel="import" href="components/anoblet/my-styles.html">
 
+<link rel="import" href="components/anoblet/my-styles.html">
+
 <!-- Dependencies -->
 <link rel="import" href="../bower_components/iron-location/iron-location.html">
 
@@ -21,11 +23,11 @@
         State: [[state.location.city]]
         Data: [[data.location.city]]
         <!-- Blocks -->
-        <my-layout id="layout" data="[[data]]"></my-layout>
+        <my-layout id="layout" data="{{data}}}"></my-layout>
         <!-- End Blocks -->
 
         <!-- Dependencies -->
-        <iron-location path="{{path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
+        <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
         <!-- End Dependencies -->
     </template>
     <script>
@@ -129,7 +131,7 @@
                 return [
                     'dataChanged(data.*)',
                     'stateChanged(state.*)',
-                    'pathChanged(path)'
+                    'pathChanged(__path)'
                 ]
             }
 
@@ -163,7 +165,7 @@
                     var layout = this.$.layout;
                     layout.querySelector('*').set('data', this.data);
                     //  element.set('data', this.data);
-                    element.notifyPath('data');
+                    element.notifyPath('data.city');
                 }
             }
 
@@ -178,12 +180,21 @@
                 }
 
                 if (route) {
-                    Polymer.importHref(this.resolveUrl(route.src), null, true);
+                    // Polymer.importHref(this.resolveUrl(route.src), null, true);
+                    var _t = this;
+                    Polymer.importHref(this.resolveUrl(route.src), function (e) {
+                        var element = document.createElement(route.tag);
+                        var a = _t.shadowRoot.querySelector('my-layout');
+                        console.log(a);
+                        var l = a.appendChild(element);
+                        l.set('data', this.data);
+                    });
 
                     this._removeElements();
                     var element = document.createElement(route.tag);
-                    element.data = this.data;
-                    var a = this.shadowRoot.querySelector('my-layout').appendChild(element);
+                    // element.data = this.data;
+                    // element.scope = this.scope;
+
                     // a.set('data', this.data);
                     // this.shadowRoot.querySelector('my-layout').shadowRoot.querySelector('x-content').appendChild(element);
                     // this.$.layout.appendChild(element);

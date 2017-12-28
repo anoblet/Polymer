@@ -1,0 +1,37 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="test-b">
+    <template>
+        <style></style>
+        [[data.location.city]]
+    </template>
+    <script>
+        (function () {
+            let data = {
+                test: "test"
+            };
+
+            class TestB extends Polymer.MutableData(Polymer.Element) {
+                static get is() {
+                    return 'test-b';
+                }
+
+                static get properties() {
+                    return {
+                        data: {
+                            type: Object,
+                        }
+                    }
+                }
+
+                connectedCallback() {
+                    super.connectedCallback();
+
+                    // this.data = data;
+                }
+            }
+
+            window.customElements.define(TestB.is, TestB);
+        })();
+    </script>
+</dom-module>

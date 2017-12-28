@@ -11,6 +11,7 @@
 <link rel="import" href="x-state.html">
 
 <link rel="import" href="app-style.html">
+<link rel="import" href="anoblet/v.1.1.1/LocationMixin.html">
 
 <dom-module id="x-locate">
     <template>
@@ -31,7 +32,7 @@
     </template>
 
     <script>
-        class XLocate extends Polymer.MutableData(XElement) {
+        class XLocate extends LocationMixin(Polymer.MutableData(XElement)) {
             static get is() {
                 return 'x-locate';
             }
@@ -66,14 +67,14 @@
 
             ready() {
                 super.ready();
-                this.state = this.$.state.data;
-                this.state.location = this.data;
+                // this.state = this.$.state.data;
+                // this.$.state.location = this.data;
             }
 
             connectedCallback() {
                 super.connectedCallback();
                 // this.state = this.shadowRoot.querySelector('x-state').data;
-                //this.state = this.$.state.data;
+                // this.state = this.$.state.data;
             }
 
             _autocomplete() {
@@ -134,7 +135,19 @@
                     }
                 }
 
-                App.set('data.location', _location);
+                // this.set('data.location', _location);
+                // Fix imperitively set components
+                // App.notifyPath('data');
+
+                this.set('location.latitude', _location.latitude);
+                this.set('location.longitude', _location.longitude);
+                this.set('location.city', _location.city);
+                this.set('location.state', _location.state);
+                // this.set('location', _location);
+
+                // App.set('data.location', _location);
+                // this.scope.set('data.location', _location);
+                // this.scope.notifyPath('data.location');
             }
 
             mapApiLoaded() {

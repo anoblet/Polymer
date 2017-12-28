@@ -1,0 +1,12 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="user-location">
+    <script>
+        class UserLocation extends LocationMixin(Polymer.Element) {
+            static get is() {
+                return 'user-location';
+            }
+        }
+        window.customElements.define(UserLocation.is, UserLocation);
+    </script>
+</dom-module>

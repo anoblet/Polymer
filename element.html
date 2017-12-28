@@ -1,36 +1,19 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="v.1.1.1/my-nav.html">
-<link rel="import" href="my-styles.html">
-
-<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
-
-<dom-module id="my-drawer">
+<dom-module id="test-element">
     <template>
-        <style include="app-style my-styles">
+        <style include="">
             :host {
                 @apply(--flex);
                 @apply(--flex-grow);
-                width: max-content;
-                background: var(--primary);
-            }
-
-            :host([opened]) {
-
-            }
-
-            :host([hidden]) {
-                width: 0;
-                visibility: hidden;
             }
         </style>
         <my-nav></my-nav>
     </template>
-
     <script>
-        class MyDrawer extends Polymer.Element {
+        class TestElement extends Polymer.Element {
             static get is() {
-                return 'my-drawer';
+                return 'test-element';
             }
 
             static get properties() {
@@ -59,6 +42,6 @@
             }
         }
 
-        window.customElements.define(MyDrawer.is, MyDrawer);
+        window.customElements.define(TestElement.is, TestElement);
     </script>
 </dom-module>
