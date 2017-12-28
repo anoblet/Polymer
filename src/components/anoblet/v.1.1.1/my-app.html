@@ -1,12 +1,17 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../../bower_components/iron-location/iron-location.html">
+
 <link rel="import" href="../global-styles.html">
+
 <link rel="import" href="../my-layout.html">
+<!-- <link rel="import" href="my-location.html"> -->
+<!-- <link rel="import" href="../v.1.1.1/user-location.html"> -->
 
-<!-- <link rel="import" href="my-config.html"> --><!-- <link rel="import" href="../test/test-a.html"> -->
-
-<link rel="import" href="my-location.html"><!-- <link rel="import" href="../v.1.1.1/user-location.html"> -->
 <link rel="import" href="../v.1.1.1/LocationMixin.html">
+
+<!-- <link rel="import" href="my-config.html"> -->
+<!-- <link rel="import" href="../test/test-a.html"> -->
+
 
 <dom-module id="my-app">
     <template>
@@ -158,11 +163,10 @@
                 }
 
                 __pathChanged(__path) {
-                    __path = __path.slice(1);
-
                     var _t = this;
-
                     var routes = this.data.config.routes;
+
+                    __path = __path.slice(1);
 
                     for (var i = 0; i < routes.length; i++) {
                         if (__path == routes[i].href) {
@@ -182,11 +186,13 @@
                     });
                 }
 
+                /*
                 ready() {
                     super.ready();
 
                     // App = this;
                 }
+                */
 
                 connectedCallback() {
                     super.connectedCallback();
@@ -204,14 +210,12 @@
                     // var a = this.shadowRoot.appendChild(e);
                     // this.dependants.push(a);
                     // a.set('data', this.data);
-                    //console.log(a.data);
+                    // console.log(a.data);
                     // console.log(this.data);
                 }
             }
 
             window.customElements.define(MyApp.is, MyApp);
         })();
-
-
     </script>
 </dom-module>
