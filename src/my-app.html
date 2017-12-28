@@ -1,175 +1,41 @@
-<script>
-    window.MyApp = window.MyApp || {};
-</script>
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="../bower_components/polymer/polymer-element.html"><!-- includes  -->
-<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
-<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
-<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
-<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
-<link rel="import" href="../bower_components/app-route/app-location.html">
-<link rel="import" href="../bower_components/app-route/app-route.html">
-<link rel="import" href="../bower_components/google-signin/google-signin.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<!-- My imports -->
+<link rel="import" href="components/anoblet/my-layout.html">
+
+<link rel="import" href="components/anoblet/global-styles.html">
+<link rel="import" href="components/anoblet/my-styles.html">
+
+<link rel="import" href="components/anoblet/my-styles.html">
+
+<!-- Dependencies -->
 <link rel="import" href="../bower_components/iron-location/iron-location.html">
-<link rel="import" href="../bower_components/iron-media-query/iron-media-query.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
-
-<link rel="import" href="components/app-config.html">
-<link rel="import" href="components/app-footer.html">
-<link rel="import" href="components/app-nav.html">
-
-<link rel="import" href="components/my-element.html">
-<link rel="import" href="components/app-style.html">
-
-<link rel="import" href="components/x-background.html">
-<link rel="import" href="components/x-config.html">
-<link rel="import" href="components/x-content.html">
-<link rel="import" href="components/x-data.html">
-<link rel="import" href="components/x-footer.html">
-<link rel="import" href="components/x-location.html">
-<link rel="import" href="components/x-style.html">
-<link rel="import" href="components/x-user.html">
-
-<link rel="import" href="../bower_components/polymer/lib/elements/dom-if.html">
 
 <dom-module id="my-app">
     <template>
-        <style include="app-style iron-flex iron-flex-alignment">
+        <style include="app-style">
             :host {
-                @apply(--layout-horizontal);
-                @apply(--layout-flex);
+                @apply(--flex);
+                @apply(--flex-grow);
             }
-
-            app-header {
-                @apply(--layout-horizontal);
-                @apply(--layout-flex);
-                background: var(--google-blue-500);
-                color: #fff;
-            }
-
-            app-header paper-icon-button {
-                --paper-icon-button-ink-color: #fff;
-            }
-
-            app-toolbar {
-                @apply(--layout-horizontal);
-                @apply(--layout-flex);
-                @apply(--layout-center);
-            }
-
-            app-drawer-layout {
-                @apply(--layout-horizontal);
-                @apply(--layout-flex);
-                --app-drawer-layout-content-transition: margin 0.2s;
-                height: 100%;
-            }
-
-            paper-input {
-                --paper-input-container: {
-                    padding: 0px 0 0px 0;
-                    background-color: var(--google-blue-300);
-                    color: #fff;
-                };
-                --paper-input-container-underline: {
-                    display: none;
-                };
-                --paper-input-container-underline-focus: {
-                    display: none;
-                };
-                --paper-input-container-underline-disabled: {
-                    display: none;
-                };
-                --paper-input-container-input-color: {
-                    color: #fff;
-                };
-            }
-
-            #logo {
-                vertical-align: middle;
-            }
-
-            #content {
-                @apply(--layout-horizontal);
-                @apply(--layout-flex);
-                overflow: auto;
-                width: 100%;
-                height: 100%;
-            }
-
-            .drawer-content {
-                @apply(--layout-flex);
-                padding: -120px;
-                overflow: auto;
-                background: #fff;
-            }
-
-            .paper-item-link {
-                color: inherit;
-                text-decoration: none;
-            }
-
         </style>
-        <x-config id="config"></x-config>
-        <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
-        <!-- <x-location id="location" scope="{{scope}}" state="[[state]]"></x-location> -->
-        <x-user scope="{{scope}}"></x-user>
-        <app-localstorage-document key="city" data="{{state.user.location.city}}"></app-localstorage-document>
-        <app-localstorage-document key="state" data="{{state.user.location.state}}"></app-localstorage-document>
-        <app-localstorage-document key="latitude" data="{{state.user.location.latitude}}"></app-localstorage-document>
-        <app-localstorage-document key="longitude" data="{{state.user.location.longitude}}"></app-localstorage-document>
+        <x-state data="[[state]]"></x-state>
+        State: [[state.location.city]]
+        Data: [[data.location.city]]
+        <!-- Blocks -->
+        <my-layout id="layout" data="{{data}}}"></my-layout>
+        <!-- End Blocks -->
 
-        <x-background scope="[[scope]]">
-            <app-header-layout fullbleed>
-                <app-header effects="waterfall" slot="header">
-                    <app-toolbar>
-                        <div class="flex layout center">
-                            <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
-                            <a href="/" class="white no-underline"><span id="logo">Government</span></a>
-                        </div>
-                        <iron-media-query query="(min-width: 640px)" query-matches="{{wide}}"></iron-media-query>
-                        <template is="dom-if" if="{{wide}}">
-                            <div class="flex">
-                                <paper-input id="search" no-label-float>
-                                    <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear" title="clear"></paper-icon-button>
-                                </paper-input>
-                            </div>
-                        </template>
-                        <div class="flex" style="color: #fff; text-align: right">
-                        <span class="t-1">
-                            <a href="/login" class="white no-underline">Sign in</a>
-                             |
-                            <a href="/register" class="white no-underline">Register</a>
-                        </span>
-                            <paper-icon-button icon="more-vert"></paper-icon-button>
-                        </div>
-                    </app-toolbar>
-                </app-header>
-                <app-drawer-layout id="drawerLayout" force-narrow>
-                    <app-drawer id="drawer" slot="drawer">
-                        <div class="drawer-content">
-                            <app-nav id="nav" app="[[app]]" scope="[[app]]" state="[[state]]" location="[[scope.location]]"></app-nav>
-                        </div>
-                    </app-drawer>
-                    <x-content id="content"></x-content>
-                </app-drawer-layout>
-            </app-header-layout>
-            <template is="dom-if" if="[[app.config.footerNav]]">
-                Test
-                <x-footer></x-footer>
-            </template>
-        </x-background>
-        <x-data></x-data>
+        <!-- Dependencies -->
+        <iron-location path="{{__path}}" query="{{__query}}" hash="{{__hash}}" url-space-regex={{urlSpaceRegex}}></iron-location>
+        <!-- End Dependencies -->
     </template>
     <script>
-        window.App = window.App || {};
+        (function () {
+            window.App = window.App || {}
+        })();
 
-        class MyApp extends Polymer.MutableData(XElement) {
+        class MyApp extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'my-app';
             }
@@ -178,159 +44,170 @@
                 return {
                     app: {
                         type: Object,
-                        value: {
-                            instance: () => {
-                                return this;
-                            },
-                            config: {
-                                footerNav: true
-                            },
-                            user: {}
-                        }
-                    },
-                    scope: {
-                        type: Object,
                         value: function () {
                             return this;
                         }
                     },
-                    state: {
+                    scope: {
+                        type: Object,
+                        value: () => {
+                            return this;
+                        }
+                    },
+                    data: {
                         type: Object,
                         value: {
                             config: {
-                                footerNav: true
+                                routes: [
+                                    {
+                                        href: "",
+                                        title: "Home",
+                                        src: "components/app-home.html",
+                                        tag: "app-home"
+                                    },
+                                    {
+                                        href: "city",
+                                        title: "City",
+                                        src: "components/app-city.html",
+                                        tag: "app-city"
+                                    },
+                                    {
+                                        href: "state",
+                                        title: "State",
+                                        src: "components/app-state.html",
+                                        tag: "app-state"
+                                    },
+                                    {
+                                        href: "login",
+                                        title: "Login",
+                                        src: "components/app-login.html",
+                                        tag: "app-login"
+                                    },
+                                    {
+                                        href: "register",
+                                        title: "Register",
+                                        src: "components/app-register.html",
+                                        tag: "app-register"
+                                    },
+                                    {
+                                        href: "page",
+                                        title: "Home",
+                                        src: "components/app-page.html",
+                                        tag: "app-page"
+                                    },
+                                    {
+                                        href: "map",
+                                        title: "Home",
+                                        src: "components/app-map.html",
+                                        tag: "app-map"
+                                    },
+                                    {
+                                        href: "sitemap",
+                                        title: "Home",
+                                        src: "components/x-sitemap.html",
+                                        tag: "x-sitemap"
+                                    },
+                                    {
+                                        href: "address",
+                                        title: "Home",
+                                        src: "components/x-address.html",
+                                        tag: "x-address"
+                                    }
+                                ]
                             },
                             location: {
-                                city: "C",
-                                state: "S",
-                                latitude: "",
-                                longitude: "",
-                                census: {
-                                    stateCode: ""
-                                }
-                            },
-                            user: {
-                                location: {
-                                    city: "C",
-                                    state: "S",
-                                    latitude: "",
-                                    longitude: "",
-                                    census: {
-                                        stateCode: ""
-                                    }
-                                }
+                                state: "a"
                             }
-                        }
+                        },
+                        notify: true
                     },
-                    isReady: {
-                        type: Boolean,
-                        value: false
+                    state: {
+                        type: Object,
                     }
-                };
+                }
             }
 
             static get observers() {
                 return [
-                    '__scopeChanged(scope.*)',
+                    'dataChanged(data.*)',
                     'stateChanged(state.*)',
-                    '__pathChanged(__path)',
-                    'isReadyChanged(isReady)',
-                ];
+                    'pathChanged(__path)'
+                ]
             }
 
             constructor() {
                 super();
-                window.addEventListener('WebComponentsReady', function () {
-                    this.set('isReady', true);
-                }.bind(this));
-            }
 
-            ready() {
-                super.ready();
+                // Add app instance to the window
+                window.App = this;
             }
 
             connectedCallback() {
                 super.connectedCallback();
 
-                App = App || this.app;
+                // Location
+                this.addEventListener('locationChanged', function (e) {
+                    this.set('data.location', e.detail);
+                    this.shadowRoot.querySelector('my-layout').querySelector('*').data = this.data;
+                });
+            };
 
-                console.log("A connected");
+            stateChanged(state) {
+                console.log('State changed');
             }
 
-            isReadyChanged() {
-                console.log('ready')
-                this.location = this.$.location;
+            dataChanged(data) {
+                console.log('Data changed');
+                this.data = this.data;
+
+                var element = this.shadowRoot.querySelector('my-layout').querySelector('*');
+                if (element) {
+                    var layout = this.$.layout;
+                    layout.querySelector('*').set('data', this.data);
+                    //  element.set('data', this.data);
+                    element.notifyPath('data.city');
+                }
             }
 
-            __pathChanged(path) {
-                this.config = this.$.config;
-
-                console.log("Path: " + path);
+            pathChanged(path) {
                 path = path.slice(1);
+                var routes = this.data.config.routes;
 
-                for (var i = 0; i < this.config.routes.length; i++) {
-                    if (path == this.config.routes[i].href) {
-                        var route = this.config.routes[i];
+                for (var i = 0; i < routes.length; i++) {
+                    if (path == routes[i].href) {
+                        var route = routes[i];
                     }
                 }
 
-                // var src = this.config.componentFolder + "/" + this.config.namespace +  "-" + component + ".html";
-                // this.$.drawer.close();
-
                 if (route) {
-                    Polymer.importHref(this.resolveUrl(route.src), null, this._showPage404.bind(this), true);
+                    // Polymer.importHref(this.resolveUrl(route.src), null, true);
+                    var _t = this;
+                    Polymer.importHref(this.resolveUrl(route.src), function (e) {
+                        var element = document.createElement(route.tag);
+                        var a = _t.shadowRoot.querySelector('my-layout');
+                        console.log(a);
+                        var l = a.appendChild(element);
+                        l.set('data', this.data);
+                    });
 
-                    // var myElement = document.createElement(config.tag);
                     this._removeElements();
-                    this._addElement(route.tag);
-                    // this.$.content.appendChild(myElement);
+                    var element = document.createElement(route.tag);
+                    // element.data = this.data;
+                    // element.scope = this.scope;
 
-                    document.title = this.$.config.baseTitle + " - " + route.title;
+                    // a.set('data', this.data);
+                    // this.shadowRoot.querySelector('my-layout').shadowRoot.querySelector('x-content').appendChild(element);
+                    // this.$.layout.appendChild(element);
+                    // // this.shadowRoot.querySelector("x-content").appendChild(element);
+                    // // this._addElement(route.tag);
+                    // // document.title = this.$.config.baseTitle + " - " + route.title;
                 }
-                else {
-
-                }
-            }
-
-            __scopeChanged(scope) {
-                console.log("Scope changed");
-            }
-
-            stateChanged(change) {
-                console.log("state");
-            }
-
-            _showPage404() {
-
-            }
-
-            _addElement(tag) {
-                var element = document.createElement(tag);
-
-                element.app = this.app;
-                element.scope = this.scope;
-                element.state = this.state;
-                element.data = this.data;
-
-                this.shadowRoot.querySelector("x-content").appendChild(element);
             }
 
             _removeElements() {
-                var element = this.$.content.querySelector("*");
+                var element = this.shadowRoot.querySelector('my-layout').querySelector("*");
                 if (element) {
                     element.parentNode.removeChild(element);
-                }
-            }
-
-            _toggleDrawer() {
-                var drawerLayout = this.$.drawerLayout;
-                // drawerLayout.responsiveWidth = 0;
-
-                if (drawerLayout.forceNarrow || !drawerLayout.narrow) {
-                    drawerLayout.forceNarrow = !drawerLayout.forceNarrow;
-                    this.$.drawer.toggle();
-                } else {
-                    this.$.drawer.toggle();
                 }
             }
         }

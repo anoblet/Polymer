@@ -1,0 +1,61 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="my-location.html">
+<link rel="import" href="LocationMixin.html">
+
+<dom-module id="x-census">
+    <template>
+        <style></style>
+        <my-location></my-location>
+    </template>
+
+    <script>
+        (function () {
+            let data = {};
+
+            class XCensus extends LocationMixin(Polymer.Element) {
+                static get is() {
+                    return 'x-census';
+                }
+
+                static get properties() {
+                    return {
+                        data: {
+                            type: Object,
+                            value: data
+                        },
+                        stateCodes: {
+                            type: Array,
+                            value: [
+                                {
+                                    shortName: "NJ",
+                                    longName: "New Jersey",
+                                    code: 34
+                                },
+                                {
+                                    shortName: "",
+                                    longName: "New York",
+                                    code: 36
+                                }
+                            ]
+                        }
+                    }
+                }
+
+                static get observers() {
+                    return [
+                        // 'locationChanged(location.*)'
+                    ]
+                }
+
+                /*
+                locationChanged(change)
+                    console.log("L");
+                }
+                */
+            }
+
+            window.customElements.define(XCensus.is, XCensus);
+        })();
+    </script>
+</dom-module>

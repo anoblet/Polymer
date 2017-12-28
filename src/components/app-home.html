@@ -1,18 +1,25 @@
-<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="x-locate.html">
+
 <link rel="import" href="app-overview.html">
+
+<link rel="import" href="anoblet/flex-styles.html">
+
+<link rel="import" href="x-state.html">
+
+<link rel="import" href="anoblet/my-styles.html">
 
 <dom-module id="app-home">
     <template>
-        <style include="iron-flex">
+        <style include="flex-styles my-styles">
             :host {
-                @apply(--layout-vertical);
-                @apply(--layout-flex);
+                @apply(--flex);
+                @apply(--flex-grow);
             }
         </style>
-        <app-overview app="{{app}}" scope="[[scope]]" state="{{state}}"></app-overview>
+        <x-state data="{{state}}"></x-state>
+        <!-- [[data.location.city]] -->
+
+        <app-overview app="{{app}}" data="[[data]]" scope="[[scope]]" state="{{state}}"></app-overview>
     </template>
 
     <script>
@@ -30,9 +37,25 @@
                     state: {
                         type: Object,
                         notify: true
+                    },
+                    data: {
+                        type: Object,
+                        notify: true
                     }
                 }
             }
+
+            static get observers() {
+                return [
+                    'dataChanged(data.*)'
+                ]
+            }
+
+            dataChanged(data) {
+                // console.log('a');
+                // this.notifyPath('data');
+                // this.set('data', data)
+            };
         }
 
         window.customElements.define(AppHome.is, AppHome);

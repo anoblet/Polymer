@@ -1,0 +1,72 @@
+<script>
+    (function () {
+        let root = false;
+        let elements = [];
+        let data = {
+            city: "Port Chester",
+            state: "New York"
+        };
+
+        LocationMixin = function (superClass) {
+            return class extends superClass {
+                static get properties() {
+                    return {
+                        elements: {
+                            type: Array,
+                            value: elements
+                        },
+                        data: {
+                            type: Object,
+                            notify: true,
+                            value: data
+                        },
+                        location: {
+                            type: Object,
+                            notify: true,
+                            value: data
+                        }
+
+                    }
+                }
+
+                static get observers() {
+                    return [
+                        'dataChanged(data.*)',
+                        'locationChanged(location.*)'
+                    ]
+                }
+
+                dataChanged(change) {
+                    if (!root) {
+                        console.log('Data changed');
+                        root = true;
+                        this.elements.forEach(e => {
+                            e.notifyPath(change.path);
+                        });
+                        root = false;
+                    }
+                }
+
+                locationChanged(change) {
+                    /*
+                    if (!root) {
+                        console.log('Location changed');
+                        root = true;
+                        this.elements.forEach(e => {
+                            e.notifyPath(change.path);
+                        });
+                        root = false;
+                    }
+                    */
+                    this.dataChanged(change);
+                }
+
+                connectedCallback() {
+                    super.connectedCallback();
+                    this.elements.push(this);
+                }
+            }
+        }
+    })();
+
+</script>

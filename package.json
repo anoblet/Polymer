@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/anoblet/government#readme",
   "devDependencies": {
-    "browser-sync": "^2.18.13"
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "json-stringify-safe": "github:moll/json-stringify-safe"
   },
   "dependencies": {
     "eslint": "^4.13.0",

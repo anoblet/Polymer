@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/google-map/google-map.html">
 
 <link rel="import" href="./app-style.html">
+<link rel="import" href="anoblet/v.1.1.1/LocationMixin.html">
 
 <dom-module id="x-map">
     <template>
@@ -20,11 +21,11 @@
                 padding-top: 100%;
             }
         </style>
-        <google-map latitude="[[state.user.location.latitude]]" longitude="[[state.user.location.longitude]]" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk"></google-map>
+        <google-map latitude="[[location.latitude]]" longitude="[[location.longitude]]" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk"></google-map>
     </template>
 
     <script>
-        class XMap extends Polymer.Element {
+        class XMap extends LocationMixin(Polymer.Element) {
             static get is() {
                 return 'x-map';
             }
@@ -40,7 +41,7 @@
 
             connectedCallback() {
                 super.connectedCallback();
-                console.log(this.state);
+                // console.log(this.state);
             }
         }
 

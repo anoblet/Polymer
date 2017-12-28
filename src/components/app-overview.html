@@ -5,16 +5,20 @@
 
 <link rel="import" href="x-grid/x-grid.html">
 
-<link rel="import" href="x-census.html">
+<link rel="import" href="anoblet/v.1.1.1/x-census.html">
 <link rel="import" href="x-demographic.html">
 <link rel="import" href="x-locate.html">
 <link rel="import" href="x-map.html">
+<link rel="import" href="x-state.html">
 
 <link rel="import" href="app-style.html">
+<link rel="import" href="anoblet/global-styles.html">
+<!-- <link rel="import" href="anoblet/v.1.1.1/my-address.html"> -->
+<link rel="import" href="anoblet/v.1.1.1/user-location.html">
 
 <dom-module id="app-overview">
     <template>
-        <style include="app-style iron-flex">
+        <style include="app-style iron-flex global-styles">
             :host {
                 @apply(--flex);
                 @apply(--flex-auto);
@@ -22,12 +26,18 @@
                 @apply(--flex-shrink-disable);
             }
         </style>
+        <user-location location="{{location}}"></user-location>
+        [[location.city]]
         <x-grid>
             <x-grid-row>
                 <x-grid-cell>
                     <paper-card heading="Address">
                         <div class="card-content">
-                            [[state.user.location.city]], [[state.user.location.state]]
+                            <my-address></my-address>
+                            <!--
+                            State: [[state.location.city]]
+                            Data: [[data.location.city]], [[data.location.state]]
+                            -->
                         </div>
                     </paper-card>
                 </x-grid-cell>
@@ -36,7 +46,7 @@
                 <x-grid-cell>
                     <paper-card heading="Locate">
                         <div class="card-content">
-                            <x-locate id="locate" scope="{{scope}}" state="{{state}}" data="{{data}}"></x-locate>
+                            <x-locate id="locate" scope="{{scope}}" data="{{data}}"></x-locate>
                         </div>
                     </paper-card>
                 </x-grid-cell>
@@ -99,6 +109,7 @@
                 </x-grid-column>
             </x-grid-row>
         </x-grid>
+        <x-state id="state" data="{{state}}"></x-state>
     </template>
 
     <script>
@@ -114,8 +125,7 @@
                         notify: true
                     },
                     state: {
-                        type: Object,
-                        notify: true
+                        type: Object
                     },
                     blocks: {
                         type: Object,
@@ -127,9 +137,25 @@
                             'x-map',
                             'x-demographics'
                         ]
+                    },
+                    data: {
+                        type: Object
                     }
                 }
             }
+
+            ready() {
+                super.ready();
+                // this.state = this.$.state.data;
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                // this.set('state', this.$.state.data);
+                // console.log(this.state);
+                // this.state = this.$.state.data;
+            }
+
         }
 
         window.customElements.define(AppOverview.is, AppOverview);

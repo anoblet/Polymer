@@ -1,4 +1,5 @@
 .idea
+.yo-rc.json
 bower_components
 build
 node_modules
