@@ -1,22 +1,19 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="anoblet/flex-styles.html">
 
-<dom-module id="app-content">
+<link rel="import" href="anoblet/my-styles.html">
+
+<dom-module id="x-content">
     <template>
-        <style include="app-style iron-flex">
-            :host {
-                @apply(--layout-horizontal);
-                @apply(--layout-flex)
-                overflow: auto;
-            }
-        </style>
+        <style include="flex-styles my-styles"></style>
+        <slot></slot>
     </template>
 
     <script>
-        class AppContent extends Polymer.Element {
+        class XContent extends Polymer.MutableData(Polymer.Element) {
             static get is() {
-                return 'app-content';
+                return 'x-content';
             }
 
             static get properties() {
@@ -24,11 +21,14 @@
                     scope: {
                         type: Object,
                         notify: true
+                    },
+                    data: {
+                        type: Object
                     }
                 };
             }
         }
 
-        window.customElements.define(AppContent.is, AppContent);
+        window.customElements.define(XContent.is, XContent);
     </script>
 </dom-module>

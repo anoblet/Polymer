@@ -1,19 +1,19 @@
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="x-element.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../x-element.html">
 
-<link rel="import" href="../../bower_components/google-apis/google-maps-api.html">
+<link rel="import" href="../../../../bower_components/google-apis/google-maps-api.html">
 
-<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
+<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../../bower_components/iron-meta/iron-meta.html">
 
 <link rel="import" href="x-state.html">
 
-<link rel="import" href="app-style.html">
-<link rel="import" href="anoblet/v.1.1.1/LocationMixin.html">
+<link rel="import" href="../../app-style.html">
+<link rel="import" href="../v.1.1.1/LocationMixin.html">
 
-<dom-module id="x-locate">
+<dom-module id="my-address">
     <template>
         <style include="app-style">
             :host {
@@ -32,9 +32,9 @@
     </template>
 
     <script>
-        class XLocate extends LocationMixin(Polymer.MutableData(XElement)) {
+        class MyLocation extends LocationMixin(Polymer.MutableData(XElement)) {
             static get is() {
-                return 'x-locate';
+                return 'my-address';
             }
 
             static get properties() {
@@ -155,6 +155,6 @@
             }
         }
 
-        window.customElements.define(XLocate.is, XLocate);
+        window.customElements.define(MyLocation.is, MyLocation);
     </script>
 </dom-module>

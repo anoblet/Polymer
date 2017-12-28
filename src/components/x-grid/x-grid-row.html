@@ -1,19 +1,23 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
 <link rel="import" href="../app-style.html">
+<link rel="import" href="../anoblet/my-styles.html">
 
 <dom-module id="x-grid-row">
     <template>
-        <style include="app-style">
+        <style include="app-style my-styles">
             :host {
                 @apply(--flex);
-                @apply(--flex-auto);
                 flex-shrink: 0;
                 flex-wrap: wrap;
-                width: 100%;
                 /* padding-left: 2em; */
                 /* padding-right: 2em; */
             }
+
+            :host([grow]) {
+                @apply(--flex-grow);
+            }
+
             /*:host ::slotted(x-grid-column) {
                 padding-left: 2rem;
                 padding-right: 2rem;
