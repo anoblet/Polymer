@@ -4,11 +4,11 @@
 <link rel="import" href="x-grid-column.html">
 <link rel="import" href="x-grid-cell.html">
 
-<link rel="import" href="../app-style.html">
+<!-- <link rel="import" href="../app-style.html"> -->
 
 <dom-module id="x-grid">
     <template>
-        <style include="app-style">
+        <style include="app-style flex-styles">
             :host {
                 @apply(--flex);
                 @apply(--flex-grow);
@@ -19,11 +19,11 @@
             }
 
             :host([row]) {
-                @apply(--flex-row);
+                @apply(--flex-horizontal);
             }
 
             :host([column]) {
-                @apply(--flex-column);
+                @apply(--flex-vertical);
             }
         </style>
         <slot></slot>
@@ -38,7 +38,7 @@
                 return {
                     row: {
                         type: Boolean,
-                        value: false
+                        value: true
                     },
                     column: {
                         type: Boolean,

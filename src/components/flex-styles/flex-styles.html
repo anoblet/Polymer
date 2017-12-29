@@ -1,0 +1,73 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="/bower_components/shadycss/apply-shim.html">
+
+<dom-module id="flex-styles">
+    <template>
+        <style is="custom-style">
+            :host {
+                --flex: {
+                    display: flex;
+                };
+
+                --flex-grow: {
+                    flex-grow: 1;
+                };
+
+                --flex-auto: {
+                    flex: auto;
+                };
+
+                --flex-horizontal: {
+                    flex-direction: column;
+                }
+
+                --flex-vertical: {
+                    flex-direction: row;
+                }
+            }
+
+            :host([flex]) {
+                @apply(--flex);
+            }
+
+            :host([flex-grow]) {
+                flex-grow: 1;
+            }
+
+            :host([grow]) {
+                flex-grow: 1;
+            }
+
+            :host([flex][auto]) {
+                flex: auto;
+            }
+
+            :host([grow-disabled]) {
+                flex-grow: 0;
+            }
+
+            :host([shrink-disabled]) {
+                flex-shrink: 0;
+            }
+
+            :host([flex][wrap-disabled])
+
+            :host([v-align-center]) {
+                align-items: center;
+            }
+
+            :host([grid]) {
+
+            }
+        </style>
+    </template>
+    <script>
+        class FlexStyles extends Polymer.Element {
+            static get is() {
+                return 'flex-styles';
+            }
+        }
+
+        window.customElements.define(FlexStyles.is, FlexStyles);
+    </script>
+</dom-module>

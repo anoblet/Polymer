@@ -1,36 +1,46 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
 <link rel="import" href="../components/x-grid/x-grid.html">
 
+<link rel="import" href="layout/app-header.html">
+
 <dom-module id="app-layout">
     <template>
-        <style include="">
+        <style>
             :host {
                 @apply(--flex);
                 @apply(--flex-grow);
             }
+            header {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
         </style>
+        <x-grid row>
+            <x-grid-row>
+                <header>
+                    <app-header>test</app-header>
+                </header>
+            </x-grid-row>
+            <x-grid-row flex auto>
+                <x-grid-column>
+                    <aside>
+                        <app-drawer></app-drawer>
+                    </aside>
+                </x-grid-column>
+                <x-grid-column flex>
+                    <main>
+                        <slot></slot>
+                    </main>
+                </x-grid-column>
+            </x-grid-row>
+            <x-grid-row>
+                <footer>
+                    <app-footer></app-footer>
+                </footer>
+            </x-grid-row>
+        </x-grid>
     </template>
-    <x-grid>
-        <x-grid-row>
-            <header>
-                <app-header></app-header>
-            </header>
-        </x-grid-row>
-        <x-grid-row>
-            <aside>
-                <app-drawer></app-drawer>
-            </aside>
-            <main>
-                <slot></slot>
-            </main>
-        </x-grid-row>
-        <x-grid-row>
-            <footer>
-                <app-footer></app-footer>
-            </footer>
-        </x-grid-row>
-    </x-grid>
     <script>
         class AppLayout extends Polymer.Element {
             static get is() {
