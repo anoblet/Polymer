@@ -7,14 +7,13 @@
 
 <link rel="import" href="anoblet/v.1.1.1/x-census.html">
 <link rel="import" href="x-demographic.html">
-<link rel="import" href="x-locate.html">
 <link rel="import" href="x-map.html">
 <link rel="import" href="x-state.html">
 
 <link rel="import" href="app-style.html">
 <link rel="import" href="anoblet/global-styles.html">
 <!-- <link rel="import" href="anoblet/v.1.1.1/my-address.html"> -->
-<link rel="import" href="anoblet/v.1.1.1/user-location.html">
+<link rel="import" href="anoblet/v.1.1.1/my-location.html">
 
 <dom-module id="app-overview">
     <template>
@@ -26,8 +25,8 @@
                 @apply(--flex-shrink-disable);
             }
         </style>
-        <user-location location="{{location}}"></user-location>
-        [[location.city]]
+        <my-location location="{{location}}"></my-location>
+        <!-- [[location.city]] -->
         <x-grid>
             <x-grid-row>
                 <x-grid-cell>
@@ -38,15 +37,6 @@
                             State: [[state.location.city]]
                             Data: [[data.location.city]], [[data.location.state]]
                             -->
-                        </div>
-                    </paper-card>
-                </x-grid-cell>
-            </x-grid-row>
-            <x-grid-row>
-                <x-grid-cell>
-                    <paper-card heading="Locate">
-                        <div class="card-content">
-                            <x-locate id="locate" scope="{{scope}}" data="{{data}}"></x-locate>
                         </div>
                     </paper-card>
                 </x-grid-cell>
@@ -91,7 +81,7 @@
                     <x-grid-cell>
                         <paper-card heading="Census">
                             <div class="card-content">
-                                <x-census app="{{app}}" state="[[state]]"></x-census>
+                                <x-census></x-census>
                             </div>
                         </paper-card>
                     </x-grid-cell>

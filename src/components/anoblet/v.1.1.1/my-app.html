@@ -8,6 +8,8 @@
 <!-- <link rel="import" href="../v.1.1.1/user-location.html"> -->
 
 <link rel="import" href="../v.1.1.1/LocationMixin.html">
+<link rel="import" href="../v.1.1.1/my-location.html">
+<link rel="import" href="../../../../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
 
 <!-- <link rel="import" href="my-config.html"> -->
 <!-- <link rel="import" href="../test/test-a.html"> -->
@@ -33,6 +35,8 @@
         [[location.city]]
         -->
         <script>//document.write(JSON.stringify(this));</script>
+        <my-location location="{{location}}"></my-location>
+        <app-localstorage-document key="location" data="{{location}}"></app-localstorage-document>
     </template>
     <script>
         (function () {

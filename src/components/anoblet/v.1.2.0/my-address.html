@@ -6,11 +6,11 @@
 <link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../../../../bower_components/iron-meta/iron-meta.html">
 
-<link rel="import" href="x-state.html">
+<!-- <link rel="import" href="x-state.html"> -->
 
 <link rel="import" href="../../app-style.html">
+<link rel="import" href="../v.1.1.1/my-location.html">
 <link rel="import" href="../v.1.1.1/LocationMixin.html">
 
 <dom-module id="my-address">
@@ -21,10 +21,11 @@
                 @apply(--layout-flex);
             }
         </style>
+        <!-- <my-location data="{{location}}"></my-location> -->
 
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
 
-        <paper-input id="locate" placeholder="[[state.location.city]], [[state.location.state]]" type="text">
+        <paper-input id="locate" placeholder="[[location.city]], [[location.state]]" type="text">
             <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
         </paper-input>
 
@@ -32,7 +33,7 @@
     </template>
 
     <script>
-        class MyLocation extends LocationMixin(Polymer.MutableData(XElement)) {
+        class MyAddress extends LocationMixin(Polymer.MutableData(Polymer.Element)) {
             static get is() {
                 return 'my-address';
             }
@@ -41,7 +42,7 @@
                 return {
                     app: {
                         type: Object,
-                        value: function() {
+                        value: function () {
                             return App;
                         },
                         notify: true
@@ -90,7 +91,7 @@
 
             locate() {
                 var scope = this.scope;
-                var location = this.scope.location;
+                // var location = this.scope.location;
                 var locate = this;
 
                 if (navigator.geolocation) {
@@ -155,6 +156,6 @@
             }
         }
 
-        window.customElements.define(MyLocation.is, MyLocation);
+        window.customElements.define(MyAddress.is, MyAddress);
     </script>
 </dom-module>

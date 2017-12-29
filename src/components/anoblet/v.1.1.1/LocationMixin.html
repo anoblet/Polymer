@@ -2,10 +2,10 @@
     (function () {
         let root = false;
         let elements = [];
-        let data = {
+        let data = {/*
             city: "Port Chester",
             state: "New York"
-        };
+        */};
 
         LocationMixin = function (superClass) {
             return class extends superClass {
@@ -17,13 +17,13 @@
                         },
                         data: {
                             type: Object,
-                            notify: true,
-                            value: data
+                            value: data,
+                            notify: true
                         },
                         location: {
                             type: Object,
-                            notify: true,
-                            value: data
+                            value: data,
+                            notify: true
                         }
 
                     }
@@ -47,17 +47,10 @@
                     }
                 }
 
+                /*
+                    @return void
+                 */
                 locationChanged(change) {
-                    /*
-                    if (!root) {
-                        console.log('Location changed');
-                        root = true;
-                        this.elements.forEach(e => {
-                            e.notifyPath(change.path);
-                        });
-                        root = false;
-                    }
-                    */
                     this.dataChanged(change);
                 }
 
@@ -65,6 +58,11 @@
                     super.connectedCallback();
                     this.elements.push(this);
                 }
+
+                disconnectedCallback() {
+                    super.disconnectedCallback();
+                    var i = this.elements.indexOf(this);
+                    if (i > -1) this.elements.splice(i, 1)                }
             }
         }
     })();
