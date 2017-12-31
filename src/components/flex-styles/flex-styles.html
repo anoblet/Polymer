@@ -19,11 +19,11 @@
 
                 --flex-horizontal: {
                     flex-direction: column;
-                }
+                };
 
                 --flex-vertical: {
                     flex-direction: row;
-                }
+                };
             }
 
             :host([flex]) {
@@ -50,7 +50,9 @@
                 flex-shrink: 0;
             }
 
-            :host([flex][wrap-disabled])
+            :host([flex][wrap-disabled]) {
+                flex-wrap: nowrap;
+            }
 
             :host([v-align-center]) {
                 align-items: center;
@@ -58,6 +60,15 @@
 
             :host([grid]) {
 
+            }
+
+            :host([fit]) {
+                display: flex;
+                flex: 1;
+            }
+
+            :host([nowrap]) {
+                flex-wrap: nowrap;
             }
         </style>
     </template>

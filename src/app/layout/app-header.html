@@ -1,16 +1,17 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="v.1.2.0/my-address.html">
+<link rel="import" href="../../components/global-styles/global-styles.html">
+<link rel="import" href="../../components/flex-styles/flex-styles.html">
+<link rel="import" href="../styles/app-styles.html">
 
-<link rel="import" href="global-styles.html">
-<link rel="import" href="my-styles.html">
+<link rel="import" href="../../components/anoblet/v.1.2.0/my-address.html">
 
 <link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
 
 <dom-module id="app-header">
     <template>
-        <style include="app-style global-styles my-styles">
+        <style include="global-styles flex-styles">
             :host {
                 @apply(--flex);
                 @apply(--flex-grow);
@@ -38,37 +39,44 @@
 
                 --paper-input-container-label-floating: {
                     display: none;
-                }
+                };
+            }
+
+            header {
+                @apply(--flex);
+                @apply(--flex-grow);
             }
 
             a {
                 color: #fff;
             }
         </style>
-        <x-grid>
-            <x-grid-row>
-                <x-grid-column flex wrap-disabled>
-                    <x-grid-column grow-disabled v-align-center>
-                        <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
-                    </x-grid-column>
-                    <x-grid-column grow-disabled v-align-center>
-                        <span style="width: max-content">
-                            <a href="/">[[title]]</a>
+        <header>
+            <x-grid>
+                <x-grid-row>
+                    <x-grid-column flex wrap-disabled>
+                        <x-grid-column grow-disabled v-align-center>
+                            <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
+                        </x-grid-column>
+                        <x-grid-column grow-disabled v-align-center>
+                        <span style="width: max-content" flex v-align-center m-l-1>
+                            <a href="/" no-underline>[[title]]</a>
                         </span>
+                        </x-grid-column>
                     </x-grid-column>
-                </x-grid-column>
-                <x-grid-column v-align-center>
-                    <my-address data="{{data}}" v-align-center></my-address>
-                </x-grid-column>
-                <x-grid-column justify-content-flex-end v-align-center>
-                    <x-grid-column></x-grid-column>
-                    <x-grid-column></x-grid-column>
-                    <x-grid-column>
-                        <paper-icon-button icon="icons:account-circle"></paper-icon-button>
+                    <x-grid-column v-align-center>
+                        <my-address data="{{data}}" v-align-center></my-address>
                     </x-grid-column>
-                </x-grid-column>
-            </x-grid-row>
-        </x-grid>
+                    <x-grid-column justify-content-flex-end v-align-center>
+                        <x-grid-column></x-grid-column>
+                        <x-grid-column></x-grid-column>
+                        <x-grid-column>
+                            <paper-icon-button icon="icons:account-circle"></paper-icon-button>
+                        </x-grid-column>
+                    </x-grid-column>
+                </x-grid-row>
+            </x-grid>
+        </header>
     </template>
 
     <script>
@@ -87,7 +95,6 @@
             }
 
             toggleDrawer() {
-                console.log('Here');
                 this.dispatchEvent(new CustomEvent('toggleDrawer', {bubbles: true, composed: true}));
             }
         }

@@ -1,0 +1,25 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="app-styles">
+    <template>
+        <style>
+            app-layout {
+                @apply --flex;
+                @apply --flex-grow;
+            }
+            app-drawer {
+            }
+            app-footer {
+                background: var(--color-primary);
+            }
+        </style>
+    </template>
+    <script>
+        class AppStyles extends Polymer.Element {
+            static get is() {
+                return 'app-styles';
+            }
+        }
+        window.customElements.define(AppStyles.is, AppStyles);
+    </script>
+</dom-module>

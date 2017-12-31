@@ -1,0 +1,71 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../components/x-grid/x-grid.html">
+
+<link rel="import" href="layout/app-header.html">
+<link rel="import" href="layout/app-drawer.html">
+<link rel="import" href="layout/app-main.html">
+<link rel="import" href="layout/app-footer.html">
+
+<dom-module id="app-view">
+    <template>
+        <style include="global-styles flex-styles app-styles">
+            :host {
+                @apply --flex;
+                @apply --flex-grow;
+            }
+            app-header {
+                @apply --flex;
+                @apply --flex-grow;
+            }
+            app-footer {
+                @apply --flex;
+                @apply --flex-grow;
+            }
+        </style>
+        <x-grid>
+            <x-grid-row>
+                <app-header></app-header>
+            </x-grid-row>
+            <x-grid-row flex auto scroll>
+                <x-grid-column grow-disabled>
+                    <nav>
+                        <app-drawer id="drawer"></app-drawer>
+                    </nav>
+                </x-grid-column>
+                <x-grid-column flex>
+                    <app-main></app-main>
+                </x-grid-column>
+            </x-grid-row>
+            <x-grid-row>
+                <app-footer>F</app-footer>
+            </x-grid-row>
+        </x-grid>
+        <app-model data="{{model}}"></app-model>
+    </template>
+    <script>
+        class AppView extends Polymer.Element {
+            static get is() {
+                return 'app-view';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+
+                this.addEventListener('toggleDrawer', function () {
+                    this.$.drawer.hidden = !this.$.drawer.hidden;
+                })
+            }
+        }
+
+        window.customElements.define(AppView.is, AppView);
+    </script>
+</dom-module>

@@ -1,18 +1,22 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="app/app-layout.html">
-
+<link rel="import" href="components/global-styles/global-styles.html">
 <link rel="import" href="components/flex-styles/flex-styles.html">
+<link rel="import" href="app/styles/app-styles.html">
+
+<link rel="import" href="app/app-view.html">
+<link rel="import" href="components/my-router/my-router.html">
 
 <dom-module id="app-shell">
     <template>
-        <style include="flex-styles">
+        <style include="global-styles flex-styles app-styles">
             :host {
-                @apply --flex;
-                @apply --flex-auto;
+                @apply(--flex);
+                @apply(--flex-grow);
             }
         </style>
-        <app-layout>test</app-layout>
+        <app-view></app-view>
+        <iron-location path="{{__path}}"></iron-location>
     </template>
     <script>
         class AppShell extends Polymer.Element {
@@ -25,7 +29,9 @@
             }
 
             static get observers() {
-                return []
+                return [
+
+                ]
             }
         }
         window.customElements.define(AppShell.is, AppShell);

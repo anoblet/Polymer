@@ -39,6 +39,7 @@
                 dataChanged(change) {
                     if (!root) {
                         console.log('Data changed');
+                        console.log(change);
                         root = true;
                         this.elements.forEach(e => {
                             e.notifyPath(change.path);

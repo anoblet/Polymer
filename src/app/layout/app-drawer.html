@@ -1,15 +1,17 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="v.1.1.1/my-nav.html">
+<link rel="import" href="../../components/anoblet/v.1.1.1/my-nav.html">
 
-<dom-module id="my-drawer">
+<dom-module id="app-drawer">
     <template>
         <style include="">
             :host {
                 @apply(--flex);
                 @apply(--flex-grow);
+                height: 100%;
+                background: var(--color-primary);
+                overflow: auto;
                 width: max-content;
-                background: var(--primary);
             }
 
             :host([hidden]) {
@@ -21,9 +23,9 @@
     </template>
 
     <script>
-        class MyDrawer extends Polymer.Element {
+        class AppDrawer extends Polymer.Element {
             static get is() {
-                return 'my-drawer';
+                return 'app-drawer';
             }
 
             static get properties() {
@@ -40,6 +42,6 @@
             }
         }
 
-        window.customElements.define(MyDrawer.is, MyDrawer);
+        window.customElements.define(AppDrawer.is, AppDrawer);
     </script>
 </dom-module>

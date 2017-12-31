@@ -1,0 +1,24 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="app-router">
+    <script>
+        class AppRouter extends Polymer.Element {
+            static get is() {
+                return 'app-router';
+            }
+
+            static get properties() {
+                return {
+                    path: {
+                        type: String
+                    }
+                }
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+        window.customElements.define(AppRouter.is, AppRouter);
+    </script>
+</dom-module>

@@ -30,10 +30,12 @@
         </paper-input>
 
         <x-state id="state" data="{{state}}"></x-state>
+        <my-location data="{{location}}"></my-location>
     </template>
 
     <script>
-        class MyAddress extends LocationMixin(Polymer.MutableData(Polymer.Element)) {
+        // class MyAddress extends LocationMixin(Polymer.Element) {
+        class MyAddress extends Polymer.Element {
             static get is() {
                 return 'my-address';
             }
@@ -43,7 +45,7 @@
                     app: {
                         type: Object,
                         value: function () {
-                            return App;
+                            // return App;
                         },
                         notify: true
                     },

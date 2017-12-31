@@ -2,12 +2,9 @@
 
 <dom-module id="global-styles">
     <template>
-        <style include="">
+        <style>
             :host {
-                /* @apply(--flex); */
-                /* @apply(--flex-grow); */
-
-                --primary: #2196f3;
+                --color-primary: #2196f3;
             }
 
             :host([flex]) {
@@ -52,6 +49,26 @@
 
             :host([justify-content-space-around]) {
                 justify-content: space-around;
+            }
+
+            :host([no-underline]) {
+                text-decoration: none;
+            }
+
+            [no-underline] {
+                text-decoration: none;
+            }
+
+            [p-1] {
+                padding: 1rem
+            }
+
+            [p-l-1] {
+                padding-left: 1rem
+            }
+
+            [m-l-1] {
+                margin-left: 1rem;
             }
         </style>
     </template>
