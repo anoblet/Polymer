@@ -3,7 +3,6 @@
 up<link rel="import" href="../../../../bower_components/app-menu/app-menu.html">
 <link rel="import" href="../../../../bower_components/app-menu/app-submenu.html">
 
-<link rel="import" href="../../app-style.html">
 <link rel="import" href="user-location.html">
 
 <dom-module id="my-nav">
@@ -64,7 +63,7 @@ up<link rel="import" href="../../../../bower_components/app-menu/app-menu.html">
                 <app-menu-icon-item icon="icons:build">Map</app-menu-icon-item>
             </a>
         </app-menu>
-        <user-location location="{{location}}"></user-location>
+        <user-location data="{{location}}"></user-location>
         [[location.city]]
     </template>
 

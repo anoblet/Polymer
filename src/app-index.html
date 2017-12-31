@@ -5,9 +5,12 @@
 <link rel="import" href="app/styles/app-styles.html">
 
 <link rel="import" href="app/app-view.html">
-<link rel="import" href="components/my-router/my-router.html">
 
-<dom-module id="app-shell">
+<link rel="import" href="../bower_components/iron-location/iron-location.html">
+
+
+
+<dom-module id="app-index">
     <template>
         <style include="global-styles flex-styles app-styles">
             :host {
@@ -19,21 +22,22 @@
         <iron-location path="{{__path}}"></iron-location>
     </template>
     <script>
-        class AppShell extends Polymer.Element {
+        class AppIndex extends Polymer.Element {
             static get is() {
-                return 'app-shell';
-            }
-
-            static get properties() {
-                return {}
+                return 'app-index';
             }
 
             static get observers() {
                 return [
-
+                    '__pathChanged(path)'
                 ]
             }
+
+            __pathChanged(path) {
+                let view = this.shadowRoot.querySelector('app-view');
+
+            }
         }
-        window.customElements.define(AppShell.is, AppShell);
+        window.customElements.define(AppIndex.is, AppIndex);
     </script>
 </dom-module>
