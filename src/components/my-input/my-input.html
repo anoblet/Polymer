@@ -1,0 +1,42 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-input">
+    <template>
+        <style include="">
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+            input {
+                background: inherit;
+                border: 0;
+                border-bottom: 1px solid #fff;
+            }
+        </style>
+        <input type="[[type]]" value="[[value]]">
+    </template>
+    <script>
+        class MyInput extends Polymer.Element {
+            static get is() {
+                return 'my-input';
+            }
+
+            static get properties() {
+                return {
+                    type: {
+                        type: String,
+                        value: 'text'
+                    },
+                    value: {
+                        type: String,
+                    }
+                }
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+        window.customElements.define(MyInput.is, MyInput);
+    </script>
+</dom-module>

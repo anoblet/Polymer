@@ -7,7 +7,6 @@
 <link rel="import" href="app/app-model.html">
 <link rel="import" href="app/app-view.html">
 
-
 <link rel="import" href="components/global-styles.html">
 <link rel="import" href="components/flex-styles.html">
 <link rel="import" href="app/app-styles.html">
@@ -44,7 +43,7 @@
                 let model = this.shadowRoot.querySelector('app-model');
                 let routes = model.data.config.routes;
 
-                for (var i = 0; i < routes.length; i++) {
+                for (let i = 0; i < routes.length; i++) {
                     if (__path == routes[i].href) {
                         var route = routes[i];
                     }
