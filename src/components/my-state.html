@@ -1,5 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="../../lib/my-singleton/SingletonMixin.html">
+
 <link rel="import" href="my-location.html">
 
 <dom-module id="my-state">
@@ -15,7 +17,7 @@
         <my-location data="{{location}}"></my-location>
     </template>
     <script>
-        class MyState extends Polymer.Element {
+        class MyState extends SingletonMixin(Polymer.Element) {
             static get is() {
                 return 'my-state';
             }
