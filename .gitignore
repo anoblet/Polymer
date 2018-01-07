@@ -2,5 +2,6 @@
 .yo-rc.json
 bower_components
 build
+lib
 node_modules
 polymer.iml

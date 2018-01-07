@@ -1,0 +1,36 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-state">
+    <template>
+        <style>
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+        </style>
+        Name: [[longName]]
+        Population: [[population]]
+    </template>
+    <script>
+        class MyState extends Polymer.Element {
+            static get is() {
+                return 'my-state';
+            }
+
+            static get properties() {
+                return {
+                    shortName: {
+                        type: String
+                    },
+                    longName: {
+                        type: String
+                    }
+                    population: {
+                        type: String
+                    }
+                }
+            }
+        }
+        window.customElements.define(MyState.is, MyState);
+    </script>
+</dom-module>

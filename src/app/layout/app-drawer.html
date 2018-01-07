@@ -1,6 +1,8 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="../../components/anoblet/v.1.1.1/my-nav.html">
+<link rel="import" href="../../../bower_components/app-menu/app-menu.html">
+<!-- <link rel="import" href="../../components/anoblet/v.1.1.1/my-location.html"> -->
+<link rel="import" href="../../components/my-location.html">
 
 <dom-module id="app-drawer">
     <template>
@@ -12,14 +14,71 @@
                 /* background: var(--color-primary); */
                 overflow: auto;
                 width: 192px;
-                transition: width 0.25s;
+                transition: width 0.5s;
+                --app-menu: {
+                    white-space: nowrap;
+                    background: initial;
+                }
             }
 
             :host([hidden]) {
                 width: 0;
             }
+
+            nav {
+                @apply --flex;
+                @apply --flex-grow;
+            }
         </style>
-        <my-nav></my-nav>
+        <nav>
+            <app-menu selected="0">
+                <app-submenu>
+                    <div class="app-menu-item" slot="submenu-trigger">
+                        <app-menu-icon-item icon="icons:account-balance">My City</app-menu-icon-item>
+                        <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                    </div>
+                    <app-menu slot="submenu-content">
+                        <a class="app-menu-item" href="/[[location.state]]/[[location.city]]">Overview</a>
+                        <a class="app-menu-item" href="javascript:void(0)">Officials</a>
+                        <a class="app-menu-item" href="/city">Static</a>
+                    </app-menu>
+                </app-submenu>
+                <app-submenu>
+                    <div class="app-menu-item" slot="submenu-trigger">
+                        <app-menu-icon-item icon="icons:account-balance">My County</app-menu-icon-item>
+                        <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                    </div>
+                    <app-menu slot="submenu-content">
+                        <a class="app-menu-item" href="{{country}}">Officials</a>
+                    </app-menu>
+                </app-submenu>
+                <app-submenu>
+                    <div class="app-menu-item" slot="submenu-trigger">
+                        <app-menu-icon-item icon="chrome-reader-mode">My State</app-menu-icon-item>
+                        <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                    </div>
+                    <app-menu slot="submenu-content">
+                        <a class="app-menu-item" href="[[location.state]]">Overview</a>
+                        <a class="app-menu-item" href="javascript:void(0)">Officials</a>
+                        <a class="app-menu-item" href="/state">Static</a>
+                    </app-menu>
+                </app-submenu>
+                <app-submenu>
+                    <div class="app-menu-item" slot="submenu-trigger">
+                        <app-menu-icon-item icon="chrome-reader-mode">My Country</app-menu-icon-item>
+                        <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                    </div>
+                    <app-menu slot="submenu-content">
+                        <a class="app-menu-item" href="javascript:void(0)">Officials</a>
+                    </app-menu>
+                </app-submenu>
+                <a class="app-menu-item" href="/map">
+                    <app-menu-icon-item icon="icons:build">Map</app-menu-icon-item>
+                </a>
+            </app-menu>
+        </nav>
+        <my-location data="{{location}}"></my-location>
+        <!-- <my-nav></my-nav> -->
     </template>
 
     <script>

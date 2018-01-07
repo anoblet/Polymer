@@ -1,60 +1,53 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="app-overview.html">
+<link rel="import" href="../../lib/x-grid/x-grid.html">
 
-<link rel="import" href="anoblet/flex-styles.html">
+<link rel="import" href="global-styles.html">
+<link rel="import" href="flex-styles.html">
+<link rel="import" href="../app/app-styles.html">
 
-<link rel="import" href="x-state.html">
-
-<link rel="import" href="anoblet/my-styles.html">
+<link rel="import" href="x-map.html">
+<link rel="import" href="x-census.html">
 
 <dom-module id="app-home">
     <template>
-        <style include="flex-styles my-styles">
+        <style include="global-styles flex-styles app-styles">
             :host {
                 @apply(--flex);
                 @apply(--flex-grow);
             }
         </style>
-        <x-state data="{{state}}"></x-state>
-        <!-- [[data.location.city]] -->
+        <x-grid>
+            <x-grid-row>
+                <x-grid-column>
+                    <x-grid-cell>Test</x-grid-cell>
+                </x-grid-column>
+            </x-grid-row>
+            <x-grid-row>
+                <x-grid-column>
+                    <x-grid-cell><x-census></x-census></x-grid-cell>
+                </x-grid-column>
+                <x-grid-column>
+                    <x-grid-cell>
+                        <paper-card>
+                            <x-map></x-map>
+                        </paper-card>
+                    </x-grid-cell>
+                </x-grid-column>
+            </x-grid-row>
+            <x-grid-row>
+                <x-grid-column>
+                    <x-grid-cell>Test</x-grid-cell>
+                </x-grid-column>
+            </x-grid-row>
 
-        <app-overview app="{{app}}" data="[[data]]" scope="[[scope]]" state="{{state}}"></app-overview>
+        </x-grid>
     </template>
 
     <script>
         class AppHome extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'app-home';
-            }
-
-            static get properties() {
-                return {
-                    scope: {
-                        type: Object,
-                        notify: true
-                    },
-                    state: {
-                        type: Object,
-                        notify: true
-                    },
-                    data: {
-                        type: Object,
-                        notify: true
-                    }
-                }
-            }
-
-            static get observers() {
-                return [
-                    'dataChanged(data.*)'
-                ]
-            }
-
-            dataChanged(data) {
-                // console.log('a');
-                // this.notifyPath('data');
-                // this.set('data', data)
             };
         }
 

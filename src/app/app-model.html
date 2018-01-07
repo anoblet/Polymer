@@ -1,28 +1,96 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
 <dom-module id="app-model">
-    <template>
-        <style include="">
-            :host {
-                @apply(--flex);
-                @apply(--flex-grow);
-            }
-        </style>
-    </template>
     <script>
-        class AppModel extends Polymer.Element {
-            static get is() {
-                return 'app-model';
+        (function () {
+            let subscribers = [];
+            let data = {};
+
+            class AppModel extends Polymer.Element {
+                static get is() {
+                    return 'app-model';
+                }
+
+                static get properties() {
+                    return {
+                        data: {
+                            type: Object,
+                            value: data
+                        },
+                        config: {
+                            type: Object,
+                            value: data.config
+                        }
+                    }
+                }
+
+                static get observers() {
+                    return ['dataChanged(config.*)']
+                }
+
+                connectedCallback() {
+                    this.data.config = {};
+                    this.data.config.routes = [
+                        {
+                            href: "/",
+                            title: "Home",
+                            src: "components/app-home.html",
+                            tag: "app-home"
+                        },
+                        {
+                            href: "/city",
+                            title: "City",
+                            src: "components/app-city.html",
+                            tag: "app-city"
+                        },
+                        {
+                            href: "/state",
+                            title: "State",
+                            src: "components/app-state.html",
+                            tag: "app-state"
+                        },
+                        {
+                            href: "/login",
+                            title: "Login",
+                            src: "components/app-login.html",
+                            tag: "app-login"
+                        },
+                        {
+                            href: "/register",
+                            title: "Register",
+                            src: "components/app-register.html",
+                            tag: "app-register"
+                        },
+                        {
+                            href: "/page",
+                            title: "Home",
+                            src: "components/app-page.html",
+                            tag: "app-page"
+                        },
+                        {
+                            href: "/map",
+                            title: "Home",
+                            src: "components/app-map.html",
+                            tag: "app-map"
+                        },
+                        {
+                            href: "/sitemap",
+                            title: "Home",
+                            src: "components/x-sitemap.html",
+                            tag: "x-sitemap"
+                        },
+                        {
+                            href: "/address",
+                            title: "Home",
+                            src: "components/x-address.html",
+                            tag: "x-address"
+                        }
+                    ]
+                }
             }
 
-            static get properties() {
-                return {}
-            }
+            window.customElements.define(AppModel.is, AppModel);
+        })();
 
-            static get observers() {
-                return []
-            }
-        }
-        window.customElements.define(AppModel.is, AppModel);
     </script>
 </dom-module>

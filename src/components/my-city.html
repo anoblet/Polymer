@@ -1,6 +1,6 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<dom-module id="app-layout">
+<dom-module id="my-city">
     <template>
         <style include="">
             :host {
@@ -10,9 +10,9 @@
         </style>
     </template>
     <script>
-        class AppLayout extends Polymer.Element {
+        class MyCity extends Polymer.Element {
             static get is() {
-                return 'app-layout';
+                return 'my-city';
             }
 
             static get properties() {
@@ -23,6 +23,6 @@
                 return []
             }
         }
-        window.customElements.define(AppLayout.is, AppLayout);
+        window.customElements.define(MyCity.is, MyCity);
     </script>
 </dom-module>

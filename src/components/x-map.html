@@ -1,10 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/google-map/google-map.html">
-
-<link rel="import" href="./app-style.html">
-<link rel="import" href="anoblet/v.1.1.1/LocationMixin.html">
 
 <dom-module id="x-map">
     <template>
@@ -18,14 +14,16 @@
             google-map {
                 @apply(--flex);
                 @apply(--flex-auto);
+                height: auto;
                 padding-top: 100%;
             }
         </style>
         <google-map latitude="[[location.latitude]]" longitude="[[location.longitude]]" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk"></google-map>
+    <my-location data="{{location}}"></my-location>
     </template>
 
     <script>
-        class XMap extends LocationMixin(Polymer.Element) {
+        class XMap extends Polymer.Element {
             static get is() {
                 return 'x-map';
             }

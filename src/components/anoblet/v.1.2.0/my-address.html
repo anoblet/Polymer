@@ -1,11 +1,9 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 
 <link rel="import" href="../../../../bower_components/google-apis/google-maps-api.html">
-<link rel="import" href="../../../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../../../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
 
-<link rel="import" href="../v.1.1.1/my-location.html">
+<link rel="import" href="../../my-location.html">
 
 <dom-module id="my-address">
     <template>
@@ -21,81 +19,36 @@
             }
 
         </style>
-        <!-- <my-location data="{{location}}"></my-location> -->
-
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
-
+        <!--
         <paper-input id="locate" placeholder="[[location.city]], [[location.state]]" type="text">
             <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
         </paper-input>
-
-        <x-state id="state" data="{{state}}"></x-state>
+        -->
+        <input id="locate" type="text" placeholder="[[location.city]], [[location.state]]">
+        <i on-click="locate">Locate</i>
         <my-location data="{{location}}"></my-location>
     </template>
 
     <script>
-        // class MyAddress extends LocationMixin(Polymer.Element) {
         class MyAddress extends Polymer.Element {
             static get is() {
                 return 'my-address';
             }
 
-            static get properties() {
-                return {
-                    app: {
-                        type: Object,
-                        value: function () {
-                            // return App;
-                        },
-                        notify: true
-                    },
-                    scope: {
-                        type: Object,
-                        notify: true
-                    },
-                    state: {
-                        type: Object,
-                        notify: true
-                    },
-                    data: {
-                        type: Object,
-                        value: {
-                            city: "Port Chester",
-                            state: "New York"
-                        },
-                        notify: true
-                    }
-                }
-            }
-
-            ready() {
-                super.ready();
-                // this.state = this.$.state.data;
-                // this.$.state.location = this.data;
-            }
-
-            connectedCallback() {
-                super.connectedCallback();
-                // this.state = this.shadowRoot.querySelector('x-state').data;
-                // this.state = this.$.state.data;
-            }
-
             _autocomplete() {
                 var locate = this.$.locate;
-                var t = this;
+                var _this = this;
                 var autocomplete = new google.maps.places.Autocomplete(locate);
 
                 google.maps.event.addListener(autocomplete, 'place_changed', function () {
                     var result = autocomplete.getPlace();
-                    t.setLocation(result);
+                    _this.setLocation(result);
                 });
             }
 
             locate() {
-                var scope = this.scope;
-                // var location = this.scope.location;
-                var locate = this;
-
+                var _this = this;
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (position) {
                         var geocoder = new google.maps.Geocoder();
@@ -110,7 +63,7 @@
                                     result = results[0];
                                 }
 
-                                locate.setLocation(result);
+                                _this.setLocation(result);
                             }
                         });
                     }, function () {
@@ -138,19 +91,13 @@
                     }
                 }
 
-                // this.set('data.location', _location);
-                // Fix imperitively set components
-                // App.notifyPath('data');
-
+                /*
                 this.set('location.latitude', _location.latitude);
                 this.set('location.longitude', _location.longitude);
                 this.set('location.city', _location.city);
                 this.set('location.state', _location.state);
-                // this.set('location', _location);
-
-                // App.set('data.location', _location);
-                // this.scope.set('data.location', _location);
-                // this.scope.notifyPath('data.location');
+                */
+                this.set('location', _location);
             }
 
             mapApiLoaded() {

@@ -2,10 +2,12 @@
     (function () {
         let root = false;
         let elements = [];
-        let data = {/*
-            city: "Port Chester",
-            state: "New York"
-        */};
+        let data = {
+            /*
+                city: "Port Chester",
+                state: "New York"
+            */
+        };
 
         LocationMixin = function (superClass) {
             return class extends superClass {
@@ -20,19 +22,24 @@
                             value: data,
                             notify: true
                         },
-                        location: {
+                        /**
+                         * @deprecated
+                         location: {
                             type: Object,
                             value: data,
                             notify: true
                         }
-
+                         */
                     }
                 }
 
                 static get observers() {
                     return [
                         'dataChanged(data.*)',
-                        'locationChanged(location.*)'
+                        /**
+                         * @deprecated
+                         'locationChanged(location.*)'
+                         */
                     ]
                 }
 
@@ -48,12 +55,14 @@
                     }
                 }
 
-                /*
-                    @return void
+                /**
+                 @deprecated
+                 @return void
+
+                 locationChanged(change) {
+                        this.dataChanged(change);
+                    }
                  */
-                locationChanged(change) {
-                    this.dataChanged(change);
-                }
 
                 connectedCallback() {
                     super.connectedCallback();
@@ -63,7 +72,8 @@
                 disconnectedCallback() {
                     super.disconnectedCallback();
                     var i = this.elements.indexOf(this);
-                    if (i > -1) this.elements.splice(i, 1)                }
+                    if (i > -1) this.elements.splice(i, 1)
+                }
             }
         }
     })();

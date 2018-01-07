@@ -1,19 +1,14 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="LocationMixin.html">
+<link rel="import" href="../../../../lib/my-singleton/SingletonMixin.html">
 
 <dom-module id="my-location">
-    <template>
-        <style></style>
-    </template>
-
     <script>
-        class MyLocation extends LocationMixin(Polymer.Element) {
-            static get is() {
-                return 'my-location';
+            class MyLocation extends SingletonMixin(Polymer.Element) {
+                static get is() {
+                    return 'my-location';
+                }
             }
-        }
-
-        window.customElements.define(MyLocation.is, MyLocation);
+            window.customElements.define(MyLocation.is, MyLocation);
     </script>
 </dom-module>

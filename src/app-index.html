@@ -1,14 +1,15 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="components/global-styles/global-styles.html">
-<link rel="import" href="components/flex-styles/flex-styles.html">
-<link rel="import" href="app/styles/app-styles.html">
-
-<link rel="import" href="app/app-view.html">
-
 <link rel="import" href="../bower_components/iron-location/iron-location.html">
 
+<link rel="import" href="components/my-location.html">
 
+<link rel="import" href="app/app-model.html">
+<link rel="import" href="app/app-view.html">
+
+<link rel="import" href="components/global-styles.html">
+<link rel="import" href="components/flex-styles.html">
+<link rel="import" href="app/app-styles.html">
 
 <dom-module id="app-index">
     <template>
@@ -18,8 +19,10 @@
                 @apply(--flex-grow);
             }
         </style>
+        <app-model></app-model>
         <app-view></app-view>
         <iron-location path="{{__path}}"></iron-location>
+        <my-location show-template></my-location>
     </template>
     <script>
         class AppIndex extends Polymer.Element {
@@ -29,15 +32,54 @@
 
             static get observers() {
                 return [
-                    '__pathChanged(path)'
+                    '__pathChanged(__path)'
                 ]
             }
 
-            __pathChanged(path) {
+            /*
+            * Route our request
+            */
+            __pathChanged(__path) {
+                let model = this.shadowRoot.querySelector('app-model');
+                let routes = model.data.config.routes;
+
+                for (var i = 0; i < routes.length; i++) {
+                    if (__path == routes[i].href) {
+                        var route = routes[i];
+                    }
+                }
+
                 let view = this.shadowRoot.querySelector('app-view');
 
+                if (route) {
+                    Polymer.importHref(this.resolveUrl(route.src), function (e) {
+                        let child = document.createElement(route.tag);
+                        let element = view.querySelector('*');
+                        if (element) {
+                            element.parentNode.removeChild(element);
+                        }
+                        view.appendChild(child);
+                    });
+                }
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+
+                /*
+                * Set the default location
+                */
+
+                /*
+                if (this.location.city);
+                else {
+                    this.location.city = "Port Chester";
+                    this.location.state = "New York";
+                }
+                */
             }
         }
+
         window.customElements.define(AppIndex.is, AppIndex);
     </script>
 </dom-module>

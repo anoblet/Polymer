@@ -1,6 +1,10 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="../components/x-grid/x-grid.html">
+<link rel="import" href="../../lib/x-grid/x-grid.html">
+
+<link rel="import" href="../components/global-styles.html">
+<link rel="import" href="../components/flex-styles.html">
+<link rel="import" href="app-styles.html">
 
 <link rel="import" href="layout/app-header.html">
 <link rel="import" href="layout/app-drawer.html">
@@ -14,31 +18,33 @@
                 @apply --flex;
                 @apply --flex-grow;
             }
+
             app-header {
                 @apply --flex;
                 @apply --flex-grow;
             }
+
             app-footer {
                 @apply --flex;
                 @apply --flex-grow;
             }
         </style>
         <x-grid>
-            <x-grid-row>
+            <x-grid-row shrink-disabled>
                 <app-header></app-header>
             </x-grid-row>
-            <x-grid-row flex auto scroll>
+            <x-grid-row flex grow>
                 <x-grid-column grow-disabled>
-                    <nav>
-                        <app-drawer id="drawer"></app-drawer>
-                    </nav>
+                    <app-drawer id="drawer"></app-drawer>
                 </x-grid-column>
-                <x-grid-column flex>
-                    <app-main></app-main>
+                <x-grid-column flex scroll>
+                    <app-main>
+                        <slot></slot>
+                    </app-main>
                 </x-grid-column>
             </x-grid-row>
-            <x-grid-row>
-                <app-footer>F</app-footer>
+            <x-grid-row shrink-disabled>
+                <app-footer></app-footer>
             </x-grid-row>
         </x-grid>
         <app-model data="{{model}}"></app-model>

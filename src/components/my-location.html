@@ -1,0 +1,36 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-if.html">
+
+<link rel="import" href="../../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+
+<link rel="import" href="../../../../lib/my-singleton/SingletonMixin.html">
+
+<dom-module id="my-location">
+    <template>
+        <template is="dom-if" if="{{showTemplate}}">
+            Here
+        </template>
+        <app-localstorage-document key="city" data="{{data.city}}"></app-localstorage-document>
+        <app-localstorage-document key="state" data="{{data.state}}"></app-localstorage-document>
+        <app-localstorage-document key="latitude" data="{{data.latitude}}"></app-localstorage-document>
+        <app-localstorage-document key="longitude" data="{{data.longitude}}"></app-localstorage-document>
+    </template>
+    <script>
+        class MyLocation extends SingletonMixin(Polymer.Element) {
+            static get is() {
+                return 'my-location';
+            }
+
+            static get properties() {
+                return {
+                    showTemplate: {
+                        type: Boolean,
+                        value: false
+                    }
+                }
+            }
+        }
+
+        window.customElements.define(MyLocation.is, MyLocation);
+    </script>
+</dom-module>
