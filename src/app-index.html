@@ -7,6 +7,7 @@
 <link rel="import" href="app/app-model.html">
 <link rel="import" href="app/app-view.html">
 
+
 <link rel="import" href="components/global-styles.html">
 <link rel="import" href="components/flex-styles.html">
 <link rel="import" href="app/app-styles.html">
@@ -22,7 +23,7 @@
         <app-model></app-model>
         <app-view></app-view>
         <iron-location path="{{__path}}"></iron-location>
-        <my-location show-template></my-location>
+        <my-location></my-location>
     </template>
     <script>
         class AppIndex extends Polymer.Element {
@@ -69,14 +70,11 @@
                 /*
                 * Set the default location
                 */
+            }
 
-                /*
-                if (this.location.city);
-                else {
-                    this.location.city = "Port Chester";
-                    this.location.state = "New York";
-                }
-                */
+            setDefaultLocation() {
+                this.location.city = "Port Chester";
+                this.location.state = "New York";
             }
         }
 

@@ -1,5 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
 <link rel="import" href="../../lib/x-grid/x-grid.html">
 
 <link rel="import" href="global-styles.html">
@@ -17,7 +19,7 @@
                 @apply(--flex-grow);
             }
         </style>
-        <x-grid>
+        <x-grid flex-disabled>
             <x-grid-row>
                 <x-grid-column>
                     <x-grid-cell>Test</x-grid-cell>
@@ -25,7 +27,11 @@
             </x-grid-row>
             <x-grid-row>
                 <x-grid-column>
-                    <x-grid-cell><x-census></x-census></x-grid-cell>
+                    <x-grid-cell>
+                        <paper-card>
+                            <x-census></x-census>
+                        </paper-card>
+                    </x-grid-cell>
                 </x-grid-column>
                 <x-grid-column>
                     <x-grid-cell>

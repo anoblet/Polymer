@@ -1,5 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="my-location.html">
+
 <dom-module id="my-state">
     <template>
         <style>
@@ -10,6 +12,7 @@
         </style>
         Name: [[longName]]
         Population: [[population]]
+        <my-location data="{{location}}"></my-location>
     </template>
     <script>
         class MyState extends Polymer.Element {
@@ -24,11 +27,16 @@
                     },
                     longName: {
                         type: String
-                    }
+                    },
                     population: {
                         type: String
                     }
                 }
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.longName = this.location.state;
             }
         }
         window.customElements.define(MyState.is, MyState);
