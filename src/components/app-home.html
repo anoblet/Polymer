@@ -19,6 +19,7 @@
                 @apply(--flex-grow);
             }
         </style>
+        <app-localstorage-document key="user" data="{{user}}"></app-localstorage-document>
         <x-grid flex-disabled>
             <x-grid-row>
                 <x-grid-column>
@@ -46,7 +47,6 @@
                     <x-grid-cell>Test</x-grid-cell>
                 </x-grid-column>
             </x-grid-row>
-
         </x-grid>
     </template>
 
@@ -55,6 +55,14 @@
             static get is() {
                 return 'app-home';
             };
+
+            static get properties() {
+                return {
+                    user: {
+                        type: Object
+                    }
+                }
+            }
         }
 
         window.customElements.define(AppHome.is, AppHome);
