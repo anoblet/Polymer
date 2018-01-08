@@ -1,0 +1,48 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="my-grid-item/my-grid-item.html">
+
+<dom-module id="my-grid">
+    <template>
+        <style include="flex-styles">
+            :host {
+                display: grid;
+                flex-grow: 1;
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+
+            :host > div {
+                @apply --flex;
+                @apply --flex-auto;
+            }
+        </style>
+        <slot></slot>
+    </template>
+    <script>
+        class MyGrid extends Polymer.Element {
+            static get is() {
+                return 'my-grid';
+            }
+
+            static get properties() {
+                return {
+                    columns: {
+                        type: Number,
+                        value: 1
+                    }
+                }
+            }
+
+            static get observers() {
+                return []
+            }
+
+            ready() {
+                super.ready();
+                // this.style.gridTemplateColumns = "repeat(" + this.columns + ", 1fr)";
+            }
+        }
+
+        window.customElements.define(MyGrid.is, MyGrid);
+    </script>
+</dom-module>

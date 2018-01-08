@@ -1,0 +1,47 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-grid-item">
+    <template>
+        <style include="app-styles">
+            :host {
+                display: flex;
+                @apply --flex-grow;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+        <slot></slot>
+    </template>
+    <script>
+        class MyGridItem extends Polymer.Element {
+            static get is() {
+                return 'my-grid-item';
+            }
+
+            static get properties() {
+                return {
+                    col: {
+                        type: Number,
+                        value: 1
+                    },
+                    span: {
+                        type: Number
+                    }
+                }
+            }
+
+            static get observers() {
+                return []
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                if (this.col) {
+                    this.style.gridColumn = "span " + this.span;
+                }
+            }
+        }
+
+        window.customElements.define(MyGridItem.is, MyGridItem);
+    </script>
+</dom-module>
