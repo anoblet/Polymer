@@ -14,6 +14,9 @@
 <link rel="import" href="../../components/my-city.html">
 <link rel="import" href="../../components/my-state.html">
 
+<link rel="import" href="../../components/custom-block.html">
+<link rel="import" href="../../../bower_components/custom-element/custom-element.html">
+
 <dom-module id="app-home">
     <template>
         <style include="global-styles flex-styles app-styles">
@@ -24,10 +27,9 @@
         </style>
         <app-localstorage-document key="user" data="{{user}}"></app-localstorage-document>
         <x-grid id="test" flex-disabled>
-            <template is="my-city"></template>
-            <template is="dom-repeat" items="[[blocks]]">
-                <template is="[[item]]">test</template>
-                [[item]]
+            <template is="dom-repeat" items="[[blocks]]" as="element">
+                <custom-element element="[[element]]"></custom-element>
+                <!-- <template is="[[item]]">test</template> -->
             </template>
         </x-grid>
         <!--
@@ -82,20 +84,46 @@
                     },
                     blocks: {
                         type: Array,
-                        value: ['my-city', 'my-state', 'x-map']
+                        value: [
+                            /*{
+                                element: 'my-city',
+                                columns: 1,
+                                rows, 1
+                            },*/
+                            {
+                                src: 'my-census',
+                                tag: 'my-census',
+                            },
+                            {
+                                // src: '',
+                                tag: 'my-city',
+                            },
+                            {
+                                // src: '',
+                                tag: 'x-map',
+                            }
+                        ]
                     }
                 }
             }
 
             ready() {
                 super.ready();
-                let _this = this;
-                this.blocks.forEach(function(block) {
-                    {
-                        let e = document.createElement(block);
-                        _this.shadowRoot.querySelector("x-grid").appendChild(e);
-                    }
-                });
+                /*
+                this.blocks.forEach(function (block) {
+                    let b = this.createBlock(block);
+                    this.shadowRoot.querySelector("x-grid").appendChild(b);
+                }.bind(this));
+                */
+            }
+
+            createBlock(block) {
+                let p = document.createElement('paper-card');
+                let b = document.createElement(block);
+
+                p.appendChild(b)
+
+                return p;
             }
         }
 
