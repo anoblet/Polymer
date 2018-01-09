@@ -1,15 +1,18 @@
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
 
-<link rel="import" href="../../bower_components/x-grid/x-grid.html">
+<link rel="import" href="../../../bower_components/x-grid/x-grid.html">
 
-<link rel="import" href="global-styles.html">
-<link rel="import" href="flex-styles.html">
-<link rel="import" href="../app/app-styles.html">
+<link rel="import" href="../../components/global-styles.html">
+<link rel="import" href="../../components/flex-styles.html">
+<link rel="import" href="../app-styles.html">
 
-<link rel="import" href="x-map.html">
-<link rel="import" href="x-census.html">
+<link rel="import" href="../../components/x-map.html">
+<link rel="import" href="../../components/x-census.html">
+
+<link rel="import" href="../../components/my-city.html">
+<link rel="import" href="../../components/my-state.html">
 
 <dom-module id="app-home">
     <template>
@@ -20,6 +23,14 @@
             }
         </style>
         <app-localstorage-document key="user" data="{{user}}"></app-localstorage-document>
+        <x-grid id="test" flex-disabled>
+            <template is="my-city"></template>
+            <template is="dom-repeat" items="[[blocks]]">
+                <template is="[[item]]">test</template>
+                [[item]]
+            </template>
+        </x-grid>
+        <!--
         <x-grid flex-disabled>
             <x-grid-row>
                 <x-grid-column>
@@ -37,6 +48,13 @@
                 <x-grid-column>
                     <x-grid-cell>
                         <paper-card>
+                            <my-city>test</my-city>
+                        </paper-card>
+                    </x-grid-cell>
+                </x-grid-column>
+                <x-grid-column>
+                    <x-grid-cell>
+                        <paper-card>
                             <x-map></x-map>
                         </paper-card>
                     </x-grid-cell>
@@ -48,6 +66,7 @@
                 </x-grid-column>
             </x-grid-row>
         </x-grid>
+        -->
     </template>
 
     <script>
@@ -60,8 +79,23 @@
                 return {
                     user: {
                         type: Object
+                    },
+                    blocks: {
+                        type: Array,
+                        value: ['my-city', 'my-state', 'x-map']
                     }
                 }
+            }
+
+            ready() {
+                super.ready();
+                let _this = this;
+                this.blocks.forEach(function(block) {
+                    {
+                        let e = document.createElement(block);
+                        _this.shadowRoot.querySelector("x-grid").appendChild(e);
+                    }
+                });
             }
         }
 
