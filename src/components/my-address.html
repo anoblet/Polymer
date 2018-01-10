@@ -3,6 +3,8 @@
 <link rel="import" href="../../bower_components/google-apis/google-maps-api.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 
+<link rel="import" href="../../bower_components/iron-icons/device-icons.html">
+
 <link rel="import" href="my-location.html">
 
 <link rel="import" href="my-input/my-input.html">
@@ -23,8 +25,8 @@
         </style>
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
 
-        <paper-input id="locate" placeholder="[[location.city]], [[location.state]]" type="text">
-            <iron-icon icon="room" slot="suffix" on-click="locate"></iron-icon>
+        <paper-input id="autocomplete" placeholder="[[location.city]], [[location.state]]" type="text">
+            <iron-icon icon="device:gps-fixed" slot="suffix" on-click="locate"></iron-icon>
         </paper-input>
         <!-- <my-input></my-input> -->
         <my-location data="{{location}}"></my-location>
@@ -37,15 +39,13 @@
             }
 
             _autocomplete() {
-                var locate = this.$.locate.inputElement.inputElement;
-                console.log(locate);
-                var _this = this;
-                var autocomplete = new google.maps.places.Autocomplete(locate);
+                var _input = this.$.autocomplete.inputElement.inputElement;
+                var autocomplete = new google.maps.places.Autocomplete(_input, {types: ['(cities)']});
 
                 google.maps.event.addListener(autocomplete, 'place_changed', function () {
                     var result = autocomplete.getPlace();
-                    _this.setLocation(result);
-                });
+                    this.setLocation(result);
+                }.bind(this));
             }
 
             locate() {

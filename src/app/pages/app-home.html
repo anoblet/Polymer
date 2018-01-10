@@ -8,14 +8,9 @@
 <link rel="import" href="../../components/flex-styles.html">
 <link rel="import" href="../app-styles.html">
 
-<link rel="import" href="../../components/x-map.html">
-<link rel="import" href="../../components/x-census.html">
-
-<link rel="import" href="../../components/my-city.html">
-<link rel="import" href="../../components/my-state.html">
-
-<link rel="import" href="../../components/custom-block.html">
 <link rel="import" href="../../../bower_components/custom-element/custom-element.html">
+
+<link rel="import" href="../../components/my-grid/my-grid.html">
 
 <dom-module id="app-home">
     <template>
@@ -24,14 +19,22 @@
                 @apply(--flex);
                 @apply(--flex-grow);
             }
+            my-grid {
+                width: 100%;
+                height: 100%;
+            }
         </style>
         <app-localstorage-document key="user" data="{{user}}"></app-localstorage-document>
-        <x-grid id="test" flex-disabled>
-            <template is="dom-repeat" items="[[blocks]]" as="element">
+
+        <my-grid items="[[blocks]]" rows="*" columns="2"></my-grid>
+
+        <!--
+        <template is="dom-repeat" items="[[blocks]]" as="element">
+            <paper-card>
                 <custom-element element="[[element]]"></custom-element>
-                <!-- <template is="[[item]]">test</template> -->
-            </template>
-        </x-grid>
+            </paper-card>
+        </template>
+        -->
         <!--
         <x-grid flex-disabled>
             <x-grid-row>
@@ -86,22 +89,32 @@
                         type: Array,
                         value: [
                             {
-                                src: 'my-census',
-                                tag: 'my-census',
-                                rows: 1,
-                                columns: 1
-                            },
-                            {
                                 // src: '',
                                 tag: 'my-city',
                                 rows: 1,
-                                columns: 1
+                                columns: 1,
+                                title: 'My City'
+                            },
+                            {
+                                // src: '',
+                                tag: 'my-state',
+                                rows: 1,
+                                columns: 1,
+                                title: 'My State'
+                            },
+                            {
+                                src: 'my-census',
+                                tag: 'my-census',
+                                rows: 1,
+                                columns: 1,
+                                title: 'Census'
                             },
                             {
                                 // src: '',
                                 tag: 'x-map',
                                 rows: 2,
-                                columns: 2
+                                columns: 2,
+                                title: 'Map'
                             }
                         ]
                     }

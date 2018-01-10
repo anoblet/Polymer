@@ -2,12 +2,14 @@
 
 <dom-module id="my-city">
     <template>
-        <style include="">
+        <style>
             :host {
                 @apply(--flex);
                 @apply(--flex-grow);
             }
         </style>
+        <my-location data="{{location}}"></my-location>
+        [[location.city]]
     </template>
     <script>
         class MyCity extends Polymer.Element {

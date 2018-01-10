@@ -1,22 +1,23 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="my-grid-item/my-grid-item.html">
-
 <dom-module id="my-grid">
     <template>
-        <style include="flex-styles">
+        <style include="app-styles">
             :host {
                 display: grid;
-                flex-grow: 1;
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            }
-
-            :host > div {
-                @apply --flex;
-                @apply --flex-auto;
+                grid-row-gap: 3rem;
+                grid-column-gap: 3rem;
+                padding: 3rem;
             }
         </style>
-        <slot></slot>
+        <template is="dom-repeat" items="[[items]]" as="item">
+            <paper-card>
+                <div class="heading">[[item.title]]</div>
+                <div class="content">
+                    <custom-element element="[[item]]"></custom-element>
+                </div>
+            </paper-card>
+        </template>
     </template>
     <script>
         class MyGrid extends Polymer.Element {
@@ -26,20 +27,24 @@
 
             static get properties() {
                 return {
+                    rows: {
+                        type: Number,
+                        value: 1
+                    },
                     columns: {
                         type: Number,
                         value: 1
+                    },
+                    items: {
+                        type: Object
                     }
                 }
             }
 
-            static get observers() {
-                return []
-            }
-
             ready() {
                 super.ready();
-                // this.style.gridTemplateColumns = "repeat(" + this.columns + ", 1fr)";
+                this.style.gridTemplateRows = this.rows;
+                this.style.gridTemplateColumns = "repeat(auto-fill, minmax(320px, 1fr))";
             }
         }
 

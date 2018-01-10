@@ -15,10 +15,27 @@
             paper-card {
                 display: flex;
                 @apply --flex-grow;
-                margin: 1rem;
-                padding: 1rem;
+                @apply --flex-horizontal;
+                /* margin: 1rem; */
+                padding: 2rem;
                 min-width: 320px;
                 height: fit-content;
+            }
+
+            paper-card .heading {
+                width: 100%;
+                border-bottom: 1px solid #eee;
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            paper-card .content {
+                padding: 1rem;
+            }
+
+            custom-element {
+                @apply --flex;
+                @apply --flex-grow;
             }
         </style>
     </template>
