@@ -1,20 +1,22 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="my-census-geocoder.html">
-
-<dom-module id="my-census">
+<dom-module id="my-country">
     <template>
-        <my-census-geocoder state-code="{{stateCode}}"></my-census-geocoder>
+        <style>
+            :host {
+            }
+        </style>
+        Population:
     </template>
     <script>
-        class MyCensus extends Polymer.Element {
+        class MyCountry extends Polymer.Element {
             static get is() {
-                return 'my-census';
+                return 'my-country';
             }
 
             static get properties() {
                 return {
-                    stateCode: {
+                    population: {
                         type: String
                     }
                 }
@@ -24,7 +26,6 @@
                 return []
             }
         }
-
-        window.customElements.define(MyCensus.is, MyCensus);
+        window.customElements.define(MyCountry.is, MyCountry);
     </script>
 </dom-module>

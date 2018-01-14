@@ -4,13 +4,14 @@
     <template>
         <style include="app-styles">
             :host {
-                display: flex;
-                @apply --flex-grow;
-                align-items: center;
-                justify-content: center;
             }
         </style>
-        <slot></slot>
+        <paper-card>
+            <div class="heading">[[item.title]]</div>
+            <div class="content">
+                <slot></slot>
+            </div>
+        </paper-card>
     </template>
     <script>
         class MyGridItem extends Polymer.Element {
@@ -20,18 +21,44 @@
 
             static get properties() {
                 return {
-                    col: {
+                    columns: {
                         type: Number,
                         value: 1
                     },
+                    rows: {
+                        type: Number,
+                        value: 1
+                    },
+                    fullRow: {
+                        type: Boolean,
+                        // value: false,
+                        observer: '_fullRowChanged',
+                        reflectToAttribute: true
+                    },
+                    fullColumn: {
+                        type: Boolean,
+                        value: false
+                    },
                     span: {
                         type: Number
+                    },
+                    item: {
+                        type: Object
                     }
                 }
             }
 
             static get observers() {
                 return []
+            }
+
+            _fullRowChanged(value) {
+                if (value) {
+                    this.style.gridColumn = '1 / -1';
+                }
+                else {
+                    this.style.gridColumn = '';
+                }
             }
 
             connectedCallback() {

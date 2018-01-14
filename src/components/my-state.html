@@ -1,8 +1,10 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="../../lib/my-singleton/SingletonMixin.html">
+<link rel="import" href="my-singleton/SingletonMixin.html">
 
 <link rel="import" href="my-location.html">
+
+<link rel="import" href="us-census-api/us-census-api.html">
 
 <dom-module id="my-state">
     <template>
@@ -12,10 +14,12 @@
                 @apply(--flex-grow);
             }
         </style>
-        [[location.state]]
-        Name: [[longName]]
-        Population: [[population]]
+        <ul>
+            <li>Name: [[longName]] [[location.state]]</li>
+            <li>Population: [[population]]</li>
+        </ul>
         <my-location data="{{location}}"></my-location>
+        <us-census-api response="{{data}}"></us-census-api>
     </template>
     <script>
         class MyState extends SingletonMixin(Polymer.Element) {
@@ -39,9 +43,10 @@
 
             connectedCallback() {
                 super.connectedCallback();
-                this.longName = this.location.state;
+                // this.longName = this.location.state;
             }
         }
+
         window.customElements.define(MyState.is, MyState);
     </script>
 </dom-module>

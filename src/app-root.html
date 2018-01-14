@@ -1,21 +1,16 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<dom-module id="app-footer">
+<dom-module id="app-root">
     <template>
-        <style include="">
+        <style>
             :host {
-                @apply(--flex);
-                @apply(--flex-grow);
-                justify-content: center;
-                color: #fff;
             }
         </style>
-        &copy Andrew Noblet
     </template>
     <script>
-        class AppFooter extends Polymer.Element {
+        class AppRoot extends Polymer.Element {
             static get is() {
-                return 'app-footer';
+                return 'app-root';
             }
 
             static get properties() {
@@ -26,6 +21,6 @@
                 return []
             }
         }
-        window.customElements.define(AppFooter.is, AppFooter);
+        window.customElements.define(AppRoot.is, AppRoot);
     </script>
 </dom-module>

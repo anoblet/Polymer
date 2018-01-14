@@ -11,7 +11,7 @@
 
 <dom-module id="my-address">
     <template>
-        <style include="app-style">
+        <style>
             :host {
                 @apply(--layout-flex);
 
@@ -40,7 +40,7 @@
 
             _autocomplete() {
                 var _input = this.$.autocomplete.inputElement.inputElement;
-                var autocomplete = new google.maps.places.Autocomplete(_input, {types: ['(cities)']});
+                var autocomplete = new google.maps.places.Autocomplete(_input, /* {types: ['(cities)']} */);
 
                 google.maps.event.addListener(autocomplete, 'place_changed', function () {
                     var result = autocomplete.getPlace();

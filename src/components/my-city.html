@@ -1,5 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="my-census/my-census.html">
+
 <dom-module id="my-city">
     <template>
         <style>
@@ -9,7 +11,12 @@
             }
         </style>
         <my-location data="{{location}}"></my-location>
-        [[location.city]]
+        <ul>
+            <li>Name: [[location.city]]</li>
+            <li>Longitude: [[location.latitude]]</li>
+            <li>Longitude [[location.longitude]]</li>
+        </ul>
+        <my-census data="{{censusData}}"></my-census>
     </template>
     <script>
         class MyCity extends Polymer.Element {
@@ -18,13 +25,24 @@
             }
 
             static get properties() {
-                return {}
+                return {
+                    name: {
+                        type: String
+                    }
+                }
             }
 
             static get observers() {
-                return []
+                return [
+                    'locationChanged(location.*)'
+                ]
+            }
+
+            locationChanged() {
+                this.name = location.city
             }
         }
+
         window.customElements.define(MyCity.is, MyCity);
     </script>
 </dom-module>

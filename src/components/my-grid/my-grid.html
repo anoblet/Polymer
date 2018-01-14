@@ -1,5 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="my-grid-item/my-grid-item.html">
+
 <dom-module id="my-grid">
     <template>
         <style include="app-styles">
@@ -11,12 +13,9 @@
             }
         </style>
         <template is="dom-repeat" items="[[items]]" as="item">
-            <paper-card>
-                <div class="heading">[[item.title]]</div>
-                <div class="content">
-                    <custom-element element="[[item]]"></custom-element>
-                </div>
-            </paper-card>
+            <my-grid-item item="[[item]]" full-row="[[item.fullRow]]" full-column="[[item.fullColumn]]">
+                <custom-element element="[[item]]"></custom-element>
+            </my-grid-item>
         </template>
     </template>
     <script>
