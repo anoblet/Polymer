@@ -10,3 +10,6 @@
 [submodule "src/components/x-grid"]
 	path = src/components/x-grid
 	url = https://github.com/anoblet/x-grid.git
+[submodule "src/components/app-menu"]
+	path = src/components/app-menu
+	url = https://github.com/anoblet/app-menu.git
