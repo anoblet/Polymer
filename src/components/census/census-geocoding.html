@@ -1,0 +1,26 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="census-geocoding">
+    <template>
+        <style>
+            :host {
+            }
+        </style>
+    </template>
+    <script>
+        class CensusGeocoding extends Polymer.Element {
+            static get is() {
+                return 'census-geocoding';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+        window.customElements.define(CensusGeocoding.is, CensusGeocoding);
+    </script>
+</dom-module>

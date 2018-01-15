@@ -1,0 +1,121 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html">
+
+<link rel="import" href="../my-location.html">
+
+<link rel="import" href="../my-debug/my-debug.html">
+
+<dom-module id="my-census-geocoder">
+    <template>
+        <my-location data="{{_location}}"></my-location>
+        <iron-ajax url="[[_requestUrl()]]" on-response="handleResponse" handle-as="json" auto></iron-ajax>
+        Geocoder:
+        <ul>
+            <li>
+                State code: [[stateCode]]
+            </li>
+        </ul>
+        <my-debug data="[[debug]]"></my-debug>
+    </template>
+    <script>
+        class MyCensusGeocoder extends Polymer.Element {
+            static get is() {
+                return 'my-census-geocoder';
+            }
+
+            static get properties() {
+                return {
+                    // Constants
+                    _baseUrl: {
+                        type: String,
+                        value: "https://geocoding.geo.census.gov/geocoder/geographies"
+                    },
+                    _benchmark: {
+                        type: String,
+                        value: "Public_AR_Current"
+                    },
+                    _format: {
+                        type: String,
+                        value: "json"
+                    },
+                    _inputFormat: {
+                        type: String,
+                        value: "coordinates"
+                    },
+                    _vintage: {
+                        type: String,
+                        value: "Current_Current"
+                    },
+                    // Computed
+                    _requestUrl: {
+                        type: String,
+                        // computed: "_requestUrl(_baseUrl, _inputFormat)"
+                    },
+                    // Input
+                    latitude: {
+                        type: String
+                    },
+                    longitude: {
+                        type: String
+                    },
+                    // Output
+                    _rawData: {
+                        type: Object
+                    },
+                    data: {
+                        type: Object
+                    },
+                    stateCode: {
+                        type: String,
+                        notify: true
+                    },
+                    location: {
+                        type: Object
+                    },
+                    debug: {
+                        type: Object,
+                        value: this.constructor
+                    }
+                }
+            }
+
+            static get observers() {
+                return [
+                    '_locationChanged(_location.*)'
+                ]
+            }
+
+            _locationChanged() {
+                let ajax = this.shadowRoot.querySelector('iron-ajax');
+                ajax.params = this._getParams();
+            }
+
+            _getParams() {
+                return {
+                    "benchmark": this._benchmark,
+                    "vintage": this._vintage,
+                    "x": this._location.longitude,
+                    "y": this._location.latitude,
+                    "format": this._format
+                }
+            }
+
+            handleResponse(event) {
+                this._rawData = event.detail.response;
+                this.stateCode = this._rawData.result.geographies.States[0].STATE;
+            }
+
+            _requestUrl(_baseUrl, _inputFormat) {
+                return this._baseUrl + "/" + this._inputFormat;
+            }
+
+            ready() {
+                super.ready();
+
+                this.debug = this;
+            }
+        }
+        window.customElements.define(MyCensusGeocoder.is, MyCensusGeocoder);
+    </script>
+</dom-module>

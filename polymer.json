@@ -2,7 +2,6 @@
   "entrypoint": "index.html",
   "shell": "src/app-index.html",
   "fragments": [
-    "src/components/app-home.html",
     "src/components/app-register.html"
   ],
   "sources": [
