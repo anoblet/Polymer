@@ -40,12 +40,31 @@
             * Route our request
             */
             __pathChanged(__path) {
-                let model = this.shadowRoot.querySelector('app-model');
-                let routes = model.data.config.routes;
+                // Is the path to a single component?
+                console.log(__path);
 
-                for (let i = 0; i < routes.length; i++) {
-                    if (__path == routes[i].href) {
-                        var route = routes[i];
+                let isComponent = __path.startsWith("/component/");
+                if (isComponent) {
+                    let parts = __path.split("/");
+                    console.log(parts);
+                    parts.shift();
+                    parts.shift();
+                    let element = parts.pop();
+                    let newPath = parts.join("/");
+                    let componentPath = "components" + "/" + newPath;
+                    console.log(componentPath);
+                    route = {
+                        src: componentPath + "/" + element + ".html",
+                        tag: element
+                    }
+                } else {
+                    let model = this.shadowRoot.querySelector('app-model');
+                    let routes = model.data.config.routes;
+
+                    for (let i = 0; i < routes.length; i++) {
+                        if (__path == routes[i].href) {
+                            var route = routes[i];
+                        }
                     }
                 }
 
@@ -63,17 +82,17 @@
                 }
             }
 
+            __setDefaultLocation() {
+                this.location.city = "Port Chester";
+                this.location.state = "New York";
+            }
+
             connectedCallback() {
                 super.connectedCallback();
 
                 /*
                 * Set the default location
                 */
-            }
-
-            setDefaultLocation() {
-                this.location.city = "Port Chester";
-                this.location.state = "New York";
             }
         }
 

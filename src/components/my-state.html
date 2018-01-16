@@ -6,6 +6,8 @@
 
 <link rel="import" href="us-census-api/us-census-api.html">
 
+<link rel="import" href="my-census/my-census.html">
+
 <dom-module id="my-state">
     <template>
         <style>
@@ -20,6 +22,7 @@
         </ul>
         <my-location data="{{location}}"></my-location>
         <us-census-api response="{{data}}"></us-census-api>
+        <my-census></my-census>
     </template>
     <script>
         class MyState extends SingletonMixin(Polymer.Element) {
