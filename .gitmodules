@@ -13,3 +13,6 @@
 [submodule "src/components/app-menu"]
 	path = src/components/app-menu
 	url = https://github.com/anoblet/app-menu.git
+[submodule "src/components/custom-element"]
+	path = src/components/custom-element
+	url = https://github.com/anoblet/custom-element.git
