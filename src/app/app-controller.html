@@ -2,14 +2,7 @@
 
 <dom-module id="app-controller">
     <template>
-        <style include="">
-            :host {
-                @apply(--flex);
-                @apply(--flex-grow);
-            }
-        </style>
-        <app-model></app-model>
-        <app-view></app-view>
+        <iron-location path="{{__path}}"></iron-location>
     </template>
     <script>
         class AppController extends Polymer.Element {
@@ -22,7 +15,55 @@
             }
 
             static get observers() {
-                return []
+                return [
+                    '__pathChanged(__path)'
+                ]
+            }
+
+            /*
+            * Route our request
+            */
+            __pathChanged(__path) {
+                // Is the path to a single component?
+                console.log(__path);
+
+                let isComponent = __path.startsWith("/component/");
+                if (isComponent) {
+                    let parts = __path.split("/");
+                    console.log(parts);
+                    parts.shift();
+                    parts.shift();
+                    let element = parts.pop();
+                    let newPath = parts.join("/");
+                    let componentPath = "components" + "/" + newPath;
+                    console.log(componentPath);
+                    route = {
+                        src: componentPath + "/" + element + ".html",
+                        tag: element
+                    }
+                } else {
+                    let model = Application.shadowRoot.querySelector('app-model');
+                    let routes = model.data.config.routes;
+
+                    for (let i = 0; i < routes.length; i++) {
+                        if (__path == routes[i].href) {
+                            var route = routes[i];
+                        }
+                    }
+                }
+
+                let view = Application.shadowRoot.querySelector('app-view');
+
+                if (route) {
+                    Polymer.importHref(this.resolveUrl("../" + route.src), function (e) {
+                        let child = document.createElement(route.tag);
+                        let element = view.querySelector('*');
+                        if (element) {
+                            element.parentNode.removeChild(element);
+                        }
+                        view.appendChild(child);
+                    });
+                }
             }
         }
         window.customElements.define(AppController.is, AppController);
