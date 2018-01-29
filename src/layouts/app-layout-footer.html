@@ -1,5 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="../../bower_components/social-links/social-link.html">
+
 <dom-module id="app-footer">
     <template>
         <style include="">
@@ -11,7 +13,10 @@
                 padding: 1rem;
             }
         </style>
-        &copy Andrew Noblet
+        <footer>
+            &copy Andrew Noblet
+            <social-link network="github" href="https://github.com/anoblet"></social-link>
+        </footer>
     </template>
     <script>
         class AppFooter extends Polymer.Element {
@@ -27,6 +32,7 @@
                 return []
             }
         }
+
         window.customElements.define(AppFooter.is, AppFooter);
     </script>
 </dom-module>
