@@ -1,0 +1,38 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../../bower_components/us-census/us-census.html">
+
+<dom-module id="my-state">
+    <template>
+        <us-census state="{{state}}"></us-census>
+        <ul>
+            <li>Name: [[state.name]]</li>
+            <li>Land area: [[state.areaLandFormatted]] ([[percentLand]]%)</li>
+            <li>Water area: [[state.areaWaterFormatted]] ([[percentWater]]%)</li>
+            <li>Population: [[state.population]]</li>
+        </ul>
+    </template>
+    <script>
+        class MyState extends Polymer.Element {
+            static get is() {
+                return 'my-state';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return [
+                    "_terrainRatio(state.areaLand, state.areaWater)"
+                ]
+            }
+
+            _terrainRatio() {
+                this.percentLand = ((this.state.areaLand / (this.state.areaLand + this.state.areaWater)) * 100).toFixed(0);
+                this.percentWater = ((this.state.areaWater / (this.state.areaLand + this.state.areaWater)) * 100).toFixed(0);
+            }
+        }
+        window.customElements.define(MyState.is, MyState);
+    </script>
+</dom-module>

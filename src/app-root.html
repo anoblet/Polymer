@@ -1,26 +1,91 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../lib/class-loader/class-loader.html">
+
+<link rel="import" href="../bower_components/iron-location/iron-location.html">
+
+<link rel="import" href="styles/global-styles.html">
+<link rel="import" href="styles/flex-styles.html">
+<link rel="import" href="styles/app-styles.html">
 
 <dom-module id="app-root">
     <template>
-        <style>
+        <style include="global-styles flex-styles app-styles">
             :host {
+                @apply(--flex);
+                @apply(--flex-grow);
             }
         </style>
+        <app-model></app-model>
+        <app-view></app-view>
+        <app-controller></app-controller>
+
+        <iron-location path="{{__path}}"></iron-location>
     </template>
     <script>
-        class AppRoot extends Polymer.Element {
+        class AppRoot extends ClassLoader(Polymer.Element) {
             static get is() {
                 return 'app-root';
             }
 
-            static get properties() {
-                return {}
+            static get depends() {
+                return [        
+                    "app-model",
+                    "app-view",
+                    "app-controller",
+                    "global-styles",
+                    "flex-styles",
+                    "app-styles"
+                ]
             }
 
-            static get observers() {
-                return []
+            static get properties() {
+                return {
+                    debug: {
+                        type: Boolean,
+                        value: true
+                    },
+                    modules: {
+                        type: Array,
+                        value: [
+                            {
+                                "key": "user",
+                                "value": "app-user"
+                            }
+                        ]
+                    }
+                }
+            }
+
+            constructor() {
+                super();
+                window.Application = this;
+                Application.log = function(message) {
+                    console.log(message);
+                }
+            }
+
+            ready() {
+                super.ready();
+                for(let module in this.modules) {
+                    Application[module.key] = module.value
+                }
+            }
+
+            __setDefaultLocation() {
+                this.location.city = "Port Chester";
+                this.location.state = "New York";
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+
+                /*
+                * Set the default location
+                */
             }
         }
+
         window.customElements.define(AppRoot.is, AppRoot);
     </script>
 </dom-module>

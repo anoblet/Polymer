@@ -1,4 +1,4 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
 <dom-module id="app-controller">
     <template>
@@ -52,10 +52,12 @@
                     }
                 }
 
+                console.log(route.src);
+
                 let view = Application.shadowRoot.querySelector('app-view');
 
                 if (route) {
-                    Polymer.importHref(this.resolveUrl("../" + route.src), function (e) {
+                    Polymer.importHref(this.resolveUrl(route.src), function (e) {
                         let child = document.createElement(route.tag);
                         let element = view.querySelector('*');
                         if (element) {

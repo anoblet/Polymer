@@ -1,0 +1,33 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../../bower_components/us-census/us-census.html">
+
+<dom-module id="my-city">
+    <template>
+<!--
+        <us-census city="{{data}}"></us-census>
+-->
+        <ul>
+            <li>
+                City Name: [[data.name]]
+            </li>
+        </ul>
+    </template>
+    <script>
+        class MyCity extends Polymer.Element {
+            static get is() {
+                return 'my-city';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+
+        window.customElements.define(MyCity.is, MyCity);
+    </script>
+</dom-module>

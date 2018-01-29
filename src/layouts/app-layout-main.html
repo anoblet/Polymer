@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<!-- <link rel="import" href="../../components/app-overview.html"> -->
+
+<dom-module id="app-main">
+    <template>
+        <style include="">
+            :host {
+                @apply --flex;
+                @apply --flex-grow;
+            }
+            main {
+                @apply --flex;
+                @apply --flex-grow;
+            }
+        </style>
+        <main>
+            <slot></slot>
+        </main>
+    </template>
+    <script>
+        class AppMain extends Polymer.Element {
+            static get is() {
+                return 'app-main';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+
+        window.customElements.define(AppMain.is, AppMain);
+    </script>
+</dom-module>

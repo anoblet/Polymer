@@ -1,0 +1,51 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../../bower_components/us-census/us-census.html">
+
+<dom-module id="my-county">
+    <template>
+        <us-census county="{{county}}"></us-census>
+        <ul>
+            <li>
+                Name: [[county.name]]
+            </li>
+            <li>
+                Land area: [[county.areaLandFormatted]]m<sup>2</sup> ([[percentLand]]%)
+            </li>
+            <li>
+                Water area: [[county.areaWaterFormatted]]m<sup>2</sup> ([[percentWater]]%)
+            </li>
+        </ul>
+    </template>
+    <script>
+        class MyCounty extends Polymer.Element {
+            static get is() {
+                return 'my-county';
+            }
+
+            static get properties() {
+                return {
+                    county: {
+                        type: Object
+                    },
+                    percentLand: {
+                        type: String,
+                        // computed: "_percentLand(areaLand, areaWater)"
+                    }
+                }
+            }
+
+            static get observers() {
+                return [
+                    "_terrainRatio(county.areaLand, county.areaWater)"
+                ]
+            }
+
+            _terrainRatio() {
+                this.percentLand = ((this.county.areaLand / (this.county.areaLand + this.county.areaWater)) * 100).toFixed(0);
+                this.percentWater = ((this.county.areaWater / (this.county.areaLand + this.county.areaWater)) * 100).toFixed(0);
+            }
+        }
+        window.customElements.define(MyCounty.is, MyCounty);
+    </script>
+</dom-module>

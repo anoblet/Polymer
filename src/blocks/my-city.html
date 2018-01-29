@@ -1,0 +1,50 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/us-census/us-census.html">
+
+<dom-module id="my-city">
+    <template>
+        <style>
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+        </style>
+        <my-location data="{{location}}"></my-location>
+        <ul>
+            <li>Name: [[location.city]]</li>
+            <li>Longitude: [[location.latitude]]</li>
+            <li>Longitude [[location.longitude]]</li>
+        </ul>
+<!--
+        <us-census data="{{censusData}}"></us-census>
+-->
+    </template>
+    <script>
+        class MyCity extends Polymer.Element {
+            static get is() {
+                return 'my-city';
+            }
+
+            static get properties() {
+                return {
+                    name: {
+                        type: String
+                    }
+                }
+            }
+
+            static get observers() {
+                return [
+                    'locationChanged(location.*)'
+                ]
+            }
+
+            locationChanged() {
+                this.name = location.city
+            }
+        }
+
+        window.customElements.define(MyCity.is, MyCity);
+    </script>
+</dom-module>

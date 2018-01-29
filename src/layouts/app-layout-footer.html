@@ -1,18 +1,22 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
-<dom-module id="app-config">
+<dom-module id="app-footer">
     <template>
         <style include="">
             :host {
                 @apply(--flex);
                 @apply(--flex-grow);
+                justify-content: center;
+                color: #fff;
+                padding: 1rem;
             }
         </style>
+        &copy Andrew Noblet
     </template>
     <script>
-        class AppConfig extends Polymer.Element {
+        class AppFooter extends Polymer.Element {
             static get is() {
-                return 'app-config';
+                return 'app-footer';
             }
 
             static get properties() {
@@ -23,6 +27,6 @@
                 return []
             }
         }
-        window.customElements.define(AppConfig.is, AppConfig);
+        window.customElements.define(AppFooter.is, AppFooter);
     </script>
 </dom-module>

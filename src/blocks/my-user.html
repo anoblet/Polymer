@@ -1,0 +1,44 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../app/mixins/UserMixin.html">
+<link rel="import" href="../../staging/my-debug/DebugMixin.html">
+
+<dom-module id="my-user">
+    <template>
+        <style>
+            :host {
+            }
+        </style>
+        <template is="dom-repeat" items="[[propertiesAsArray]]">
+            [[item.key]]: [[item.value]]
+        </template>
+        [[debug(user)]]
+    </template>
+    <script>
+        class MyUser extends DebugMixin(UserMixin(Polymer.Element)) {
+            static get is() {
+                return 'my-user';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+
+                this.propertiesAsArray = Object.keys(this.user).map(function (key) {
+                    return {
+                        key: key,
+                        value: this.user[key]
+                    };
+                }.bind(this));
+            }
+        }
+        window.customElements.define(MyUser.is, MyUser);
+    </script>
+</dom-module>

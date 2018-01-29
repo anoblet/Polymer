@@ -4,9 +4,9 @@
 
 <link rel="import" href="../../../bower_components/x-grid/x-grid.html">
 
-<link rel="import" href="../../components/global-styles.html">
-<link rel="import" href="../../components/flex-styles.html">
-<link rel="import" href="../app-styles.html">
+<link rel="import" href="../../styles/global-styles.html">
+<link rel="import" href="../../styles/flex-styles.html">
+<link rel="import" href="../../styles/app-styles.html">
 
 <link rel="import" href="../../../bower_components/custom-element/custom-element.html">
 
@@ -24,58 +24,11 @@
                 height: 100%;
             }
         </style>
-        <app-localstorage-document key="user" data="{{user}}"></app-localstorage-document>
-
         <my-grid items="[[blocks]]" rows="*" columns="2"></my-grid>
-
-        <!--
-        <template is="dom-repeat" items="[[blocks]]" as="element">
-            <paper-card>
-                <custom-element element="[[element]]"></custom-element>
-            </paper-card>
-        </template>
-        -->
-        <!--
-        <x-grid flex-disabled>
-            <x-grid-row>
-                <x-grid-column>
-                    <x-grid-cell>Test</x-grid-cell>
-                </x-grid-column>
-            </x-grid-row>
-            <x-grid-row>
-                <x-grid-column>
-                    <x-grid-cell>
-                        <paper-card>
-                            <x-census></x-census>
-                        </paper-card>
-                    </x-grid-cell>
-                </x-grid-column>
-                <x-grid-column>
-                    <x-grid-cell>
-                        <paper-card>
-                            <my-city>test</my-city>
-                        </paper-card>
-                    </x-grid-cell>
-                </x-grid-column>
-                <x-grid-column>
-                    <x-grid-cell>
-                        <paper-card>
-                            <x-map></x-map>
-                        </paper-card>
-                    </x-grid-cell>
-                </x-grid-column>
-            </x-grid-row>
-            <x-grid-row>
-                <x-grid-column>
-                    <x-grid-cell>Test</x-grid-cell>
-                </x-grid-column>
-            </x-grid-row>
-        </x-grid>
-        -->
     </template>
 
     <script>
-        class AppHome extends Polymer.MutableData(Polymer.Element) {
+        class AppHome extends Polymer.Element {
             static get is() {
                 return 'app-home';
             };
@@ -89,32 +42,46 @@
                         type: Array,
                         value: [
                             {
+                                src: 'app/blocks',
                                 tag: 'my-city',
                                 rows: 1,
-                                columns: 1,
+                                columns: 2,
                                 title: 'My City',
                                 fullRow: true
                             },
                             {
-                                tag: 'my-state',
+                                src: 'app/blocks',
+                                tag: 'my-county',
                                 rows: 1,
+                                columns: 1,
+                                title: 'My County',
+                                // fullRow: true
+                            },
+                            {
+                                src: 'app/blocks',
+                                tag: 'my-state',
+                                rows: 2,
                                 columns: 1,
                                 title: 'My State'
                             },
                             {
+                                src: 'blocks',
                                 tag: 'my-country',
                                 rows: 1,
                                 columns: 1,
                                 title: 'My Country'
                             },
+                            /*
                             {
-                                src: 'my-census',
-                                tag: 'my-census',
+                                src: 'app/blocks',
+                                tag: 'app-census',
                                 rows: 1,
                                 columns: 1,
                                 title: 'Census'
                             },
+                            */
                             {
+                                src: 'blocks',
                                 tag: 'x-map',
                                 rows: 2,
                                 columns: 2,

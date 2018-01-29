@@ -1,0 +1,2511 @@
+
+
+[object Object]
+
+            return class extends superClass {
+                                 ~~~~~~~~~~
+
+src/app/mixins/ClassLoaderMixin.html(3,33) warning [unknown-superclass] - Unable to resolve superclass superClass
+
+
+            return class extends superClass {
+                                 ~~~~~~~~~~
+
+src/app/mixins/DebugMixin.html(3,33) warning [unknown-superclass] - Unable to resolve superclass superClass
+
+
+            return class extends superClass {
+                                 ~~~~~~~~~~
+
+staging/my-debug/DebugMixin.html(6,33) warning [unknown-superclass] - Unable to resolve superclass superClass
+
+
+<link rel="import" href="anoblet/v.1.1.1/x-census.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-overview.html(6,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\blocks\anoblet\v.1.1.1\x-census.html'
+
+
+<link rel="import" href="flex-styles.html">
+                        ~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-overview.html(11,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\blocks\flex-styles.html'
+
+
+<link rel="import" href="../app/app-styles.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-overview.html(12,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\app\app-styles.html'
+
+
+<link rel="import" href="anoblet/v.1.1.1/my-location.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-overview.html(14,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\blocks\anoblet\v.1.1.1\my-location.html'
+
+
+<link rel="import" href="app-style.html">
+                        ~~~~~~~~~~~~~~~~
+
+src/blocks/app-page.html(5,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\blocks\app-style.html'
+
+
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/my-census.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\bower_components\bower_components\polymer\polymer-element.html'
+
+
+        class MyCensus extends Polymer.Element {
+                               ~~~~~~~~~~~~~~~
+
+src/blocks/my-census.html(4,31) warning [unknown-superclass] - Unable to resolve superclass Polymer.Element
+
+
+<link rel="import" href="us-census/us-census.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/my-city.html(2,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\blocks\us-census\us-census.html'
+
+
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/my-country.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\bower_components\bower_components\polymer\polymer-element.html'
+
+
+        class MyCountry extends Polymer.Element {
+                                ~~~~~~~~~~~~~~~
+
+src/blocks/my-country.html(11,32) warning [unknown-superclass] - Unable to resolve superclass Polymer.Element
+
+
+<link rel="import" href="us-census/us-census.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/my-state.html(6,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\blocks\us-census\us-census.html'
+
+
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/template-block.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\bower_components\bower_components\polymer\polymer-element.html'
+
+
+        class TemplateBlock extends Polymer.Element {
+                                    ~~~~~~~~~~~~~~~
+
+src/blocks/template-block.html(10,36) warning [unknown-superclass] - Unable to resolve superclass Polymer.Element
+
+
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/test-element.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\bower_components\bower_components\polymer\polymer-element.html'
+
+
+        class TestElement extends Polymer.Element {
+                                  ~~~~~~~~~~~~~~~
+
+src/blocks/test-element.html(12,34) warning [unknown-superclass] - Unable to resolve superclass Polymer.Element
+
+
+<link rel="import" href="anoblet/global-styles.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-block.html(2,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\blocks\anoblet\global-styles.html'
+
+
+<link rel="import" href="anoblet/flex-styles.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-content.html(2,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\blocks\anoblet\flex-styles.html'
+
+
+<link rel="import" href="anoblet/my-styles.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-content.html(4,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\blocks\anoblet\my-styles.html'
+
+
+<link rel="import" href="app-style.html">
+                        ~~~~~~~~~~~~~~~~
+
+src/blocks/x-header.html(9,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\blocks\app-style.html'
+
+
+<link rel="import" href="app-style.html">
+                        ~~~~~~~~~~~~~~~~
+
+src/blocks/x-layout.html(9,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\blocks\app-style.html'
+
+
+<link rel="import" href="./app-style.html">
+                        ~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-sitemap.html(4,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\src\blocks\app-style.html'
+
+
+  <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/index.html(9,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <link rel="import" href="../iron-component-page/iron-component-page.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/index.html(11,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-component-page\iron-component-page.html'
+
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/demo/index.html(9,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/demo/index.html(11,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-demo-helpers\demo-pages-shared-styles.html'
+
+
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/demo/index.html(12,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-demo-helpers\demo-snippet.html'
+
+
+  <link rel="import" href="../../iron-icons/iron-icons.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/demo/index.html(13,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-icons\iron-icons.html'
+
+
+  <link rel="import" href="../../iron-icon/iron-icon.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/demo/index.html(14,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-icon\iron-icon.html'
+
+
+<link rel="import" href="../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../iron-menu-behavior/iron-menu-behavior.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu.html(1,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-menu-behavior\iron-menu-behavior.html'
+
+
+<link rel="import" href="../paper-styles/default-theme.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu.html(2,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-styles\default-theme.html'
+
+
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu-shared-styles.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-flex-layout\iron-flex-layout.html'
+
+
+<link rel="import" href="../paper-styles/color.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu-shared-styles.html(1,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-styles\color.html'
+
+
+<link rel="import" href="../paper-styles/default-theme.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu-shared-styles.html(2,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-styles\default-theme.html'
+
+
+      Polymer.IronMenuBehavior
+      ~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu.html(70,6) warning [unknown-polymer-behavior] - Unable to resolve behavior `Polymer.IronMenuBehavior`. Did you import it? Is it annotated with @polymerBehavior?
+
+
+<link rel="import" href="../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-submenu.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../iron-menu-behavior/iron-menu-behavior.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-submenu.html(1,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-menu-behavior\iron-menu-behavior.html'
+
+
+<link rel="import" href="../iron-behaviors/iron-control-state.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-submenu.html(2,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-behaviors\iron-control-state.html'
+
+
+<link rel="import" href="../iron-collapse/iron-collapse.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-submenu.html(3,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-collapse\iron-collapse.html'
+
+
+<link rel="import" href="../iron-a11y-keys-behavior/iron-a11y-keys-behavior.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-submenu.html(4,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-a11y-keys-behavior\iron-a11y-keys-behavior.html'
+
+
+        Polymer.IronControlState,
+        ~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-submenu.html(103,8) warning [unknown-polymer-behavior] - Unable to resolve behavior `Polymer.IronControlState`. Did you import it? Is it annotated with @polymerBehavior?
+
+
+        Polymer.IronA11yKeysBehavior
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-submenu.html(104,8) warning [unknown-polymer-behavior] - Unable to resolve behavior `Polymer.IronA11yKeysBehavior`. Did you import it? Is it annotated with @polymerBehavior?
+
+
+<link rel="import" href="../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu-icon-item.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../iron-icon/iron-icon.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu-icon-item.html(1,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-icon\iron-icon.html'
+
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-menu.html(11,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <script src="../../web-component-tester/browser.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-menu.html(13,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\web-component-tester\browser.js'
+
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-submenu.html(11,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-submenu.html(12,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-test-helpers\mock-interactions.js'
+
+
+  <script src="../../web-component-tester/browser.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-submenu.html(14,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\web-component-tester\browser.js'
+
+
+  <script src="../../web-component-tester/browser.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/test/index.html(11,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\web-component-tester\browser.js'
+
+
+<link rel="import" href="../polymer/polymer-element.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/custom-element/custom-element.html(2,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer-element.html'
+
+
+        class CustomElement extends Polymer.Element {
+                                    ~~~~~~~~~~~~~~~
+
+staging/custom-element/custom-element.html(7,36) warning [unknown-superclass] - Unable to resolve superclass Polymer.Element
+
+
+<link rel="import" href="../polymer/polymer-element.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/my-debug/my-debug.html(5,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer-element.html'
+
+
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/my-debug/my-debug.html(9,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-icon-button\paper-icon-button.html'
+
+
+<link rel="import" href="../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/paper-tooltip.html(11,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../neon-animation/neon-animation-runner-behavior.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/paper-tooltip.html(12,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\neon-animation\neon-animation-runner-behavior.html'
+
+
+<link rel="import" href="../neon-animation/animations/fade-in-animation.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/paper-tooltip.html(13,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\neon-animation\animations\fade-in-animation.html'
+
+
+<link rel="import" href="../neon-animation/animations/fade-out-animation.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/paper-tooltip.html(14,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\neon-animation\animations\fade-out-animation.html'
+
+
+        Polymer.NeonAnimationRunnerBehavior
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/paper-tooltip.html(115,8) warning [unknown-polymer-behavior] - Unable to resolve behavior `Polymer.NeonAnimationRunnerBehavior`. Did you import it? Is it annotated with @polymerBehavior?
+
+
+      class MyDebug extends Polymer.Element {
+                            ~~~~~~~~~~~~~~~
+
+staging/my-debug/my-debug.html(32,28) warning [unknown-superclass] - Unable to resolve superclass Polymer.Element
+
+
+<link rel="import" href="../polymer/polymer-element.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/my-grid/my-grid.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer-element.html'
+
+
+<link rel="import" href="../../polymer/polymer-element.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/my-grid/my-grid-item/my-grid-item.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer-element.html'
+
+
+        class MyGridItem extends Polymer.Element {
+                                 ~~~~~~~~~~~~~~~
+
+staging/my-grid/my-grid-item/my-grid-item.html(16,33) warning [unknown-superclass] - Unable to resolve superclass Polymer.Element
+
+
+        class MyGrid extends Polymer.Element {
+                             ~~~~~~~~~~~~~~~
+
+staging/my-grid/my-grid.html(21,29) warning [unknown-superclass] - Unable to resolve superclass Polymer.Element
+
+
+    <link rel="import" href="singleton-test.html">
+                            ~~~~~~~~~~~~~~~~~~~~~
+
+staging/my-singleton/test/index.html(29,28) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\singleton-test.html'
+
+
+        })();
+        ~
+
+staging/my-singleton/test/test-singleton.html(17,8) error [parse-error] - Unexpected token }
+
+
+<link rel="import" href="../../polymer/polymer-element.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/my-singleton/test/test-singleton.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer-element.html'
+
+
+        return class extends superClass {
+                             ~~~~~~~~~~
+
+staging/my-singleton/SingletonMixin.html(6,29) warning [unknown-superclass] - Unable to resolve superclass superClass
+
+
+<link rel="import" href="../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input.html(11,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-form-element-behavior\iron-form-element-behavior.html'
+
+
+<link rel="import" href="../iron-input/iron-input.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input.html(12,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-input\iron-input.html'
+
+
+<link rel="import" href="../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-behavior.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../iron-a11y-keys-behavior/iron-a11y-keys-behavior.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-behavior.html(11,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-a11y-keys-behavior\iron-a11y-keys-behavior.html'
+
+
+<link rel="import" href="../iron-behaviors/iron-control-state.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-behavior.html(12,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-behaviors\iron-control-state.html'
+
+
+    Polymer.IronControlState,
+    ~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-behavior.html(561,4) warning [unknown-polymer-behavior] - Unable to resolve behavior `Polymer.IronControlState`. Did you import it? Is it annotated with @polymerBehavior?
+
+
+    Polymer.IronA11yKeysBehavior,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-behavior.html(562,4) warning [unknown-polymer-behavior] - Unable to resolve behavior `Polymer.IronA11yKeysBehavior`. Did you import it? Is it annotated with @polymerBehavior?
+
+
+<link rel="import" href="../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-char-counter.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../paper-styles/typography.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-char-counter.html(11,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-styles\typography.html'
+
+
+<link rel="import" href="../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-addon-behavior.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-container.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-container.html(11,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-flex-layout\iron-flex-layout.html'
+
+
+<link rel="import" href="../paper-styles/default-theme.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-container.html(12,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-styles\default-theme.html'
+
+
+<link rel="import" href="../paper-styles/typography.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-container.html(13,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-styles\typography.html'
+
+
+<link rel="import" href="../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-error.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../paper-styles/default-theme.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-error.html(11,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-styles\default-theme.html'
+
+
+<link rel="import" href="../paper-styles/typography.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input-error.html(12,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-styles\typography.html'
+
+
+      Polymer.IronFormElementBehavior
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input.html(268,6) warning [unknown-polymer-behavior] - Unable to resolve behavior `Polymer.IronFormElementBehavior`. Did you import it? Is it annotated with @polymerBehavior?
+
+
+<link rel="import" href="../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-textarea.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../iron-autogrow-textarea/iron-autogrow-textarea.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-textarea.html(11,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-autogrow-textarea\iron-autogrow-textarea.html'
+
+
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-textarea.html(12,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-form-element-behavior\iron-form-element-behavior.html'
+
+
+      Polymer.IronFormElementBehavior,
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-textarea.html(98,6) warning [unknown-polymer-behavior] - Unable to resolve behavior `Polymer.IronFormElementBehavior`. Did you import it? Is it annotated with @polymerBehavior?
+
+
+  <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/index.html(18,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <link rel="import" href="../iron-component-page/iron-component-page.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/index.html(19,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-component-page\iron-component-page.html'
+
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(18,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(20,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-demo-helpers\demo-pages-shared-styles.html'
+
+
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(21,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-demo-helpers\demo-snippet.html'
+
+
+  <link rel="import" href="../../iron-icon/iron-icon.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(22,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-icon\iron-icon.html'
+
+
+  <link rel="import" href="../../iron-icons/iron-icons.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(23,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-icons\iron-icons.html'
+
+
+  <link rel="import" href="../../paper-icon-button/paper-icon-button.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(24,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-icon-button\paper-icon-button.html'
+
+
+  <link rel="import" href="../../paper-styles/color.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(25,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-styles\color.html'
+
+
+<link rel="import" href="../../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/ssn-input.html(9,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../../iron-input/iron-input.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/ssn-input.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-input\iron-input.html'
+
+
+<link rel="import" href="../../iron-flex-layout/iron-flex-layout.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/ssn-input.html(11,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-flex-layout\iron-flex-layout.html'
+
+
+<link rel="import" href="../../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/ssn-validator.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../../iron-validator-behavior/iron-validator-behavior.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/ssn-validator.html(11,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-validator-behavior\iron-validator-behavior.html'
+
+
+      Polymer.IronValidatorBehavior
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/ssn-validator.html(18,6) warning [unknown-polymer-behavior] - Unable to resolve behavior `Polymer.IronValidatorBehavior`. Did you import it? Is it annotated with @polymerBehavior?
+
+
+        Polymer.IronValidatableBehavior
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/ssn-input.html(80,8) warning [unknown-polymer-behavior] - Unable to resolve behavior `Polymer.IronValidatableBehavior`. Did you import it? Is it annotated with @polymerBehavior?
+
+
+  <script src="../../web-component-tester/browser.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/index.html(12,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\web-component-tester\browser.js'
+
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-char-counter.html(19,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <script src="../../web-component-tester/browser.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-char-counter.html(21,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\web-component-tester\browser.js'
+
+
+  <script src="../../iron-test-helpers/test-helpers.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-char-counter.html(22,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-test-helpers\test-helpers.js'
+
+
+  <link rel="import" href="../../iron-input/iron-input.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-char-counter.html(24,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-input\iron-input.html'
+
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(19,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <script src="../../web-component-tester/browser.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(21,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\web-component-tester\browser.js'
+
+
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(22,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-test-helpers\mock-interactions.js'
+
+
+  <link rel="import" href="../../iron-input/iron-input.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(24,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-input\iron-input.html'
+
+
+<link rel="import" href="../../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/letters-only.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../../iron-validator-behavior/iron-validator-behavior.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/letters-only.html(11,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-validator-behavior\iron-validator-behavior.html'
+
+
+      Polymer.IronValidatorBehavior
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/letters-only.html(20,6) warning [unknown-polymer-behavior] - Unable to resolve behavior `Polymer.IronValidatorBehavior`. Did you import it? Is it annotated with @polymerBehavior?
+
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-error.html(19,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <script src="../../web-component-tester/browser.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-error.html(20,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\web-component-tester\browser.js'
+
+
+  <link rel="import" href="../../iron-input/iron-input.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-error.html(22,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-input\iron-input.html'
+
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input.html(19,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <script src="../../web-component-tester/browser.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input.html(21,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\web-component-tester\browser.js'
+
+
+  <script src="../../iron-test-helpers/test-helpers.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input.html(22,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-test-helpers\test-helpers.js'
+
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-textarea.html(19,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <script src="../../web-component-tester/browser.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-textarea.html(21,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\web-component-tester\browser.js'
+
+
+  <script src="../../iron-test-helpers/test-helpers.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-textarea.html(22,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-test-helpers\test-helpers.js'
+
+
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-textarea.html(23,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-test-helpers\mock-interactions.js'
+
+
+  <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/index.html(18,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <link rel="import" href="../iron-component-page/iron-component-page.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/index.html(19,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-component-page\iron-component-page.html'
+
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(17,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(18,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-demo-helpers\demo-snippet.html'
+
+
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(19,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-demo-helpers\demo-pages-shared-styles.html'
+
+
+  <link rel="import" href="../../iron-icons/iron-icons.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(20,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-icons\iron-icons.html'
+
+
+  <link rel="import" href="../../paper-icon-button/paper-icon-button.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(21,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-icon-button\paper-icon-button.html'
+
+
+  <link rel="import" href="../../paper-styles/color.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(22,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-styles\color.html'
+
+
+  <link rel="import" href="../../neon-animation/web-animations.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(23,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\neon-animation\web-animations.html'
+
+
+<link rel="import" href="../../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/test-button.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../../paper-icon-button/paper-icon-button.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/test-button.html(11,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\paper-icon-button\paper-icon-button.html'
+
+
+<link rel="import" href="../../iron-icons/iron-icons.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/test-button.html(12,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-icons\iron-icons.html'
+
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/test/basic.html(16,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\webcomponentsjs\webcomponents-lite.js'
+
+
+  <script src="../../web-component-tester/browser.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/test/basic.html(17,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\web-component-tester\browser.js'
+
+
+  <script src="../../test-fixture/test-fixture-mocha.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/test/basic.html(18,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\test-fixture\test-fixture-mocha.js'
+
+
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/test/basic.html(19,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\iron-test-helpers\mock-interactions.js'
+
+
+  <link rel="import" href="../../test-fixture/test-fixture.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/test/basic.html(21,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\test-fixture\test-fixture.html'
+
+
+  <link rel="import" href="../../neon-animation/web-animations.html">
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/test/basic.html(22,26) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\neon-animation\web-animations.html'
+
+
+<link rel="import" href="../../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/test/test-button.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+<link rel="import" href="../../polymer/polymer.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/test/test-icon.html(10,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\polymer\polymer.html'
+
+
+  <script src="../../web-component-tester/browser.js"></script>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/test/index.html(12,14) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\web-component-tester\browser.js'
+
+
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/us-census/us-census.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\bower_components\bower_components\polymer\polymer-element.html'
+
+
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/us-census/us-census-geocoder.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\bower_components\bower_components\polymer\polymer-element.html'
+
+
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/us-census/us-census-geocoder.html(2,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\bower_components\bower_components\iron-ajax\iron-ajax.html'
+
+
+<link rel="import" href="../my-location.html">
+                        ~~~~~~~~~~~~~~~~~~~~~
+
+staging/us-census/us-census-geocoder.html(4,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\staging\my-location.html'
+
+
+<link rel="import" href="../../../bower_components/my-debug/my-debug.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/us-census/us-census-geocoder.html(6,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\bower_components\bower_components\my-debug\my-debug.html'
+
+
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/us-census/us-census-population.html(0,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\bower_components\bower_components\polymer\polymer-element.html'
+
+
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html">
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/us-census/us-census-population.html(2,24) error [could-not-load] - Unable to load import: ENOENT: no such file or directory, open 'C:\Users\Andy Noblet\Web Development\polymer\bower_components\bower_components\iron-ajax\iron-ajax.html'
+
+
+      class UsCensusPopulation extends Polymer.Element {
+                                       ~~~~~~~~~~~~~~~
+
+staging/us-census/us-census-population.html(13,39) warning [unknown-superclass] - Unable to resolve superclass Polymer.Element
+
+
+        class UsCensus extends Polymer.Element {
+                               ~~~~~~~~~~~~~~~
+
+staging/us-census/us-census.html(11,31) warning [unknown-superclass] - Unable to resolve superclass Polymer.Element
+
+
+        <iron-location path="{{__path}}"></iron-location>
+                               ~~~~~~
+
+src/app-root.html(24,31) warning [databind-with-unknown-property] - __path is not declared or used more than once. Did you mean: __data
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/app-root.html(16,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/app-root.html(17,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+        <iron-location path="{{__path}}"></iron-location>
+                               ~~~~~~
+
+src/app/app-controller.html(4,31) warning [databind-with-unknown-property] - __path is not declared or used more than once. Did you mean: __data
+
+
+        <iron-location path="{{__path}}"></iron-location>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/app/app-controller.html(4,8) warning [undefined-elements] - The element iron-location is not defined
+
+
+        <app-model data="{{model}}"></app-model>
+                           ~~~~~
+
+src/app/app-view.html(50,27) warning [databind-with-unknown-property] - model is not declared or used more than once. Did you mean: root
+
+
+        <app-model data="{{model}}"></app-model>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/app/app-view.html(50,8) warning [undefined-elements] - The element app-model is not defined
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/styles/flex-styles.html(29,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                        <my-address data="{{data}}" v-align-center></my-address>
+                                            ~~~~
+
+src/layouts/app-layout-header.html(42,44) warning [databind-with-unknown-property] - data is not declared or used more than once. Did you mean: __data
+
+
+                        <my-address data="{{data}}" v-align-center></my-address>
+                                    ~~~~
+
+src/layouts/app-layout-header.html(42,36) warning [set-unknown-attribute] - my-address elements do not have a property named data. Consider instead:  __data
+
+
+            <x-grid>
+            ~~~~~~~~
+
+src/layouts/app-layout-header.html(29,12) warning [undefined-elements] - The element x-grid is not defined
+
+
+                <x-grid-row>
+                ~~~~~~~~~~~~
+
+src/layouts/app-layout-header.html(30,16) warning [undefined-elements] - The element x-grid-row is not defined
+
+
+                    <x-grid-column flex wrap-disabled>
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-header.html(31,20) warning [undefined-elements] - The element x-grid-column is not defined
+
+
+                        <x-grid-column grow-disabled v-align-center>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-header.html(32,24) warning [undefined-elements] - The element x-grid-column is not defined
+
+
+                        <x-grid-column grow-disabled v-align-center>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-header.html(35,24) warning [undefined-elements] - The element x-grid-column is not defined
+
+
+                    <x-grid-column v-align-center>
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-header.html(41,20) warning [undefined-elements] - The element x-grid-column is not defined
+
+
+                    <x-grid-column justify-content-flex-end v-align-center>
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-header.html(44,20) warning [undefined-elements] - The element x-grid-column is not defined
+
+
+                        <x-grid-column></x-grid-column>
+                        ~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-header.html(45,24) warning [undefined-elements] - The element x-grid-column is not defined
+
+
+                        <x-grid-column></x-grid-column>
+                        ~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-header.html(46,24) warning [undefined-elements] - The element x-grid-column is not defined
+
+
+                        <x-grid-column>
+                        ~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-header.html(47,24) warning [undefined-elements] - The element x-grid-column is not defined
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/layouts/app-layout-header.html(20,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/layouts/app-layout-header.html(21,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+        <my-location data="{{location}}"></my-location>
+                     ~~~~
+
+src/blocks/my-address.html(33,21) warning [set-unknown-attribute] - my-location elements do not have a property named data. Consider instead:  lang
+
+
+                @apply(--layout-flex);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/my-address.html(17,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                        <a class="app-menu-item" href="{{country}}">Officials</a>
+                                                         ~~~~~~~
+
+src/layouts/app-layout-drawer.html(52,57) warning [databind-with-unknown-property] - country is not declared or used more than once. Did you mean: root
+
+
+        <my-location data="{{location}}"></my-location>
+                     ~~~~
+
+src/layouts/app-layout-drawer.html(80,21) warning [set-unknown-attribute] - my-location elements do not have a property named data. Consider instead:  lang
+
+
+                        <app-menu-icon-item icon="icons:account-balance">My City</app-menu-icon-item>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-drawer.html(37,24) warning [undefined-elements] - The element app-menu-icon-item is not defined
+
+
+                        <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-drawer.html(38,24) warning [undefined-elements] - The element iron-icon is not defined
+
+
+                        <app-menu-icon-item icon="icons:account-balance">My County</app-menu-icon-item>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-drawer.html(48,24) warning [undefined-elements] - The element app-menu-icon-item is not defined
+
+
+                        <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-drawer.html(49,24) warning [undefined-elements] - The element iron-icon is not defined
+
+
+                        <app-menu-icon-item icon="chrome-reader-mode">My State</app-menu-icon-item>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-drawer.html(57,24) warning [undefined-elements] - The element app-menu-icon-item is not defined
+
+
+                        <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-drawer.html(58,24) warning [undefined-elements] - The element iron-icon is not defined
+
+
+                        <app-menu-icon-item icon="chrome-reader-mode">My Country</app-menu-icon-item>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-drawer.html(68,24) warning [undefined-elements] - The element app-menu-icon-item is not defined
+
+
+                        <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-drawer.html(69,24) warning [undefined-elements] - The element iron-icon is not defined
+
+
+                    <app-menu-icon-item icon="icons:build">Map</app-menu-icon-item>
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/layouts/app-layout-drawer.html(76,20) warning [undefined-elements] - The element app-menu-icon-item is not defined
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/layouts/app-layout-drawer.html(11,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/layouts/app-layout-drawer.html(12,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/layouts/app-layout-footer.html(6,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/layouts/app-layout-footer.html(7,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/app/app-config.html(6,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/app/app-config.html(7,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+        <app-localstorage-document key="user" data="{{user}}"></app-localstorage-document>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/app/pages/app-home.html(26,8) warning [undefined-elements] - The element app-localstorage-document is not defined
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/app/pages/app-home.html(18,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/app/pages/app-home.html(19,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+        <template is="dom-repeat" items="[[propertiesAsArray]]">
+                                           ~~~~~~~~~~~~~~~~~
+
+src/blocks/my-user.html(11,43) warning [databind-with-unknown-property] - propertiesAsArray is not declared or used more than once. Did you mean: accessKey
+
+
+        [[debug(user)]]
+         ~~~~~
+
+src/blocks/my-user.html(14,9) warning [databind-with-unknown-property] - debug is not declared or used more than once. Did you mean: lang
+
+
+        [[debug(user)]]
+               ~~~~
+
+src/blocks/my-user.html(14,15) warning [databind-with-unknown-property] - user is not declared or used more than once. Did you mean: dir
+
+
+        [[debug(user)]]
+         ~~~~~
+
+src/blocks/my-user.html(14,9) warning [databinding-calls-must-be-functions] - debug is not a known method on my-user
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/app/pages/grid-layout.html(11,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/app/pages/grid-layout.html(12,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+    <my-location data="{{location}}"></my-location>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-map.html(23,4) warning [undefined-elements] - The element my-location is not defined
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/x-map.html(9,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-auto);
+                      ~~~~~~~~~~~~~
+
+src/blocks/x-map.html(10,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/x-map.html(14,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-auto);
+                      ~~~~~~~~~~~~~
+
+src/blocks/x-map.html(15,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+        <my-location data="{{location}}"></my-location>
+                             ~~~~~~~~
+
+src/blocks/x-census.html(11,29) warning [databind-with-unknown-property] - location is not declared or used more than once. Did you mean: data
+
+
+        <my-location data="{{location}}"></my-location>
+                     ~~~~
+
+src/blocks/x-census.html(11,21) warning [set-unknown-attribute] - my-location elements do not have a property named data. Consider instead:  lang
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/geo-state.html(6,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/blocks/geo-state.html(7,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/app/pages/user/user-location.html(6,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/app/pages/user/user-location.html(7,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-horizontal);
+                      ~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-background.html(8,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-flex);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/app-background.html(9,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                <iron-form>
+                ~~~~~~~~~~~
+
+src/blocks/app-directory.html(24,16) warning [undefined-elements] - The element iron-form is not defined
+
+
+                        <paper-input label="Email" always-float-label></paper-input>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-directory.html(26,24) warning [undefined-elements] - The element paper-input is not defined
+
+
+                        <paper-input label="Password" always-float-label></paper-input>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-directory.html(27,24) warning [undefined-elements] - The element paper-input is not defined
+
+
+                <google-signin brand="google" client-id="1007906209983-nbu0r39n694tlahr51mck2el5gdvtv0k.apps.googleusercontent.com" width="wide"></google-signin>
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-directory.html(32,16) warning [undefined-elements] - The element google-signin is not defined
+
+
+                <paper-button raised><iron-icon icon="icons:arrow-forward"></iron-icon>
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-directory.html(33,37) warning [undefined-elements] - The element iron-icon is not defined
+
+
+                @apply(--layout-horizontal);
+                      ~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-directory.html(11,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-flex);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/app-directory.html(12,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-center);
+                      ~~~~~~~~~~~~~~~~~
+
+src/blocks/app-directory.html(13,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-center-justified);
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-directory.html(14,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                <iron-form>
+                ~~~~~~~~~~~
+
+src/blocks/app-login.html(27,16) warning [undefined-elements] - The element iron-form is not defined
+
+
+                <google-signin brand="google" client-id="1007906209983-nbu0r39n694tlahr51mck2el5gdvtv0k.apps.googleusercontent.com" width="wide"></google-signin>
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-login.html(35,16) warning [undefined-elements] - The element google-signin is not defined
+
+
+                <paper-button raised><iron-icon icon="icons:arrow-forward"></iron-icon>
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-login.html(36,37) warning [undefined-elements] - The element iron-icon is not defined
+
+
+                @apply(--layout-horizontal);
+                      ~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-login.html(14,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-flex);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/app-login.html(15,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-center);
+                      ~~~~~~~~~~~~~~~~~
+
+src/blocks/app-login.html(16,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-center-justified);
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-login.html(17,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+        <my-location location="{{location}}"></my-location>
+                                 ~~~~~~~~
+
+src/blocks/app-overview.html(26,33) warning [databind-with-unknown-property] - location is not declared or used more than once. Did you mean: blocks
+
+
+                                            <x-statistics state="[[state]]"></x-statistics>
+                                                                   ~~~~~
+
+src/blocks/app-overview.html(45,67) warning [databind-with-unknown-property] - state is not declared and is only read from, never written to. If it's part of the element's API it should be a declared property.
+
+
+                                            <x-demographic state="[[state]]"></x-demographic>
+                                                                    ~~~~~
+
+src/blocks/app-overview.html(54,68) warning [databind-with-unknown-property] - state is not declared and is only read from, never written to. If it's part of the element's API it should be a declared property.
+
+
+                                <x-map state="[[state]]"></x-map>
+                                                ~~~~~
+
+src/blocks/app-overview.html(66,48) warning [databind-with-unknown-property] - state is not declared and is only read from, never written to. If it's part of the element's API it should be a declared property.
+
+
+                                <wikipedia-query search="[[state.user.location.city]]"></wikipedia-query>
+                                                           ~~~~~
+
+src/blocks/app-overview.html(88,59) warning [databind-with-unknown-property] - state is not declared and is only read from, never written to. If it's part of the element's API it should be a declared property.
+
+
+                                            <x-demographic state="[[state]]"></x-demographic>
+                                                           ~~~~~
+
+src/blocks/app-overview.html(54,59) warning [set-unknown-attribute] - x-demographic elements do not have a property named state. Consider instead:  style$
+
+
+        <my-location location="{{location}}"></my-location>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-overview.html(26,8) warning [undefined-elements] - The element my-location is not defined
+
+
+                            <my-address></my-address>
+                            ~~~~~~~~~~~~
+
+src/blocks/app-overview.html(32,28) warning [undefined-elements] - The element my-address is not defined
+
+
+                                            <x-statistics state="[[state]]"></x-statistics>
+                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-overview.html(45,44) warning [undefined-elements] - The element x-statistics is not defined
+
+
+                                <x-census></x-census>
+                                ~~~~~~~~~~
+
+src/blocks/app-overview.html(77,32) warning [undefined-elements] - The element x-census is not defined
+
+
+                                <wikipedia-query search="[[state.user.location.city]]"></wikipedia-query>
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-overview.html(88,32) warning [undefined-elements] - The element wikipedia-query is not defined
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/app-overview.html(20,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-auto);
+                      ~~~~~~~~~~~~~
+
+src/blocks/app-overview.html(21,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-column);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/app-overview.html(22,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-shrink-disable);
+                      ~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-overview.html(23,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/x-grid/x-grid.html(10,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/blocks/x-grid/x-grid.html(11,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-horizontal);
+                      ~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-grid/x-grid.html(12,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-horizontal);
+                      ~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-grid/x-grid.html(16,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-vertical);
+                      ~~~~~~~~~~~~~~~~~
+
+src/blocks/x-grid/x-grid.html(20,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/x-grid/x-grid-row.html(6,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/blocks/x-grid/x-grid-row.html(11,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/x-grid/x-grid-column.html(6,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-auto);
+                      ~~~~~~~~~~~~~
+
+src/blocks/x-grid/x-grid-column.html(7,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/x-grid/x-grid-cell.html(6,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-auto);
+                      ~~~~~~~~~~~~~
+
+src/blocks/x-grid/x-grid-cell.html(7,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/x-demographic.html(6,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-wrap);
+                      ~~~~~~~~~~~~~
+
+src/blocks/x-demographic.html(7,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-horizontal);
+                      ~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-page.html(11,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-flex);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/app-page.html(12,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-vertical);
+                      ~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-page.html(16,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-flex);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/app-page.html(17,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                <iron-form>
+                ~~~~~~~~~~~
+
+src/blocks/app-register.html(21,16) warning [undefined-elements] - The element iron-form is not defined
+
+
+                        <paper-input label="Email" always-float-label></paper-input>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-register.html(23,24) warning [undefined-elements] - The element paper-input is not defined
+
+
+                        <paper-input label="Password" always-float-label></paper-input>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-register.html(24,24) warning [undefined-elements] - The element paper-input is not defined
+
+
+                <google-signin brand="google" client-id="1007906209983-nbu0r39n694tlahr51mck2el5gdvtv0k.apps.googleusercontent.com" width="wide"></google-signin>
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-register.html(29,16) warning [undefined-elements] - The element google-signin is not defined
+
+
+                <paper-button raised><iron-icon icon="icons:arrow-forward"></iron-icon>
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-register.html(30,37) warning [undefined-elements] - The element iron-icon is not defined
+
+
+                @apply(--layout-horizontal);
+                      ~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-register.html(10,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-flex);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/app-register.html(11,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-center);
+                      ~~~~~~~~~~~~~~~~~
+
+src/blocks/app-register.html(12,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-center-justified);
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/app-register.html(13,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/custom-block.html(6,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/blocks/custom-block.html(7,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/custom-element.html(6,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/blocks/custom-element.html(7,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+        <us-census data="{{censusData}}"></us-census>
+                           ~~~~~~~~~~
+
+src/blocks/my-city.html(18,27) warning [databind-with-unknown-property] - censusData is not declared or used more than once. Did you mean: className
+
+
+        <my-location data="{{location}}"></my-location>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/my-city.html(12,8) warning [undefined-elements] - The element my-location is not defined
+
+
+        <us-census data="{{censusData}}"></us-census>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/my-city.html(18,8) warning [undefined-elements] - The element us-census is not defined
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/my-city.html(8,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/blocks/my-city.html(9,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+        <us-census-api response="{{data}}"></us-census-api>
+                                   ~~~~
+
+src/blocks/my-state.html(21,35) warning [databind-with-unknown-property] - data is not declared or used more than once. Did you mean: lang
+
+
+        <my-location data="{{location}}"></my-location>
+                     ~~~~
+
+src/blocks/my-state.html(20,21) warning [set-unknown-attribute] - my-location elements do not have a property named data. Consider instead:  lang
+
+
+        <us-census-api response="{{data}}"></us-census-api>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/my-state.html(21,8) warning [undefined-elements] - The element us-census-api is not defined
+
+
+        <us-census></us-census>
+        ~~~~~~~~~~~
+
+src/blocks/my-state.html(22,8) warning [undefined-elements] - The element us-census is not defined
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/my-state.html(12,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/blocks/my-state.html(13,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                    @apply(--layout-vertical);
+                          ~~~~~~~~~~~~~~~~~~~
+
+src/blocks/my-style.html(7,26) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                    @apply(--layout-flex);
+                          ~~~~~~~~~~~~~~~
+
+src/blocks/my-style.html(8,26) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                    @apply(--layout-horizontal);
+                          ~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/my-style.html(21,26) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                    @apply(--layout-center);
+                          ~~~~~~~~~~~~~~~~~
+
+src/blocks/my-style.html(22,26) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                    @apply(--layout-horizontal);
+                          ~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/my-style.html(39,26) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                    @apply(--layout-center);
+                          ~~~~~~~~~~~~~~~~~
+
+src/blocks/my-style.html(40,26) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-horizontal);
+                      ~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/my-style.html(72,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-vertical);
+                      ~~~~~~~~~~~~~~~~~~~
+
+src/blocks/my-style.html(81,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-flex);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/my-style.html(82,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/test-element.html(6,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/blocks/test-element.html(7,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-header.html(23,16) warning [undefined-elements] - The element paper-icon-button is not defined
+
+
+            <iron-media-query query="(min-width: 640px)" query-matches="{{wide}}"></iron-media-query>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-header.html(26,12) warning [undefined-elements] - The element iron-media-query is not defined
+
+
+                        <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear" title="clear"></paper-icon-button>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-header.html(30,24) warning [undefined-elements] - The element paper-icon-button is not defined
+
+
+                <paper-icon-button icon="more-vert" slot="dropdown-trigger" alt="bottom align"></paper-icon-button>
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-header.html(40,16) warning [undefined-elements] - The element paper-icon-button is not defined
+
+
+                @apply(--layout-horizontal);
+                      ~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-header.html(15,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-flex);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/x-header.html(16,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-center);
+                      ~~~~~~~~~~~~~~~~~
+
+src/blocks/x-header.html(17,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-center-justified);
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-header.html(18,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                <paper-icon-button id="toggle" icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-layout.html(23,16) warning [undefined-elements] - The element paper-icon-button is not defined
+
+
+            <iron-media-query query="(min-width: 640px)" query-matches="{{wide}}"></iron-media-query>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-layout.html(26,12) warning [undefined-elements] - The element iron-media-query is not defined
+
+
+                        <paper-icon-button slot="prefix" onclick="clearInput()" icon="search" alt="clear" title="clear"></paper-icon-button>
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-layout.html(30,24) warning [undefined-elements] - The element paper-icon-button is not defined
+
+
+                <paper-icon-button icon="more-vert" slot="dropdown-trigger" alt="bottom align"></paper-icon-button>
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-layout.html(40,16) warning [undefined-elements] - The element paper-icon-button is not defined
+
+
+                @apply(--layout-horizontal);
+                      ~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-layout.html(15,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-flex);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/x-layout.html(16,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-center);
+                      ~~~~~~~~~~~~~~~~~
+
+src/blocks/x-layout.html(17,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-center-justified);
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-layout.html(18,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-horizontal);
+                      ~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-sitemap.html(10,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-flex);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/x-sitemap.html(11,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-vertical);
+                      ~~~~~~~~~~~~~~~~~~~
+
+src/blocks/x-sitemap.html(14,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--layout-flex);
+                      ~~~~~~~~~~~~~~~
+
+src/blocks/x-sitemap.html(15,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+            <paper-input type="number" label="Columns" value="{{user.settings.columns::change}}"></paper-input>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/user-settings/user-settings.html(12,12) warning [undefined-elements] - The element paper-input is not defined
+
+
+            <app-localstorage-document key="user" data="{{user}}">
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/blocks/user-settings/user-settings.html(14,12) warning [undefined-elements] - The element app-localstorage-document is not defined
+
+
+                @apply(--flex);
+                      ~~~~~~~~
+
+src/blocks/user-settings/user-settings.html(6,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-horizontal);
+                      ~~~~~~~~~~~~~~~~~~~
+
+src/blocks/user-settings/user-settings.html(7,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+                @apply(--flex-grow);
+                      ~~~~~~~~~~~~~
+
+src/blocks/user-settings/user-settings.html(8,22) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+  <iron-component-page></iron-component-page>
+  ~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/index.html(15,2) warning [undefined-elements] - The element iron-component-page is not defined
+
+
+  <custom-style>
+  ~~~~~~~~~~~~~~
+
+staging/app-menu/demo/index.html(19,2) warning [undefined-elements] - The element custom-style is not defined
+
+
+    <demo-snippet>
+    ~~~~~~~~~~~~~~
+
+staging/app-menu/demo/index.html(37,4) warning [undefined-elements] - The element demo-snippet is not defined
+
+
+              <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/demo/index.html(48,14) warning [undefined-elements] - The element iron-icon is not defined
+
+
+              <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/demo/index.html(68,14) warning [undefined-elements] - The element iron-icon is not defined
+
+
+              <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/demo/index.html(83,14) warning [undefined-elements] - The element iron-icon is not defined
+
+
+      @apply(--app-menu);
+            ~~~~~~~~~~~~
+
+staging/app-menu/app-menu.html(56,12) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+      @apply(--app-menu-selected-item);
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu-shared-styles.html(32,12) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+      @apply(--app-menu-focused-item);
+            ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu-shared-styles.html(48,12) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+      @apply(--layout-fit);
+            ~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu-shared-styles.html(52,12) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+      @apply(--app-menu-focused-item-after);
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu-shared-styles.html(56,12) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+    <iron-collapse id="collapse" opened="{{opened}}">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-submenu.html(44,4) warning [undefined-elements] - The element iron-collapse is not defined
+
+
+    <iron-icon icon="[[icon]]"></iron-icon>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu-icon-item.html(18,4) warning [undefined-elements] - The element iron-icon is not defined
+
+
+      @apply(--app-menu-icon-item-style);
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/app-menu-icon-item.html(9,12) error [at-apply-with-parens] - @apply with parentheses is deprecated. Prefer: @apply --foo;
+
+
+  <custom-style>
+  ~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-menu.html(16,2) warning [undefined-elements] - The element custom-style is not defined
+
+
+  <custom-style>
+  ~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-submenu.html(19,2) warning [undefined-elements] - The element custom-style is not defined
+
+
+            <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-submenu.html(45,12) warning [undefined-elements] - The element iron-icon is not defined
+
+
+            <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-submenu.html(65,12) warning [undefined-elements] - The element iron-icon is not defined
+
+
+            <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-submenu.html(87,12) warning [undefined-elements] - The element iron-icon is not defined
+
+
+            <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-submenu.html(107,12) warning [undefined-elements] - The element iron-icon is not defined
+
+
+            <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-submenu.html(117,12) warning [undefined-elements] - The element iron-icon is not defined
+
+
+            <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/app-menu/test/app-submenu.html(137,12) warning [undefined-elements] - The element iron-icon is not defined
+
+
+    [[latitude]]
+     ~~~~~~~~
+
+staging/my-debug/my-debug.html(26,5) warning [databind-with-unknown-property] - latitude is not declared or used more than once. Did you mean: title
+
+
+    <paper-icon-button id="debug-trigger" icon="assignment" on-click="toggle"></paper-icon-button>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/my-debug/my-debug.html(17,4) warning [undefined-elements] - The element paper-icon-button is not defined
+
+
+                <custom-element element="[[item]]"></custom-element>
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/my-grid/my-grid.html(16,16) warning [undefined-elements] - The element custom-element is not defined
+
+
+        <paper-card>
+        ~~~~~~~~~~~~
+
+staging/my-grid/my-grid-item/my-grid-item.html(8,8) warning [undefined-elements] - The element paper-card is not defined
+
+
+<singleton-test></singleton-test>
+~~~~~~~~~~~~~~~~
+
+staging/my-singleton/test/index.html(58,0) warning [undefined-elements] - The element singleton-test is not defined
+
+
+<singleton-test></singleton-test>
+~~~~~~~~~~~~~~~~
+
+staging/my-singleton/test/index.html(59,0) warning [undefined-elements] - The element singleton-test is not defined
+
+
+    <paper-input-container id="container"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        no-label-float="[[noLabelFloat]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        auto-validate$="[[autoValidate]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        disabled$="[[disabled]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        invalid="[[invalid]]">
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input.html(154,4) warning [content-to-slot-usage-site] - Deprecated <content>-based distribution into <paper-input-container>. Must use the `slot` attribute for named distribution."
+
+
+    <iron-input bind-value="{{value}}" id="input" slot="input"
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        maxlength$="[[maxlength]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        allowed-pattern="[[allowedPattern]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        invalid="{{invalid}}"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        validator="[[validator]]">
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-input.html(223,4) warning [undefined-elements] - The element iron-input is not defined
+
+
+      <iron-autogrow-textarea id="input" class="paper-input-input" slot="input"
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        aria-labelledby$="[[_ariaLabelledBy]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        aria-describedby$="[[_ariaDescribedBy]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        bind-value="{{value}}"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        invalid="{{invalid}}"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        validator$="[[validator]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        disabled$="[[disabled]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        autocomplete$="[[autocomplete]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        autofocus$="[[autofocus]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        inputmode$="[[inputmode]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        name$="[[name]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~
+        placeholder$="[[placeholder]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        readonly$="[[readonly]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        required$="[[required]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        minlength$="[[minlength]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        maxlength$="[[maxlength]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        autocapitalize$="[[autocapitalize]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        rows$="[[rows]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~
+        max-rows$="[[maxRows]]"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        on-change="_onChange"></iron-autogrow-textarea>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/paper-textarea.html(59,6) warning [undefined-elements] - The element iron-autogrow-textarea is not defined
+
+
+  <iron-component-page src="all-imports.html"></iron-component-page>
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/index.html(24,2) warning [undefined-elements] - The element iron-component-page is not defined
+
+
+  <custom-style>
+  ~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(32,2) warning [undefined-elements] - The element custom-style is not defined
+
+
+    <demo-snippet>
+    ~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(75,4) warning [undefined-elements] - The element demo-snippet is not defined
+
+
+    <demo-snippet>
+    ~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(86,4) warning [undefined-elements] - The element demo-snippet is not defined
+
+
+    <demo-snippet>
+    ~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(94,4) warning [undefined-elements] - The element demo-snippet is not defined
+
+
+    <demo-snippet>
+    ~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(104,4) warning [undefined-elements] - The element demo-snippet is not defined
+
+
+    <demo-snippet class="horizontal">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(117,4) warning [undefined-elements] - The element demo-snippet is not defined
+
+
+          <iron-icon icon="mail" slot="prefix"></iron-icon>
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(124,10) warning [undefined-elements] - The element iron-icon is not defined
+
+
+          <paper-icon-button slot="suffix" onclick="clearInput()"
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+              icon="clear" alt="clear" title="clear">
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(126,10) warning [undefined-elements] - The element paper-icon-button is not defined
+
+
+    <demo-snippet>
+    ~~~~~~~~~~~~~~
+
+staging/paper-input/demo/index.html(134,4) warning [undefined-elements] - The element demo-snippet is not defined
+
+
+    <iron-input bind-value="{{_ssn1}}" aria-label="First 3 digits of social security number">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/ssn-input.html(62,4) warning [undefined-elements] - The element iron-input is not defined
+
+
+    <iron-input bind-value="{{_ssn2}}" aria-label="Middle 2 digits of social security number">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/ssn-input.html(66,4) warning [undefined-elements] - The element iron-input is not defined
+
+
+    <iron-input bind-value="{{_ssn3}}" aria-label="Last 4 digits of social security number">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/demo/ssn-input.html(70,4) warning [undefined-elements] - The element iron-input is not defined
+
+
+      <paper-input-container>
+      ~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-char-counter.html(34,6) warning [content-to-slot-usage-site] - Deprecated <content>-based distribution into <paper-input-container>. Must use the `slot` attribute for named distribution."
+
+
+      <paper-input-container>
+      ~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-char-counter.html(44,6) warning [content-to-slot-usage-site] - Deprecated <content>-based distribution into <paper-input-container>. Must use the `slot` attribute for named distribution."
+
+
+      <paper-input-container>
+      ~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(42,6) warning [content-to-slot-usage-site] - Deprecated <content>-based distribution into <paper-input-container>. Must use the `slot` attribute for named distribution."
+
+
+      <paper-input-container>
+      ~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(52,6) warning [content-to-slot-usage-site] - Deprecated <content>-based distribution into <paper-input-container>. Must use the `slot` attribute for named distribution."
+
+
+      <paper-input-container>
+      ~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(64,6) warning [content-to-slot-usage-site] - Deprecated <content>-based distribution into <paper-input-container>. Must use the `slot` attribute for named distribution."
+
+
+      <paper-input-container>
+      ~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(74,6) warning [content-to-slot-usage-site] - Deprecated <content>-based distribution into <paper-input-container>. Must use the `slot` attribute for named distribution."
+
+
+      <paper-input-container>
+      ~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(153,6) warning [content-to-slot-usage-site] - Deprecated <content>-based distribution into <paper-input-container>. Must use the `slot` attribute for named distribution."
+
+
+      <paper-input-container>
+      ~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(161,6) warning [content-to-slot-usage-site] - Deprecated <content>-based distribution into <paper-input-container>. Must use the `slot` attribute for named distribution."
+
+
+        <iron-input slot="input" id="i">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(55,8) warning [undefined-elements] - The element iron-input is not defined
+
+
+        <iron-input slot="input" id="i" bind-value="foo">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(77,8) warning [undefined-elements] - The element iron-input is not defined
+
+
+        <iron-input slot="input" id="i">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(124,8) warning [undefined-elements] - The element iron-input is not defined
+
+
+        <iron-input slot="input" id="i">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(144,8) warning [undefined-elements] - The element iron-input is not defined
+
+
+        <iron-input id="i" slot="input">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(163,8) warning [undefined-elements] - The element iron-input is not defined
+
+
+        <iron-input slot="input" id="i" validator="letters-only">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(185,8) warning [undefined-elements] - The element iron-input is not defined
+
+
+        <iron-input slot="input" id="i" validator="letters-only" bind-value="123123">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-container.html(205,8) warning [undefined-elements] - The element iron-input is not defined
+
+
+        <iron-input slot="input" id="i">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-input/test/paper-input-error.html(48,8) warning [undefined-elements] - The element iron-input is not defined
+
+
+<iron-component-page></iron-component-page>
+~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/index.html(24,0) warning [undefined-elements] - The element iron-component-page is not defined
+
+
+  <custom-style>
+  ~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(27,2) warning [undefined-elements] - The element custom-style is not defined
+
+
+    <demo-snippet class="centered-demo">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(60,4) warning [undefined-elements] - The element demo-snippet is not defined
+
+
+        <paper-icon-button id="id_1" icon="favorite" alt="heart"></paper-icon-button>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(62,8) warning [undefined-elements] - The element paper-icon-button is not defined
+
+
+        <paper-icon-button id="id_2" icon="alarm-on" alt="go back"></paper-icon-button>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(63,8) warning [undefined-elements] - The element paper-icon-button is not defined
+
+
+    <demo-snippet class="centered-demo">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(76,4) warning [undefined-elements] - The element demo-snippet is not defined
+
+
+    <demo-snippet class="centered-demo">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(96,4) warning [undefined-elements] - The element demo-snippet is not defined
+
+
+    <demo-snippet class="centered-demo">
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(111,4) warning [undefined-elements] - The element demo-snippet is not defined
+
+
+        <custom-style>
+        ~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(113,8) warning [undefined-elements] - The element custom-style is not defined
+
+
+        <paper-icon-button id="demo4_icon1" icon="favorite" alt="heart"></paper-icon-button>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/index.html(127,8) warning [undefined-elements] - The element paper-icon-button is not defined
+
+
+    <paper-icon-button id="m" icon="menu" alt="menu"></paper-icon-button>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/paper-tooltip/demo/test-button.html(27,4) warning [undefined-elements] - The element paper-icon-button is not defined
+
+
+        <my-location data="{{_location}}"></my-location>
+                             ~~~~~~~~~
+
+staging/us-census/us-census-geocoder.html(10,29) warning [databind-with-unknown-property] - _location is not declared or used more than once. Did you mean: location
+
+
+        <my-location data="{{_location}}"></my-location>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/us-census/us-census-geocoder.html(10,8) warning [undefined-elements] - The element my-location is not defined
+
+
+        <iron-ajax url="[[_requestUrl()]]" on-response="handleResponse" handle-as="json" auto></iron-ajax>
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/us-census/us-census-geocoder.html(11,8) warning [undefined-elements] - The element iron-ajax is not defined
+
+
+    <iron-ajax url="[[_baseUrl]]" params="[[_getParams()]]" auto></iron-ajax>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+staging/us-census/us-census-population.html(10,4) warning [undefined-elements] - The element iron-ajax is not defined
+
+
+Found  237 errors 172 warnings.
