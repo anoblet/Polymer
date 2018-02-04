@@ -15,13 +15,25 @@
     <template>
         <style>
             :host {
-                @apply(--layout-flex);
+                @apply(--flex);
+                @apply(--flex-grow);
 
                 --paper-input-container-color: #fff;
 
                 --paper-input-container-input: {
                     color: #fff;
-                }
+                };
+
+                --paper-input-container: {
+                    padding: 0;
+                };
+
+                --paper-input-container-focus-color: #fff;
+
+            }
+
+            paper-input {
+                width: 100%;
             }
 
         </style>
@@ -30,6 +42,7 @@
         <paper-input id="autocomplete" placeholder="[[location.city]], [[location.state]]" type="text">
             <iron-icon icon="device:gps-fixed" slot="suffix" on-click="locate"></iron-icon>
         </paper-input>
+
         <!-- <my-input></my-input> -->
         <my-location data="{{location}}"></my-location>
     </template>

@@ -16,9 +16,11 @@
                 @apply(--flex-grow);
             }
         </style>
-        <app-model></app-model>
+        <app-model data="{{model}}"></app-model>
         <app-view></app-view>
         <app-controller></app-controller>
+
+        <my-location id="location"></my-location>
 
         <iron-location path="{{__path}}"></iron-location>
     </template>
@@ -70,6 +72,11 @@
                 for(let module in this.modules) {
                     Application[module.key] = module.value
                 }
+                // Application.modules = [];
+                // Application.modules.push({"location": this.$.location});
+                // Application.modules = {};
+                // Application.modules.location = this.$.location;
+                this.model = this.shadowRoot.querySelector("app-model");
             }
 
             __setDefaultLocation() {

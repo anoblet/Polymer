@@ -10,7 +10,9 @@
                 @apply(--flex-grow);
             }
         </style>
+<!--
         <my-location data="{{location}}"></my-location>
+-->
         <ul>
             <li>Name: [[location.city]]</li>
             <li>Longitude: [[location.latitude]]</li>
@@ -42,6 +44,11 @@
 
             locationChanged() {
                 this.name = location.city
+            }
+
+            ready() {
+                super.ready();
+                this.location = Application.modules.location;
             }
         }
 
