@@ -5,11 +5,12 @@
 <dom-module id="my-state">
     <template>
         <us-census state="{{state}}"></us-census>
+        <my-location data="{{location}}" state="{{state}}"></my-location>
         <ul>
             <li>Name: [[state.name]]</li>
             <li>Land area: [[state.areaLandFormatted]] ([[percentLand]]%)</li>
             <li>Water area: [[state.areaWaterFormatted]] ([[percentWater]]%)</li>
-            <li>Population: [[state.population]]</li>
+            <li>Population: [[state.populationFormatted]]</li>
         </ul>
     </template>
     <script>
