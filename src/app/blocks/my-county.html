@@ -10,21 +10,40 @@
 -->
 <link rel="import" href="../../../lib/my-location/my-location.html">
 
+<link rel="import" href="../../../bower_components/paper-spinner/paper-spinner.html">
+
 <dom-module id="my-county">
     <template>
-        <us-census location="[[location]]" county="{{county}}"></us-census>
+        <style>
+            #host {
+                width: 100%;
+                height: 100%;
+            }
+            #content {
+                display: none;
+            }
+
+            paper-spinner {
+                margin: 0 auto;
+                display: block;
+            }
+        </style>
         <my-location data="{{location}}"></my-location>
-        <ul>
-            <li>
-                Name: [[county.name]]
-            </li>
-            <li>
-                Land area: [[county.areaLandFormatted]]m<sup>2</sup> ([[percentLand]]%)
-            </li>
-            <li>
-                Water area: [[county.areaWaterFormatted]]m<sup>2</sup> ([[percentWater]]%)
-            </li>
-        </ul>
+        <us-census latitude="[[location.latitude]]" longitude="[[location.longitude]]" county="{{county}}"></us-census>
+        <paper-spinner id="loading" active></paper-spinner>
+        <div id="content">
+            <ul>
+                <li>
+                    Name: [[county.name]]
+                </li>
+                <li>
+                    Land area: [[county.areaLandFormatted]]m<sup>2</sup> ([[percentLand]]%)
+                </li>
+                <li>
+                    Water area: [[county.areaWaterFormatted]]m<sup>2</sup> ([[percentWater]]%)
+                </li>
+            </ul>
+        </div>
     </template>
     <script>
         class MyCounty extends Polymer.Element {
@@ -34,19 +53,52 @@
 
             static get properties() {
                 return {
-                    county: {
+                    location: {
                         type: Object
                     },
+                    county: {
+                        type: Object,
+                        notify: true,
+                        value: {
+                            name: "Loading...",
+                            areaLandFormatted: "Loading...",
+                            areaWaterFormatted: "Loading...",
+                        }
+                    },
                     percentLand: {
-                        type: String,
+                        type: String
+                    }
+                    ,
+                    test: {
+                        type: Object,
+                        value: this.county
+                    },
+                    loaded: {
+                        type: Boolean,
+                        value: false
                     }
                 }
             }
 
             static get observers() {
                 return [
+                    '_locationChanged(location.latitude, location.longitude)',
+                    '_censusLoaded(county.name)',
                     "_terrainRatio(county.areaLand, county.areaWater)"
                 ]
+            }
+
+            _censusLoaded() {
+                if (this.county.name !== "Loading...") {
+                    this.$.loading.style.display = "none";
+                    this.$.content.style.display = "flex";
+                }
+            }
+            _locationChanged() {
+                if (this.county.name !== "Loading...") {
+                    this.$.loading.style.display = "flex";
+                    this.$.content.style.display = "none";
+                }
             }
 
             _terrainRatio() {
@@ -54,6 +106,7 @@
                 this.percentWater = ((this.county.areaWater / (this.county.areaLand + this.county.areaWater)) * 100).toFixed(0);
             }
         }
+
         window.customElements.define(MyCounty.is, MyCounty);
     </script>
 </dom-module>

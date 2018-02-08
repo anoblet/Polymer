@@ -1,0 +1,14 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/my-singleton/SingletonMixin.html">
+
+<dom-module id="app-data">
+    <script>
+        class AppData extends SingletonMixin(Polymer.Element) {
+            static get is() {
+                return 'app-data';
+            }
+        }
+        window.customElements.define(AppData.is, AppData);
+    </script>
+</dom-module>

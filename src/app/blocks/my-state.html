@@ -4,8 +4,8 @@
 
 <dom-module id="my-state">
     <template>
-        <us-census state="{{state}}"></us-census>
         <my-location data="{{location}}" state="{{state}}"></my-location>
+        <us-census latitude="[[location.latitude]]" longitude="[[location.longitude]]" state="{{state}}"></us-census>
         <ul>
             <li>Name: [[state.name]]</li>
             <li>Land area: [[state.areaLandFormatted]] ([[percentLand]]%)</li>

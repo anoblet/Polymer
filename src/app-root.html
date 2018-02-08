@@ -8,6 +8,8 @@
 <link rel="import" href="styles/flex-styles.html">
 <link rel="import" href="app/styles/app-styles.html">
 
+<link rel="import" href="components/app-data.html">
+
 <dom-module id="app-root">
     <template>
         <style include="global-styles flex-styles app-styles">
@@ -20,7 +22,9 @@
         <app-view></app-view>
         <app-controller></app-controller>
 
-        <my-location id="location"></my-location>
+        <app-data data="{{Application}}"></app-data>
+
+        <my-location id="location" data="{{Application.Location}}"></my-location>
 
         <iron-location path="{{__path}}"></iron-location>
     </template>
@@ -43,6 +47,10 @@
 
             static get properties() {
                 return {
+                    Application: {
+                        type: Object,
+                        notify: true
+                    },
                     debug: {
                         type: Boolean,
                         value: true
@@ -77,6 +85,8 @@
                 // Application.modules = {};
                 // Application.modules.location = this.$.location;
                 this.model = this.shadowRoot.querySelector("app-model");
+                this.set("Application.Location", "test");
+                console.log(this.Application);
             }
 
             __setDefaultLocation() {
