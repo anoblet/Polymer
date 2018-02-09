@@ -43,7 +43,7 @@
                     }
                 } else {
                     let model = Application.shadowRoot.querySelector('app-model');
-                    let routes = model.data.config.routes;
+                    let routes = model.config.routes;
 
                     for (let i = 0; i < routes.length; i++) {
                         if (__path == routes[i].href) {

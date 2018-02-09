@@ -37,6 +37,7 @@
         <us-census latitude="[[location.latitude]]" longitude="[[location.longitude]]" county="{{county}}"></us-census>
         <paper-spinner id="loading" active></paper-spinner>
         <app-model data="{{data}}"></app-model>
+        <map-object source="{{location}}" target="{{data.location}}"></map-object>
         <map-object source="{{county}}" target="{{data.location.county}}"></map-object>
         <app-localstorage-document key="county" data="{{county}}"></app-localstorage-document>
         <div id="content">

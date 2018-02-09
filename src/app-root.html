@@ -22,9 +22,9 @@
         <app-view></app-view>
         <app-controller></app-controller>
 
-        <app-data data="{{Application}}"></app-data>
+        <app-data data="{{data}}"></app-data>
 
-        <my-location id="location" data="{{Application.Location}}"></my-location>
+        <my-location id="location" data="{{data.location}}"></my-location>
 
         <iron-location path="{{__path}}"></iron-location>
     </template>
@@ -84,7 +84,7 @@
                 // Application.modules.push({"location": this.$.location});
                 // Application.modules = {};
                 // Application.modules.location = this.$.location;
-                this.model = this.shadowRoot.querySelector("app-model");
+                // this.model = this.shadowRoot.querySelector("app-model");
                 this.set("Application.Location", "test");
                 console.log(this.Application);
             }

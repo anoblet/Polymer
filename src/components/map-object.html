@@ -1,12 +1,6 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
 <dom-module id="map-object">
-    <template>
-        <style>
-            :host {
-            }
-        </style>
-    </template>
     <script>
         class MapObject extends Polymer.Element {
             static get is() {
@@ -15,14 +9,6 @@
 
             static get properties() {
                 return {
-                    input: {
-                        type: Object,
-                        notify: true
-                    },
-                    output: {
-                        type: Object,
-                        notify: true
-                    },
                     source: {
                         type: Object,
                         notify: true
@@ -30,26 +16,15 @@
                     target: {
                         type: Object,
                         notify: true
-                    },
-
+                    }
                 }
             }
 
             static get observers() {
                 return [
-                    "_inputChanged(input.*)",
-                    "_outputChanged(output.*)",
                     "_sourceChanged(source.*)",
                     "_targetChanged(target.*)"
                 ]
-            }
-
-            _inputChanged() {
-                this.set("output", this.input);
-            }
-
-            _outputChanged() {
-                this.set("input", this.output);
             }
 
             _sourceChanged() {
