@@ -2,10 +2,13 @@
 
 <link rel="import" href="../../../bower_components/us-census/us-census.html">
 
+<link rel="import" href="../../components/map-object.html">
+
 <dom-module id="my-state">
     <template>
-        <my-location data="{{location}}" state="{{state}}"></my-location>
         <us-census latitude="[[location.latitude]]" longitude="[[location.longitude]]" state="{{state}}"></us-census>
+        <my-location data="{{location}}" state="{{state}}"></my-location>
+        <map-object source="{{state}}" target="{{location.state}}"></map-object>
         <ul>
             <li>Name: [[state.name]]</li>
             <li>Land area: [[state.areaLandFormatted]] ([[percentLand]]%)</li>

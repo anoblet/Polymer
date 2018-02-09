@@ -1,0 +1,40 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="map-property-object">
+    <script>
+        class MapPropertyObject extends Polymer.Element {
+            static get is() {
+                return 'map-property-object';
+            }
+
+            static get properties() {
+                return {
+                    input: {
+                        type: Object,
+                        notify: true
+                    },
+                    output: {
+                        type: Object,
+                        notify: true
+                    }
+                }
+            }
+
+            static get observers() {
+                return [
+                    "_inputChanged(input.*)",
+                    "_outputChanged(output.*)"
+                ]
+            }
+
+            _inputChanged() {
+                this.set("output", this.input);
+            }
+
+            _outputChanged() {
+                this.set("input", this.output);
+            }
+        }
+        window.customElements.define(MapPropertyObject.is, MapPropertyObject);
+    </script>
+</dom-module>

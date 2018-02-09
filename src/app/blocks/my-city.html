@@ -8,7 +8,9 @@
         <us-census city="{{data}}"></us-census>
 -->
         <app-data data="{{Application}}"></app-data>
-        [[Application.Location]]
+        <my-location data="{{location}}"></my-location>
+        [[location.county.name]]
+        [[location.state.name]]
         <ul>
             <li>
                 City Name: [[data.name]]
