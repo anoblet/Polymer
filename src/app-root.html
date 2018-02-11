@@ -18,15 +18,16 @@
                 @apply(--flex-grow);
             }
         </style>
-        <app-model data="{{model}}"></app-model>
+        <app-model data="{{data}}"></app-model>
         <app-view></app-view>
         <app-controller></app-controller>
 
-        <app-data data="{{data}}"></app-data>
-
-        <my-location id="location" data="{{data.location}}"></my-location>
-
         <iron-location path="{{__path}}"></iron-location>
+
+        <app-data data="{{data}}"></app-data>
+        <my-location data="{{location}}"></my-location>
+        <map-object source="{{location}}" target="{{data.location}}"></map-object>
+        <app-localstorage-document key="data" data="{{data}}"></app-localstorage-document>
     </template>
     <script>
         class AppRoot extends ClassLoader(Polymer.Element) {

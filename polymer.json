@@ -3,6 +3,7 @@
   "shell": "src/app-root.html",
   "fragments": [],
   "sources": [
+    "lib/**/*",
     "src/**/*",
     "images/**/*"
   ],

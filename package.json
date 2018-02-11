@@ -8,7 +8,7 @@
     "dev": "polymer serve | npm run watch",
     "lint": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "npm run lint && polymer test",
-    "watch": "browser-sync start --proxy localhost:8081 --files \"src/**/*.*, index.html, *.js\""
+    "watch": "browser-sync start --proxy localhost:8081 --files \"lib/**/*.*, src/**/*.*, index.html, *.js\""
   },
   "repository": {
     "type": "git",

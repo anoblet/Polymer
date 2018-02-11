@@ -33,15 +33,13 @@
             }
         </style>
         <my-location data="{{location}}"></my-location>
-        <map-property-object input="{{county}}" output="{{location.county}}"></map-property-object>
         <us-census latitude="[[location.latitude]]" longitude="[[location.longitude]]" county="{{county}}"></us-census>
         <paper-spinner id="loading" active></paper-spinner>
-        <app-model data="{{data}}"></app-model>
+
+        <app-data data="{{data}}"></app-data>
         <map-object source="{{location}}" target="{{data.location}}"></map-object>
         <map-object source="{{county}}" target="{{data.location.county}}"></map-object>
-        <app-localstorage-document key="county" data="{{county}}"></app-localstorage-document>
         <div id="content">
-            [[data.location.county]]
             <ul>
                 <li>
                     Name: [[county.name]]

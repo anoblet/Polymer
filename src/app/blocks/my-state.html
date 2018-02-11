@@ -8,7 +8,9 @@
     <template>
         <us-census latitude="[[location.latitude]]" longitude="[[location.longitude]]" state="{{state}}"></us-census>
         <my-location data="{{location}}" state="{{state}}"></my-location>
-        <map-object source="{{state}}" target="{{location.state}}"></map-object>
+        <app-data data="{{data}}"></app-data>
+        <map-object source="{{location}}" target="{{data.location}}"></map-object>
+        <map-object source="{{state}}" target="{{data.location.state}}"></map-object>
         <ul>
             <li>Name: [[state.name]]</li>
             <li>Land area: [[state.areaLandFormatted]] ([[percentLand]]%)</li>
