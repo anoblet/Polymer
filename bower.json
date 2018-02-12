@@ -22,14 +22,14 @@
     "x-grid": "https://github.com/anoblet/x-grid.git",
     "iron-ajax": "PolymerElements/iron-ajax#^2.0.6",
     "paper-tooltip": "PolymerElements/paper-tooltip#^2.0.1",
+    "my-paypal": "https://github.com/anoblet/my-paypal.git",
     "my-grid": "https://github.com/anoblet/my-grid.git",
-    "paper-input": "PolymerElements/paper-input#^2.1.0",
+    "paper-input": "PolymerElements/paper-input#2.0.0",
     "paper-spinner": "PolymerElements/paper-spinner#^2.0.0"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
-    "xtal-props": "bahrus/xtal-props#^0.0.9",
     "juicy-jsoneditor": "juicy/juicy-jsoneditor#^1.2.0"
   }
 }

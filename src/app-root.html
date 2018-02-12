@@ -8,7 +8,8 @@
 <link rel="import" href="styles/flex-styles.html">
 <link rel="import" href="app/styles/app-styles.html">
 
-<link rel="import" href="components/app-data.html">
+<link rel="import" href="app-data.html">
+<link rel="import" href="components/map-object.html">
 
 <dom-module id="app-root">
     <template>
@@ -18,16 +19,24 @@
                 @apply(--flex-grow);
             }
         </style>
-        <app-model data="{{data}}"></app-model>
+        <app-model></app-model>
         <app-view></app-view>
         <app-controller></app-controller>
 
         <iron-location path="{{__path}}"></iron-location>
-
-        <app-data data="{{data}}"></app-data>
-        <my-location data="{{location}}"></my-location>
-        <map-object source="{{location}}" target="{{data.location}}"></map-object>
+        [[data.test]]
+        [[data.location.latitude]]
+        [[location.latitude]]
+        <app-data id="data" data="{{data}}"></app-data>
+<!--
+        <us-census latitude="[[location.latitude]]" longitude="[[location.longitude]]" county="{{county}}"></us-census>
+-->
+<!--
+        <map-object source="{{data.location}}" target="{{location}}"></map-object>
+-->
+<!--
         <app-localstorage-document key="data" data="{{data}}"></app-localstorage-document>
+-->
     </template>
     <script>
         class AppRoot extends ClassLoader(Polymer.Element) {
@@ -48,14 +57,6 @@
 
             static get properties() {
                 return {
-                    Application: {
-                        type: Object,
-                        notify: true
-                    },
-                    debug: {
-                        type: Boolean,
-                        value: true
-                    },
                     modules: {
                         type: Array,
                         value: [
@@ -81,13 +82,6 @@
                 for(let module in this.modules) {
                     Application[module.key] = module.value
                 }
-                // Application.modules = [];
-                // Application.modules.push({"location": this.$.location});
-                // Application.modules = {};
-                // Application.modules.location = this.$.location;
-                // this.model = this.shadowRoot.querySelector("app-model");
-                this.set("Application.Location", "test");
-                console.log(this.Application);
             }
 
             __setDefaultLocation() {
@@ -98,6 +92,13 @@
             connectedCallback() {
                 super.connectedCallback();
 
+                if(this.data.location);
+                else {
+                    // this.data.location = {};
+                }
+                // this.location = this.location || {};
+                console.log(this.data);
+                this.data.location = this.data.location || {};
                 /*
                 * Set the default location
                 */

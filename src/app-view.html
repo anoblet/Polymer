@@ -1,0 +1,28 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="app-view">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </template>
+    <script>
+        class AppView extends Polymer.Element {
+            static get is() {
+                return 'app-view';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+        window.customElements.define(AppView.is, AppView);
+    </script>
+</dom-module>

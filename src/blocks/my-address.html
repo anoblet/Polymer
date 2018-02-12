@@ -35,9 +35,10 @@
         <paper-input id="autocomplete" type="text" value="[[location.city]], [[location.state.name]]">
             <iron-icon icon="device:gps-fixed" slot="suffix" on-click="locate"></iron-icon>
         </paper-input>
-
-        <my-location data="{{location}}"></my-location>
+        <app-data id="data" data="{{data}}"></app-data>
+        <map-object source="{{location}}" target="{{data.location}}"></map-object>
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
+        [[data.location.latitude]]
     </template>
 
     <script>
@@ -45,6 +46,22 @@
             static get is() {
                 return 'my-address';
             }
+
+            static get properties() {
+                return {/*
+                    data: {
+                        type: Object,
+                        notify: true
+                    },
+                    location: {
+                        type: Object,
+                        // value: {},
+                        notify: true
+                    }
+                    */
+                }
+            }
+
 
             _autocomplete() {
                 var _input = this.$.autocomplete.inputElement.inputElement;
@@ -96,18 +113,24 @@
                     }
 
                     if (result.address_components[i].types[0] == 'administrative_area_level_1') {
-                        _location.state = result.address_components[i].long_name;
+                        // _location.state = result.address_components[i].long_name;
                     }
                 }
+                //console.log(this.location);
 
-                /*
+                //this.location.latitude = _location.latitude;
+                //this.location.longitude = _location.longitude;
+                //this.notifyPath('data');
+                // this.set('location', this.location);
+
+                this.set('location.city', _location.city);
+                // this.set('location.state', _location.state);
                 this.set('location.latitude', _location.latitude);
                 this.set('location.longitude', _location.longitude);
-                this.set('location.city', _location.city);
-                this.set('location.state', _location.state);
-                */
+                console.log(this.location);
+                this.notifyPath("data.location");
+                console.log(this.data);
 
-                this.set('location', _location);
             }
 
             mapApiLoaded() {

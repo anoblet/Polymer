@@ -1,8 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
 <link rel="import" href="../../bower_components/my-singleton/SingletonMixin.html">
+<link rel="import" href="../../lib/my-location/my-location.html">
 
 <dom-module id="app-data">
+    <template>
+        <my-location data="{{data.location}}"></my-location>
+    </template>
     <script>
         class AppData extends SingletonMixin(Polymer.Element) {
             static get is() {

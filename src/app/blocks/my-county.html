@@ -32,13 +32,13 @@
                 display: block;
             }
         </style>
-        <my-location data="{{location}}"></my-location>
-        <us-census latitude="[[location.latitude]]" longitude="[[location.longitude]]" county="{{county}}"></us-census>
-        <paper-spinner id="loading" active></paper-spinner>
-
         <app-data data="{{data}}"></app-data>
-        <map-object source="{{location}}" target="{{data.location}}"></map-object>
+        <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}"></us-census>
+<!--
+        <map-object source="{{location}}" target="{{location}}"></map-object>
+-->
         <map-object source="{{county}}" target="{{data.location.county}}"></map-object>
+        <paper-spinner id="loading" active></paper-spinner>
         <div id="content">
             <ul>
                 <li>
