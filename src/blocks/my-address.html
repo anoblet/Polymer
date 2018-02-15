@@ -4,6 +4,8 @@
 <link rel="import" href="../../bower_components/google-apis/google-maps-api.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 
+<link rel="import" href="../app-data.html">
+
 <!--
 <link rel="import" href="../../lib/my-location/my-location.html">
 -->
@@ -38,7 +40,9 @@
             <iron-icon icon="device:gps-fixed" slot="suffix" on-click="locate"></iron-icon>
         </paper-input>
         <app-data id="data" data="{{data}}"></app-data>
+<!--
         <map-object source="{{data.location}}" target="{{location}}"></map-object>
+-->
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
 <!--
         [[data.location.latitude]]
@@ -128,9 +132,9 @@
                 // this.data.location.longitude = _location.longitude;
                 // this.notifyPath("data.location");
                 // return;
-                this.set('location.latitude', _location.latitude);
-                this.set('location.longitude', _location.longitude);
-                this.set('location.city', _location.city);
+                this.set('data.location.latitude', _location.latitude);
+                this.set('data.location.longitude', _location.longitude);
+                this.set('data.location.city', _location.city);
                 // this.set('location.state', _location.state);
                 this.notifyPath("data.location");
 
