@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="../lib/class-loader/class-loader.html">
+<link rel="import" href="../bower_components/class-loader/class-loader.html">
 
 <link rel="import" href="../bower_components/iron-location/iron-location.html">
 
@@ -9,7 +9,13 @@
 <link rel="import" href="app/styles/app-styles.html">
 
 <link rel="import" href="app-data.html">
-<link rel="import" href="components/map-object.html">
+<link rel="import" href="app/app-model.html">
+<link rel="import" href="app/app-controller.html">
+<link rel="import" href="app/app-view.html">
+<link rel="import" href="../bower_components/iron-location/iron-location.html">
+<link rel="import" href="../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+<link rel="import" href="../bower_components/us-census/us-census.html">
+<link rel="import" href="../bower_components/map-object/map-object.html">
 
 <dom-module id="app-root">
     <template>
@@ -24,21 +30,18 @@
         <app-controller></app-controller>
 
         <iron-location path="{{__path}}"></iron-location>
-        [[data.test]]
-        [[data.location.latitude]]
-        [[location.latitude]]
-        <app-data id="data" data="{{data}}"></app-data>
 <!--
-        <us-census latitude="[[location.latitude]]" longitude="[[location.longitude]]" county="{{county}}"></us-census>
+        [[data.location.latitude]]
 -->
+        <app-data id="data" data="{{data}}"></app-data>
+        <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
 <!--
         <map-object source="{{data.location}}" target="{{location}}"></map-object>
 -->
-<!--
         <app-localstorage-document key="data" data="{{data}}"></app-localstorage-document>
--->
-    </template>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ,    </template>
     <script>
+        // class AppRoot extends Polymer.MutableData(ClassLoader(Polymer.Element)) {
         class AppRoot extends ClassLoader(Polymer.Element) {
             static get is() {
                 return 'app-root';

@@ -2,11 +2,15 @@
 
 <link rel="import" href="../../../bower_components/us-census/us-census.html">
 
-<link rel="import" href="../../components/map-object.html">
+<link rel="import" href="../../../bower_components/map-object/map-object.html">
 
 <dom-module id="my-state">
     <template>
         <app-data data="{{data}}"></app-data>
+        <!--
+        <map-object source="{{data.location}}" target="{{location}}"></map-object>
+        <map-object source="{{data.location.state}}" target="{{state}}"></map-object>
+        -->
         <map-object source="{{data.location.state}}" target="{{state}}"></map-object>
         <ul>
             <li>Name: [[state.name]]</li>

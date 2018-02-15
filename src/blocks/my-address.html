@@ -4,7 +4,9 @@
 <link rel="import" href="../../bower_components/google-apis/google-maps-api.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 
+<!--
 <link rel="import" href="../../lib/my-location/my-location.html">
+-->
 
 <dom-module id="my-address">
     <template>
@@ -32,13 +34,15 @@
             }
         </style>
 
-        <paper-input id="autocomplete" type="text" value="[[location.city]], [[location.state.name]]">
+        <paper-input id="autocomplete" type="text" value="[[data.location.city.name]], [[data.location.state.name]]">
             <iron-icon icon="device:gps-fixed" slot="suffix" on-click="locate"></iron-icon>
         </paper-input>
         <app-data id="data" data="{{data}}"></app-data>
-        <map-object source="{{location}}" target="{{data.location}}"></map-object>
+        <map-object source="{{data.location}}" target="{{location}}"></map-object>
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
+<!--
         [[data.location.latitude]]
+-->
     </template>
 
     <script>
@@ -109,27 +113,26 @@
 
                 for (var i = 0; i < result.address_components.length; i++) {
                     if (result.address_components[i].types[0] == 'locality') {
-                        _location.city = result.address_components[i].long_name;
+                        _location.city = {};
+                        _location.city.name = result.address_components[i].long_name;
                     }
 
                     if (result.address_components[i].types[0] == 'administrative_area_level_1') {
-                        // _location.state = result.address_components[i].long_name;
+                        _location.state = {};
+                        _location.state.name = result.address_components[i].long_name;
                     }
                 }
-                //console.log(this.location);
 
-                //this.location.latitude = _location.latitude;
-                //this.location.longitude = _location.longitude;
-                //this.notifyPath('data');
-                // this.set('location', this.location);
 
-                this.set('location.city', _location.city);
-                // this.set('location.state', _location.state);
+                // this.data.location.latitude = _location.latitude;
+                // this.data.location.longitude = _location.longitude;
+                // this.notifyPath("data.location");
+                // return;
                 this.set('location.latitude', _location.latitude);
                 this.set('location.longitude', _location.longitude);
-                console.log(this.location);
+                this.set('location.city', _location.city);
+                // this.set('location.state', _location.state);
                 this.notifyPath("data.location");
-                console.log(this.data);
 
             }
 

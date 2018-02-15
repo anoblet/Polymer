@@ -8,7 +8,7 @@
             let data = {};
             let isRoot = false;
 
-            class AppData extends Polymer.Element {
+            class AppData extends Polymer.MutableData(Polymer.Element) {
                 static get is() {
                     return 'app-data';
                 }
