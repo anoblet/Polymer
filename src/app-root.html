@@ -30,15 +30,13 @@
         <app-controller></app-controller>
 
         <iron-location path="{{__path}}"></iron-location>
-<!--
         [[data.location.latitude]]
--->
         <app-data id="data" data="{{data}}"></app-data>
         <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
-<!--
         <map-object source="{{data.location}}" target="{{location}}"></map-object>
--->
+<!--
         <app-localstorage-document key="data" data="{{data}}"></app-localstorage-document>
+-->
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ,    </template>
     <script>
         // class AppRoot extends Polymer.MutableData(ClassLoader(Polymer.Element)) {

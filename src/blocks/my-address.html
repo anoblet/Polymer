@@ -45,7 +45,13 @@
 -->
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
 <!--
+        <my-location data="{{location}}"></my-location>
+-->
+<!--
         [[data.location.latitude]]
+-->
+<!--
+        [[location.latitude]]
 -->
     </template>
 
@@ -128,16 +134,16 @@
                 }
 
 
-                // this.data.location.latitude = _location.latitude;
-                // this.data.location.longitude = _location.longitude;
-                // this.notifyPath("data.location");
-                // return;
-                this.set('data.location.latitude', _location.latitude);
-                this.set('data.location.longitude', _location.longitude);
-                this.set('data.location.city', _location.city);
-                // this.set('location.state', _location.state);
+                this.data.location.latitude = _location.latitude;
+                this.data.location.longitude = _location.longitude;
+                this.data.location.city = _location.city;
                 this.notifyPath("data.location");
-
+                return;
+                // this.set('location.latitude', _location.latitude);
+                // this.set('location.longitude', _location.longitude);
+                // this.set('data.location.city', _location.city);
+                // this.set('location.state', _location.state);
+                // this.notifyPath("data.location");
             }
 
             mapApiLoaded() {
