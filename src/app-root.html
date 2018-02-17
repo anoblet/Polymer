@@ -30,9 +30,11 @@
         [[data.location.latitude]]
 -->
         <app-data id="data" data="{{data}}"></app-data>
+        <!--
         <map-object source="{{data.location.latitude}}" target="{{latitude}}"></map-object>
         <map-object source="{{data.location.longitude}}" target="{{longitude}}"></map-object>
-        <us-census latitude="[[latitude]]" longitude="[[longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
+        -->
+        <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
     </template>
     <script>
         // class AppRoot extends Polymer.MutableData(ClassLoader(Polymer.Element)) {
