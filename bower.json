@@ -25,7 +25,8 @@
     "my-paypal": "https://github.com/anoblet/my-paypal.git",
     "my-grid": "https://github.com/anoblet/my-grid.git",
     "paper-input": "PolymerElements/paper-input#2.0.0",
-    "paper-spinner": "PolymerElements/paper-spinner#^2.0.0"
+    "paper-spinner": "PolymerElements/paper-spinner#^2.0.0",
+    "paper-progress": "PolymerElements/paper-progress#^2.0.1"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
