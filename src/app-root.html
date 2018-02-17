@@ -22,6 +22,7 @@
                 @apply(--flex-grow);
             }
         </style>
+
         <app-model></app-model>
         <app-view></app-view>
         <app-controller></app-controller>
@@ -31,11 +32,11 @@
         <app-data id="data" data="{{data}}"></app-data>
         <map-object source="{{data.location.latitude}}" target="{{latitude}}"></map-object>
         <map-object source="{{data.location.longitude}}" target="{{longitude}}"></map-object>
-        <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
+        <us-census latitude="[[latitude]]" longitude="[[longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
     </template>
     <script>
-        class AppRoot extends Polymer.MutableData(ClassLoader(Polymer.Element)) {
-        // class AppRoot extends ClassLoader(Polymer.Element) {
+        // class AppRoot extends Polymer.MutableData(ClassLoader(Polymer.Element)) {
+        class AppRoot extends ClassLoader(Polymer.Element) {
             static get is() {
                 return 'app-root';
             }
@@ -87,8 +88,6 @@
 
             connectedCallback() {
                 super.connectedCallback();
-
-                // this.data.location = this.data.location || {};
 
                 /*
                 * Set the default location
