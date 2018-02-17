@@ -30,25 +30,16 @@
         <map-object source="{{data.location.latitude}}" target="{{latitude}}"></map-object>
         <map-object source="{{data.location.longitude}}" target="{{longitude}}"></map-object>
         <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
-        <!--
-                <map-object source="{{data.location}}" target="{{location}}"></map-object>
-        -->
-<!--
-        <map-object source="{{data}}" target="{{storedData}}"></map-object>
--->
-<!--
-        <app-localstorage-document key="data" data="{{storedData}}"></app-localstorage-document>
--->
     </template>
     <script>
-        // class AppRoot extends Polymer.MutableData(ClassLoader(Polymer.Element)) {
-        class AppRoot extends ClassLoader(Polymer.Element) {
+        class AppRoot extends Polymer.MutableData(ClassLoader(Polymer.Element)) {
+        // class AppRoot extends ClassLoader(Polymer.Element) {
             static get is() {
                 return 'app-root';
             }
 
             static get depends() {
-                return [        
+                return [
                     "app-model",
                     "app-view",
                     "app-controller",
@@ -75,14 +66,14 @@
             constructor() {
                 super();
                 window.Application = this;
-                Application.log = function(message) {
+                Application.log = function (message) {
                     console.log(message);
                 }
             }
 
             ready() {
                 super.ready();
-                for(let module in this.modules) {
+                for (let module in this.modules) {
                     Application[module.key] = module.value
                 }
             }
@@ -95,13 +86,8 @@
             connectedCallback() {
                 super.connectedCallback();
 
-                if(this.data.location);
-                else {
-                    // this.data.location = {};
-                }
-                // this.location = this.location || {};
-                // console.log(this.data);
-                this.data.location = this.data.location || {};
+                // this.data.location = this.data.location || {};
+
                 /*
                 * Set the default location
                 */

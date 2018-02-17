@@ -44,19 +44,12 @@
         <map-object source="{{data.location}}" target="{{location}}"></map-object>
 -->
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
-<!--
-        <my-location data="{{location}}"></my-location>
--->
-<!--
-        [[data.location.latitude]]
--->
-<!--
+        [[data.location.latitude]]test
         [[location.latitude]]
--->
     </template>
 
     <script>
-        class MyAddress extends Polymer.Element {
+        class MyAddress extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'my-address';
             }
@@ -134,16 +127,18 @@
                 }
 
 
-                this.data.location.latitude = location.latitude;
-                this.data.location.longitude = location.longitude;
-                this.data.location.city = location.city;
-                this.data.location.state = location.state;
-                this.notifyPath("data.location");
-                return;
-                // this.set('location.latitude', location.latitude);
-                // this.set('location.longitude', location.longitude);
-                // this.set('data.location.city', location.city);
-                // this.set('location.state', location.state);
+                //this.data.location.latitude = location.latitude;
+                //this.data.location.longitude = location.longitude;
+                //this.data.location.city = location.city;
+                //this.data.location.state = location.state;
+                //this.notifyPath("data.location");
+                //return;
+                this.data.location = this.data.location || {};
+                this.set('data.location.latitude', location.latitude);
+                this.set('data.location.longitude', location.longitude);
+                this.set('data.location.city', location.city);
+                this.set('data.location.state', location.state);
+                // this.set("location", location);
                 // this.notifyPath("data.location");
             }
 

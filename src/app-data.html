@@ -1,6 +1,10 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/mixins/mutable-data.html">
 
 <dom-module id="app-data">
+    <template>
+        <app-localstorage-document key="data" data="{{data}}"></app-localstorage-document>
+    </template>
     <script>
         (function () {
             let instance;
@@ -8,7 +12,7 @@
             let data = {};
             let isRoot = false;
 
-            class AppData extends Polymer.Element {
+            class AppData extends Polymer.MutableData(Polymer.Element) {
                 static get is() {
                     return 'app-data';
                 }
