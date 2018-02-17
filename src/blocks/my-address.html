@@ -40,12 +40,8 @@
             <iron-icon icon="device:gps-fixed" slot="suffix" on-click="locate"></iron-icon>
         </paper-input>
         <app-data id="data" data="{{data}}"></app-data>
-<!--
         <map-object source="{{data.location}}" target="{{location}}"></map-object>
--->
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
-        [[data.location.latitude]]test
-        [[location.latitude]]
     </template>
 
     <script>
@@ -55,17 +51,18 @@
             }
 
             static get properties() {
-                return {/*
-                    data: {
-                        type: Object,
-                        notify: true
-                    },
-                    location: {
-                        type: Object,
-                        // value: {},
-                        notify: true
-                    }
-                    */
+                return {
+                    /*
+                                        data: {
+                                            type: Object,
+                                            notify: true
+                                        },
+                                        location: {
+                                            type: Object,
+                                            // value: {},
+                                            notify: true
+                                        }
+                                        */
                 }
             }
 
@@ -134,12 +131,12 @@
                 //this.notifyPath("data.location");
                 //return;
                 this.data.location = this.data.location || {};
-                this.set('data.location.latitude', location.latitude);
-                this.set('data.location.longitude', location.longitude);
-                this.set('data.location.city', location.city);
-                this.set('data.location.state', location.state);
+                this.set('location.latitude', location.latitude);
+                this.set('location.longitude', location.longitude);
+                this.set('location.city', location.city);
+                this.set('location.state', location.state);
+                this.notifyPath("data.location");
                 // this.set("location", location);
-                // this.notifyPath("data.location");
             }
 
             mapApiLoaded() {
