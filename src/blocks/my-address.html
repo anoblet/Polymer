@@ -116,33 +116,34 @@
             }
 
             setLocation(result) {
-                var _location = {};
+                var location = {};
 
-                _location.latitude = result.geometry.location.lat();
-                _location.longitude = result.geometry.location.lng();
+                location.latitude = result.geometry.location.lat();
+                location.longitude = result.geometry.location.lng();
 
                 for (var i = 0; i < result.address_components.length; i++) {
                     if (result.address_components[i].types[0] == 'locality') {
-                        _location.city = {};
-                        _location.city.name = result.address_components[i].long_name;
+                        location.city = {};
+                        location.city.name = result.address_components[i].long_name;
                     }
 
                     if (result.address_components[i].types[0] == 'administrative_area_level_1') {
-                        _location.state = {};
-                        _location.state.name = result.address_components[i].long_name;
+                        location.state = {};
+                        location.state.name = result.address_components[i].long_name;
                     }
                 }
 
 
-                this.data.location.latitude = _location.latitude;
-                this.data.location.longitude = _location.longitude;
-                this.data.location.city = _location.city;
+                this.data.location.latitude = location.latitude;
+                this.data.location.longitude = location.longitude;
+                this.data.location.city = location.city;
+                this.data.location.state = location.state;
                 this.notifyPath("data.location");
                 return;
-                // this.set('location.latitude', _location.latitude);
-                // this.set('location.longitude', _location.longitude);
-                // this.set('data.location.city', _location.city);
-                // this.set('location.state', _location.state);
+                // this.set('location.latitude', location.latitude);
+                // this.set('location.longitude', location.longitude);
+                // this.set('data.location.city', location.city);
+                // this.set('location.state', location.state);
                 // this.notifyPath("data.location");
             }
 
