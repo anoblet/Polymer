@@ -2,8 +2,6 @@
 
 <link rel="import" href="../bower_components/class-loader/class-loader.html">
 
-<link rel="import" href="../bower_components/iron-location/iron-location.html">
-
 <link rel="import" href="styles/global-styles.html">
 <link rel="import" href="styles/flex-styles.html">
 <link rel="import" href="app/styles/app-styles.html">
@@ -28,14 +26,14 @@
         <app-model></app-model>
         <app-view></app-view>
         <app-controller></app-controller>
-
-        <iron-location path="{{__path}}"></iron-location>
         [[data.location.latitude]]
         <app-data id="data" data="{{data}}"></app-data>
+        <map-object source="{{data.location.latitude}}" target="{{latitude}}"></map-object>
+        <map-object source="{{data.location.longitude}}" target="{{longitude}}"></map-object>
         <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
-<!--
-        <map-object source="{{data.location}}" target="{{location}}"></map-object>
--->
+        <!--
+                <map-object source="{{data.location}}" target="{{location}}"></map-object>
+        -->
 <!--
         <map-object source="{{data}}" target="{{storedData}}"></map-object>
 -->
