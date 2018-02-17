@@ -20,7 +20,7 @@
         </ul>
     </template>
     <script>
-        class MyState extends Polymer.Element {
+        class MyState extends Polymer.MutableData(Polymer.Element) {
             static get is() {
                 return 'my-state';
             }
