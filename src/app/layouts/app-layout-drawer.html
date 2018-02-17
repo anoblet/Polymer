@@ -33,6 +33,8 @@
                 @apply --flex-grow;
             }
         </style>
+        <app-data data="{{data}}"></app-data>
+        <map-object source="[[data.location]]" target="{{location}}"></map-object>
         <nav>
             <app-menu selected="0">
                 <app-submenu>
@@ -41,7 +43,7 @@
                         <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
                     </div>
                     <app-menu slot="submenu-content">
-                        <a class="app-menu-item" href="/[[location.state]]/[[location.city]]">Overview</a>
+                        <a class="app-menu-item" href="/[[location.state.url]]/[[location.city.url]]">Overview</a>
                         <a class="app-menu-item" href="javascript:void(0)">Officials</a>
                         <a class="app-menu-item" href="/city">Static</a>
                     </app-menu>
@@ -61,7 +63,7 @@
                         <iron-icon icon="expand-more" class="expand-icon"></iron-icon>
                     </div>
                     <app-menu slot="submenu-content">
-                        <a class="app-menu-item" href="[[location.state]]">Overview</a>
+                        <a class="app-menu-item" href="[[location.state.url]]">Overview</a>
                         <a class="app-menu-item" href="javascript:void(0)">Officials</a>
                         <a class="app-menu-item" href="/state">Static</a>
                     </app-menu>
