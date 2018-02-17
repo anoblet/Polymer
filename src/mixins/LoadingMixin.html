@@ -1,0 +1,24 @@
+<!--
+    Takes a dependency definition inside of a class and loads the "components" via a semi-absolute mechanism.
+ -->
+<script>
+    (function () {
+        LoadingMixin = function (superClass) {
+            return class extends superClass {
+                static get properties() {
+                    return {
+                        loaded: {
+                            type: Boolean,
+                            value: false
+                        }
+                    }
+                }
+
+                static get observers() {
+                    [
+                        ]
+                }
+            }
+        }
+    })();
+</script>

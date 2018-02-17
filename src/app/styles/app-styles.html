@@ -1,0 +1,50 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="app-styles">
+    <template>
+        <style>
+            :host {
+                @apply --flex;
+            }
+            app-layout {
+                @apply --flex-grow;
+            }
+            app-footer {
+                background: var(--color-primary);
+            }
+            paper-card {
+                display: flex;
+                @apply --flex-grow;
+                @apply --flex-horizontal;
+                /* margin: 1rem; */
+                padding: 2rem;
+                min-width: 320px;
+                height: fit-content;
+            }
+
+            paper-card .heading {
+                width: 100%;
+                border-bottom: 1px solid #eee;
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            paper-card .content {
+                padding: 1rem;
+            }
+
+            custom-element {
+                @apply --flex;
+                @apply --flex-grow;
+            }
+        </style>
+    </template>
+    <script>
+        class AppStyles extends Polymer.Element {
+            static get is() {
+                return 'app-styles';
+            }
+        }
+        window.customElements.define(AppStyles.is, AppStyles);
+    </script>
+</dom-module>

@@ -1,0 +1,113 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../bower_components/class-loader/class-loader.html">
+
+<link rel="import" href="../bower_components/iron-location/iron-location.html">
+
+<link rel="import" href="styles/global-styles.html">
+<link rel="import" href="styles/flex-styles.html">
+<link rel="import" href="app/styles/app-styles.html">
+
+<link rel="import" href="app-data.html">
+<link rel="import" href="app/app-model.html">
+<link rel="import" href="app/app-controller.html">
+<link rel="import" href="app/app-view.html">
+<link rel="import" href="../bower_components/iron-location/iron-location.html">
+<link rel="import" href="../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+<link rel="import" href="../bower_components/us-census/us-census.html">
+<link rel="import" href="../bower_components/map-object/map-object.html">
+
+<dom-module id="app-root">
+    <template>
+        <style include="global-styles flex-styles app-styles">
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+        </style>
+        <app-model></app-model>
+        <app-view></app-view>
+        <app-controller></app-controller>
+
+        <iron-location path="{{__path}}"></iron-location>
+<!--
+        [[data.location.latitude]]
+-->
+        <app-data id="data" data="{{data}}"></app-data>
+        <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
+        <map-object source="{{data.location}}" target="{{location}}"></map-object>
+<!--
+        <app-localstorage-document key="data" data="{{data}}"></app-localstorage-document>
+-->
+    </template>
+    <script>
+        // class AppRoot extends Polymer.MutableData(ClassLoader(Polymer.Element)) {
+        class AppRoot extends ClassLoader(Polymer.Element) {
+            static get is() {
+                return 'app-root';
+            }
+
+            static get depends() {
+                return [        
+                    "app-model",
+                    "app-view",
+                    "app-controller",
+                    "global-styles",
+                    "flex-styles",
+                    "app-styles"
+                ]
+            }
+
+            static get properties() {
+                return {
+                    modules: {
+                        type: Array,
+                        value: [
+                            {
+                                "key": "user",
+                                "value": "app-user"
+                            }
+                        ]
+                    }
+                }
+            }
+
+            constructor() {
+                super();
+                window.Application = this;
+                Application.log = function(message) {
+                    console.log(message);
+                }
+            }
+
+            ready() {
+                super.ready();
+                for(let module in this.modules) {
+                    Application[module.key] = module.value
+                }
+            }
+
+            __setDefaultLocation() {
+                this.location.city = "Port Chester";
+                this.location.state = "New York";
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+
+                if(this.data.location);
+                else {
+                    // this.data.location = {};
+                }
+                // this.location = this.location || {};
+                // console.log(this.data);
+                this.data.location = this.data.location || {};
+                /*
+                * Set the default location
+                */
+            }
+        }
+
+        window.customElements.define(AppRoot.is, AppRoot);
+    </script>
+</dom-module>

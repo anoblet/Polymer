@@ -1,0 +1,49 @@
+<script>
+    (function () {
+        DebugMixin = function (superClass) {
+            return class extends superClass {
+                ready() {
+                    super.ready();
+
+                    // console.log(this.template);
+                    var memoizedTemplate = Polymer.DomModule.import(this.is, 'template');
+                    console.log(memoizedTemplate);
+                    var memoizedTemplate;
+                    if (this.template) {
+                        memoizedTemplate = this.template.cloneNode(true);
+                    }
+                    console.log(memoizedTemplate);
+                }
+
+                /*
+                static get template() {
+                    var memoizedTemplate;
+                    if (!memoizedTemplate) {
+                        memoizedTemplate = superClass.template.cloneNode(true);
+                        let div = document.createElement('div');
+                        div.textContent = 'Hello from an extended template.'
+                        memoizedTemplate.content.appendChild(div);
+                    }
+                    return memoizedTemplate;
+                }
+                */
+
+                debug(property) {
+                    console.log(this);
+                    var memoizedTemplate = Polymer.DomModule.import(this.is, 'template');
+                    console.log(memoizedTemplate);
+                    console.log(this.template);
+                    if (!memoizedTemplate) {
+                        if (this.template) {
+                            var memoizedTemplate = this.template.cloneNode(true);
+                        }
+                    }
+                    console.log(memoizedTemplate);
+                    let debug = document.createElement("template");
+                    debug.is = "dom-repeat";
+                    debug.items = property;
+                }
+            }
+        }
+    })();
+</script>

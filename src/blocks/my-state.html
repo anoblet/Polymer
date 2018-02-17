@@ -1,0 +1,55 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../bower_components/my-singleton/SingletonMixin.html">
+
+<!--
+<link rel="import" href="../../lib/my-location/my-location.html">
+-->
+
+<link rel="import" href="../../bower_components/us-census/us-census.html">
+
+<dom-module id="my-state">
+    <template>
+        <style>
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+        </style>
+        <ul>
+            <li>Name: [[longName]] [[location.state]]</li>
+            <li>Population: [[population]]</li>
+        </ul>
+        <my-location data="{{location}}"></my-location>
+        <us-census-api response="{{data}}"></us-census-api>
+        <us-census></us-census>
+    </template>
+    <script>
+        class MyState extends SingletonMixin(Polymer.Element) {
+            static get is() {
+                return 'my-state';
+            }
+
+            static get properties() {
+                return {
+                    shortName: {
+                        type: String
+                    },
+                    longName: {
+                        type: String
+                    },
+                    population: {
+                        type: String
+                    }
+                }
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                // this.longName = this.location.state;
+            }
+        }
+
+        window.customElements.define(MyState.is, MyState);
+    </script>
+</dom-module>

@@ -1,0 +1,52 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../../bower_components/my-grid/my-grid.html">
+<link rel="import" href="../../blocks/x-map.html">
+<link rel="import" href="../../blocks/x-census.html">
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+
+<dom-module id="grid-layout">
+    <template>
+        <style include="app-styles">
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+        </style>
+        <my-grid columns="4">
+            <my-grid-item span="3">1</my-grid-item>
+            <my-grid-item>
+                <paper-card>
+                    <x-census></x-census>
+                </paper-card>
+            </my-grid-item>
+            <my-grid-item>
+                <paper-card>
+                    <x-map></x-map>
+                </paper-card>
+            </my-grid-item>
+            <my-grid-item>
+                4
+            </my-grid-item>
+            <my-grid-item>5</my-grid-item>
+            <my-grid-item>6</my-grid-item>
+        </my-grid>
+    </template>
+    <script>
+        class GridLayout extends Polymer.Element {
+            static get is() {
+                return 'grid-layout';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+
+        window.customElements.define(GridLayout.is, GridLayout);
+    </script>
+</dom-module>

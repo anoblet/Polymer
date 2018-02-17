@@ -1,0 +1,50 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-census">
+    <script>
+        class MyCensus extends Polymer.Element {
+            static get is() {
+                return 'my-census';
+            }
+
+            static get properties() {
+                return {
+                    baseUrl: {
+                        type: String,
+                        value: 'https://api.census.gov/data/2016/pep/population'
+                    },
+                    stateCodes: {
+                        type: Array,
+                        value: [
+                            {
+                                shortName: "NJ",
+                                longName: "New Jersey",
+                                code: 34
+                            },
+                            {
+                                shortName: "",
+                                longName: "New York",
+                                code: 36
+                            }
+                        ]
+                    },
+                    parameters: {
+                        type: Object,
+                        value: {
+                            get: ["POP","GEONAME"],
+                            for: "state:" + this.stateCode
+                        }
+                    },
+                    response: {
+                        type: Object
+                    }
+                }
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+        window.customElements.define(MyCensus.is, MyCensus);
+    </script>
+</dom-module>

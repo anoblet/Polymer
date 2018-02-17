@@ -1,0 +1,46 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="custom-block">
+    <template>
+        <style include="">
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+        </style>
+    </template>
+    <script>
+        class CustomBlock extends Polymer.Element {
+            static get is() {
+                return 'custom-block';
+            }
+
+            static get properties() {
+                return {
+                    src: {
+                        type: String
+                    },
+                    tag: {
+                        type: String
+                    },
+                    block: {
+                        type: String
+                    }
+                }
+            }
+
+            static get observers() {
+                return []
+            }
+
+            ready() {
+                super.ready();
+                Polymer.importHref(this.resolveUrl(this.block + '.html'), function (e) {
+                    let b = document.createElement(this.block);
+                    this.shadowRoot.appendChild(b);
+                }.bind(this));
+            }
+        }
+        window.customElements.define(CustomBlock.is, CustomBlock);
+    </script>
+</dom-module>

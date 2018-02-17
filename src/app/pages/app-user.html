@@ -1,0 +1,31 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../mixins/UserMixin.html">
+
+<link rel="import" href="../../blocks/my-user.html">
+
+<dom-module id="app-user">
+    <template>
+        <style>
+            :host {
+            }
+        </style>
+        <my-user></my-user>
+    </template>
+    <script>
+        class AppUser extends UserMixin(Polymer.Element) {
+            static get is() {
+                return 'app-user';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+        window.customElements.define(AppUser.is, AppUser);
+    </script>
+</dom-module>

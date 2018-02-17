@@ -1,0 +1,28 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../../bower_components/us-census/us-census.html">
+
+<dom-module id="app-census">
+    <template>
+        <style>
+            :host {
+            }
+        </style>
+    </template>
+    <script>
+        class AppCensus extends Polymer.Element {
+            static get is() {
+                return 'app-census';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+        window.customElements.define(AppCensus.is, AppCensus);
+    </script>
+</dom-module>

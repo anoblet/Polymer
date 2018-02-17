@@ -1,0 +1,119 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+
+<link rel="import" href="../../../bower_components/x-grid/x-grid.html">
+
+<link rel="import" href="../../styles/global-styles.html">
+<link rel="import" href="../../styles/flex-styles.html">
+<link rel="import" href="../styles/app-styles.html">
+
+<link rel="import" href="../../../bower_components/custom-element/custom-element.html">
+
+<link rel="import" href="../../../bower_components/my-grid/my-grid.html">
+
+<link rel="import" href="../../../bower_components/us-census/us-census.html">
+
+<dom-module id="app-home">
+    <template>
+        <style include="global-styles flex-styles app-styles">
+            :host {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+            my-grid {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+        <my-grid items="[[blocks]]" rows="*" columns="2"></my-grid>
+    </template>
+
+    <script>
+        class AppHome extends Polymer.Element {
+            static get is() {
+                return 'app-home';
+            };
+
+            static get properties() {
+                return {
+                    user: {
+                        type: Object
+                    },
+                    blocks: {
+                        type: Array,
+                        value: [
+                            {
+                                src: 'app/blocks',
+                                tag: 'my-city',
+                                rows: 1,
+                                columns: 2,
+                                title: 'My City',
+                                fullRow: true
+                            },
+                            {
+                                src: 'app/blocks',
+                                tag: 'my-county',
+                                rows: 1,
+                                columns: 1,
+                                title: 'My County',
+                                // fullRow: true
+                            },
+                            {
+                                src: 'app/blocks',
+                                tag: 'my-state',
+                                rows: 2,
+                                columns: 1,
+                                title: 'My State'
+                            },
+                            {
+                                src: 'blocks',
+                                tag: 'my-country',
+                                rows: 1,
+                                columns: 1,
+                                title: 'My Country'
+                            },
+                            /*
+                            {
+                                src: 'app/blocks',
+                                tag: 'app-census',
+                                rows: 1,
+                                columns: 1,
+                                title: 'Census'
+                            },
+                            */
+                            {
+                                src: 'blocks',
+                                tag: 'x-map',
+                                rows: 2,
+                                columns: 2,
+                                title: 'Map'
+                            }
+                        ]
+                    }
+                }
+            }
+
+            ready() {
+                super.ready();
+                /*
+                this.blocks.forEach(function (block) {
+                    let b = this.createBlock(block);
+                    this.shadowRoot.querySelector("x-grid").appendChild(b);
+                }.bind(this));
+                */
+            }
+
+            createBlock(block) {
+                let p = document.createElement('paper-card');
+                let b = document.createElement(block);
+
+                p.appendChild(b)
+
+                return p;
+            }
+        }
+
+        window.customElements.define(AppHome.is, AppHome);
+    </script>
+</dom-module>

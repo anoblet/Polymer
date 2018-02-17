@@ -1,0 +1,88 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="global-styles">
+    <template>
+        <style>
+            :host {
+                --color-primary: #2196f3;
+            }
+
+            :host([flex]) {
+                display: flex;
+            }
+
+            :host([flex][grow]) {
+                flex-grow: 1;
+            }
+
+            :host([v-align-center]) {
+                align-items: center;
+            }
+
+            :host([grid]) {
+
+            }
+
+            :host([scroll]) {
+                overflow: auto;
+            }
+
+            :host([no-height]) {
+                height: 0;
+            }
+
+            :host([text-center]) {
+                text-align: center;
+            }
+
+            :host([flex][align-items-center]) {
+                align-items: center;
+            }
+
+            :host([flex][justify-content-center]) {
+                justify-content: center;
+            }
+
+            :host([justify-content-flex-end]) {
+                justify-content: flex-end;
+            }
+
+            :host([justify-content-space-around]) {
+                justify-content: space-around;
+            }
+
+            :host([no-underline]) {
+                text-decoration: none;
+            }
+
+            [no-underline] {
+                text-decoration: none;
+            }
+
+            [p-1] {
+                padding: 1rem
+            }
+
+            [p-l-1] {
+                padding-left: 1rem
+            }
+
+            [m-l-1] {
+                margin-left: 1rem;
+            }
+
+            [flex-disabled] {
+                display: initial;
+            }
+        </style>
+    </template>
+    <script>
+        class GlobalStyles extends Polymer.Element {
+            static get is() {
+                return 'global-styles';
+            }
+        }
+
+        window.customElements.define(GlobalStyles.is, GlobalStyles);
+    </script>
+</dom-module>
