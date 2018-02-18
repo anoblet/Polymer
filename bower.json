@@ -6,6 +6,7 @@
     "app-route": "PolymerElements/app-route#^2.0.3",
     "app-menu": "oyeharry/app-menu#^2.1.1",
     "app-storage": "PolymerElements/app-storage#^2.0.2",
+    "class-loader": "https://github.com/anoblet/class-loader.git",
     "custom-element": "https://github.com/anoblet/custom-element.git",
     "google-apis": "GoogleWebComponents/google-apis#^2.0.0",
     "google-chart": "GoogleWebComponents/google-chart#^2.0.0",
