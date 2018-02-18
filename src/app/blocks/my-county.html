@@ -100,16 +100,20 @@
             }
 
             _censusLoaded() {
-                if (this.county.name !== "Loading...") {
-                    this.$.loading.style.display = "none";
-                    this.$.content.style.display = "flex";
+                if (this.county) {
+                    if (this.county.name !== "Loading...") {
+                        this.$.loading.style.display = "none";
+                        this.$.content.style.display = "flex";
+                    }
                 }
             }
 
             _locationChanged() {
-                if (this.county.name !== "Loading...") {
-                    this.$.loading.style.display = "flex";
-                    this.$.content.style.display = "none";
+                if (this.county) {
+                    if (this.county.name !== "Loading...") {
+                        this.$.loading.style.display = "flex";
+                        this.$.content.style.display = "none";
+                    }
                 }
             }
 
@@ -118,7 +122,6 @@
                 this.percentWater = ((this.county.areaWater / (this.county.areaLand + this.county.areaWater)) * 100).toFixed(0);
             }
         }
-
         window.customElements.define(MyCounty.is, MyCounty);
     </script>
 </dom-module>

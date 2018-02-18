@@ -6,10 +6,15 @@
     "src/styles/flex-styles.html",
     "src/app/styles/app-styles.html",
     "src/app/pages/app-home.html",
-    "src/blocks/x-map.html"
+    "src/app/blocks/my-city.html",
+    "src/app/blocks/my-county.html",
+    "src/app/blocks/my-state.html",
+    "src/blocks/x-map.html",
+    "src/app/pages/page-state.html",
+    "src/components/app-data.html",
+    "src/components/address-lookup/address-lookup.html"
   ],
   "sources": [
-    "src/**/*",
     "images/**/*"
   ],
   "extraDependencies": [

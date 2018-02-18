@@ -67,6 +67,12 @@
                 super();
                 window.Application = this;
             }
+
+            ready() {
+                super.ready();
+
+                this.data.location = this.data.location || {};
+            }
         }
 
         window.customElements.define(AppRoot.is, AppRoot);
