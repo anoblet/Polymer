@@ -1,8 +1,13 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-location/iron-location.html">
 
 <dom-module id="app-controller">
     <template>
-        <iron-location path="{{__path}}"></iron-location>
+        <iron-location path="{{__path}}" use-hash-as-path></iron-location>
+        <!--
+        <app-route route="{{__path}}" pattern="/:state" data="{{routeData}}" tail="{{subroute}}"></app-route>
+        <app-route route="{{subroute}}" pattern="/:city" data="{{subrouteData}}"></app-route>
+        -->
     </template>
     <script>
         class AppController extends Polymer.Element {
@@ -68,6 +73,7 @@
                 }
             }
         }
+
         window.customElements.define(AppController.is, AppController);
     </script>
 </dom-module>

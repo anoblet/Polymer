@@ -1,0 +1,79 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../styles/global-styles.html">
+<link rel="import" href="../../styles/flex-styles.html">
+<link rel="import" href="../styles/app-styles.html">
+
+<link rel="import" href="../../components/address-lookup/address-lookup.html">
+
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="app-header">
+    <template>
+        <style include="app-styles global-styles flex-styles">
+            :host {
+                background: var(--color-primary);
+                color: #fff;
+            }
+
+            header {
+                @apply(--flex);
+                @apply(--flex-grow);
+            }
+
+            a {
+                color: #fff;
+            }
+        </style>
+        <header>
+            <x-grid>
+                <x-grid-row>
+                    <x-grid-column flex wrap-disabled>
+                        <x-grid-column grow-disabled v-align-center>
+                            <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
+                        </x-grid-column>
+                        <x-grid-column grow-disabled v-align-center>
+                        <span style="width: max-content" flex v-align-center m-l-1>
+                            <a href="/" no-underline>[[title]]</a>
+                        </span>
+                        </x-grid-column>
+                    </x-grid-column>
+                    <x-grid-column v-align-center>
+                        <address-lookup v-align-center></address-lookup>
+                    </x-grid-column>
+                    <x-grid-column justify-content-flex-end v-align-center>
+                        <x-grid-column></x-grid-column>
+                        <x-grid-column></x-grid-column>
+                        <x-grid-column>
+                            <paper-icon-button icon="icons:account-circle"></paper-icon-button>
+                        </x-grid-column>
+                    </x-grid-column>
+                </x-grid-row>
+            </x-grid>
+        </header>
+    </template>
+
+    <script>
+        class AppHeader extends Polymer.Element {
+            static get is() {
+                return 'app-header';
+            }
+
+            static get properties() {
+                return {
+                    title: {
+                        type: String,
+                        value: "My Government"
+                    }
+                }
+            }
+
+            toggleDrawer() {
+                this.dispatchEvent(new CustomEvent('toggleDrawer', {bubbles: true, composed: true}));
+            }
+        }
+
+        window.customElements.define(AppHeader.is, AppHeader);
+    </script>
+</dom-module>

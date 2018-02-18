@@ -1,0 +1,118 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../../bower_components/iron-icons/device-icons.html">
+<link rel="import" href="../../../bower_components/google-apis/google-maps-api.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+
+<link rel="import" href="../app-data.html">
+
+<dom-module id="address-lookup">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+
+                --paper-input-container: {
+                    width: 100%;
+                    padding: 0;
+                    color: #fff;
+                };
+
+                --paper-input-container-color: #fff;
+
+                --paper-input-container-focus-color: #fff;
+
+                --paper-input-container-input: {
+                    color: #fff;
+                };
+            }
+        </style>
+
+        <paper-input id="autocomplete" type="text" value="[[data.location.city.name]], [[data.location.state.name]]">
+            <iron-icon icon="device:gps-fixed" slot="suffix" on-click="locate"></iron-icon>
+        </paper-input>
+        <app-data id="data" data="{{data}}"></app-data>
+        <map-object source="{{data.location}}" target="{{location}}"></map-object>
+        <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
+    </template>
+    <script>
+        class AddressLookup extends Polymer.Element {
+            static get is() {
+                return 'address-lookup';
+            }
+            _autocomplete() {
+                let input = this.$.autocomplete.inputElement.inputElement;
+                let autocomplete = new google.maps.places.Autocomplete(input, /* {types: ['(cities)']} */);
+
+                google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                    let result = autocomplete.getPlace();
+                    this.setLocation(result);
+                }.bind(this));
+            }
+
+            locate() {
+                console.log("Locating...");
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var geocoder = new google.maps.Geocoder();
+                        var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+                        geocoder.geocode({'latLng': geolocate}, function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                var result;
+                                if (results.length > 1) {
+                                    result = results[1];
+                                } else {
+                                    result = results[0];
+                                }
+
+                                this.setLocation(result);
+                            }
+                        }.bind(this));
+                    }.bind(this), function () {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
+                }
+            }
+
+            setLocation(result) {
+                console.log("Location has been found.")
+                console.log(result);
+                let location = {};
+
+                location.latitude = result.geometry.location.lat();
+                location.longitude = result.geometry.location.lng();
+
+                for (var i = 0; i < result.address_components.length; i++) {
+                    if (result.address_components[i].types[0] == 'locality') {
+                        location.city = {};
+                        location.city.name = result.address_components[i].long_name;
+                    }
+
+                    if (result.address_components[i].types[0] == 'administrative_area_level_1') {
+                        location.state = {};
+                        location.state.name = result.address_components[i].long_name;
+                    }
+                }
+
+                // this.data.location = this.data.location || {};
+                // this.data.location.latitude = location.latitude;
+                // this.data.location.longitude = location.longitude;
+                this.set('location.latitude', location.latitude);
+                this.set('location.longitude', location.longitude);
+                this.set('location.city', location.city);
+                // this.set('location.state', location.state);
+                this.notifyPath("data.location");
+                // this.set("location", location);
+            }
+
+            mapApiLoaded() {
+                this._autocomplete();
+            }
+        }
+        window.customElements.define(AddressLookup.is, AddressLookup);
+    </script>
+</dom-module>

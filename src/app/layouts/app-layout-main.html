@@ -1,0 +1,42 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../../bower_components/my-paypal/my-paypal.html">
+
+<dom-module id="app-main">
+    <template>
+        <style include="">
+            :host {
+                @apply --flex;
+                @apply --flex-grow;
+            }
+            main {
+/*
+                @apply --flex;
+*/
+                @apply --flex-grow;
+                flex-direction: column;
+            }
+        </style>
+        <main>
+            <slot></slot>
+            <my-paypal></my-paypal>
+        </main>
+    </template>
+    <script>
+        class AppMain extends Polymer.Element {
+            static get is() {
+                return 'app-main';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+
+        window.customElements.define(AppMain.is, AppMain);
+    </script>
+</dom-module>

@@ -3,7 +3,9 @@
 -->
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
+<!--
 <link rel="import" href="../../../bower_components/us-census/us-census.html">
+-->
 
 <!--
 <link rel="import" href="../../../bower_components/my-location/my-location.html">
@@ -14,7 +16,9 @@
 
 <link rel="import" href="../../../bower_components/paper-spinner/paper-spinner.html">
 
+<!--
 <link rel="import" href="../../../bower_components/map-object/map-object.html">
+-->
 
 <dom-module id="my-county">
     <template>
@@ -25,6 +29,7 @@
                 width: 100%;
                 height: 100%;
             }
+
             #content {
                 display: none;
             }
@@ -35,13 +40,7 @@
             }
         </style>
         <app-data data="{{data}}"></app-data>
-<!--
-        <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}"></us-census>
--->
-<!--
-        <map-object source="{{location}}" target="{{location}}"></map-object>
--->
-        <map-object source="{{county}}" target="{{data.location.county}}"></map-object>
+        <map-object source="{{data.location.county}}" target="{{county}}"></map-object>
         <paper-spinner id="loading" active></paper-spinner>
         <div id="content">
             <ul>
@@ -101,21 +100,28 @@
             }
 
             _censusLoaded() {
-                if (this.county.name !== "Loading...") {
-                    this.$.loading.style.display = "none";
-                    this.$.content.style.display = "flex";
+                if (this.county) {
+                    if (this.county.name !== "Loading...") {
+                        this.$.loading.style.display = "none";
+                        this.$.content.style.display = "flex";
+                    }
                 }
             }
+
             _locationChanged() {
-                if (this.county.name !== "Loading...") {
-                    this.$.loading.style.display = "flex";
-                    this.$.content.style.display = "none";
+                if (this.county) {
+                    if (this.county.name !== "Loading...") {
+                        this.$.loading.style.display = "flex";
+                        this.$.content.style.display = "none";
+                    }
                 }
             }
 
             _terrainRatio() {
-                this.percentLand = ((this.county.areaLand / (this.county.areaLand + this.county.areaWater)) * 100).toFixed(0);
-                this.percentWater = ((this.county.areaWater / (this.county.areaLand + this.county.areaWater)) * 100).toFixed(0);
+                if (this.county) {
+                    this.percentLand = ((this.county.areaLand / (this.county.areaLand + this.county.areaWater)) * 100).toFixed(0);
+                    this.percentWater = ((this.county.areaWater / (this.county.areaLand + this.county.areaWater)) * 100).toFixed(0);
+                }
             }
         }
 

@@ -1,18 +1,10 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-
 <link rel="import" href="../../../bower_components/paper-card/paper-card.html">
-
-<link rel="import" href="../../../bower_components/x-grid/x-grid.html">
-
+<link rel="import" href="../../../bower_components/custom-element/custom-element.html">
+<link rel="import" href="../../../bower_components/my-grid/my-grid.html">
 <link rel="import" href="../../styles/global-styles.html">
 <link rel="import" href="../../styles/flex-styles.html">
 <link rel="import" href="../styles/app-styles.html">
-
-<link rel="import" href="../../../bower_components/custom-element/custom-element.html">
-
-<link rel="import" href="../../../bower_components/my-grid/my-grid.html">
-
-<link rel="import" href="../../../bower_components/us-census/us-census.html">
 
 <dom-module id="app-home">
     <template>
@@ -65,14 +57,14 @@
                                 rows: 2,
                                 columns: 1,
                                 title: 'My State'
-                            },
+                            },/*
                             {
                                 src: 'blocks',
                                 tag: 'my-country',
                                 rows: 1,
                                 columns: 1,
                                 title: 'My Country'
-                            },
+                            },*/
                             /*
                             {
                                 src: 'app/blocks',
@@ -92,16 +84,6 @@
                         ]
                     }
                 }
-            }
-
-            ready() {
-                super.ready();
-                /*
-                this.blocks.forEach(function (block) {
-                    let b = this.createBlock(block);
-                    this.shadowRoot.querySelector("x-grid").appendChild(b);
-                }.bind(this));
-                */
             }
 
             createBlock(block) {
