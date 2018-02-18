@@ -4,7 +4,9 @@
   "fragments": [
     "src/styles/global-styles.html",
     "src/styles/flex-styles.html",
-    "src/app/styles/app-styles.html"
+    "src/app/styles/app-styles.html",
+    "src/app/pages/app-home.html",
+    "src/blocks/x-map.html"
   ],
   "sources": [
     "src/**/*",

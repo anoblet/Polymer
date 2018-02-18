@@ -1,6 +1,4 @@
-<!--
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
--->
 <!--
 <link rel="import" href="../bower_components/polymer/polymer-.html">
 -->
@@ -31,19 +29,10 @@
         <app-model></app-model>
         <app-view></app-view>
         <app-controller></app-controller>
-<!--
-        [[data.location.latitude]]
--->
         <app-data id="data" data="{{data}}"></app-data>
-        <!--
-        <map-object source="{{data.location.latitude}}" target="{{latitude}}"></map-object>
-        <map-object source="{{data.location.longitude}}" target="{{longitude}}"></map-object>
-        -->
         <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
     </template>
     <script>
-        // class AppRoot extends Polymer.MutableData(ClassLoader(Polymer.Element)) {
-        // class AppRoot extends ClassLoader(Polymer.Element) {
         class AppRoot extends Polymer.Element {
             static get is() {
                 return 'app-root';
@@ -77,29 +66,6 @@
             constructor() {
                 super();
                 window.Application = this;
-                Application.log = function (message) {
-                    console.log(message);
-                }
-            }
-
-            ready() {
-                super.ready();
-                for (let module in this.modules) {
-                    Application[module.key] = module.value
-                }
-            }
-
-            __setDefaultLocation() {
-                this.location.city = "Port Chester";
-                this.location.state = "New York";
-            }
-
-            connectedCallback() {
-                super.connectedCallback();
-
-                /*
-                * Set the default location
-                */
             }
         }
 
