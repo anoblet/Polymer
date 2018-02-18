@@ -71,7 +71,8 @@
             ready() {
                 super.ready();
 
-                this.data.location = this.data.location || {};
+                this.set("data.location", {});
+                // this.data.location = this.data.location || {};
             }
         }
 

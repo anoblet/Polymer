@@ -118,10 +118,13 @@
             }
 
             _terrainRatio() {
-                this.percentLand = ((this.county.areaLand / (this.county.areaLand + this.county.areaWater)) * 100).toFixed(0);
-                this.percentWater = ((this.county.areaWater / (this.county.areaLand + this.county.areaWater)) * 100).toFixed(0);
+                if (this.county) {
+                    this.percentLand = ((this.county.areaLand / (this.county.areaLand + this.county.areaWater)) * 100).toFixed(0);
+                    this.percentWater = ((this.county.areaWater / (this.county.areaLand + this.county.areaWater)) * 100).toFixed(0);
+                }
             }
         }
+
         window.customElements.define(MyCounty.is, MyCounty);
     </script>
 </dom-module>
