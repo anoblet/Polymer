@@ -1,0 +1,71 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../components/land-water.html">
+
+<dom-module id="page-state">
+    <template>
+        <style>
+            :host {
+                padding: 1rem;
+            }
+            .grid {
+                display: grid;
+            }
+        </style>
+        <div class="grid-container">
+            <div class="columns-select">
+                <paper-dropdown-menu label="Columns">
+                    <paper-listbox slot="dropdown-content" selected="{{columns}}">
+                        <paper-item>1</paper-item>
+                        <paper-item>2</paper-item>
+                        <paper-item>3</paper-item>
+                        <paper-item>4</paper-item>
+                        <paper-item>5</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+            </div>
+            <div class="grid">
+                <div class="grid-item">
+                    <land-water land="[[state.areaLand]]" water="[[state.areaWater]]"></land-water>
+                </div>
+                <div class="grid-item">
+                    test
+                </div>
+            </div>
+        </div>
+        <app-data data="{{data}}"></app-data>
+        <map-object source="[[data.location.state]]" target="{{state}}"></map-object>
+    </template>
+    <script>
+        class PageState extends Polymer.Element {
+            static get is() {
+                return 'page-state';
+            }
+
+            static get properties() {
+                return {
+                    columns: {
+                        type: Number,
+                        value: 3
+                    }
+                }
+            }
+
+            static get observers() {
+                return [
+                    "_columnsChanged(columns)"
+                ]
+            }
+
+            _columnsChanged(columns) {
+                columns = columns + 1;
+                this.shadowRoot.querySelector(".grid").style.gridTemplateColumns = "repeat(" + columns + ", 1fr)";
+            }
+        }
+
+        window.customElements.define(PageState.is, PageState);
+    </script>
+</dom-module>

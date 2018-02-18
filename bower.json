@@ -27,7 +27,8 @@
     "paper-input": "PolymerElements/paper-input#2.0.0",
     "paper-spinner": "PolymerElements/paper-spinner#^2.0.0",
     "paper-progress": "PolymerElements/paper-progress#^2.0.1",
-    "google-chart": "GoogleWebComponents/google-chart#^2.0.0"
+    "google-chart": "GoogleWebComponents/google-chart#^2.0.0",
+    "paper-listbox": "PolymerElements/paper-listbox#^2.0.0"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",

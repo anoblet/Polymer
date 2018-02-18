@@ -1,0 +1,68 @@
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../../bower_components/google-chart/google-chart.html">
+
+<dom-module id="land-water">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+                display: block;
+            }
+
+            google-chart {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+        </style>
+        <paper-dropdown-menu></paper-dropdown-menu>
+        <google-chart type='pie' options='{"title": "Terrain Makeup"}' data="[[chartData]]"></google-chart>
+    </template>
+    <script>
+        class LandWater extends Polymer.mixinBehaviors(Polymer.IronResizableBehavior, Polymer.Element) {
+            static get is() {
+                return 'land-water';
+            }
+
+            static get properties() {
+                return {
+                    land: {
+                        type: Number
+                    },
+                    water: {
+                        type: Number
+                    },
+                    _chartData: {
+                        type: Array
+                    }
+                }
+            }
+
+            static get observers() {
+                return [
+                    "_terrainChanged(land, water)"
+                ]
+            }
+
+            _terrainChanged(land, water) {
+                this.chartData = [["Terrain", "Percent"], ["Land", land], ["Water", water]];
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.addEventListener('iron-resize', e =>
+                    this._resize()
+                );
+            }
+
+            _resize() {
+                console.log("b");
+                this.shadowRoot.querySelector("google-chart").redraw()
+            }
+        }
+
+        window.customElements.define(LandWater.is, LandWater);
+    </script>
+</dom-module>

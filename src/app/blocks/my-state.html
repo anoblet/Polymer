@@ -2,6 +2,7 @@
 <link rel="import" href="../../../bower_components/map-object/map-object.html">
 <link rel="import" href="../../../bower_components/us-census/us-census.html">
 <link rel="import" href="../../../bower_components/google-chart/google-chart.html">
+<link rel="import" href="../../components/land-water.html">
 
 <dom-module id="my-state">
     <template>
@@ -54,7 +55,10 @@
                 <td class="text-right">[[state.populationFormatted]]</td>
             </tr>
         </table>
+<!--
         <google-chart type='pie' options='{"title": "Terrain Makeup"}' data="[[chartData]]"></google-chart>
+-->
+        <land-water land="[[state.areaLand]]" water="[[state.areaWater]]"></land-water>
     </template>
     <script>
         class MyState extends Polymer.MutableData(Polymer.Element) {

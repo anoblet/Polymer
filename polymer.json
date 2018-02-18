@@ -1,9 +1,7 @@
 {
   "entrypoint": "index.html",
   "shell": "src/app-root.html",
-  "fragments": [
-    "app/app-view.html"
-  ],
+  "fragments": [],
   "sources": [
     "src/**/*",
     "images/**/*"
