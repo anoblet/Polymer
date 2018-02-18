@@ -33,7 +33,8 @@
     "polymer": "Polymer/polymer#^2.0.0",
     "us-census": "https://github.com/anoblet/us-census.git",
     "web-animations-js": "web-animations/web-animations-js#^2.3.1",
-    "x-grid": "https://github.com/anoblet/x-grid.git"
+    "x-grid": "https://github.com/anoblet/x-grid.git",
+    "iron-jsonp-library": "PolymerElements/iron-jsonp-library#^2.1.0"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
