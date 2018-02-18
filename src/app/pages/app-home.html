@@ -98,16 +98,6 @@
                 }
             }
 
-            ready() {
-                super.ready();
-                /*
-                this.blocks.forEach(function (block) {
-                    let b = this.createBlock(block);
-                    this.shadowRoot.querySelector("x-grid").appendChild(b);
-                }.bind(this));
-                */
-            }
-
             createBlock(block) {
                 let p = document.createElement('paper-card');
                 let b = document.createElement(block);
