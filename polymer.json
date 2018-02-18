@@ -1,12 +1,17 @@
 {
   "entrypoint": "index.html",
   "shell": "src/app-root.html",
-  "fragments": [],
+  "fragments": [
+    "src/styles/global-styles.html",
+    "src/styles/flex-styles.html",
+    "src/app/styles/app-styles.html"
+  ],
   "sources": [
     "src/**/*",
     "images/**/*"
   ],
   "extraDependencies": [
+    "bower.json",
     "manifest.json",
     "bower_components/webcomponentsjs/*.js"
   ],

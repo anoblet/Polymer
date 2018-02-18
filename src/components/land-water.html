@@ -1,5 +1,4 @@
-<link rel="import" href="../../polymer/polymer.html">
-<link rel="import" href="../../polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
 <link rel="import" href="../../bower_components/google-chart/google-chart.html">
 
@@ -17,7 +16,6 @@
                 position: relative;
             }
         </style>
-        <paper-dropdown-menu></paper-dropdown-menu>
         <google-chart type='pie' options='{"title": "Terrain Makeup"}' data="[[chartData]]"></google-chart>
     </template>
     <script>
