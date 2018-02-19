@@ -13,7 +13,8 @@
     "src/app/pages/page-state.html",
     "src/app/pages/my-settings.html",
     "src/components/app-data.html",
-    "src/components/address-lookup/address-lookup.html"
+    "src/components/address-lookup/address-lookup.html",
+    "src/app/views/view-statistics.html"
   ],
   "sources": [
     "images/**/*"
