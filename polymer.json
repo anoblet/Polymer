@@ -11,6 +11,7 @@
     "src/app/blocks/my-state.html",
     "src/blocks/x-map.html",
     "src/app/pages/page-state.html",
+    "src/app/pages/my-settings.html",
     "src/components/app-data.html",
     "src/components/address-lookup/address-lookup.html"
   ],
