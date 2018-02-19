@@ -15,6 +15,7 @@
 <link rel="import" href="./app/app-view.html">
 <link rel="import" href="../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
 <link rel="import" href="../bower_components/us-census/us-census.html">
+<link rel="import" href="./components/us-census-aff/us-census-aff.html">
 <link rel="import" href="../bower_components/map-object/map-object.html">
 
 <dom-module id="app-root">
@@ -31,6 +32,7 @@
         <app-controller></app-controller>
         <app-data id="data" data="{{data}}"></app-data>
         <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
+        <us-census-aff></us-census-aff>
     </template>
     <script>
         class AppRoot extends Polymer.Element {
