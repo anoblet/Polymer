@@ -1,0 +1,57 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/google-chart/google-chart.html">
+
+<dom-module id="google-chart-responsive">
+    <template>
+        <style>
+            :host {
+                display:block;
+                width: 100%;
+                padding-top: 100%;
+                position: relative;
+            }
+
+            google-chart {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                height: auto;
+            }
+        </style>
+        <google-chart type="[[type]]" data="[[data]]"></google-chart>
+    </template>
+    <script>
+        class GoogleChartResponsive extends Polymer.mixinBehaviors(Polymer.IronResizableBehavior, Polymer.Element) {
+            static get is() {
+                return 'google-chart-responsive';
+            }
+
+            static get properties() {
+                return {
+                    type: {
+                        type: String
+                    },
+                    data: {
+                        type: Array
+                    }
+                }
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.addEventListener('iron-resize', e =>
+                    this._resize()
+                );
+            }
+
+            _resize() {
+                console.log("b");
+                this.shadowRoot.querySelector("google-chart").redraw()
+            }
+        }
+        window.customElements.define(GoogleChartResponsive.is, GoogleChartResponsive);
+    </script>
+</dom-module>

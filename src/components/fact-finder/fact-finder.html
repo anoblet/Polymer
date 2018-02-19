@@ -1,0 +1,87 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="fact-finder">
+    <template>
+        <iron-ajax url="[[formatUrl()]]" params="[[formatParams()]]" on-response="handleResponse" auto></iron-ajax>
+    </template>
+    <script>
+        class FactFinder extends Polymer.Element {
+            static get is() {
+                return 'fact-finder';
+            }
+
+            static get properties() {
+                return {
+                    _dataset: {
+                        type: String
+                    },
+                    geo: {
+                        type: String
+                    },
+                    key: {
+                        type: String
+                    },
+                    language: {
+                        type: String,
+                        value: "en"
+                    },
+                    table: {
+                        type: String
+                    },
+                    program: {
+                        type: String
+                    },
+                    response: {
+                        type: Object,
+                        notify: true
+                    },
+                    url: {
+                        type: String,
+                        value: "https://factfinder.census.gov/service"
+                    },
+                    version: {
+                        type: String,
+                        value: "v1"
+                    }
+                }
+            }
+
+            static get observers() {
+                return []
+            }
+
+            formatParams() {
+                return {
+                    "key": this.key
+                }
+            }
+
+            formatUrl() {
+                console.log("L");
+                let url = this.url
+                    + "/data/" + this.version
+                    + "/" + this.language
+                    + "/programs/" + this.program
+                    + "/datasets/" + this._dataset
+                    + "/tables/" + this.table
+                    + "/data";
+                if(this.geo) {
+                    url += "/" + this.geo;
+                }
+
+                return url;
+            }
+
+            handleResponse(event) {
+                this.response = event.detail.response;
+            }
+
+            stringify(obj) {
+                return JSON.stringify(obj);
+            }
+        }
+
+        window.customElements.define(FactFinder.is, FactFinder);
+    </script>
+</dom-module>

@@ -9,6 +9,7 @@
                 library-loaded="{{loaded}}">
         </iron-jsonp-library>
         [[loaded]]
+        [[_formatUrl()]]
         test
     </template>
     <script>
@@ -22,6 +23,18 @@
                     _baseUrl: {
                         type: String,
                         value: "factfinder.census.gov/service/data/v1"
+                    },
+                    language: {
+                        type: String,
+                        value: "en"
+                    },
+                    program: {
+                        type: String,
+                        value: "DEC"
+                    },
+                    key: {
+                        type: String,
+                        value: "c97423c3f598951d2138d69861730b9154cd7230"
                     }
                 }
             }
@@ -31,7 +44,7 @@
             }
 
             _formatUrl() {
-                return this._baseUrl = "?callback=%%";
+                return this._baseUrl + "/" + this.language + "/programs/" + this.program + "?key=" + this.key;
             }
         }
         window.customElements.define(UsCensusAff.is, UsCensusAff);

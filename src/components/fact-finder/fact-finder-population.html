@@ -1,0 +1,61 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="./fact-finder.html">
+
+<dom-module id="fact-finder-population">
+    <template>
+        <fact-finder program="PEP" _dataset="2012" table="PEPANNRES" geo="0100000US" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+    </template>
+    <script>
+        class FactFinderPopulation extends Polymer.Element {
+            static get is() {
+                return 'fact-finder-population';
+            }
+
+            static get properties() {
+                return {
+                    data: {
+                        type: Array,
+                        notify: true
+                    },
+                    dataArray: {
+                        type: Array,
+                        notify: true
+                    }
+                }
+            }
+
+            static get observers() {
+                return [
+                    "responseChanged(response)"
+                ]
+            }
+
+            responseChanged(response) {
+                console.log(response);
+                let header = response.data.header;
+                let rows = response.data.rows;
+                let data = [];
+                let dataArray = [];
+                dataArray.push(["Date", "Population"]);
+                for(let key in header.cells) {
+                    let cell = header.cells[key];
+                    let label = cell.categories.popestimate.label;
+                    let value = rows[0].cells[key].value;
+
+                    let newData = {};
+                    newData.label = label;
+                    newData.value = value;
+
+                    let newArray = [label, value];
+
+                    data.push(newData);
+                    dataArray.push(newArray);
+                }
+                this.data = data;
+                this.dataArray = dataArray;
+                console.log(data);
+            }
+        }
+        window.customElements.define(FactFinderPopulation.is, FactFinderPopulation);
+    </script>
+</dom-module>

@@ -32,7 +32,6 @@
         <app-controller></app-controller>
         <app-data id="data" data="{{data}}"></app-data>
         <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
-        <us-census-aff></us-census-aff>
     </template>
     <script>
         class AppRoot extends Polymer.Element {

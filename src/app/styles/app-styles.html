@@ -4,18 +4,25 @@
     <template>
         <style>
             :host {
+                /*
                 @apply --flex;
+                */
             }
+
             app-layout {
                 @apply --flex-grow;
             }
+
             app-footer {
                 background: var(--color-primary);
             }
+
             paper-card {
+                /*
                 display: flex;
                 @apply --flex-grow;
                 @apply --flex-horizontal;
+                */
                 /* margin: 1rem; */
                 padding: 2rem;
                 min-width: 320px;
@@ -45,6 +52,7 @@
                 return 'app-styles';
             }
         }
+
         window.customElements.define(AppStyles.is, AppStyles);
     </script>
 </dom-module>

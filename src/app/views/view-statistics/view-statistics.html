@@ -1,0 +1,55 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-population.html">
+
+<dom-module id="view-statistics">
+    <template>
+        <style include="global-styles app-styles">
+            :host {
+            }
+
+            li {
+                display: grid;
+                grid-auto-flow: row;
+                grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+            }
+
+            .grid {
+                width: 100%;
+            }
+
+            .heading {
+                width: 100%;
+            }
+        </style>
+        <fact-finder-population data="{{data}}" data-array="{{dataArray}}"></fact-finder-population>
+        <div class="heading">Population</div>
+        <div class="grid">
+            <paper-card>
+                <google-chart-responsive type="table" data="[[dataArray]]"></google-chart-responsive>
+            </paper-card>
+            <paper-card>
+                <google-chart-responsive type="column" data="[[dataArray]]"></google-chart-responsive>
+            </paper-card>
+            <div>test</div>
+        </div>
+    </template>
+    <script>
+        class ViewStatistics extends Polymer.Element {
+            static get is() {
+                return 'view-statistics';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+
+        window.customElements.define(ViewStatistics.is, ViewStatistics);
+    </script>
+</dom-module>
