@@ -1,4 +1,4 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 
 <dom-module id="chart-map-country">
     <template>
@@ -14,6 +14,7 @@
                 return {
                     country: {
                         type: String,
+                        value: "US",
                         observer: "_countryChanged"
                     },
                     options: {
@@ -32,6 +33,8 @@
             }
 
             _countryChanged(country) {
+                console.log(country)
+
                 let chartData = [];
                 chartData.push(["country"]);
                 chartData.push([country]);
