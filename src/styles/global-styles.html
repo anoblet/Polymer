@@ -75,12 +75,55 @@
                 display: initial;
             }
 
+            /* Ratios */
+
+            .ratio-outer {
+                position: relative;
+                height: 0;
+                overflow: auto;
+            }
+
+            .ratio-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            .ratio-1-1 {
+                padding-top: 100%;
+            }
+
+            .ratio-16-9 {
+                padding-top: 56.25%;
+            }
+
             /* Grid */
 
             .grid {
+                margin: 1rem;
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
                 grid-gap: 1rem;
+            }
+
+            /* Flex */
+
+            .flex-center {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Positioning */
+
+            .absolute {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
             }
         </style>
     </template>

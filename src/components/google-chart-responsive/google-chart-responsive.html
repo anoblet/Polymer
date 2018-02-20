@@ -3,22 +3,21 @@
 
 <dom-module id="google-chart-responsive">
     <template>
-        <style>
+        <style include="global-styles">
             :host {
-                display:block;
-                width: 100%;
-                padding-top: 100%;
+                display: block;
+                /*
                 position: relative;
+                display:block;
+                overflow: hidden;
+                height: 0;
+                padding-top: 56.25%;
+                width: 100%;
+                */
             }
-
             google-chart {
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-                width: auto;
-                height: auto;
+                width: initial;
+                height: initial;
             }
         </style>
         <google-chart type="[[type]]" data="[[data]]"></google-chart>
