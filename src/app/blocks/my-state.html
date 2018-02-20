@@ -29,38 +29,35 @@
         </style>
         <app-data data="{{data}}"></app-data>
         <!--
-        <map-object source="{{data.location}}" target="{{location}}"></map-object>
-        -->
         <map-object source="{{data.location.state}}" target="{{state}}"></map-object>
-        <map-object source="{{data.location.state.name}}" target="{{name}}"></map-object>
-        <map-object source="{{data.location.state.areaLandFormatted}}" target="{{areaLand}}"></map-object>
-        <map-object source="{{data.location.state.areaWaterFormatted}}" target="{{waterFormatted}}"></map-object>
-        <map-object source="{{data.location.state.population}}" target="{{population}}"></map-object>
+        -->
+        <map-property source="{{data.location.state.name}}" target="{{name}}"></map-property>
+        <map-property source="{{data.location.state.areaLandFormatted}}" target="{{areaLandFormatted}}"></map-property>
+        <map-property source="{{data.location.state.areaWaterFormatted}}" target="{{areaWaterFormatted}}"></map-property>
+        <map-property source="{{data.location.state.population}}" target="{{population}}"></map-property>
         <div class="grid">
             <div class="grid-item"></div>
         </div>
         <table class="full-width">
             <tr>
                 <td>Name</td>
-                <td class="text-right">[[state.name]]</td>
+                <td class="text-right">[[name]]</td>
             </tr>
             <tr>
                 <td>Land Area</td>
-                <td class="text-right">[[state.areaLandFormatted]]</td>
+                <td class="text-right">[[areaLandFormatted]]</td>
             </tr>
             <tr>
                 <td>Water Area</td>
-                <td class="text-right">[[state.areaWaterFormatted]]</td>
+                <td class="text-right">[[areaWaterFormatted]]</td>
             </tr>
             <tr>
                 <td>Population</td>
-                <td class="text-right">[[state.populationFormatted]]</td>
+                <td class="text-right">[[populationFormatted]]</td>
             </tr>
         </table>
-<!--
-        <google-chart type='pie' options='{"title": "Terrain Makeup"}' data="[[chartData]]"></google-chart>
--->
-        <land-water land="[[state.areaLand]]" water="[[state.areaWater]]"></land-water>
+        <land-water land="[[areaLand]]" water="[[areaWater]]"></land-water>
+        <a href="/state">More information</a>
     </template>
     <script>
         class MyState extends Polymer.MutableData(Polymer.Element) {
