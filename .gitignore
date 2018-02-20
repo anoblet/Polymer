@@ -1,8 +1,10 @@
 .idea
 .yo-rc.json
+analyze.txt
 bower_components
 build
 lib
+lint.txt
 node_modules
 polymer.iml
 staging
