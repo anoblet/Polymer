@@ -20,7 +20,7 @@
                 height: initial;
             }
         </style>
-        <google-chart type="[[type]]" data="[[data]]"></google-chart>
+        <google-chart type="[[type]]" options="[[options]]" data="[[data]]"></google-chart>
     </template>
     <script>
         class GoogleChartResponsive extends Polymer.mixinBehaviors(Polymer.IronResizableBehavior, Polymer.Element) {
@@ -32,6 +32,9 @@
                 return {
                     type: {
                         type: String
+                    },
+                    type: {
+                        type: Object
                     },
                     data: {
                         type: Array

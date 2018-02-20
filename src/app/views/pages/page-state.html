@@ -1,9 +1,10 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../../bower_components/neon-animation/web-animations.html">
-<link rel="import" href="../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../../../bower_components/paper-listbox/paper-listbox.html">
-<link rel="import" href="../../../bower_components/paper-item/paper-item.html">
-<link rel="import" href="../../components/land-water.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../views/charts/chart-map-state.html">
+<link rel="import" href="../../../components/land-water.html">
 
 <dom-module id="page-state">
     <template>
@@ -15,6 +16,8 @@
                 display: grid;
             }
         </style>
+        <app-data data="{{data}}"></app-data>
+        <map-object source="[[data.location.state]]" target="{{state}}"></map-object>
         <div class="grid-container">
             <div class="columns-select">
                 <paper-dropdown-menu label="Columns" nonAimations>
@@ -36,8 +39,7 @@
                 </div>
             </div>
         </div>
-        <app-data data="{{data}}"></app-data>
-        <map-object source="[[data.location.state]]" target="{{state}}"></map-object>
+        <chart-map-state state="[[state.name]]"></chart-map-state>
     </template>
     <script>
         class PageState extends Polymer.Element {
