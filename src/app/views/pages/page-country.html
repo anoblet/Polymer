@@ -5,9 +5,16 @@
 
 <dom-module id="page-country">
     <template>
+        <style include="global-styles"></style>
         <app-data data="{{data}}"></app-data>
         <map-property source="[[data.location.country]]" target="{{country}}"></map-property>
-        <chart-map-country country="[[country]]"></chart-map-country>
+        <div class="grid">
+            <chart-map-country country="[[country]]"></chart-map-country>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+        </div>
     </template>
     <script>
         class PageCountry extends Polymer.Element {
