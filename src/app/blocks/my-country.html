@@ -1,11 +1,6 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-
 <dom-module id="my-country">
     <template>
-        <style>
-            :host {
-            }
-        </style>
         <a href="/statistics">Statistics</a>
         <a href="/country">More information</a>
     </template>
@@ -17,10 +12,6 @@
 
             static get properties() {
                 return {}
-            }
-
-            static get observers() {
-                return []
             }
         }
         window.customElements.define(MyCountry.is, MyCountry);
