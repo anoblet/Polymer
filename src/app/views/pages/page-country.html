@@ -1,0 +1,25 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="page-country">
+    <template>
+        <app-data data="{{data}}"></app-data>
+        <map-object source="[[data.location.country]]" target="{{country}}"></map-object>
+        <chart-map-country country="[[country.abbreviation]]"></chart-map-country>
+    </template>
+    <script>
+        class PageCountry extends Polymer.Element {
+            static get is() {
+                return 'page-country';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+        window.customElements.define(PageCountry.is, PageCountry);
+    </script>
+</dom-module>

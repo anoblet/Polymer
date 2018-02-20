@@ -35,11 +35,10 @@
                     <land-water land="[[state.areaLand]]" water="[[state.areaWater]]"></land-water>
                 </div>
                 <div class="grid-item">
-                    test
+                    <chart-map-state state="[[state.abbreviation]]"></chart-map-state>
                 </div>
             </div>
         </div>
-        <chart-map-state state="[[state.name]]"></chart-map-state>
     </template>
     <script>
         class PageState extends Polymer.Element {
