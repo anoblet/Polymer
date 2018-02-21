@@ -2,11 +2,10 @@
   "entrypoint": "index.html",
   "shell": "src/app-root.html",
   "fragments": [
-    "src/app/pages/app-home.html",
+    "src/app/views/pages/page-home.html",
     "src/app/views/pages/page-state.html",
     "src/app/views/pages/page-country.html",
     "src/app/pages/my-settings.html",
-    "src/app/views/view-statistics.html",
     "src/app/blocks/my-city.html",
     "src/app/blocks/my-county.html",
     "src/app/blocks/my-state.html",
