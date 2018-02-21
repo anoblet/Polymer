@@ -32,11 +32,16 @@
                 @apply --flex;
                 @apply --flex-grow;
             }
+
+            app-menu {
+                width: 100%;
+            }
         </style>
         <app-data data="{{data}}"></app-data>
         <map-object source="[[data.location]]" target="{{location}}"></map-object>
         <nav>
             <app-menu selected="0">
+                <!--
                 <app-submenu>
                     <div class="app-menu-item" slot="submenu-trigger">
                         <app-menu-icon-item icon="icons:account-balance">My City</app-menu-icon-item>
@@ -77,6 +82,7 @@
                         <a class="app-menu-item" href="javascript:void(0)">Officials</a>
                     </app-menu>
                 </app-submenu>
+                -->
                 <a class="app-menu-item" href="/map">
                     <app-menu-icon-item icon="icons:build">Map</app-menu-icon-item>
                 </a>

@@ -1,16 +1,30 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../../components/map-property/map-property.html">
-<link rel="import" href="../../../components/app-data.html">
 <link rel="import" href="../../views/charts/chart-map-country.html">
+<link rel="import" href="../../views/charts/chart-bar-population-country.html">
+<link rel="import" href="../../../components/app-data.html">
+<link rel="import" href="../../../components/my-ratio/my-ratio.html">
 
 <dom-module id="page-country">
     <template>
-        <style include="global-styles"></style>
+        <style include="global-styles app-styles"></style>
         <app-data data="{{data}}"></app-data>
         <map-property source="[[data.location.country]]" target="{{country}}"></map-property>
         <div class="grid">
-            <chart-map-country country="[[country]]"></chart-map-country>
-            <div>test</div>
+            <paper-card>
+                <div class="ratio-16-9">
+                    <chart-map-country class="absolute"></chart-map-country>
+                </div>
+            </paper-card>
+            <paper-card>
+                <div class="ratio-16-9">
+                    <chart-bar-population-country class="absolute"></chart-bar-population-country>
+                </div>
+            </paper-card>
+            <paper-card>
+                <my-ratio sixteen-nine>test</my-ratio>
+            </paper-card>
             <div>test</div>
             <div>test</div>
             <div>test</div>
@@ -30,6 +44,7 @@
                 return []
             }
         }
+
         window.customElements.define(PageCountry.is, PageCountry);
     </script>
 </dom-module>

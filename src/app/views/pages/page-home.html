@@ -1,0 +1,68 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../components/my-ratio/my-ratio.html">
+<link rel="import" href="../../../../lib/my-grid/my-grid.html">
+<link rel="import" href="../../blocks/my-city.html">
+<link rel="import" href="../../blocks/my-state.html">
+<link rel="import" href="../../blocks/my-country.html">
+
+<dom-module id="page-home">
+    <template>
+        <style include="global-styles app-styles"></style>
+        <my-grid>
+            <paper-card>
+                <my-ratio sixteen-nine>
+                    <div class="heading">
+                        <a href="/city">My City</a>
+                    </div>
+                    <my-city></my-city>
+                </my-ratio>
+            </paper-card>
+            <paper-card>
+                <my-ratio sixteen-nine>
+                    <div class="heading">
+                        <a href="/state">My State</a>
+                    </div>
+                    <my-state></my-state>
+                    <div class="card-actions">
+                        <a href="/state">
+                            <paper-button>More</paper-button>
+                        </a>
+                    </div>
+                </my-ratio>
+            </paper-card>
+            <paper-card>
+                <my-ratio sixteen-nine>
+                    <div class="heading">
+                        <a href="/country">My Country</a>
+                    </div>
+                    <div class="card-content">
+                        <my-country></my-country>
+                    </div>
+                    <div class="card-actions">
+                        <a href="/state">
+                            <paper-button>More</paper-button>
+                        </a>
+                    </div>
+                </my-ratio>
+            </paper-card>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+        </my-grid>
+    </template>
+    <script>
+        class PageHome extends Polymer.Element {
+            static get is() {
+                return 'page-home';
+            }
+
+            static get properties() {
+                return {}
+            }
+        }
+
+        window.customElements.define(PageHome.is, PageHome);
+    </script>
+</dom-module>
