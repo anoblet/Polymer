@@ -23,7 +23,7 @@
                 @apply(--flex-grow);
             }
 
-            a {
+            a, a:visited {
                 color: #fff;
             }
 
@@ -41,7 +41,7 @@
                     <x-grid-column flex wrap-disabled>
                         <x-grid-column grow-disabled v-align-center>
                         </x-grid-column>
-                        <x-grid-column grow-disabled v-align-center>
+                        <x-grid-column id="title" grow-disabled v-align-center>
                         <span style="width: max-content" flex v-align-center m-l-1>
                             <a href="/" no-underline>[[title]]</a>
                         </span>

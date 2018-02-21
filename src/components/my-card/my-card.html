@@ -1,0 +1,31 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/paper-card">
+
+<dom-module id="my-card">
+    <template>
+        <style>
+            :host([ratio="1:1"]) {
+                padding-bottom: 100%;
+            }
+        </style>
+        <paper-card>
+            <slot></slot>
+        </paper-card>
+    </template>
+    <script>
+        class MyCard extends Polymer.Element {
+            static get is() {
+                return 'my-card';
+            }
+
+            static get properties() {
+                return {
+                    ratio: {
+                        type: String
+                    }
+                }
+            }
+        }
+        window.customElements.define(MyCard.is, MyCard);
+    </script>
+</dom-module>

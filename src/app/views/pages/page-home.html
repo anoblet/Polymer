@@ -9,7 +9,15 @@
 
 <dom-module id="page-home">
     <template>
-        <style include="global-styles app-styles"></style>
+        <style include="global-styles app-styles">
+            .card-content {
+                display: flex;
+            }
+
+            .flex-grow {
+                flex: grow;
+            }
+        </style>
         <my-grid>
             <paper-card>
                 <my-ratio sixteen-nine>
@@ -38,7 +46,9 @@
                         <a href="/country">My Country</a>
                     </div>
                     <div class="card-content">
-                        <my-country></my-country>
+                        <div class="flex-grow">
+                            <my-country></my-country>
+                        </div>
                     </div>
                     <div class="card-actions">
                         <a href="/country">
