@@ -1,8 +1,9 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../../../components/my-ratio/my-ratio.html">
 <link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
+<link rel="import" href="../../../components/my-ratio/my-ratio.html">
+<link rel="import" href="../../../components/my-card/my-card.html">
 <link rel="import" href="../../blocks/my-city.html">
 <link rel="import" href="../../blocks/my-state.html">
 <link rel="import" href="../../blocks/my-country.html">
@@ -10,56 +11,62 @@
 <dom-module id="page-home">
     <template>
         <style include="global-styles app-styles">
+            my-grid {
+                grid-auto-flow: row dense;
+            }
             .card-content {
                 display: flex;
             }
 
             .flex-grow {
-                flex: grow;
+                flex-grow: 1;
             }
         </style>
         <my-grid>
-            <paper-card>
-                <my-ratio sixteen-nine>
-                    <div class="heading">
-                        <a href="/city">My City</a>
-                    </div>
+            <my-card ratio="4:3" style="grid-column: span 1">
+                <div class="card-title">
+                    <a href="/city">My City</a>
+                </div>
+                <div class="card-content">
                     <my-city></my-city>
-                </my-ratio>
-            </paper-card>
-            <paper-card>
-                <my-ratio sixteen-nine>
-                    <div class="heading">
-                        <a href="/state">My State</a>
-                    </div>
+                </div>
+                <div class="card-actions">
+                    <a href="/state">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            <my-card ratio="16:9">
+                <div class="card-title">
+                    <a href="/state">My State</a>
+                </div>
+                <div class="card-content">
                     <my-state></my-state>
-                    <div class="card-actions">
-                        <a href="/state">
-                            <paper-button>More</paper-button>
-                        </a>
-                    </div>
-                </my-ratio>
-            </paper-card>
-            <paper-card>
-                <my-ratio sixteen-nine>
-                    <div class="heading">
-                        <a href="/country">My Country</a>
-                    </div>
-                    <div class="card-content">
-                        <div class="flex-grow">
-                            <my-country></my-country>
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <a href="/country">
-                            <paper-button>More</paper-button>
-                        </a>
-                    </div>
-                </my-ratio>
-            </paper-card>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
+                </div>
+                <div class="card-actions">
+                    <a href="/state">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            <my-card ratio="16:9">
+                <div class="card-title">
+                    <a href="/country">My Country</a>
+                </div>
+                <div class="card-content">
+                    <my-country></my-country>
+                </div>
+                <div class="card-actions">
+                    <a href="/country">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            <my-card ratio="16:9">
+                <div class="card-content">
+                    test
+                </div>
+            </my-card>
         </my-grid>
     </template>
     <script>

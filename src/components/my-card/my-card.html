@@ -3,14 +3,66 @@
 
 <dom-module id="my-card">
     <template>
-        <style>
-            :host([ratio="1:1"]) {
+        <style include="global-styles app-styles">
+            :host {
+                position: relative;
+            }
+
+            :host([ratio])::before {
+                display: block;
+                content: '';
+            }
+
+            :host([ratio="1:1"])::before {
                 padding-bottom: 100%;
             }
+
+            :host([ratio="3:2"]) {
+                padding-bottom: 66%;
+            }
+
+            :host([ratio="4:3"]) {
+                padding-bottom: 75%;
+            }
+
+            :host([ratio="8:5"]) {
+                padding-bottom: 62.5%;
+            }
+
+            :host([ratio="16:9"])::before {
+                padding-bottom: 56.25%;
+            }
+
+            .reset {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            paper-card {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+            }
+
+            paper-card ::slotted(.card-title) {
+                padding: 2rem;
+            }
+
+            paper-card ::slotted(.card-content) {
+                display: flex;
+                flex-grow: 1;
+                flex-shrink: 0;
+                padding: 2rem;
+            }
         </style>
-        <paper-card>
-            <slot></slot>
-        </paper-card>
+        <div class="reset">
+            <paper-card>
+                <slot></slot>
+            </paper-card>
+        </div>
     </template>
     <script>
         class MyCard extends Polymer.Element {
@@ -26,6 +78,7 @@
                 }
             }
         }
+
         window.customElements.define(MyCard.is, MyCard);
     </script>
 </dom-module>
