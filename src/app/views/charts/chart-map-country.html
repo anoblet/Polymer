@@ -3,6 +3,11 @@
 
 <dom-module id="chart-map-country">
     <template>
+        <style>
+            :host {
+                width: 100%;
+            }
+        </style>
         <google-chart-responsive type="geo" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
     </template>
     <script>
@@ -34,7 +39,7 @@
             }
 
             _countryChanged(country) {
-                console.log(country)
+                console.log(country);
 
                 let chartData = [];
                 chartData.push(["country"]);
