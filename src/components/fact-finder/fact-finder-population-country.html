@@ -25,10 +25,7 @@
             }
 
             _responseChanged(response) {
-                console.log("Response!");
-                console.log(response);
-
-                let data = response.data.rows[0].cells.P1001.value;
+                let data = response[0][1];
                 this.set("data", data)
             }
         }
