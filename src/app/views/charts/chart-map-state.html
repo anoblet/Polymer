@@ -5,42 +5,19 @@
 
 <dom-module id="chart-map-state">
     <template>
+        <style>
+            :host {
+                width: 100%;
+            }
+        </style>
+        <app-data data="{{data}}"></app-data>
+        <map-property source="[[data.location.state.abbreviation]]" target="{{state}}"></map-property>
         <google-chart-responsive type="geo" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
     </template>
     <script>
         class ChartMapState extends Polymer.Element {
             static get is() {
                 return 'chart-map-state';
-            }
-
-            static get properties() {
-                return {
-                    state: {
-                        type: String,
-                        observer: "_stateChanged"
-                    },
-                    options: {
-                        type: Object,
-                        value: function() {
-                            return {
-                                region: "US",
-                                resolution: "provinces"
-                            }
-                        }
-                    },
-                    chartData: {
-                        type: Array
-                    }
-                }
-            }
-
-            _stateChanged(state) {
-                console.log(state);
-
-                let chartData = [];
-                chartData.push(["State"]);
-                chartData.push([state]);
-                this.chartData = chartData;
             }
         }
         window.customElements.define(ChartMapState.is, ChartMapState);

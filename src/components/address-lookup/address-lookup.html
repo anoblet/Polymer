@@ -94,6 +94,7 @@
 
                     if (result.address_components[i].types[0] == 'administrative_area_level_1') {
                         location.state = {};
+                        location.state.abbreviation = result.address_components[i].short_name;
                         location.state.name = result.address_components[i].long_name;
                     }
                 }
@@ -104,7 +105,7 @@
                 this.set('location.latitude', location.latitude);
                 this.set('location.longitude', location.longitude);
                 this.set('location.city', location.city);
-                // this.set('location.state', location.state);
+                this.set('location.state', location.state);
                 this.notifyPath("data.location");
                 // this.set("location", location);
             }
