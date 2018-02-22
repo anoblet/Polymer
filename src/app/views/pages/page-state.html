@@ -3,21 +3,26 @@
 <link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
-<link rel="import" href="../../views/charts/chart-map-state.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
+<link rel="import" href="../../../components/my-card/my-card.html">
 <link rel="import" href="../../../components/land-water.html">
+<link rel="import" href="../../views/charts/chart-map-state.html">
 
 <dom-module id="page-state">
     <template>
-        <style>
+        <style include="app-styles">
             :host {
                 padding: 1rem;
             }
+
             .grid {
                 display: grid;
             }
         </style>
         <app-data data="{{data}}"></app-data>
         <map-object source="[[data.location.state]]" target="{{state}}"></map-object>
+        <!--
         <div class="grid-container">
             <div class="columns-select">
                 <paper-dropdown-menu label="Columns" nonAimations>
@@ -30,15 +35,64 @@
                     </paper-listbox>
                 </paper-dropdown-menu>
             </div>
-            <div class="grid">
-                <div class="grid-item">
+        </div>
+        -->
+        <my-grid>
+            <my-card ratio="4:3" style="grid-column: span 1">
+                <div class="card-title">
+                    <a href="/city">My City</a>
+                </div>
+                <div class="card-content">
                     <land-water land="[[state.areaLand]]" water="[[state.areaWater]]"></land-water>
                 </div>
-                <div class="grid-item">
-                    <chart-map-state state="[[state.abbreviation]]"></chart-map-state>
+                <div class="card-actions">
+                    <a href="/state">
+                        <paper-button>More</paper-button>
+                    </a>
                 </div>
-            </div>
-        </div>
+            </my-card>
+            <my-card ratio="16:9" style="grid-row: span 2">
+                <div class="card-title">
+                    <a href="/state">My State</a>
+                </div>
+                <div class="card-content">
+                    test
+                </div>
+                <div class="card-actions">
+                    <a href="/state">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            <my-card ratio="16:9">
+                <div class="card-title">
+                    <a href="/country">My Country</a>
+                </div>
+                <div class="card-content">
+                    <my-country></my-country>
+                </div>
+                <div class="card-actions">
+                    <a href="/country">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            <my-card ratio="16:9">
+                <div class="card-content">
+                    test
+                </div>
+            </my-card>
+            <my-card ratio="16:9">
+                <div class="card-content">
+                    test
+                </div>
+            </my-card>
+            <my-card ratio="16:9">
+                <div class="card-content">
+                    test
+                </div>
+            </my-card>
+        </my-grid>
     </template>
     <script>
         class PageState extends Polymer.Element {

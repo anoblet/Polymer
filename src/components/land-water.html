@@ -1,22 +1,14 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../bower_components/iron-resizable-behavior/iron-resizable-behavior.html">
-<link rel="import" href="../../bower_components/google-chart/google-chart.html">
+<link rel="import" href="../components/google-chart-responsive/google-chart-responsive.html">
 
 <dom-module id="land-water">
     <template>
         <style>
             :host {
                 width: 100%;
-                display: block;
-            }
-
-            google-chart {
-                width: 100%;
-                height: auto;
-                position: relative;
             }
         </style>
-        <google-chart type='pie' options='{"title": "Terrain Makeup"}' data="[[chartData]]"></google-chart>
+        <google-chart-responsive type='pie' options='{"title": "Terrain Makeup"}' data="[[chartData]]"></google-chart-responsive>
     </template>
     <script>
         class LandWater extends Polymer.mixinBehaviors(Polymer.IronResizableBehavior, Polymer.Element) {
