@@ -13,11 +13,7 @@
 
             static get properties() {
                 return {
-                    data: {
-                        type: Array,
-                        notify: true
-                    },
-                    dataArray: {
+                    response: {
                         type: Array,
                         notify: true
                     }
@@ -31,28 +27,8 @@
             }
 
             responseChanged(response) {
-                console.log(response);
-                let header = response.data.header;
-                let rows = response.data.rows;
-                let data = [];
-                let dataArray = [];
-                dataArray.push(["Date", "Population"]);
-                for(let key in header.cells) {
-                    let cell = header.cells[key];
-                    let label = cell.categories.popestimate.label;
-                    let value = rows[0].cells[key].value;
-
-                    let newData = {};
-                    newData.label = label;
-                    newData.value = value;
-
-                    let newArray = [label, value];
-
-                    data.push(newData);
-                    dataArray.push(newArray);
-                }
-                this.data = data;
-                this.dataArray = dataArray
+                response.unshift(["response","Population"]);
+                this.response = response;
             }
         }
         window.customElements.define(FactFinderPopulation.is, FactFinderPopulation);

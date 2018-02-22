@@ -13,6 +13,10 @@
 
             static get properties() {
                 return {
+                    data: {
+                        type: Array,
+                        notify: true
+                    },
                     _dataset: {
                         type: String
                     },
@@ -70,7 +74,22 @@
             }
 
             handleResponse(event) {
-                this.response = event.detail.response;
+                let response = event.detail.response;
+                let header = response.data.header;
+                let rows = response.data.rows;
+                let newResponse = [];
+                for(let key in header.cells) {
+                    let cell = header.cells[key];
+
+                    let label = cell.categories[Object.keys(cell.categories)[0]].label;
+                    let value = rows[0].cells[key].value;
+
+                    let newRow = [label, value];
+
+                    newResponse.push(newRow);
+                }
+                this.data = data;
+                this.response = newResponse;
             }
 
             stringify(obj) {
