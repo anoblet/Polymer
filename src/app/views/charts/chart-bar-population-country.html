@@ -9,8 +9,8 @@
                 width: 100%;
             }
         </style>
-        <fact-finder-population data-array="{{dataArray}}"></fact-finder-population>
-        <google-chart-responsive type="column" data="[[dataArray]]" ratio-16-9></google-chart-responsive>
+        <fact-finder-population response="{{data}}"></fact-finder-population>
+        <google-chart-responsive type="column" data="[[data]]" ratio-16-9></google-chart-responsive>
     </template>
     <script>
         class ChartBarPopulationCountry extends Polymer.Element {
