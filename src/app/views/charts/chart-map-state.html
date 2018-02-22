@@ -19,6 +19,36 @@
             static get is() {
                 return 'chart-map-state';
             }
+
+            static get properties() {
+                return {
+                    state: {
+                        type: String,
+                        observer: "_stateChanged"
+                    },
+                    options: {
+                        type: Object,
+                        value: function() {
+                            return {
+                                region: "US",
+                                resolution: "provinces"
+                            }
+                        }
+                    },
+                    chartData: {
+                        type: Array
+                    }
+                }
+            }
+
+            _stateChanged(state) {
+                console.log(state);
+
+                let chartData = [];
+                chartData.push(["State"]);
+                chartData.push([state]);
+                this.chartData = chartData;
+            }
         }
         window.customElements.define(ChartMapState.is, ChartMapState);
     </script>
