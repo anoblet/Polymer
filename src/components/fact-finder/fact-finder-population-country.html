@@ -3,10 +3,10 @@
 
 <dom-module id="fact-finder-population-country">
     <template>
-        <fact-finder program="DEC" _dataset="10_SF" table="P1" geo="0100000US" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+        <fact-finder program="DEC" _dataset="10_SF1" table="P1" geo="0100000US" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
     </template>
     <script>
-        class FactFinder extends Polymer.Element {
+        class FactFinderPopulationCountry extends Polymer.Element {
             static get is() {
                 return 'fact-finder-population-country';
             }
@@ -19,15 +19,19 @@
                     },
                     response: {
                         type: Object,
-                        observers: "_responseChanged"
+                        observer: "_responseChanged"
                     }
                 }
             }
 
             _responseChanged(response) {
                 console.log("Response!");
+                console.log(response);
+
+                let data = response.data.rows[0].cells.P1001.value;
+                this.set("data", data)
             }
         }
-        window.customElements.define(FactFinder.is, FactFinder);
+        window.customElements.define(FactFinderPopulationCountry.is, FactFinderPopulationCountry);
     </script>
 </dom-module>

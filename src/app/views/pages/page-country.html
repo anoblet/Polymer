@@ -6,6 +6,8 @@
 <link rel="import" href="../../../components/app-data.html">
 <link rel="import" href="../../views/charts/chart-map-country.html">
 <link rel="import" href="../../views/charts/chart-bar-population-country.html">
+<link rel="import" href="../../views/charts/chart-text-population-country.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
 
 <dom-module id="page-country">
     <template>
@@ -13,7 +15,7 @@
         <app-data data="{{data}}"></app-data>
         <map-property source="[[data.location.country]]" target="{{country}}"></map-property>
         <my-grid>
-            <my-card ratio="16:9">
+            <my-card ratio="3:2">
                 <div class="card-content">
                     <chart-map-country></chart-map-country>
                 </div>
@@ -24,8 +26,14 @@
                 </div>
             </my-card>
             <my-card ratio="16:9">
-                <div class="card-content">
-                    test
+                <div class="card-title">Population</div>
+                <div class="card-content flex-center">
+                    <chart-text-population-country></chart-text-population-country>
+                </div>
+                <div class="card-actions">
+                    <paper-button>
+                        Test
+                    </paper-button>
                 </div>
             </my-card>
             <my-card ratio="16:9">
