@@ -1,0 +1,45 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-country-gender.html">
+<link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
+
+<dom-module id="chart-pie-country-gender">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+            }
+        </style>
+        <fact-finder-country-gender data="{{data}}"></fact-finder-country-gender>
+        <google-chart-responsive type="pie" data="[[chartData]]"></google-chart-responsive>
+    </template>
+    <script>
+        class ChartPie extends Polymer.Element {
+            static get is() {
+                return 'chart-pie-country-gender';
+            }
+
+            static get properties() {
+                return {
+                    chartData: {
+                        type: Array,
+                        computed: '_computeChartData(data)'
+                    }
+                }
+            }
+
+            _computeChartData(data) {
+                data = data[0];
+                console.log(data);
+                let chartData = [];
+                chartData.push(["Gender", "Total"]);
+                chartData.push(["Male", data[1][1]]);
+                chartData.push(["Female", data[25][1]]);
+
+                console.log(chartData);
+
+                return chartData;
+            }
+        }
+        window.customElements.define(ChartPie.is, ChartPie);
+    </script>
+</dom-module>

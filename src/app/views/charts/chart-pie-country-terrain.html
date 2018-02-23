@@ -1,0 +1,49 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-country-terrain.html">
+<link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
+
+<dom-module id="chart-pie-country-terrain">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+            }
+        </style>
+        <fact-finder-country-terrain data="{{data}}"></fact-finder-country-terrain>
+        <google-chart-responsive type="pie" data="[[chartData]]"></google-chart-responsive>
+    </template>
+    <script>
+        class ChartPieCountryTerrain extends Polymer.Element {
+            static get is() {
+                return 'chart-pie-country-terrain';
+            }
+
+            static get properties() {
+                return {
+                    data: {
+                        type: Array
+                    },
+                    chartData: {
+                        type: Array,
+                        computed: '_computeChartData(data)'
+                    }
+                }
+            }
+
+            _computeChartData(data) {
+                let chartData = data[0];
+                chartData[0][0] = "Land";
+                chartData[0][1] = Number(chartData[0][1]);
+                chartData[1][0] = "Water";
+                chartData[1][1] = Number(chartData[1][1]);
+                chartData.unshift(["Type", "Area"])
+                console.log(chartData);
+                return chartData;
+                chartData = [["test","test"], ["test", 1]]
+                return chartData;
+                console.log("F");
+            }
+        }
+        window.customElements.define(ChartPieCountryTerrain.is, ChartPieCountryTerrain);
+    </script>
+</dom-module>
