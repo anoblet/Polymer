@@ -88,20 +88,16 @@
                     let newRow = [];
                     for (let key in header.cells) {
                         let cell = header.cells[key];
-
                         let label = cell.categories[Object.keys(cell.categories)[0]].label;
                         let value = rows[row].cells[key].value;
-
                         newRow.push([label, value]);
                     }
                     responseFormatted.push(newRow);
                 }
 
-                console.log(responseFormatted);
-
+                // console.log(responseFormatted);
                 this.response = event.detail.response;
                 this.responseFormatted = responseFormatted;
-                // this.response = response;
             }
 
             stringify(obj) {
