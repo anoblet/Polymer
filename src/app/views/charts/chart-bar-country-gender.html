@@ -1,10 +1,19 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-country-gender.html">
+<link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
 
 <dom-module id="chart-bar-country-gender">
     <template>
+        <style>
+            :host {
+                width: 100%;
+            }
+        </style>
+        <fact-finder-country-gender data="{{data}}"></fact-finder-country-gender>
+        <google-chart-responsive type="pie" data="[[chartData]]"></google-chart-responsive>
     </template>
     <script>
-        class ChartBar extends Polymer.Element {
+        class ChartBarCountryGender extends Polymer.Element {
             static get is() {
                 return 'chart-bar-country-gender';
             }
@@ -13,6 +22,6 @@
                 return {}
             }
         }
-        window.customElements.define(ChartBar.is, ChartBar);
+        window.customElements.define(ChartBarCountryGender.is, ChartBarCountryGender);
     </script>
 </dom-module>

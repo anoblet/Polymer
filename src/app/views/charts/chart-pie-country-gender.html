@@ -13,7 +13,7 @@
         <google-chart-responsive type="pie" data="[[chartData]]"></google-chart-responsive>
     </template>
     <script>
-        class ChartPie extends Polymer.Element {
+        class ChartPieCountryGender extends Polymer.Element {
             static get is() {
                 return 'chart-pie-country-gender';
             }
@@ -40,6 +40,6 @@
                 return chartData;
             }
         }
-        window.customElements.define(ChartPie.is, ChartPie);
+        window.customElements.define(ChartPieCountryGender.is, ChartPieCountryGender);
     </script>
 </dom-module>
