@@ -3,7 +3,7 @@
 
 <dom-module id="fact-finder-population-country">
     <template>
-        <fact-finder program="DEC" _dataset="10_SF1" table="P1" geo="0100000US" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+        <fact-finder program="DEC" _dataset="10_SF1" table="P1" geo="0100000US" key="c97423c3f598951d2138d69861730b9154cd7230" response-formatted="{{responseFormatted}}"></fact-finder>
     </template>
     <script>
         class FactFinderPopulationCountry extends Polymer.Element {
@@ -17,16 +17,16 @@
                         type: Object,
                         notify: true
                     },
-                    response: {
+                    responseFormatted: {
                         type: Object,
-                        observer: "_responseChanged"
+                        observer: "_responseFormattedChanged"
                     }
                 }
             }
 
-            _responseChanged(response) {
-                console.log(response[0]);
-                let data = response[0][0][1];
+            _responseFormattedChanged(responseFormatted) {
+                console.log(responseFormatted[0]);
+                let data = responseFormatted[0][0][1];
                 this.set("data", data)
             }
         }

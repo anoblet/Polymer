@@ -13,10 +13,6 @@
 
             static get properties() {
                 return {
-                    data: {
-                        type: Array,
-                        notify: true
-                    },
                     _dataset: {
                         type: String
                     },
@@ -40,6 +36,10 @@
                         type: String
                     },
                     response: {
+                        type: Object,
+                        notify: true
+                    },
+                    responseFormatted: {
                         type: Object,
                         notify: true
                     },
@@ -83,7 +83,7 @@
                 let data = event.detail.response.data;
                 let header = data.header;
                 let rows = data.rows;
-                let newResponse = [];
+                let responseFormatted = [];
                 for (let row in rows) {
                     let newRow = [];
                     for (let key in header.cells) {
@@ -94,14 +94,14 @@
 
                         newRow.push([label, value]);
                     }
-                    newResponse.push(newRow);
+                    responseFormatted.push(newRow);
                 }
 
-                console.log(newResponse);
+                console.log(responseFormatted);
 
-                // this.response = response
-                this.data = newResponse;
-                this.response = newResponse;
+                this.response = event.detail.response;
+                this.responseFormatted = responseFormatted;
+                // this.response = response;
             }
 
             stringify(obj) {

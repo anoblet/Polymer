@@ -3,7 +3,7 @@
 
 <dom-module id="fact-finder-population">
     <template>
-        <fact-finder program="PEP" _dataset="2012" table="PEPANNRES" geo="0100000US" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+        <fact-finder program="PEP" _dataset="2012" table="PEPANNRES" geo="0100000US" key="c97423c3f598951d2138d69861730b9154cd7230" response-formatted="{{responseFormatted}}"></fact-finder>
     </template>
     <script>
         class FactFinderPopulation extends Polymer.Element {
@@ -17,7 +17,7 @@
                         type: Array,
                         notify: true
                     },
-                    response: {
+                    responseFormatted: {
                         type: Array,
                         notify: true
                     }
@@ -26,14 +26,14 @@
 
             static get observers() {
                 return [
-                    "responseChanged(response)"
+                    "responseFormattedChanged(responseFormatted)"
                 ]
             }
 
-            responseChanged(response) {
-                let newResponse = response[0];
-                newResponse.unshift(["response","Population"]);
-                this.data = newResponse;
+            responseFormattedChanged(responseFormatted) {
+                let newresponseFormatted = responseFormatted[0];
+                newresponseFormatted.unshift(["responseFormatted","Population"]);
+                this.data = newresponseFormatted;
             }
         }
         window.customElements.define(FactFinderPopulation.is, FactFinderPopulation);

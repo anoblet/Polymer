@@ -24,6 +24,17 @@
                 }
             }
 
+            _responseChanged(response) {
+                // console.log(response);
+                let newresponse = [];
+                for(let i=0; i < response.length; i++) {
+                    let row = response[i];
+                    let newRow = [row[0][1], row[1][1]];
+                    newresponse.push(newRow);
+                }
+                // console.log(newresponse);
+            }
+
             _dataChanged(data) {
                 // console.log(data);
                 let newData = [];
