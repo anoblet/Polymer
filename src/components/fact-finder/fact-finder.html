@@ -20,6 +20,9 @@
                     _dataset: {
                         type: String
                     },
+                    dataElementId: {
+                        type: String
+                    },
                     geo: {
                         type: String
                     },
@@ -66,29 +69,38 @@
                     + "/datasets/" + this._dataset
                     + "/tables/" + this.table
                     + "/data";
-                if(this.geo) {
+                if (this.geo) {
                     url += "/" + this.geo;
+                }
+                if (this.dataElementId) {
+                    url += "/" + this.dataElementId;
                 }
 
                 return url;
             }
 
             handleResponse(event) {
-                let response = event.detail.response;
-                let header = response.data.header;
-                let rows = response.data.rows;
+                let data = event.detail.response.data;
+                let header = data.header;
+                let rows = data.rows;
                 let newResponse = [];
-                for(let key in header.cells) {
-                    let cell = header.cells[key];
+                for (let row in rows) {
+                    let newRow = [];
+                    for (let key in header.cells) {
+                        let cell = header.cells[key];
 
-                    let label = cell.categories[Object.keys(cell.categories)[0]].label;
-                    let value = rows[0].cells[key].value;
+                        let label = cell.categories[Object.keys(cell.categories)[0]].label;
+                        let value = rows[row].cells[key].value;
 
-                    let newRow = [label, value];
-
+                        newRow.push([label, value]);
+                    }
                     newResponse.push(newRow);
                 }
-                this.data = data;
+
+                console.log(newResponse);
+
+                // this.response = response
+                this.data = newResponse;
                 this.response = newResponse;
             }
 

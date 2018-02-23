@@ -13,6 +13,10 @@
 
             static get properties() {
                 return {
+                    data: {
+                        type: Array,
+                        notify: true
+                    },
                     response: {
                         type: Array,
                         notify: true
@@ -27,8 +31,9 @@
             }
 
             responseChanged(response) {
-                response.unshift(["response","Population"]);
-                this.response = response;
+                let newResponse = response[0];
+                newResponse.unshift(["response","Population"]);
+                this.data = newResponse;
             }
         }
         window.customElements.define(FactFinderPopulation.is, FactFinderPopulation);

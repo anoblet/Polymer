@@ -1,0 +1,40 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="./fact-finder.html">
+
+<dom-module id="fact-finder-state">
+    <template>
+        <fact-finder program="DEC" _dataset="10_SF1" table="G001" geo="0100000US.04000" data-element-id="STATE,NAME" key="c97423c3f598951d2138d69861730b9154cd7230" data="{{data}}" response="{{response}}"></fact-finder>
+    </template>
+    <script>
+        class FactFinderState extends Polymer.Element {
+            static get is() {
+                return 'fact-finder-state';
+            }
+
+            static get properties() {
+                return {
+                    data: {
+                        type: Object,
+                        observer: '_dataChanged'
+                    },
+                    response: {
+                        type: Object,
+                        observer: '_responseChanged'
+                    }
+                }
+            }
+
+            _dataChanged(data) {
+                // console.log(data);
+                let newData = [];
+                for(let i=0; i < data.length; i++) {
+                    let row = data[i];
+                    let newRow = [row[0][1], row[1][1]];
+                    newData.push(newRow);
+                }
+                // console.log(newData);
+            }
+        }
+        window.customElements.define(FactFinderState.is, FactFinderState);
+    </script>
+</dom-module>
