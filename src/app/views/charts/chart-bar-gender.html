@@ -1,5 +1,5 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../../components/fact-finder/fact-finder-country-gender.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-gender.html">
 <link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
 
 <dom-module id="chart-bar-gender">
@@ -9,7 +9,7 @@
                 width: 100%;
             }
         </style>
-        <fact-finder-country-gender data="{{data}}"></fact-finder-country-gender>
+        <fact-finder-gender geo-id=[[geoId]] data="{{data}}"></fact-finder-gender>
         <google-chart-responsive type="bar" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
     </template>
     <script>
@@ -23,6 +23,9 @@
                     chartData: {
                         type: Array,
                         computed: '_computeChartData(data)'
+                    },
+                    geoId: {
+                        type: String
                     },
                     options: {
                         type: Object,
