@@ -13,7 +13,6 @@
         <app-data data="{{data}}"></app-data>
         <map-property source="[[data.location.state.abbreviation]]" target="{{abbreviation}}"></map-property>
         <google-chart-responsive type="geo" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
-        [[name]]
     </template>
     <script>
         class ChartMapState extends Polymer.Element {
