@@ -15,8 +15,8 @@
     <template>
         <style include="global-styles app-styles"></style>
         <app-data data="{{data}}"></app-data>
-        <map-property source="[[data.location.state.name]]" target="{{stateName}}"></map-property>
-        <fact-finder-state state-name="[[stateName]]" geo-id="{{geographyId}}"></fact-finder-state>
+        <map-property source="{{data.location.state.name}}" target="{{name}}"></map-property>
+        <fact-finder-state state-name="[[name]]" geo-id="{{geographyId}}"></fact-finder-state>
         <my-grid>
             <my-card ratio="16:9">
                 <div class="card-content flex-center">
