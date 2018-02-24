@@ -10,6 +10,8 @@
 <link rel="import" href="../../views/charts/chart-map-state.html">
 <link rel="import" href="../../views/charts/chart-bar-gender.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder-state.html">
+<link rel="import" href="../../../components/app-data.html">
+<link rel="import" href="../../../components/map-property/map-property.html">
 
 <dom-module id="page-state">
     <template>
@@ -22,8 +24,6 @@
                 display: grid;
             }
         </style>
-        <app-data data="{{data}}"></app-data>
-        <map-object source="[[data.location.state]]" target="{{state}}"></map-object>
         <!--
         <div class="grid-container">
             <div class="columns-select">
@@ -39,7 +39,9 @@
             </div>
         </div>
         -->
-        <fact-finder-state></fact-finder-state>
+        <app-data data="{{data}}"></app-data>
+        <map-property source="[[data.location.state.name]]" target="{{state}}"></map-property>
+        <fact-finder-state state="[[state]]"></fact-finder-state>
         <my-grid>
             <my-card ratio="16:9">
                 <div class="card-content">
@@ -48,7 +50,7 @@
             </my-card>
             <my-card ratio="16:9">
                 <div class="card-content">
-                    <chart-bar-gender geo-id="0400000US36"></chart-bar-gender>
+                    <chart-bar-gender geo-id="[[state]]"></chart-bar-gender>
                 </div>
             </my-card>
             <my-card ratio="16:9">
@@ -79,6 +81,10 @@
                     columns: {
                         type: Number,
                         value: 3
+                    },
+                    state: {
+                        type: String,
+                        value: "0400000US36"
                     }
                 }
             }

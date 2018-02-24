@@ -4,6 +4,7 @@
 <dom-module id="fact-finder-state">
     <template>
         <fact-finder program="DEC" _dataset="10_SF1" table="G001" geo="0100000US.04000" data-element-id="STATE,NAME" key="c97423c3f598951d2138d69861730b9154cd7230" data="{{data}}" response="{{response}}"></fact-finder>
+        <fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>
     </template>
     <script>
         class FactFinderState extends Polymer.Element {
@@ -19,31 +20,37 @@
                     },
                     response: {
                         type: Object,
-                        observer: '_responseChanged'
+                        // observer: '_responseChanged'
+                    },
+                    state: {
+                        type: String
+                    },
+                    geoId: {
+                        type: String,
+                        computed: '_fipsChanged(fips)'
+                    },
+                    fips: {
+                        type: String
                     }
                 }
             }
 
-            _responseChanged(response) {
-                // console.log(response);
-                let newresponse = [];
-                for(let i=0; i < response.length; i++) {
-                    let row = response[i];
-                    let newRow = [row[0][1], row[1][1]];
-                    newresponse.push(newRow);
-                }
-                // console.log(newresponse);
+            _stateChanged(state) {
+                console.log(state);
+                console.log(this.data);
             }
 
             _dataChanged(data) {
-                // console.log(data);
-                let newData = [];
                 for(let i=0; i < data.length; i++) {
-                    let row = data[i];
-                    let newRow = [row[0][1], row[1][1]];
-                    newData.push(newRow);
+                    if(this.state == data[i][1][1]) {
+                        this.set("fips", data[i][0][1]);
+                    }
                 }
-                // console.log(newData);
+            }
+
+            _fipsChanged(fips) {
+                console.log(fips);
+                return "0400000US" + fips;
             }
         }
         window.customElements.define(FactFinderState.is, FactFinderState);
