@@ -34,16 +34,16 @@
             }
 
             _sourceChanged(change) {
-                console.log("Source changed");
-                console.log(change.path);
+                // console.log("Source changed");
+                // console.log(change.path);
                 let nPath = change.path.replace("source", "target");
                 this.set(nPath, change.value);
                 // this.set("target", this.source);
             }
 
             _targetChanged(change) {
-                console.log("Target changed");
-                console.log(change.path);
+                // console.log("Target changed");
+                // console.log(change.path);
                 let nPath = change.path.replace("target", "source");
                 this.set(nPath, change.value);
                 //this.set("source", this.target);
