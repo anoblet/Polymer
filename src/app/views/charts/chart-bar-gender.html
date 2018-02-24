@@ -1,8 +1,8 @@
-<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder-country-gender.html">
 <link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
 
-<dom-module id="chart-bar-country-gender">
+<dom-module id="chart-bar-gender">
     <template>
         <style>
             :host {
@@ -13,9 +13,9 @@
         <google-chart-responsive type="bar" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
     </template>
     <script>
-        class ChartBarCountryGender extends Polymer.Element {
+        class ChartBar extends Polymer.Element {
             static get is() {
-                return 'chart-bar-country-gender';
+                return 'chart-bar-gender';
             }
 
             static get properties() {
@@ -71,6 +71,6 @@
                 return chartData;
             }
         }
-        window.customElements.define(ChartBarCountryGender.is, ChartBarCountryGender);
+        window.customElements.define(ChartBar.is, ChartBar);
     </script>
 </dom-module>

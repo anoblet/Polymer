@@ -2,7 +2,7 @@
 <link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder-population.html">
 
-<dom-module id="chart-column-population-country">
+<dom-module id="chart-bar-population-country">
     <template>
         <style>
             :host {
@@ -10,18 +10,18 @@
             }
         </style>
         <fact-finder-population data="{{data}}"></fact-finder-population>
-        <google-chart-responsive type="column" data="[[data]]" ratio-16-9></google-chart-responsive>
+        <google-chart-responsive type="bar" data="[[data]]" ratio-16-9></google-chart-responsive>
     </template>
     <script>
-        class ChartColumnPopulationCountry extends Polymer.Element {
+        class ChartBarPopulationCountry extends Polymer.Element {
             static get is() {
-                return 'chart-column-population-country';
+                return 'chart-bar-population-country';
             }
 
             static get properties() {
                 return {}
             }
         }
-        window.customElements.define(ChartColumnPopulationCountry.is, ChartColumnPopulationCountry);
+        window.customElements.define(ChartBarPopulationCountry.is, ChartBarPopulationCountry);
     </script>
 </dom-module>
