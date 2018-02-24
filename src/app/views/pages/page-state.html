@@ -1,8 +1,5 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../../bower_components/neon-animation/web-animations.html">
-<link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
-<link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
 <link rel="import" href="../../../components/my-card/my-card.html">
@@ -12,47 +9,28 @@
 <link rel="import" href="../../../components/fact-finder/fact-finder-state.html">
 <link rel="import" href="../../../components/app-data.html">
 <link rel="import" href="../../../../lib/map-property/map-property.html">
+<link rel="import" href="../../../components/select-state.html">
 
 <dom-module id="page-state">
     <template>
-        <style include="app-styles">
-            :host {
-                padding: 1rem;
-            }
-
-            .grid {
-                display: grid;
-            }
-        </style>
-        <!--
-        <div class="grid-container">
-            <div class="columns-select">
-                <paper-dropdown-menu label="Columns" nonAimations>
-                    <paper-listbox slot="dropdown-content" selected="{{columns}}">
-                        <paper-item>1</paper-item>
-                        <paper-item>2</paper-item>
-                        <paper-item>3</paper-item>
-                        <paper-item>4</paper-item>
-                        <paper-item>5</paper-item>
-                    </paper-listbox>
-                </paper-dropdown-menu>
-            </div>
-        </div>
-        -->
+        <style include="global-styles app-styles"></style>
         <app-data data="{{data}}"></app-data>
         <map-property source="[[data.location.state.name]]" target="{{stateName}}"></map-property>
-        [[stateName]]
-        [[geoId]]
-        <fact-finder-state state-name="[[stateName]]" geo-id="{{geoId}}"></fact-finder-state>
+        <fact-finder-state state-name="[[stateName]]" geo-id="{{geographyId}}"></fact-finder-state>
         <my-grid>
             <my-card ratio="16:9">
-                <div class="card-content">
-                    <chart-map-state></chart-map-state>
+                <div class="card-content flex-center">
+                    <select-state geography-id="{{geographyId}}"></select-state>
                 </div>
             </my-card>
             <my-card ratio="16:9">
                 <div class="card-content">
-                    <chart-bar-gender geo-id="[[geoId]]"></chart-bar-gender>
+                    <chart-map-state geography-id="[[geographyId"></chart-map-state>
+                </div>
+            </my-card>
+            <my-card ratio="16:9">
+                <div class="card-content">
+                    <chart-bar-gender geo-id="[[geographyId]]"></chart-bar-gender>
                 </div>
             </my-card>
             <my-card ratio="16:9">
@@ -87,9 +65,8 @@
                     stateName: {
                         type: String
                     },
-                    geoId: {
-                        type: String,
-                        // value: "0400000US36"
+                    geographyId: {
+                        type: String
                     }
                 }
             }

@@ -1,0 +1,48 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<dom-module id="select-state">
+    <template>
+        <fact-finder-state name="[[name]]" geography-id="{{geographyId}}" data="{{data}}"></fact-finder-state>
+        <paper-dropdown-menu label="Select your state">
+            <paper-listbox slot="dropdown-content" selected="{{selected}}">
+                <template is="dom-repeat" items="{{data}}">
+                    <paper-item>[[_getName(item)]]</paper-item>
+                </template>
+            </paper-listbox>
+        </paper-dropdown-menu>
+        [[geographyId]]
+    </template>
+    <script>
+        class SelectState extends Polymer.Element {
+            static get is() {
+                return 'select-state';
+            }
+
+            static get properties() {
+                return {
+                    selected: {
+                        type: Number,
+                        observer: '_selectedChanged'
+                    },
+                    geographyId: {
+                        type: String,
+                        notify: true
+                    }
+                }
+            }
+
+            _getName(state) {
+                return state[1][1];
+            }
+
+            _selectedChanged(selected) {
+                // console.log(selected);
+                this.geographyId = "0400000US" + this.data[selected][0][1];
+                // console.log(this.geographyId);
+            }
+        }
+        window.customElements.define(SelectState.is, SelectState);
+    </script>
+</dom-module>

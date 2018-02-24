@@ -16,13 +16,14 @@
                 return {
                     data: {
                         type: Object,
-                        observer: '_dataChanged'
+                        observer: '_dataChanged',
+                        notify: true
                     },
                     response: {
                         type: Object,
                         // observer: '_responseChanged'
                     },
-                    stateId: {
+                    stateName: {
                         type: String,
                         observer: '_stateChanged'
                     },
