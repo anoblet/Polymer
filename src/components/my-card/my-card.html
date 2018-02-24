@@ -33,6 +33,18 @@
                 padding-bottom: 56.25%;
             }
 
+            /* Rows */
+
+            :host([rows="2"]) {
+                grid-row: span 2;
+            }
+
+            /* Columns */
+
+            :host([columns="2"]) {
+                grid-column: span 2;
+            }
+
             .reset {
                 position: absolute;
                 top: 0;
