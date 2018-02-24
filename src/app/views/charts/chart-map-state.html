@@ -11,8 +11,9 @@
             }
         </style>
         <app-data data="{{data}}"></app-data>
-        <map-property source="[[data.location.state.abbreviation]]" target="{{state}}"></map-property>
+        <map-property source="[[data.location.state.abbreviation]]" target="{{abbreviation}}"></map-property>
         <google-chart-responsive type="geo" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
+        [[name]]
     </template>
     <script>
         class ChartMapState extends Polymer.Element {
@@ -22,13 +23,12 @@
 
             static get properties() {
                 return {
-                    state: {
-                        type: String,
-                        observer: "_stateChanged"
+                    name: {
+                        type: String
                     },
                     options: {
                         type: Object,
-                        value: function() {
+                        value: function () {
                             return {
                                 region: "US",
                                 resolution: "provinces"
@@ -36,20 +36,21 @@
                         }
                     },
                     chartData: {
-                        type: Array
+                        type: Array,
+                        computed: '_chartData(name)'
                     }
                 }
             }
 
-            _stateChanged(state) {
-                console.log(state);
-
+            _chartData(name) {
+                console.log(name);
                 let chartData = [];
                 chartData.push(["State"]);
-                chartData.push([state]);
-                this.chartData = chartData;
+                chartData.push([name]);
+                return chartData;
             }
         }
+
         window.customElements.define(ChartMapState.is, ChartMapState);
     </script>
 </dom-module>

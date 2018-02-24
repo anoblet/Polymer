@@ -16,16 +16,17 @@
         <style include="global-styles app-styles"></style>
         <app-data data="{{data}}"></app-data>
         <map-property source="{{data.location.state.name}}" target="{{name}}"></map-property>
-        <fact-finder-state state-name="[[name]]" geo-id="{{geographyId}}"></fact-finder-state>
+        <fact-finder-state state-name="{{name}}" geo-id="{{geographyId}}"></fact-finder-state>
+        [[name]]
         <my-grid>
             <my-card ratio="16:9">
                 <div class="card-content flex-center">
-                    <select-state geography-id="{{geographyId}}"></select-state>
+                    <select-state name="{{name}}" geography-id="{{geographyId}}"></select-state>
                 </div>
             </my-card>
             <my-card ratio="16:9">
                 <div class="card-content">
-                    <chart-map-state geography-id="[[geographyId"></chart-map-state>
+                    <chart-map-state name="[[name]]"></chart-map-state>
                 </div>
             </my-card>
             <my-card ratio="16:9">
