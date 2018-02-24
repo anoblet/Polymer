@@ -41,7 +41,9 @@
         -->
         <app-data data="{{data}}"></app-data>
         <map-property source="[[data.location.state.name]]" target="{{state}}"></map-property>
-        <fact-finder-state state="[[state]]"></fact-finder-state>
+        [[state]]
+        [[geoId]]
+        <fact-finder-state state="[[state]]" geo-id="{{geoId}}"></fact-finder-state>
         <my-grid>
             <my-card ratio="16:9">
                 <div class="card-content">
@@ -50,7 +52,7 @@
             </my-card>
             <my-card ratio="16:9">
                 <div class="card-content">
-                    <chart-bar-gender geo-id="[[state]]"></chart-bar-gender>
+                    <chart-bar-gender geo-id="[[geoId]]"></chart-bar-gender>
                 </div>
             </my-card>
             <my-card ratio="16:9">
@@ -83,6 +85,9 @@
                         value: 3
                     },
                     state: {
+                        type: String
+                    },
+                    geoId: {
                         type: String,
                         value: "0400000US36"
                     }

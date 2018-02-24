@@ -3,7 +3,7 @@
 
 <dom-module id="fact-finder">
     <template>
-        <iron-ajax url="[[formatUrl()]]" params="[[formatParams()]]" on-response="handleResponse" auto></iron-ajax>
+        <iron-ajax url="[[urlFormatted]]" params="[[formatParams()]]" on-response="handleResponse" auto></iron-ajax>
     </template>
     <script>
         class FactFinder extends Polymer.Element {
@@ -46,6 +46,10 @@
                     url: {
                         type: String,
                         value: "https://factfinder.census.gov/service"
+                    },
+                    urlFormatted: {
+                        type: String,
+                        computed: 'formatUrl(geo)'
                     },
                     version: {
                         type: String,

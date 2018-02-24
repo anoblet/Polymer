@@ -16,18 +16,20 @@
                 return {
                     data: {
                         type: Object,
-                        observer: '_dataChanged'
+                        // observer: '_dataChanged'
                     },
                     response: {
                         type: Object,
                         // observer: '_responseChanged'
                     },
                     state: {
-                        type: String
+                        type: String,
+                        observer: '_stateChanged'
                     },
                     geoId: {
                         type: String,
-                        computed: '_fipsChanged(fips)'
+                        computed: '_fipsChanged(fips)',
+                        notify: true
                     },
                     fips: {
                         type: String
@@ -37,13 +39,11 @@
 
             _stateChanged(state) {
                 console.log(state);
-                console.log(this.data);
-            }
-
-            _dataChanged(data) {
-                for(let i=0; i < data.length; i++) {
-                    if(this.state == data[i][1][1]) {
-                        this.set("fips", data[i][0][1]);
+                if(this.data) {
+                    for (let i = 0; i < this.data.length; i++) {
+                        if (this.state == this.data[i][1][1]) {
+                            this.set("fips", this.data[i][0][1]);
+                        }
                     }
                 }
             }
