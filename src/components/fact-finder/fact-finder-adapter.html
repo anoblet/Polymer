@@ -26,7 +26,7 @@
             }
 
             _inputChanged(input) {
-                console.log(input)
+                // console.log(input)
                 let data = input.data
                 let header = data.header;
                 let rows = data.rows;
@@ -42,7 +42,7 @@
                     responseFormatted.push(newRow);
                 }
 
-                console.log(responseFormatted);
+                // console.log(responseFormatted);
                 this.output = responseFormatted;
                 this.responseFormatted = responseFormatted;
             }

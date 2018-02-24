@@ -35,13 +35,13 @@
             }
 
             _stateChanged(state) {
-                console.log(state);
+                // console.log(state);
                 this._map(state, this.data);
             }
 
             _map(stateName, data) {
-                console.log(stateName);
-                console.log(data);
+                // console.log(stateName);
+                // console.log(data);
                 if(this.stateName) {
                     if (this.data) {
                         for (let i = 0; i < this.data.length; i++) {
@@ -54,12 +54,12 @@
             }
 
             _stateIdChanged(stateId) {
-                console.log(stateId);
+                // console.log(stateId);
                 return "0400000US" + stateId;
             }
 
             _dataChanged(data) {
-                console.log(data);
+                // console.log(data);
                 this._map(this.stateName, data);
             }
         }
