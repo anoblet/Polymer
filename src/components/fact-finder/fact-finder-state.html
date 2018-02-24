@@ -3,7 +3,7 @@
 
 <dom-module id="fact-finder-state">
     <template>
-        <fact-finder program="DEC" _dataset="10_SF1" table="G001" geo="0100000US.04000" data-element-id="STATE,NAME" key="c97423c3f598951d2138d69861730b9154cd7230" data="{{data}}" response="{{response}}"></fact-finder>
+        <fact-finder program="DEC" _dataset="10_SF1" table="G001" geo-id="0100000US.04000" data-element-id="STATE,NAME" key="c97423c3f598951d2138d69861730b9154cd7230" data="{{data}}" response="{{response}}"></fact-finder>
         <fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>
     </template>
     <script>
@@ -16,22 +16,22 @@
                 return {
                     data: {
                         type: Object,
-                        // observer: '_dataChanged'
+                        observer: '_dataChanged'
                     },
                     response: {
                         type: Object,
                         // observer: '_responseChanged'
                     },
-                    state: {
+                    stateId: {
                         type: String,
                         observer: '_stateChanged'
                     },
                     geoId: {
                         type: String,
-                        computed: '_fipsChanged(fips)',
+                        computed: '_stateIdChanged(stateId)',
                         notify: true
                     },
-                    fips: {
+                    stateId: {
                         type: String
                     }
                 }
@@ -39,20 +39,34 @@
 
             _stateChanged(state) {
                 console.log(state);
-                if(this.data) {
-                    for (let i = 0; i < this.data.length; i++) {
-                        if (this.state == this.data[i][1][1]) {
-                            this.set("fips", this.data[i][0][1]);
+                this._map(state, this.data);
+            }
+
+            _map(stateName, data) {
+                console.log(stateName);
+                console.log(data);
+                if(this.stateName) {
+                    if (this.data) {
+                        for (let i = 0; i < this.data.length; i++) {
+                            if (this.stateName == this.data[i][1][1]) {
+                                this.set("stateId", this.data[i][0][1]);
+                            }
                         }
                     }
                 }
             }
 
-            _fipsChanged(fips) {
-                console.log(fips);
-                return "0400000US" + fips;
+            _stateIdChanged(stateId) {
+                console.log(stateId);
+                return "0400000US" + stateId;
+            }
+
+            _dataChanged(data) {
+                console.log(data);
+                this._map(this.stateName, data);
             }
         }
+
         window.customElements.define(FactFinderState.is, FactFinderState);
     </script>
 </dom-module>

@@ -40,10 +40,10 @@
         </div>
         -->
         <app-data data="{{data}}"></app-data>
-        <map-property source="[[data.location.state.name]]" target="{{state}}"></map-property>
-        [[state]]
+        <map-property source="[[data.location.state.name]]" target="{{stateName}}"></map-property>
+        [[stateName]]
         [[geoId]]
-        <fact-finder-state state="[[state]]" geo-id="{{geoId}}"></fact-finder-state>
+        <fact-finder-state state-name="[[stateName]]" geo-id="{{geoId}}"></fact-finder-state>
         <my-grid>
             <my-card ratio="16:9">
                 <div class="card-content">
@@ -84,12 +84,12 @@
                         type: Number,
                         value: 3
                     },
-                    state: {
+                    stateName: {
                         type: String
                     },
                     geoId: {
                         type: String,
-                        value: "0400000US36"
+                        // value: "0400000US36"
                     }
                 }
             }
