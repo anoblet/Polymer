@@ -19,7 +19,7 @@
                     dataElementId: {
                         type: String
                     },
-                    geo: {
+                    geoId: {
                         type: String
                     },
                     key: {
@@ -49,7 +49,7 @@
                     },
                     urlFormatted: {
                         type: String,
-                        computed: 'formatUrl(geo)'
+                        computed: 'formatUrl(geoId)'
                     },
                     version: {
                         type: String,
@@ -73,8 +73,8 @@
                     + "/datasets/" + this._dataset
                     + "/tables/" + this.table
                     + "/data";
-                if (this.geo) {
-                    url += "/" + this.geo;
+                if (this.geoId) {
+                    url += "/" + this.geoId;
                 }
                 if (this.dataElementId) {
                     url += "/" + this.dataElementId;
