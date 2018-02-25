@@ -4,7 +4,7 @@
 <link rel="import" href="../../bower_components/social-links/social-link.html">
 -->
 
-<dom-module id="app-footer">
+<dom-module id="view-footer">
     <template>
         <style include="">
             :host {
@@ -21,9 +21,9 @@
         </footer>
     </template>
     <script>
-        class AppFooter extends Polymer.Element {
+        class ViewFooter extends Polymer.Element {
             static get is() {
-                return 'app-footer';
+                return 'view-footer';
             }
 
             static get properties() {
@@ -35,6 +35,6 @@
             }
         }
 
-        window.customElements.define(AppFooter.is, AppFooter);
+        window.customElements.define(ViewFooter.is, ViewFooter);
     </script>
 </dom-module>

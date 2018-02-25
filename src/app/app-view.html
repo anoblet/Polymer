@@ -20,32 +20,32 @@
                 @apply --flex-grow;
             }
 
-            app-header {
+            view-header {
                 @apply --flex;
                 @apply --flex-grow;
             }
 
-            app-footer {
+            view-footer {
                 @apply --flex;
                 @apply --flex-grow;
             }
         </style>
         <x-grid>
             <x-grid-row shrink-disabled>
-                <app-header></app-header>
+                <view-header></view-header>
             </x-grid-row>
             <x-grid-row flex grow>
                 <x-grid-column grow-disabled>
                     <view-drawer id="drawer"></view-drawer>
                 </x-grid-column>
                 <x-grid-column flex scroll>
-                    <app-main>
+                    <view-main>
                         <slot></slot>
-                    </app-main>
+                    </view-main>
                 </x-grid-column>
             </x-grid-row>
             <x-grid-row shrink-disabled>
-                <app-footer></app-footer>
+                <view-footer></view-footer>
             </x-grid-row>
         </x-grid>
 <!--

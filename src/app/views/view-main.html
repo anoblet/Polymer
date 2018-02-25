@@ -2,7 +2,7 @@
 
 <link rel="import" href="../../../bower_components/my-paypal/my-paypal.html">
 
-<dom-module id="app-main">
+<dom-module id="view-main">
     <template>
         <style include="">
             :host {
@@ -24,9 +24,9 @@
         </main>
     </template>
     <script>
-        class AppMain extends Polymer.Element {
+        class ViewMain extends Polymer.Element {
             static get is() {
-                return 'app-main';
+                return 'view-main';
             }
 
             static get properties() {
@@ -38,6 +38,6 @@
             }
         }
 
-        window.customElements.define(AppMain.is, AppMain);
+        window.customElements.define(ViewMain.is, ViewMain);
     </script>
 </dom-module>

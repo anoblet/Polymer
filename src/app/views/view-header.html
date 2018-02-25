@@ -10,7 +10,7 @@
 <link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../../lib/map-property/map-property.html">
 
-<dom-module id="app-header">
+<dom-module id="view-header">
     <template>
         <style include="app-styles global-styles flex-styles">
             :host {
@@ -65,9 +65,9 @@
     </template>
 
     <script>
-        class AppHeader extends Polymer.Element {
+        class ViewHeader extends Polymer.Element {
             static get is() {
-                return 'app-header';
+                return 'view-header';
             }
 
             static get properties() {
@@ -99,6 +99,6 @@
             }
         }
 
-        window.customElements.define(AppHeader.is, AppHeader);
+        window.customElements.define(ViewHeader.is, ViewHeader);
     </script>
 </dom-module>
