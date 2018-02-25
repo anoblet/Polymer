@@ -10,7 +10,7 @@
     "src/app/blocks/my-county.html",
     "src/app/blocks/my-state.html",
     "src/app/blocks/my-country.html",
-    "src/blocks/x-map.html",
+    "src/app/blocks/x-map.html",
     "src/components/address-lookup/address-lookup.html",
     "src/components/app-data.html",
     "src/styles/global-styles.html",
