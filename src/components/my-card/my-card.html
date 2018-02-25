@@ -70,8 +70,11 @@
             paper-card ::slotted(.card-content) {
                 display: flex;
                 flex-grow: 1;
-                /* flex-shrink: 0; */
                 padding: 2rem;
+            }
+
+            :host([path]) {
+                cursor: pointer;
             }
         </style>
         <div class="reset">
@@ -90,8 +93,20 @@
                 return {
                     ratio: {
                         type: String
+                    },
+                    path: {
+                        type: String
                     }
                 }
+            }
+
+            ready() {
+                super.ready();
+                this.addEventListener('click', this._onClick);
+            }
+
+            _onClick() {
+                Application.Controller.set("__path", this.path);
             }
         }
 

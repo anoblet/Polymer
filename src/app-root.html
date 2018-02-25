@@ -65,6 +65,8 @@
             ready() {
                 super.ready();
 
+                this.Controller = this.shadowRoot.querySelector("app-controller");
+
                 // Allow the location property to be written to
                 this.set("data.location", {});
             }

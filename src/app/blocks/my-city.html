@@ -1,22 +1,10 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<!--
-<link rel="import" href="../../../bower_components/us-census/us-census.html">
--->
-
 <dom-module id="my-city">
     <template>
-<!--
-        <us-census city="{{data}}"></us-census>
--->
         <app-data data="{{data}}"></app-data>
-        [[data.location.city.name]]
-        [[data.location.state.name]]
-        <ul>
-            <li>
-                City Name: [[data.name]]
-            </li>
-        </ul>
+        <map-property source="[[data.location.city]]" target="{{city}}"></map-property>
+        [[city.name]]
     </template>
     <script>
         class MyCity extends Polymer.Element {

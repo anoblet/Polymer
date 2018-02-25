@@ -21,7 +21,7 @@
                     country: {
                         type: String,
                         value: "US",
-                        observer: "_countryChanged"
+                        // observer: "_countryChanged"
                     },
                     options: {
                         type: Object,
@@ -33,7 +33,8 @@
                         }
                     },
                     chartData: {
-                        type: Array
+                        type: Array,
+                        computed: '_chartData(country)'
                     }
                 }
             }
@@ -43,6 +44,13 @@
                 chartData.push(["country"]);
                 chartData.push([country]);
                 this.chartData = chartData;
+            }
+
+            _chartData(country) {
+                let chartData = [];
+                chartData.push(["country"]);
+                chartData.push([country]);
+                return chartData;
             }
         }
 
