@@ -1,0 +1,74 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
+<link rel="import" href="../../../components/my-card/my-card.html">
+
+<dom-module id="page-settings">
+    <template>
+        <style include="global-styles app-styles">
+            :host {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+        <app-data data="{{data}}"></app-data>
+        <map-object source="{{data.configuration}}" target="{{configuration}}"></map-object>
+        <map-object source="{{data.configuration.toolbar}}" target="{{toolbar}}"></map-object>
+        <map-object source="{{data.configuration.menu}}" target="{{menu}}"></map-object>
+        <my-grid>
+            <my-card>
+                <div class="card-title">Settings</div>
+                <div class="card-content">
+                    <paper-dropdown-menu label="Toolbar Placement">
+                        <paper-listbox slot="dropdown-content" selected="{{toolbar}}">
+                            <paper-item>Top</paper-item>
+                            <paper-item>Bottom</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                    <paper-dropdown-menu label="Menu Placement">
+                        <paper-listbox slot="dropdown-content" selected="{{menu}}">
+                            <paper-item>Left</paper-item>
+                            <paper-item>Right</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </div>
+            </my-card>
+        </my-grid>
+    </template>
+    <script>
+        class PageSettings extends Polymer.MutableData(Polymer.Element) {
+            static get is() {
+                return 'page-settings';
+            }
+
+            static get properties() {
+                return {
+                    toolbar: {
+                        type: String,
+                        value: 0,
+                        notify: true
+                    },
+                    menu: {
+                        type: String,
+                        value: 0,
+                        notify: true
+                    }
+                }
+            }
+
+            static get observers() {
+                return []
+            }
+
+            ready() {
+                super.ready();
+                this.configuration = this.configuration || {};
+            }
+        }
+
+        window.customElements.define(PageSettings.is, PageSettings);
+    </script>
+</dom-module>
