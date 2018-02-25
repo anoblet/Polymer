@@ -8,12 +8,7 @@
 
 <dom-module id="page-settings">
     <template>
-        <style include="global-styles app-styles">
-            :host {
-                width: 100%;
-                height: 100%;
-            }
-        </style>
+        <style include="global-styles app-styles"></style>
         <app-data data="{{data}}"></app-data>
         <map-object source="{{data.configuration}}" target="{{configuration}}"></map-object>
         <map-object source="{{data.configuration.toolbar}}" target="{{toolbar}}"></map-object>
