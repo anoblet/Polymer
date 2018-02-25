@@ -73,14 +73,16 @@
                 padding: 2rem;
             }
 
-            :host([path]) {
+            :host([href]) {
                 cursor: pointer;
             }
         </style>
         <div class="reset">
-            <paper-card>
-                <slot></slot>
-            </paper-card>
+            <a href="[[href]]">
+                <paper-card>
+                    <slot></slot>
+                </paper-card>
+            </a>
         </div>
     </template>
     <script>
@@ -94,7 +96,10 @@
                     ratio: {
                         type: String
                     },
-                    path: {
+                    href: {
+                        type: String
+                    },
+                    href: {
                         type: String
                     }
                 }
@@ -102,13 +107,13 @@
 
             ready() {
                 super.ready();
-                if(this.path) {
+                if (this.href) {
                     this.addEventListener('click', this._onClick);
                 }
             }
 
             _onClick() {
-                Application.Controller.set("__path", this.path);
+                Application.Controller.set("__path", this.href);
             }
         }
 
