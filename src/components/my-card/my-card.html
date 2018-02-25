@@ -11,6 +11,7 @@
             :host([ratio])::before {
                 display: block;
                 content: '';
+                box-sizing: border-box;
             }
 
             :host([ratio="1:1"])::before {
@@ -41,13 +42,12 @@
 
             /* Columns */
 
-            /*
-            @media only screen and (min-width: 710px) {
+            /* Hack for grid span not wrapping */
+            @media only screen and (min-width: 687px) {
                 :host([columns="2"]) {
                     grid-column: span 2;
                 }
             }
-            */
 
             .reset {
                 position: absolute;
