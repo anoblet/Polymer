@@ -7,7 +7,7 @@
 <link rel="import" href="../../lib/my-location/my-location.html">
 -->
 
-<dom-module id="app-drawer">
+<dom-module id="view-drawer">
     <template>
         <style>
             :host {
@@ -83,9 +83,11 @@
                     </app-menu>
                 </app-submenu>
                 -->
+                <!--
                 <a class="app-menu-item" href="/map">
                     <app-menu-icon-item icon="icons:build">Map</app-menu-icon-item>
                 </a>
+                -->
                 <a class="app-menu-item" href="/settings">
                     <app-menu-icon-item icon="icons:build">Settings</app-menu-icon-item>
                 </a>
@@ -98,9 +100,9 @@
     </template>
 
     <script>
-        class AppDrawer extends Polymer.Element {
+        class ViewDrawer extends Polymer.Element {
             static get is() {
-                return 'app-drawer';
+                return 'view-drawer';
             }
 
             static get properties() {
@@ -117,6 +119,6 @@
             }
         }
 
-        window.customElements.define(AppDrawer.is, AppDrawer);
+        window.customElements.define(ViewDrawer.is, ViewDrawer);
     </script>
 </dom-module>
