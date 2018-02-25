@@ -5,6 +5,10 @@
 <link rel="import" href="../../blocks/my-city.html">
 <link rel="import" href="../../blocks/my-state.html">
 <link rel="import" href="../../blocks/my-country.html">
+<link rel="import" href="../../views/charts/chart-map-state.html">
+<link rel="import" href="../../views/charts/chart-map-country.html">
+<link rel="import" href="../../../components/app-data.html">
+<link rel="import" href="../../../../lib/map-property/map-property.html">
 
 <dom-module id="page-home">
     <template>
@@ -13,6 +17,8 @@
                 grid-auto-flow: row dense;
             }
         </style>
+        <app-data data="{{data}}"></app-data>
+        <map-property source="[[data.location.state]]" target="{{state}}"></map-property>
         <my-grid>
             <my-card ratio="4:3" style="grid-column: span 1">
                 <div class="card-title">
@@ -27,12 +33,15 @@
                     </a>
                 </div>
             </my-card>
-            <my-card ratio="4:3" style="grid-row: span 2">
+            <my-card ratio="4:3">
                 <div class="card-title">
                     <a href="/state">My State</a>
                 </div>
                 <div class="card-content">
+                    <!--
                     <my-state></my-state>
+                    -->
+                    <chart-map-state name="[[state.name]]"></chart-map-state>
                 </div>
                 <div class="card-actions">
                     <a href="/state">
@@ -45,7 +54,10 @@
                     <a href="/country">My Country</a>
                 </div>
                 <div class="card-content">
+                    <!--
                     <my-country></my-country>
+                    -->
+                    <chart-map-country></chart-map-country>
                 </div>
                 <div class="card-actions">
                     <a href="/country">
