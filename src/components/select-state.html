@@ -4,7 +4,7 @@
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 <dom-module id="select-state">
     <template>
-        <fact-finder-state name="[[name]]" geography-id="{{geographyId}}" data="{{data}}"></fact-finder-state>
+        <fact-finder-state index={{selected}} name="[[name]]" geography-id="{{geographyId}}" data="{{data}}"></fact-finder-state>
         <paper-dropdown-menu label="Select your state">
             <paper-listbox slot="dropdown-content" selected="{{selected}}">
                 <template is="dom-repeat" items="{{data}}">
@@ -31,6 +31,7 @@
                     },
                     name: {
                         type: String,
+                        observer: '_nameChanged',
                         notify: true
                     }
                 }
@@ -38,6 +39,10 @@
 
             _getName(state) {
                 return state[1][1];
+            }
+
+            _nameChanged(name) {
+                console.log(name);
             }
 
             _selectedChanged(selected) {

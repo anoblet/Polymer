@@ -30,6 +30,10 @@
                     },
                     stateId: {
                         type: String
+                    },
+                    index: {
+                        type: Number,
+                        notify: true
                     }
                 }
             }
@@ -46,6 +50,7 @@
                     if (this.data) {
                         for (let i = 0; i < this.data.length; i++) {
                             if (this.stateName == this.data[i][1][1]) {
+                                this.set("index", i);
                                 this.set("stateId", this.data[i][0][1]);
                             }
                         }
