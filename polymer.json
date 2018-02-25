@@ -5,7 +5,7 @@
     "src/app/views/pages/page-home.html",
     "src/app/views/pages/page-state.html",
     "src/app/views/pages/page-country.html",
-    "src/app/views/my-settings.html",
+    "src/app/views/pages/page-settings.html",
     "src/app/blocks/my-city.html",
     "src/app/blocks/my-county.html",
     "src/app/blocks/my-state.html",

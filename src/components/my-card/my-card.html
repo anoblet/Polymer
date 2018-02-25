@@ -102,7 +102,9 @@
 
             ready() {
                 super.ready();
-                this.addEventListener('click', this._onClick);
+                if(this.path) {
+                    this.addEventListener('click', this._onClick);
+                }
             }
 
             _onClick() {
