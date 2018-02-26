@@ -19,46 +19,34 @@
             }
 
             header {
-                @apply(--flex);
-                @apply(--flex-grow);
+                width: 100%;
             }
 
             a, a:visited {
                 color: #fff;
             }
 
-            #menu {
-                flex-grow: 0;
-                justify-content: center;
+            .grid {
+                width: 100%;
+                grid-template-columns: repeat(3, 1fr);
             }
         </style>
         <header>
-            <x-grid>
-                <x-grid-row>
-                    <x-grid-column id="menu" wrap-disabled>
-                        <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
-                    </x-grid-column>
-                    <x-grid-column flex wrap-disabled>
-                        <x-grid-column grow-disabled v-align-center>
-                        </x-grid-column>
-                        <x-grid-column id="title" grow-disabled v-align-center>
-                        <span style="width: max-content" flex v-align-center m-l-1>
-                            <a href="/" no-underline>[[title]]</a>
-                        </span>
-                        </x-grid-column>
-                    </x-grid-column>
-                    <x-grid-column v-align-center>
-                        <address-lookup v-align-center></address-lookup>
-                    </x-grid-column>
-                    <x-grid-column justify-content-flex-end v-align-center>
-                        <x-grid-column></x-grid-column>
-                        <x-grid-column></x-grid-column>
-                        <x-grid-column>
-                            <paper-icon-button icon="icons:account-circle"></paper-icon-button>
-                        </x-grid-column>
-                    </x-grid-column>
-                </x-grid-row>
-            </x-grid>
+            <div class="grid">
+                <div class="item v-align-center">
+                    <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
+                    <!-- <a href="/" no-underline>[[title]]</a> -->
+                </div>
+
+                <div class="item center">
+                    <!-- <address-lookup v-align-center></address-lookup> -->
+                    <a href="/" no-underline>[[title]]</a>
+                </div>
+                <div class="item v-align-center justify-end">
+                    <!-- <paper-icon-button icon="icons:account-circle"></paper-icon-button> -->
+                    <paper-icon-button icon="icons:search"></paper-icon-button>
+                </div>
+            </div>
         </header>
         <app-data data="{{data}}"></app-data>
         <map-property source="{{data.configuration.menu}}" target="{{menu}}"></map-property>

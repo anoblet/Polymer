@@ -140,10 +140,9 @@
             /* Grid */
 
             .grid {
-                margin: 1rem;
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
                 grid-gap: 1rem;
+                /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); */
             }
 
             /* Positioning */
@@ -154,6 +153,21 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
+            }
+
+            /* Miscellaneous */
+
+            .v-align-center {
+                display: flex;
+                align-items: center;
+            }
+
+            .justify-end {
+                justify-content: flex-end;
+            }
+
+            .text-right {
+                text-align: right;
             }
         </style>
     </template>
