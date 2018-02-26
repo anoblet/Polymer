@@ -2,9 +2,7 @@
 
 <dom-module id="my-city">
     <template>
-        <app-data data="{{data}}"></app-data>
-        <map-property source="[[data.location.city]]" target="{{city}}"></map-property>
-        [[city.name]]
+        [[name]]
     </template>
     <script>
         class MyCity extends Polymer.Element {

@@ -1,0 +1,19 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="tile-text-city-name">
+    <template>
+        [[name]]
+    </template>
+    <script>
+        class TileTextCityName extends Polymer.Element {
+            static get is() {
+                return 'tile-text-city-name';
+            }
+
+            static get properties() {
+                return {}
+            }
+        }
+        window.customElements.define(TileTextCityName.is, TileTextCityName);
+    </script>
+</dom-module>

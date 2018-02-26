@@ -6,6 +6,7 @@
 <link rel="import" href="../../../components/app-data.html">
 <link rel="import" href="../../views/charts/chart-map-state.html">
 <link rel="import" href="../../views/charts/chart-map-country.html">
+<link rel="import" href="../../views/tile/tile-text-city-name.html">
 <link rel="import" href="../../views/tile/tile-text-state-name.html">
 <link rel="import" href="../../views/tile/tile-text-country-name.html">
 
@@ -13,6 +14,7 @@
     <template>
         <style include="global-styles app-styles"></style>
         <app-data data="{{data}}"></app-data>
+        <map-property source="[[data.location.city]]" target="{{city}}"></map-property>
         <map-property source="[[data.location.state]]" target="{{state}}"></map-property>
         <my-grid>
             <my-card ratio="4:3" style="grid-column: span 1">
@@ -20,7 +22,7 @@
                     <a href="/city">My City</a>
                 </div>
                 <div class="card-content center">
-                    <my-city></my-city>
+                    <tile-text-city-name name="[[city.name]]"></tile-text-city-name>
                 </div>
                 <div class="card-actions">
                     <a href="/state">
@@ -41,19 +43,6 @@
                     </a>
                 </div>
             </my-card>
-            <my-card ratio="4:3" href="/state">
-                <div class="card-title">
-                    <a href="/state">My State</a>
-                </div>
-                <div class="card-content">
-                    <chart-map-state name="[[state.name]]"></chart-map-state>
-                </div>
-                <div class="card-actions">
-                    <a href="/state">
-                        <paper-button>More</paper-button>
-                    </a>
-                </div>
-            </my-card>
             <my-card ratio="4:3" href="/country">
                 <div class="card-title">
                     <a href="/country">My Country</a>
@@ -63,6 +52,19 @@
                 </div>
                 <div class="card-actions">
                     <a href="/country">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            <my-card ratio="4:3" href="/state">
+                <div class="card-title">
+                    <a href="/state">My State</a>
+                </div>
+                <div class="card-content">
+                    <chart-map-state name="[[state.name]]"></chart-map-state>
+                </div>
+                <div class="card-actions">
+                    <a href="/state">
                         <paper-button>More</paper-button>
                     </a>
                 </div>
