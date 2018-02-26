@@ -13,7 +13,7 @@
                 height: 100%;
             }
         </style>
-        <google-chart type="[[type]]" options="[[options]]" data="[[data]]"></google-chart>
+        <google-chart type="[[type]]" options="[[options]]" google-chart-celect="_chartSelect" selection-changed="_selectionChanged" data="[[data]]"></google-chart>
     </template>
     <script>
         class GoogleChartResponsive extends Polymer.mixinBehaviors(Polymer.IronResizableBehavior, Polymer.Element) {
@@ -35,6 +35,12 @@
                 }
             }
 
+            ready() {
+                super.ready();
+                const childElement = this.shadowRoot.querySelector("google-chart");
+                childElement.addEventListener('selection-changed', this._selectionChanged.bind(this));
+            }
+
             connectedCallback() {
                 super.connectedCallback();
                 this.addEventListener('iron-resize', e =>
@@ -45,6 +51,11 @@
             _resize() {
                 console.log("b");
                 this.shadowRoot.querySelector("google-chart").redraw()
+            }
+
+            _selectionChanged(event) {
+                var event = new CustomEvent('selection-changed', {bubbles: true, composed: true});
+                this.dispatchEvent(event)
             }
         }
         window.customElements.define(GoogleChartResponsive.is, GoogleChartResponsive);

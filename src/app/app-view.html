@@ -20,6 +20,10 @@
                 @apply --flex-grow;
             }
 
+            x-grid {
+                display: initial;
+            }
+
             view-header {
                 @apply --flex;
                 @apply --flex-grow;
@@ -38,7 +42,7 @@
                 <x-grid-column grow-disabled>
                     <view-drawer id="drawer"></view-drawer>
                 </x-grid-column>
-                <x-grid-column flex scroll>
+                <x-grid-column flex>
                     <view-main>
                         <slot></slot>
                     </view-main>

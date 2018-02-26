@@ -28,7 +28,11 @@
 
             .grid {
                 width: 100%;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            #search {
+                grid-column: span 3;
             }
         </style>
         <header>
@@ -38,7 +42,7 @@
                     <!-- <a href="/" no-underline>[[title]]</a> -->
                 </div>
 
-                <div class="item center">
+                <div id="search" class="item center">
                     <!-- <address-lookup v-align-center></address-lookup> -->
                     <a href="/" no-underline>[[title]]</a>
                 </div>
