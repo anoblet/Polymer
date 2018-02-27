@@ -12,11 +12,16 @@
 
 <dom-module id="page-home">
     <template>
-        <style include="global-styles app-styles"></style>
+        <style include="global-styles app-styles">
+            #state {
+                order: 2;
+            }
+        </style>
         <app-data data="{{data}}"></app-data>
         <map-property source="[[data.location.city]]" target="{{city}}"></map-property>
         <map-property source="[[data.location.state]]" target="{{state}}"></map-property>
         <my-grid>
+            <!--
             <my-card ratio="4:3" href="/city">
                 <div class="card-title">
                     <a href="/city">My City</a>
@@ -30,7 +35,8 @@
                     </a>
                 </div>
             </my-card>
-            <my-card ratio="4:3" href="/state">
+            -->
+            <my-card id="state" ratio="4:3" href="/state">
                 <div class="card-title">
                     <a href="/state">My State</a>
                 </div>
