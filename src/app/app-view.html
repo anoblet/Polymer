@@ -25,13 +25,19 @@
             }
 
             view-header {
-                @apply --flex;
-                @apply --flex-grow;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1
+            }
+
+            view-drawer, view-main {
+                margin-top: 40px;
             }
 
             view-footer {
-                @apply --flex;
-                @apply --flex-grow;
+                width: 100%;
             }
         </style>
         <x-grid>
