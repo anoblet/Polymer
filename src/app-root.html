@@ -68,7 +68,12 @@
                 this.Controller = this.shadowRoot.querySelector("app-controller");
 
                 // Allow the location property to be written to
-                this.set("data.location", {});
+                let location = {
+                    city: {},
+                    state: {},
+                    country: {}
+                }
+                this.set("data.location", location);
             }
         }
 
