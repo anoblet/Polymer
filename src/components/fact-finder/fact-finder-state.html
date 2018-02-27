@@ -15,6 +15,9 @@
         <fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>
     </template>
     <script>
+        /**
+         * @todo Not recieving the correct state abbreviation
+         */
         class FactFinderState extends Polymer.Element {
             static get is() {
                 return 'fact-finder-state';
@@ -22,62 +25,46 @@
 
             static get properties() {
                 return {
-                    // Input
-                    stateName: {
-                        type: String,
-                        observer: '_stateChanged'
-                    },
                     abbreviation: {
                         type: String
                     },
-                    geoId: {
-                        type: String,
-                        computed: '_stateIdChanged(stateId)',
-                        notify: true
-                    },
-                    stateId: {
-                        type: String
-                    },
                     data: {
-                        type: Object,
+                        type: Array,
                         observer: '_dataChanged',
                         notify: true
                     },
-                    index: {
-                        type: Number,
+                    geographyId: {
+                        type: String,
                         notify: true
+                    },
+                    index: {
+                        type: String,
+                        notify: true
+                    },
+                    name: {
+                        type: String,
+                        observer: '_nameChanged'
                     }
                 }
             }
 
-            _stateChanged(state) {
-                // console.log(state);
-                this._map(state, this.data);
+            _dataChanged(data) {
+                this._map();
             }
 
-            _map(stateName, data) {
-                // console.log(stateName);
-                // console.log(data);
-                if(this.stateName) {
-                    if (this.data) {
-                        for (let i = 0; i < this.data.length; i++) {
-                            if (this.stateName == this.data[i][1][1]) {
-                                this.set("index", i);
-                                this.set("stateId", this.data[i][0][1]);
-                            }
+            _map() {
+                if(this.data) {
+                    for(let i=0; i < this.data.length; i++) {
+                        if(this.data[i][1][1] == this.name) {
+                            this.set('geographyId',this.data[i][0][1]);
                         }
                     }
                 }
             }
 
-            _stateIdChanged(stateId) {
-                // console.log(stateId);
-                return "0400000US" + stateId;
-            }
-
-            _dataChanged(data) {
-                // console.log(data);
-                this._map(this.stateName, data);
+            _nameChanged(name) {
+                console.log(name);
+                this._map();
             }
         }
 
