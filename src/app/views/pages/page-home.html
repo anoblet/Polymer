@@ -6,9 +6,9 @@
 <link rel="import" href="../../../components/app-data.html">
 <link rel="import" href="../../views/charts/chart-map-state.html">
 <link rel="import" href="../../views/charts/chart-map-country.html">
-<link rel="import" href="../../views/tile/tile-text-city-name.html">
-<link rel="import" href="../../views/tile/tile-text-state-name.html">
-<link rel="import" href="../../views/tile/tile-text-country-name.html">
+<link rel="import" href="../tiles/tile-text-city-name.html">
+<link rel="import" href="../tiles/tile-text-state-name.html">
+<link rel="import" href="../tiles/tile-text-country-name.html">
 
 <dom-module id="page-home">
     <template>
@@ -27,7 +27,7 @@
                     <a href="/city">My City</a>
                 </div>
                 <div class="card-content center">
-                    <tile-text-city-name name="[[city.name]]"></tile-text-city-name>
+                    <tiles-text-city-name name="[[city.name]]"></tiles-text-city-name>
                 </div>
                 <div class="card-actions">
                     <a href="/state">
