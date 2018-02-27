@@ -1,4 +1,4 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 
 <dom-module id="chart-pie-terrain">
     <template>
@@ -7,9 +7,10 @@
                 width: 100%;
             }
         </style>
+        <google-chart-responsive type="pie" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
+
         <fact-finder program="DEC" _dataset="10_SF1" table="G001" geo-id="[[geographyId]]" data-element-id="AREALAND,AREAWATR" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
         <fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>
-        <google-chart-responsive type="pie" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
     </template>
     <script>
         class ChartPieTerrain extends Polymer.Element {
@@ -47,9 +48,6 @@
                 chartData.unshift(["Type", "Area"])
                 console.log(chartData);
                 return chartData;
-                chartData = [["test","test"], ["test", 1]]
-                return chartData;
-                console.log("F");
             }
         }
         window.customElements.define(ChartPieTerrain.is, ChartPieTerrain);
