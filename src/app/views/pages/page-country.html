@@ -1,6 +1,7 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
 <link rel="import" href="../../../../lib/map-property/map-property.html">
 <link rel="import" href="../../../components/my-card/my-card.html">
@@ -19,6 +20,11 @@
         <app-data data="{{data}}"></app-data>
         <map-property source="[[data.location.country]]" target="{{country}}"></map-property>
         <my-grid>
+            <my-card ratio="4:3" href="javascript:history.back()">
+                <div class="card-content center">
+                    <paper-icon-button icon="arrow-back" noink></paper-icon-button>
+                </div>
+            </my-card>
             <my-card ratio="4:3">
                 <div class="card-content">
                     <chart-map-country></chart-map-country>
