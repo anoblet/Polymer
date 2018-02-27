@@ -17,6 +17,11 @@
         <map-property source="[[data.location.state.name]]" target="{{name}}"></map-property>
         <fact-finder-state state-name="{{name}}" geo-id="{{geographyId}}"></fact-finder-state>
         <my-grid>
+            <my-card ratio="16:9" href="javascript:history.back()">
+                <div class="card-content center">
+                    <paper-icon-button icon="arrow-back" noink></paper-icon-button>
+                </div>
+            </my-card>
             <my-card ratio="16:9">
                 <div class="card-content flex-center">
                     <select-state name="{{name}}" geography-id="{{geographyId}}"></select-state>
