@@ -31,7 +31,7 @@
                     },
                     name: {
                         type: String,
-                        observer: '_nameChanged',
+                        // observer: '_nameChanged',
                         notify: true
                     }
                 }
@@ -41,17 +41,16 @@
                 return state[1][1];
             }
 
-            _nameChanged(name) {
-                console.log(name);
-            }
-
             _selectedChanged(selected) {
                 // console.log(selected);
-                this.name = this.data[selected][1][1];
-                this.geographyId = "0400000US" + this.data[selected][0][1];
+                if (this.data) {
+                    this.set("name", this.data[selected][1][1]);
+                    // this.geographyId = "0400000US" + this.data[selected][0][1];
+                }
                 // console.log(this.geographyId);
             }
         }
+
         window.customElements.define(SelectState.is, SelectState);
     </script>
 </dom-module>

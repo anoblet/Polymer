@@ -16,7 +16,7 @@
     </template>
     <script>
         /**
-         * @todo Not recieving the correct state abbreviation
+         * @todo Not receiving the correct state abbreviation
          */
         class FactFinderState extends Polymer.Element {
             static get is() {
@@ -56,14 +56,15 @@
                 if(this.data) {
                     for(let i=0; i < this.data.length; i++) {
                         if(this.data[i][1][1] == this.name) {
-                            this.set('geographyId',this.data[i][0][1]);
+                            this.set('index', i);
+                            this.set('geographyId', "0400000US" + this.data[i][0][1]);
                         }
                     }
                 }
             }
 
             _nameChanged(name) {
-                console.log(name);
+                // console.log(name);
                 this._map();
             }
         }
