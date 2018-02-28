@@ -30,7 +30,10 @@
             }
 
             _mapData(data) {
-                return data[0][0][1];
+                // console.log("Mapping");
+                let population = data[0][0][1];
+                let formatted = population.toLocaleString()
+                return population;
             }
         }
         window.customElements.define(ChartTextPopulation.is, ChartTextPopulation);
