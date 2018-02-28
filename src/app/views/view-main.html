@@ -9,17 +9,18 @@
                 width: 100%;
                 padding: 1rem;
             }
+
+            .grid[rows="3"] {
+                grid-template-rows: repeat(3, 1fr);
+            }
         </style>
         <main class="grid">
             <slot></slot>
-            <div class="grid grid-3">
-                <div>&nbsp;</div>
-                <my-card ratio="16:9">
-                    <div class="card-content center">
-                        <my-paypal></my-paypal>
-                    </div>
-                </my-card>
-                <div>&nbsp;</div>
+            <my-card>
+                <div class="card-content center">
+                    <my-paypal></my-paypal>
+                </div>
+            </my-card>
             </div>
         </main>
     </template>

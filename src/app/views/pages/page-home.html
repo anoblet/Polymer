@@ -98,38 +98,49 @@
                 </div>
             </my-card>
             -->
-            <my-card ratio="16:9" href="/state">
-                <div class="card-title">
-                    <a href="/state">My State</a>
-                </div>
-                <div class="card-content">
-                    <chart-map-state name="[[state.name]]"></chart-map-state>
-                </div>
-                <div class="card-actions">
-                    <a href="/state">
-                        <paper-button>More</paper-button>
-                    </a>
-                </div>
-            </my-card>
-            <my-card ratio="16:9" href="/country">
-                <div class="card-title">
-                    <a href="/country">My Country</a>
-                </div>
-                <div class="card-content">
-                    <chart-map-country></chart-map-country>
-                </div>
-                <div class="card-actions">
-                    <a href="/country">
-                        <paper-button>More</paper-button>
-                    </a>
-                </div>
-            </my-card>
+            <template is="dom-if" if="[[complex]]">
+                <my-card ratio="16:9" href="/state">
+                    <div class="card-title">
+                        <a href="/state">My State</a>
+                    </div>
+                    <div class="card-content">
+                        <chart-map-state name="[[state.name]]"></chart-map-state>
+                    </div>
+                    <div class="card-actions">
+                        <a href="/state">
+                            <paper-button>More</paper-button>
+                        </a>
+                    </div>
+                </my-card>
+                <my-card ratio="16:9" href="/country">
+                    <div class="card-title">
+                        <a href="/country">My Country</a>
+                    </div>
+                    <div class="card-content">
+                        <chart-map-country></chart-map-country>
+                    </div>
+                    <div class="card-actions">
+                        <a href="/country">
+                            <paper-button>More</paper-button>
+                        </a>
+                    </div>
+                </my-card>
+            </template>
         </my-grid>
     </template>
     <script>
         class PageHome extends Polymer.Element {
             static get is() {
                 return 'page-home';
+            }
+
+            static get properties() {
+                return {
+                    complex: {
+                        type: Boolean,
+                        value: false
+                    }
+                }
             }
         }
 
