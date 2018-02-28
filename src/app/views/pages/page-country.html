@@ -10,8 +10,8 @@
 <link rel="import" href="../../views/charts/chart-map-country.html">
 <link rel="import" href="../../views/charts/chart-bar-population-country.html">
 <link rel="import" href="../../views/charts/chart-text-population.html">
-<link rel="import" href="../../views/charts/chart-pie-country-terrain.html">
-<link rel="import" href="../../views/charts/chart-pie-country-gender.html">
+<link rel="import" href="../../views/charts/chart-pie-terrain.html">
+<link rel="import" href="../../views/charts/chart-pie-gender.html">
 <link rel="import" href="../../views/charts/chart-bar-gender.html">
 
 <dom-module id="page-country">
@@ -44,13 +44,13 @@
             <my-card ratio="16:9">
                 <div class="card-title">Terrain</div>
                 <div class="card-content">
-                    <chart-pie-country-terrain></chart-pie-country-terrain>
+                    <chart-pie-terrain geography-id="0100000US"></chart-pie-terrain>
                 </div>
             </my-card>
             <my-card ratio="16:9">
                 <div class="card-title">Gender</div>
                 <div class="card-content">
-                    <chart-pie-country-gender></chart-pie-country-gender>
+                    <chart-pie-gender geography-id="0100000US"></chart-pie-gender>
                 </div>
             </my-card>
             <my-card ratio="16:9" rows="2" columns="2">
@@ -65,14 +65,6 @@
         class PageCountry extends Polymer.Element {
             static get is() {
                 return 'page-country';
-            }
-
-            static get properties() {
-                return {}
-            }
-
-            static get observers() {
-                return []
             }
         }
 
