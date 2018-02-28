@@ -4,7 +4,7 @@
 
 <dom-module id="view-main">
     <template>
-        <style include="">
+        <style include="global-styles app-styles">
             :host {
                 @apply --flex;
                 @apply --flex-grow;
@@ -18,9 +18,17 @@
                 flex-direction: column;
             }
         </style>
-        <main>
+        <main class="grid">
             <slot></slot>
-            <my-paypal></my-paypal>
+            <div class="grid grid-3">
+                <div>&nbsp;</div>
+                <my-card ratio="16:9">
+                    <div class="card-content center">
+                        <my-paypal></my-paypal>
+                    </div>
+                </my-card>
+                <div>&nbsp;</div>
+            </div>
         </main>
     </template>
     <script>

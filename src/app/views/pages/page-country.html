@@ -20,17 +20,17 @@
         <app-data data="{{data}}"></app-data>
         <map-property source="[[data.location.country]]" target="{{country}}"></map-property>
         <my-grid>
-            <my-card ratio="4:3" href="javascript:history.back()">
+            <my-card ratio="16:9" href="javascript:history.back()">
                 <div class="card-content center">
                     <paper-icon-button icon="arrow-back" noink></paper-icon-button>
                 </div>
             </my-card>
-            <my-card ratio="4:3">
+            <my-card ratio="16:9">
                 <div class="card-content">
                     <chart-map-country></chart-map-country>
                 </div>
             </my-card>
-            <my-card ratio="4:3">
+            <my-card ratio="16:9">
                 <div class="card-title">Population</div>
                 <div class="card-content flex-center">
                     <chart-text-population geo-id="0100000US"></chart-text-population>
@@ -41,19 +41,19 @@
                     </paper-button>
                 </div>
             </my-card>
-            <my-card ratio="4:3">
+            <my-card ratio="16:9">
                 <div class="card-title">Terrain</div>
                 <div class="card-content">
                     <chart-pie-country-terrain></chart-pie-country-terrain>
                 </div>
             </my-card>
-            <my-card ratio="4:3">
+            <my-card ratio="16:9">
                 <div class="card-title">Gender</div>
                 <div class="card-content">
                     <chart-pie-country-gender></chart-pie-country-gender>
                 </div>
             </my-card>
-            <my-card ratio="4:3" rows="2" columns="2">
+            <my-card ratio="16:9" rows="2" columns="2">
                 <div class="card-title">Gender</div>
                 <div class="card-content">
                     <chart-bar-gender geo-id="0100000US"></chart-bar-gender>
