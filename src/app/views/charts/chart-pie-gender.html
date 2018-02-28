@@ -24,24 +24,33 @@
                 return {
                     chartData: {
                         type: Array,
-                        computed: '_computeChartData(data)'
+                        computed: '_chartData(data)'
                     },
                     geographyId: {
                         type: String
+                    },
+                    options: {
+                        type: Object,
+                        value: function() {
+                            return {
+                                legend: {
+                                    position: 'top',
+                                    alignment: 'center'
+                                }
+                            }
+                        }
                     }
                 }
             }
 
-            _computeChartData(data) {
-                data = data[0];
-                console.log(data);
+            _chartData(data) {
+                // console.log(data);
+                let newData = data[0];
                 let chartData = [];
                 chartData.push(["Gender", "Total"]);
-                chartData.push(["Male", data[1][1]]);
-                chartData.push(["Female", data[25][1]]);
-
-                console.log(chartData);
-
+                chartData.push(["Male", newData[1][1]]);
+                chartData.push(["Female", newData[25][1]]);
+                // console.log(chartData);
                 return chartData;
             }
         }
