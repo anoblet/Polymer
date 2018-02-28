@@ -30,7 +30,7 @@
         <map-property source="[[data.location.state]]" target="{{state}}"></map-property>
         <my-grid>
             <!--
-            <my-card ratio="16:9" href="/city">
+            <my-card ratio="[[ratio]]" href="/city">
                 <div class="card-title">
                     <a href="/city">My City</a>
                 </div>
@@ -44,7 +44,7 @@
                 </div>
             </my-card>
             -->
-            <my-card id="state" ratio="16:9" href="/state">
+            <my-card id="state" ratio="[[ratio]]" href="/state">
                 <div class="card-title">
                     <a href="/state">My State</a>
                 </div>
@@ -57,7 +57,7 @@
                     </a>
                 </div>
             </my-card>
-            <my-card id="country" ratio="16:9" href="/country">
+            <my-card id="country" ratio="[[ratio]]" href="/country">
                 <div class="card-title">
                     <a href="/country">My Country</a>
                 </div>
@@ -70,7 +70,7 @@
                     </a>
                 </div>
             </my-card>
-            <my-card ratio="16:9" href="/country">
+            <my-card ratio="[[ratio]]" href="/country">
                 <div class="card-title">
                     <a href="/country">My County</a>
                 </div>
@@ -84,7 +84,7 @@
                 </div>
             </my-card>
             <!--
-            <my-card ratio="16:9" href="/country">
+            <my-card ratio="[[ratio]]" href="/country">
                 <div class="card-title">
                     <a href="/country">My City</a>
                 </div>
@@ -99,7 +99,7 @@
             </my-card>
             -->
             <template is="dom-if" if="[[complex]]">
-                <my-card ratio="16:9" href="/state">
+                <my-card ratio="[[ratio]]" href="/state">
                     <div class="card-title">
                         <a href="/state">My State</a>
                     </div>
@@ -112,7 +112,7 @@
                         </a>
                     </div>
                 </my-card>
-                <my-card ratio="16:9" href="/country">
+                <my-card ratio="[[ratio]]" href="/country">
                     <div class="card-title">
                         <a href="/country">My Country</a>
                     </div>
@@ -139,6 +139,10 @@
                     complex: {
                         type: Boolean,
                         value: false
+                    },
+                    ratio: {
+                        type: String,
+                        value: "4:3"
                     }
                 }
             }
