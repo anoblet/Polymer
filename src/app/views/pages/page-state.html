@@ -17,7 +17,7 @@
         <style include="global-styles app-styles"></style>
         <app-data data="{{data}}"></app-data>
         <map-property source="{{data.location.state.name}}" target="{{name}}"></map-property>
-        <fact-finder-state name="{{name}}" geo-id="{{geographyId}}"></fact-finder-state>
+        <fact-finder-state name="{{name}}" geography-id="{{geographyId}}"></fact-finder-state>
         <my-grid>
             <my-card ratio="16:9" href="javascript:history.back()">
                 <div class="card-content center">
@@ -43,7 +43,7 @@
             <my-card ratio="16:9" rows="2" columns="2">
                 <div class="card-title">Gender by Age</div>
                 <div class="card-content">
-                    <chart-bar-gender geo-id="[[geographyId]]"></chart-bar-gender>
+                    <chart-bar-gender geography-id="[[geographyId]]"></chart-bar-gender>
                 </div>
             </my-card>
             <my-card ratio="16:9">

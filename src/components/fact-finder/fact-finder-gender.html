@@ -3,7 +3,7 @@
 <link rel="import" href="./fact-finder-adapter.html">
 <dom-module id="fact-finder-gender">
     <template>
-        <fact-finder program="DEC" _dataset="10_SF1" table="P12" geo-id="[[geoId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+        <fact-finder program="DEC" _dataset="10_SF1" table="P12" geography-id="[[geographyId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
         <fact-finder-adapter input="[[response]]" output="{{data}}" target="googleCharts"></fact-finder-adapter>
     </template>
     <script>
@@ -18,7 +18,7 @@
                         type: Object,
                         notify: true
                     },
-                    geoId: {
+                    geographyId: {
                         type: String
                     }
                 }

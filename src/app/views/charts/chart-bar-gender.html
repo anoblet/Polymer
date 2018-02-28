@@ -9,7 +9,7 @@
                 width: 100%;
             }
         </style>
-        <fact-finder-gender geo-id=[[geoId]] data="{{data}}"></fact-finder-gender>
+        <fact-finder-gender geography-id=[[geographyId]] data="{{data}}"></fact-finder-gender>
         <google-chart-responsive type="bar" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
     </template>
     <script>
@@ -24,7 +24,7 @@
                         type: Array,
                         computed: '_computeChartData(data)'
                     },
-                    geoId: {
+                    geographyId: {
                         type: String
                     },
                     options: {

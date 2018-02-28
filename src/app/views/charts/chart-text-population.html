@@ -3,7 +3,7 @@
 
 <dom-module id="chart-text-population">
     <template>
-        <fact-finder-population geo-id="[[geoId]]" response="{{response}}"></fact-finder-population>
+        <fact-finder-population geography-id="[[geographyId]]" response="{{response}}"></fact-finder-population>
         <fact-finder-adapter input="[[response]]" output="{{data}}" target="googleCharts"></fact-finder-adapter>
         [[population]]
     </template>
@@ -15,7 +15,7 @@
 
             static get properties() {
                 return {
-                    geoId: {
+                    geographyId: {
                         type: String
                     },
                     data: {
