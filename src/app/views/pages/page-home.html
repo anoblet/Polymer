@@ -13,6 +13,14 @@
 <dom-module id="page-home">
     <template>
         <style include="global-styles app-styles">
+            my-grid > * {
+                order: 3;
+            }
+
+            #country {
+                order: 1;
+            }
+
             #state {
                 order: 2;
             }
@@ -49,7 +57,7 @@
                     </a>
                 </div>
             </my-card>
-            <my-card ratio="16:9" href="/country">
+            <my-card id="country" ratio="16:9" href="/country">
                 <div class="card-title">
                     <a href="/country">My Country</a>
                 </div>
@@ -62,6 +70,34 @@
                     </a>
                 </div>
             </my-card>
+            <my-card ratio="16:9" href="/country">
+                <div class="card-title">
+                    <a href="/country">My County</a>
+                </div>
+                <div class="card-content center">
+                    <tile-text-country-name name="County"></tile-text-country-name>
+                </div>
+                <div class="card-actions">
+                    <a href="/country">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            <!--
+            <my-card ratio="16:9" href="/country">
+                <div class="card-title">
+                    <a href="/country">My City</a>
+                </div>
+                <div class="card-content center">
+                    <tile-text-country-name name="City"></tile-text-country-name>
+                </div>
+                <div class="card-actions">
+                    <a href="/country">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            -->
             <my-card ratio="16:9" href="/state">
                 <div class="card-title">
                     <a href="/state">My State</a>
