@@ -33,7 +33,7 @@
             <my-card ratio="16:9">
                 <div class="card-title">Population</div>
                 <div class="card-content flex-center">
-                    <chart-text-population geography-id="0100000US"></chart-text-population>
+                    <chart-text-population geography-id="[[geographyId]]"></chart-text-population>
                 </div>
                 <div class="card-actions">
                     <paper-button>
@@ -44,19 +44,19 @@
             <my-card ratio="16:9">
                 <div class="card-title">Terrain</div>
                 <div class="card-content">
-                    <chart-pie-terrain geography-id="0100000US"></chart-pie-terrain>
+                    <chart-pie-terrain geography-id="[[geographyId]]"></chart-pie-terrain>
                 </div>
             </my-card>
             <my-card ratio="16:9">
                 <div class="card-title">Gender</div>
                 <div class="card-content">
-                    <chart-pie-gender geography-id="0100000US"></chart-pie-gender>
+                    <chart-pie-gender geography-id="[[geographyId]]"></chart-pie-gender>
                 </div>
             </my-card>
             <my-card ratio="16:9" rows="2" columns="2">
                 <div class="card-title">Gender</div>
                 <div class="card-content">
-                    <chart-bar-gender geography-id="0100000US"></chart-bar-gender>
+                    <chart-bar-gender geography-id="[[geographyId]]"></chart-bar-gender>
                 </div>
             </my-card>
         </my-grid>
@@ -65,6 +65,15 @@
         class PageCountry extends Polymer.Element {
             static get is() {
                 return 'page-country';
+            }
+
+            static get properties() {
+                return {
+                    geographyId: {
+                        type: String,
+                        value: "0100000US"
+                    }
+                }
             }
         }
 
