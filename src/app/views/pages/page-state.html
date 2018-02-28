@@ -18,26 +18,27 @@
         <style include="global-styles app-styles"></style>
         <app-data data="{{data}}"></app-data>
         <map-property source="{{data.location.state.name}}" target="{{name}}"></map-property>
+        <map-property source="[[data.configuration.cardRatio]]" target="{{cardRatio}}"></map-property>
         <fact-finder-state name="{{name}}" geography-id="{{geographyId}}"></fact-finder-state>
         <my-grid>
-            <my-card ratio="[[ratio]]" href="javascript:history.back()">
+            <my-card ratio="[[cardRatio]]" href="javascript:history.back()">
                 <div class="card-content center">
                     <paper-icon-button icon="arrow-back" noink></paper-icon-button>
                 </div>
             </my-card>
             <template is="dom-if" if="[[selectState]]">
-                <my-card ratio="[[ratio]]">
+                <my-card ratio="[[cardRatio]]">
                     <div class="card-content flex-center">
                         <select-state name="{{name}}" geography-id="{{geographyId}}"></select-state>
                     </div>
                 </my-card>
             </template>
-            <my-card ratio="[[ratio]]">
+            <my-card ratio="[[cardRatio]]">
                 <div class="card-content">
                     <chart-map-state name="[[name]]"></chart-map-state>
                 </div>
             </my-card>
-            <my-card ratio="[[ratio]]">
+            <my-card ratio="[[cardRatio]]">
                 <div class="card-title">Population</div>
                 <div class="card-content flex-center">
                     <chart-text-population geography-id="0100000US"></chart-text-population>
@@ -48,35 +49,35 @@
                     </paper-button>
                 </div>
             </my-card>
-            <my-card ratio="[[ratio]]">
+            <my-card ratio="[[cardRatio]]">
                 <div class="card-title">Terrain</div>
                 <div class="card-content">
                     <chart-pie-terrain geography-id="{{geographyId}}"></chart-pie-terrain>
                 </div>
             </my-card>
-            <my-card ratio="[[ratio]]">
+            <my-card ratio="[[cardRatio]]">
                 <div class="card-title">Gender</div>
                 <div class="card-content">
                     <chart-pie-gender geography-id="[[geographyId]]"></chart-pie-gender>
                 </div>
             </my-card>
-            <my-card ratio="[[ratio]]" rows="2" columns="2">
+            <my-card ratio="[[cardRatio]]" rows="2" columns="2">
                 <div class="card-title">Gender by Age</div>
                 <div class="card-content">
                     <chart-bar-gender geography-id="[[geographyId]]"></chart-bar-gender>
                 </div>
             </my-card>
-            <my-card ratio="[[ratio]]">
+            <my-card ratio="[[cardRatio]]">
                 <div class="card-content">
                     test
                 </div>
             </my-card>
-            <my-card ratio="[[ratio]]">
+            <my-card ratio="[[cardRatio]]">
                 <div class="card-content">
                     test
                 </div>
             </my-card>
-            <my-card ratio="[[ratio]]">
+            <my-card ratio="[[cardRatio]]">
                 <div class="card-content">
                     test
                 </div>
