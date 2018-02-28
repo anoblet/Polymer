@@ -13,6 +13,7 @@
         <map-object source="{{data.configuration}}" target="{{configuration}}"></map-object>
         <map-object source="{{data.configuration.toolbar}}" target="{{toolbar}}"></map-object>
         <map-object source="{{data.configuration.menu}}" target="{{menu}}"></map-object>
+        <map-property source="{{data.configuration.cardRatio}}" target="{{cardRatio}}"></map-property>
         <my-grid>
             <my-card>
                 <div class="card-title">Settings</div>
@@ -29,6 +30,15 @@
                             <paper-item>Right</paper-item>
                         </paper-listbox>
                     </paper-dropdown-menu>
+                    <template is="dom-if" if="[[advanced]]">
+                        <paper-dropdown-menu label="Card ratio" selected-item-label="{{cardRatio}}">
+                            <paper-listbox slot="dropdown-content" >
+                                <paper-item>1:1</paper-item>
+                                <paper-item>3:2</paper-item>
+                                <paper-item>4:3</paper-item>
+                            </paper-listbox>
+                        </paper-dropdown-menu>
+                    </template>
                 </div>
             </my-card>
         </my-grid>
@@ -50,6 +60,14 @@
                         type: String,
                         value: 0,
                         notify: true
+                    },
+                    cardRatio: {
+                        type: String,
+                        notify: true
+                    },
+                    advanced: {
+                        type: Boolean,
+                        value: true
                     }
                 }
             }

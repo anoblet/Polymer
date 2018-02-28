@@ -80,6 +80,38 @@
             .grid.grid-3 {
                 grid-template-columns: repeat(3, 1fr);
             }
+            
+            /* Ratio */
+
+            [ratio] {
+                position: relative;
+            }
+
+            [ratio]::before {
+                display: block;
+                content: '';
+                box-sizing: border-box;
+            }
+
+            [ratio="1:1"]::before {
+                padding-bottom: 100%;
+            }
+
+            [ratio="3:2"]::before {
+                padding-bottom: 66%;
+            }
+
+            [ratio="4:3"]::before {
+                padding-bottom: 75%;
+            }
+
+            [ratio="8:5"]::before {
+                padding-bottom: 62.5%;
+            }
+
+            [ratio="16:9"]::before {
+                padding-bottom: 56.25%;
+            }
         </style>
     </template>
     <script>
