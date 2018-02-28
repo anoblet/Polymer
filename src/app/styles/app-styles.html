@@ -71,7 +71,13 @@
                 height: auto;
             }
 
-            .grid-3 {
+            /* Grid */
+
+            .grid.auto {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+
+            .grid.grid-3 {
                 grid-template-columns: repeat(3, 1fr);
             }
         </style>
