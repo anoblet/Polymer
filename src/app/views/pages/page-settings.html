@@ -1,4 +1,5 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
@@ -18,27 +19,38 @@
             <my-card>
                 <div class="card-title">Settings</div>
                 <div class="card-content">
-                    <paper-dropdown-menu label="Toolbar Placement">
-                        <paper-listbox slot="dropdown-content" selected="{{toolbar}}">
-                            <paper-item>Top</paper-item>
-                            <paper-item>Bottom</paper-item>
-                        </paper-listbox>
-                    </paper-dropdown-menu>
-                    <paper-dropdown-menu label="Menu Placement">
-                        <paper-listbox slot="dropdown-content" selected="{{menu}}">
-                            <paper-item>Left</paper-item>
-                            <paper-item>Right</paper-item>
-                        </paper-listbox>
-                    </paper-dropdown-menu>
-                    <template is="dom-if" if="[[advanced]]">
-                        <paper-dropdown-menu label="Card ratio" selected-item-label="{{cardRatio}}">
-                            <paper-listbox slot="dropdown-content">
-                                <paper-item>1:1</paper-item>
-                                <paper-item>3:2</paper-item>
-                                <paper-item>4:3</paper-item>
-                            </paper-listbox>
-                        </paper-dropdown-menu>
-                    </template>
+                    <div class="grid" style="width: 100%;">
+                        <div>
+                            <paper-dropdown-menu label="Toolbar Placement">
+                                <paper-listbox slot="dropdown-content" selected="{{toolbar}}">
+                                    <paper-item>Top</paper-item>
+                                    <paper-item>Bottom</paper-item>
+                                </paper-listbox>
+                            </paper-dropdown-menu>
+                        </div>
+                        <div>
+                            <paper-dropdown-menu label="Menu Placement">
+                                <paper-listbox slot="dropdown-content" selected="{{menu}}">
+                                    <paper-item>Left</paper-item>
+                                    <paper-item>Right</paper-item>
+                                </paper-listbox>
+                            </paper-dropdown-menu>
+                        </div>
+                        <div>
+                            <paper-checkbox checked="{{advanced}}">Advanced</paper-checkbox>
+                        </div>
+                        <template is="dom-if" if="[[advanced]]">
+                            <div>
+                                <paper-dropdown-menu label="Card ratio" selected-item-label="{{cardRatio}}">
+                                    <paper-listbox slot="dropdown-content">
+                                        <paper-item>1:1</paper-item>
+                                        <paper-item>3:2</paper-item>
+                                        <paper-item>4:3</paper-item>
+                                    </paper-listbox>
+                                </paper-dropdown-menu>
+                            </div>
+                        </template>
+                    </div>
                 </div>
             </my-card>
         </my-grid>
@@ -63,6 +75,7 @@
                     },
                     cardRatio: {
                         type: String,
+                        value: "3:2",
                         notify: true
                     },
                     advanced: {
