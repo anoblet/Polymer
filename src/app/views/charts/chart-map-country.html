@@ -59,7 +59,7 @@
                 let chartData = [];
                 // chartData.push(["country"]);
                 chartData.push(["state"]);
-                if(data) {
+                if (data) {
                     for (let i = 0; i < data.length; i++) {
                         chartData.push([data[i][0][1]]);
                     }
@@ -71,7 +71,8 @@
 
             _selectionChanged(event) {
                 let row = event.detail.value[0].row;
-                row++;
+                let state = this.chartData[row + 1];
+                this.set("state", state)
                 console.log(this.chartData[row]);
             }
 
