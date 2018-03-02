@@ -4,7 +4,7 @@ analyze.txt
 bower_components
 build
 lib
-lint.txt
+Lint.txt
 node_modules
 polymer.iml
 staging
