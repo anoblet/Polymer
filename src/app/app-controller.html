@@ -9,7 +9,7 @@
         <iron-location path="{{__path}}" use-hash-as-path></iron-location>
         -->
         <app-location route="{{route}}"></app-location>
-        <app-route route="{{route}}" pattern="/:view" data="{{routeData}}" tail="{{subroute}}"></app-route>
+        <app-route route="{{route}}" pattern="/:view" data="{{routeData}}" tail="{{subRoute}}"></app-route>
         <!--
         <app-route route="{{route}}" pattern="/state/:state" data="{{routeData}}" tail="{{subroute}}"></app-route>
         -->
@@ -29,7 +29,14 @@
             }
 
             static get properties() {
-                return {}
+                return {
+                    routeData: {
+                        type: Object
+                    },
+                    subRoute: {
+                        type: Object
+                    }
+                }
             }
 
             static get observers() {
@@ -96,7 +103,7 @@
                 let view = Application.shadowRoot.querySelector('app-view');
                 // .shadowRoot.querySelector("view-main");
                 view.set("routeData", this.routeData);
-                view.set("subroute", this.subroute);
+                view.set("subRoute", this.subRoute);
             }
         }
 
