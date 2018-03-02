@@ -17,9 +17,7 @@
     <template>
         <style include="global-styles app-styles"></style>
         <app-data data="{{data}}"></app-data>
-<!--
-        <map-property source="{{data.location.state.name}}" target="{{name}}"></map-property>
--->
+        <!-- <map-property source="{{data.location.state.name}}" target="{{name}}"></map-property> -->
         <map-property source="[[data.configuration.cardRatio]]" target="{{cardRatio}}"></map-property>
         <fact-finder-state name="{{name}}" geography-id="{{geographyId}}"></fact-finder-state>
         <app-route route="{{route}}" pattern="/:name" data="{{routeData}}"></app-route>
@@ -107,17 +105,11 @@
             static get observers() {
                 return [
                     '_columnsChanged(columns)',
-                    'routeChanged(route)',
                     'routeDataChanged(routeData)'
                 ]
             }
 
-            routeChanged(route) {
-                console.log(route);
-            }
-
             routeDataChanged(routeData) {
-                console.log(routeData);
                 this.set('name', routeData.name);
             }
 
