@@ -17,7 +17,7 @@
     <template>
         <style include="global-styles app-styles"></style>
         <app-data data="{{data}}"></app-data>
-        <!-- <map-property source="{{data.location.state.name}}" target="{{name}}"></map-property> -->
+        <!--<map-property source="{{data.location.state.name}}" target="{{name}}"></map-property> -->
         <map-property source="[[data.configuration.cardRatio]]" target="{{cardRatio}}"></map-property>
         <fact-finder-state name="{{name}}" geography-id="{{geographyId}}"></fact-finder-state>
         <app-route route="{{route}}" pattern="/:name" data="{{routeData}}"></app-route>
@@ -88,13 +88,16 @@
 
             static get properties() {
                 return {
+                    // Configuration
                     columns: {
                         type: Number,
                         value: 3
                     },
+                    // Parameter
                     geographyId: {
                         type: String
                     },
+                    // Configuration
                     selectState: {
                         type: Boolean,
                         value: true
