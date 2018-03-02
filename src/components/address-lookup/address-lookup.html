@@ -39,6 +39,14 @@
             static get is() {
                 return 'address-lookup';
             }
+
+            static get properties() {
+                return {
+                    location: {
+                        type: Object
+                    }
+                }
+            }
             _autocomplete() {
                 let input = this.$.autocomplete.inputElement.inputElement;
                 let autocomplete = new google.maps.places.Autocomplete(input, /* {types: ['(cities)']} */);
