@@ -11,7 +11,11 @@
             }
 
             static get properties() {
-                return {}
+                return {
+                    name: {
+                        type: String
+                    }
+                }
             }
         }
         window.customElements.define(TileTextCityName.is, TileTextCityName);
