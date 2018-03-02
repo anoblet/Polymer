@@ -93,7 +93,8 @@
                 console.log(route);
                 console.log(this.routeData);
                 // @todo Fix
-                let view = Application.shadowRoot.querySelector('app-view').shadowRoot.querySelector("view-main");
+                let view = Application.shadowRoot.querySelector('app-view');
+                // .shadowRoot.querySelector("view-main");
                 view.set("routeData", this.routeData);
                 view.set("subroute", this.subroute);
             }

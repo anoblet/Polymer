@@ -11,6 +11,12 @@
 <link rel="import" href="views/view-main.html">
 <link rel="import" href="views/view-footer.html">
 
+<link rel="import" href="views/pages/page-home.html">
+<link rel="import" href="views/pages/page-country.html">
+<!--<link rel="import" href="views/pages/page-county.html">-->
+<link rel="import" href="views/pages/page-settings.html">
+<link rel="import" href="views/pages/page-state.html">
+
 
 <dom-module id="app-view">
     <template>
@@ -50,7 +56,14 @@
                 </x-grid-column>
                 <x-grid-column flex>
                     <view-main>
-                        <slot></slot>
+                        <!--<slot></slot>-->
+                        <iron-pages selected="[[routeData.view]]" attr-for-selected="page-name">
+                            <page-home page-name=""></page-home>
+                            <page-country page-name="country"></page-country>
+                            <!--<page-county page-name="county"></page-county>-->
+                            <page-settings page-name="settings"></page-settings>
+                            <page-state page-name="state" route="{{subroute}}"></page-state>
+                        </iron-pages>
                     </view-main>
                 </x-grid-column>
             </x-grid-row>

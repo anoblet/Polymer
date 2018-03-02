@@ -1,10 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<link rel="import" href="./pages/page-home.html">
-<link rel="import" href="./pages/page-country.html">
-<!--<link rel="import" href="./pages/page-county.html">-->
-<link rel="import" href="./pages/page-settings.html">
-<link rel="import" href="./pages/page-state.html">
 <link rel="import" href="../../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../../bower_components/my-paypal/my-paypal.html">
 
@@ -21,16 +16,7 @@
             }
         </style>
         <main class="grid">
-            <!--
             <slot></slot>
-            -->
-            <iron-pages selected="[[routeData.view]]" attr-for-selected="page-name">
-                <page-home page-name=""></page-home>
-                <page-country page-name="country"></page-country>
-                <!--<page-county page-name="county"></page-county>-->
-                <page-settings page-name="settings"></page-settings>
-                <page-state page-name="state" route="{{subroute}}"></page-state>
-            </iron-pages>
             <my-card>
                 <div class="card-content center">
                     <my-paypal></my-paypal>
