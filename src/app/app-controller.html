@@ -10,7 +10,9 @@
         -->
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/:view" data="{{routeData}}" tail="{{subroute}}"></app-route>
+        <!--
         <app-route route="{{route}}" pattern="/state/:state" data="{{routeData}}" tail="{{subroute}}"></app-route>
+        -->
         <!--
         <app-route route="{{subroute}}" pattern="/:city" data="{{subrouteData}}"></app-route>
         -->
@@ -90,7 +92,9 @@
             routeChanged(route) {
                 console.log(route);
                 console.log(this.routeData);
-                Application.shadowRoot.querySelector('app-view').shadowRoot.querySelector("view-main").set("routeData", this.routeData);
+                let view = Application.shadowRoot.querySelector('app-view').shadowRoot.querySelector("view-main");
+                view.set("routeData", this.routeData);
+                view.set("subroute", this.subroute);
             }
         }
 

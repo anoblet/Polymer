@@ -22,7 +22,7 @@
 -->
         <map-property source="[[data.configuration.cardRatio]]" target="{{cardRatio}}"></map-property>
         <fact-finder-state name="{{name}}" geography-id="{{geographyId}}"></fact-finder-state>
-        [[name]]
+        <app-route route="{{route}}" pattern="/:name" data="{{routeData}}"></app-route>
         <my-grid>
             <my-card ratio="[[cardRatio]]" href="javascript:history.back()">
                 <div class="card-content center">
@@ -106,8 +106,19 @@
 
             static get observers() {
                 return [
-                    "_columnsChanged(columns)"
+                    '_columnsChanged(columns)',
+                    'routeChanged(route)',
+                    'routeDataChanged(routeData)'
                 ]
+            }
+
+            routeChanged(route) {
+                console.log(route);
+            }
+
+            routeDataChanged(routeData) {
+                console.log(routeData);
+                this.set('name', routeData.name);
             }
 
             _columnsChanged(columns) {

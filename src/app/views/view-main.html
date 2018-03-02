@@ -22,10 +22,10 @@
             <!--
             <slot></slot>
             -->
-            <iron-pages selected="[[routeData.view]]" attr-for-selected="name">
-                <page-home name=""></page-home>
-                <page-settings name="settings"></page-settings>
-                <page-state name="state" route="{{subroute}}"></page-state>
+            <iron-pages selected="[[routeData.view]]" attr-for-selected="page-name">
+                <page-home page-name=""></page-home>
+                <page-settings page-name="settings"></page-settings>
+                <page-state page-name="state" route="{{subroute}}"></page-state>
             </iron-pages>
             <my-card>
                 <div class="card-content center">
