@@ -61,7 +61,7 @@
                             <page-country page-name="country"></page-country>
                             <!--<page-county page-name="county"></page-county>-->
                             <page-settings page-name="settings"></page-settings>
-                            <page-state page-name="state" route="{{subroute}}"></page-state>
+                            <page-state page-name="state" route="{{subRoute}}"></page-state>
                         </iron-pages>
                     </view-main>
                 </x-grid-column>
@@ -75,6 +75,12 @@
         class AppView extends Polymer.Element {
             static get is() {
                 return 'app-view';
+            }
+
+            static get properties() {
+                routeData: {
+                    type: Object
+                }
             }
 
             connectedCallback() {
