@@ -116,7 +116,16 @@
             }
 
             routeDataChanged(routeData) {
-                this.set('name', routeData.name);
+                console.log(routeData);
+                if (routeData.name) {
+                    let nameArray = this.routeData.name.split("-");
+                    let newArray = [];
+                    for (let i = 0; i < nameArray.length; i++) {
+                        newArray.push(nameArray[i].charAt(0).toUpperCase() + nameArray[i].substr(1));
+                    }
+                    let name = newArray.join(" ");
+                    this.set('name', name);
+                }
             }
 
             _columnsChanged(columns) {
