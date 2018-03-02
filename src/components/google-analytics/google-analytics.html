@@ -1,0 +1,36 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="google-analytics">
+    <template>
+    </template>
+    <script>
+        class GoogleAnalytics extends Polymer.Element {
+            static get is() {
+                return 'google-analytics';
+            }
+
+            _pageChangedListener(page) {
+                console.log("Here");
+                console.log(page);
+                ga('set', 'page', page);
+                ga('send', 'pageview');
+            }
+
+            constructor() {
+                super();
+                this._boundListener = this._pageChangedListener.bind(this);
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                window.addEventListener('pageChanged', this._boundListener);
+            }
+
+            disconnectedCallback() {
+                super.disconnectedCallback();
+                window.removeEventListener('pageChanged', this._boundListener);
+            }
+        }
+        window.customElements.define(GoogleAnalytics.is, GoogleAnalytics);
+    </script>
+</dom-module>

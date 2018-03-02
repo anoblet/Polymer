@@ -57,7 +57,7 @@
                     }
                 }
 
-                console.log(route.src);
+                // console.log(route.src);
 
                 let view = Application.shadowRoot.querySelector('app-view');
 
@@ -71,6 +71,8 @@
                         view.appendChild(child);
                     });
                 }
+
+                window.dispatchEvent(new CustomEvent('pageChanged', __path));
             }
         }
 
