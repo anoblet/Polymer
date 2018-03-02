@@ -6,14 +6,16 @@
 <link rel="import" href="../../../../bower_components/neon-animation/web-animations.html">
 <link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
 <link rel="import" href="../../../components/my-card/my-card.html">
+<link rel="import" href="../../../components/app-data.html">
+<link rel="import" href="../../../../lib/map-property/map-property.html">
 
 <dom-module id="page-settings">
     <template>
         <style include="global-styles app-styles"></style>
         <app-data data="{{data}}"></app-data>
-        <map-object source="{{data.configuration}}" target="{{configuration}}"></map-object>
-        <map-object source="{{data.configuration.toolbar}}" target="{{toolbar}}"></map-object>
-        <map-object source="{{data.configuration.menu}}" target="{{menu}}"></map-object>
+        <map-property source="{{data.configuration}}" target="{{configuration}}"></map-property>
+        <map-property source="{{data.configuration.toolbar}}" target="{{toolbar}}"></map-property>
+        <map-property source="{{data.configuration.menu}}" target="{{menu}}"></map-property>
         <map-property source="{{data.configuration.cardRatio}}" target="{{cardRatio}}"></map-property>
         <my-grid>
             <my-card>
@@ -63,6 +65,9 @@
 
             static get properties() {
                 return {
+                    configuration: {
+                        type: Object
+                    },
                     toolbar: {
                         type: String,
                         value: 0,
