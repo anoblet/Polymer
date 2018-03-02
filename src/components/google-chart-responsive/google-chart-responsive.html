@@ -39,7 +39,7 @@
                 super.ready();
                 const childElement = this.shadowRoot.querySelector("google-chart");
                 childElement.addEventListener('selection-changed', this._selectionChanged.bind(this));
-                childElement.addEventListener('google-chart-select', this._selectionChanged.bind(this));
+                // childElement.addEventListener('google-chart-select', this._selectionChanged.bind(this));
             }
 
             connectedCallback() {
@@ -56,7 +56,8 @@
 
             _selectionChanged(event) {
                 console.log("Here");
-                var event = new CustomEvent('selection-changed', {bubbles: true, composed: true});
+                console.log(event);
+                var event = new CustomEvent('selection-changed', {bubbles: true, composed: true, detail: event.detail});
                 this.dispatchEvent(event)
             }
         }

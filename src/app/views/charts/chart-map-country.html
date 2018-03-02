@@ -70,7 +70,8 @@
             }
 
             _selectionChanged(event) {
-                console.log(event);
+                let row = event.detail.value[0].row;
+                row++;
             }
 
             ready() {
