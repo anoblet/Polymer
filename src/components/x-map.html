@@ -1,18 +1,19 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/google-map/google-map.html">
+<link rel="import" href="./app-data.html">
 
 <dom-module id="x-map">
     <template>
         <style>
             :host {
                 position: relative;
-                @apply(--flex);
-                @apply(--flex-auto);
+                @apply --flex;
+                @apply --flex-auto;
             }
 
             google-map {
-                @apply(--flex);
-                @apply(--flex-auto);
+                @apply --flex;
+                @apply --flex-auto;
                 height: auto;
                 padding-top: 100%;
             }
@@ -21,7 +22,7 @@
         <google-map latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk">
             <google-map-marker latitude="37.78" longitude="-122.4"></google-map-marker>
         </google-map>
-        <my-location data="{{location}}"></my-location>
+        <!--<my-location data="{{location}}"></my-location>-->
     </template>
 
     <script>
