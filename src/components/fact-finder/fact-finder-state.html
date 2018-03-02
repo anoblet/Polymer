@@ -53,11 +53,19 @@
             }
 
             _map() {
-                if(this.data) {
-                    for(let i=0; i < this.data.length; i++) {
-                        if(this.data[i][1][1] == this.name) {
-                            this.set('index', i);
-                            this.set('geographyId', "0400000US" + this.data[i][0][1]);
+                if (this.data) {
+                    if(this.name) {
+                        let nameArray = this.name.split("-");
+                        let newArray = [];
+                        for (let i = 0; i < nameArray.length; i++) {
+                            newArray.push(nameArray[i].charAt(0).toUpperCase() + nameArray[i].substr(1));
+                        }
+                        let newName = newArray.join(" ");
+                        for (let i = 0; i < this.data.length; i++) {
+                            if (this.data[i][1][1] == newName) {
+                                this.set('index', i);
+                                this.set('geographyId', "0400000US" + this.data[i][0][1]);
+                            }
                         }
                     }
                 }
