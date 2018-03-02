@@ -72,6 +72,7 @@
             _selectionChanged(event) {
                 let row = event.detail.value[0].row;
                 row++;
+                console.log(this.chartData[row]);
             }
 
             ready() {
