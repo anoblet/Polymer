@@ -8,6 +8,7 @@
     "src/app/views/pages/page-settings.html"
   ],
   "sources": [
+    "src/**/*"
   ],
   "extraDependencies": [
     "manifest.json",
