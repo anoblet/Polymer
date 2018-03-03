@@ -1,3 +1,6 @@
 Government
 
-@todo Charts
+Todo
+
+    * Charts
+    * Lazy load pages
