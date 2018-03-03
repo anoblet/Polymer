@@ -99,11 +99,19 @@
             routeChanged(route) {
                 console.log(route);
                 console.log(this.routeData);
+
+                // Lazy load new views
+                if (this.routeData) {
+                    let view = this.routeData.view || 'home';
+                    const resolvedPageUrl = this.resolveUrl('views/pages/page-' + view + '.html');
+                    Polymer.importHref(resolvedPageUrl, null);
+                }
+
                 // @todo Fix
-                let view = Application.shadowRoot.querySelector('app-view');
+                let container = Application.shadowRoot.querySelector('app-view');
                 // .shadowRoot.querySelector("view-main");
-                view.set("routeData", this.routeData);
-                view.set("subRoute", this.subRoute);
+                container.set("routeData", this.routeData);
+                container.set("subRoute", this.subRoute);
             }
         }
 
