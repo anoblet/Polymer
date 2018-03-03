@@ -5,7 +5,7 @@
     "src/app/views/pages/page-home.html",
     "src/app/views/pages/page-state.html",
     "src/app/views/pages/page-country.html",
-    "src/app/views/pages/page-settings.html",
+    "src/app/views/pages/page-settings.html"
   ],
   "sources": [
   ],
