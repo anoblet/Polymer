@@ -35,6 +35,10 @@
                         type: String,
                         // observer: '_nameChanged',
                         notify: true
+                    },
+                    redirect: {
+                        type: Boolean,
+                        value: false
                     }
                 }
             }
@@ -55,8 +59,10 @@
                     let newName = newArray.join("-");
                     if (this.data) {
                         this.set("name", name);
-                        window.history.pushState({}, null, 'state/' + newName);
-                        window.dispatchEvent(new CustomEvent('location-changed'));
+                        if(this.redirect) {
+                            window.history.pushState({}, null, 'state/' + newName);
+                            window.dispatchEvent(new CustomEvent('location-changed'));
+                        }
                         // this.geographyId = "0400000US" + this.data[selected][0][1];
                     }
                     // console.log(this.geographyId);
