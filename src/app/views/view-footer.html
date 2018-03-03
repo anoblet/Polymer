@@ -1,0 +1,41 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<!--
+<link rel="import" href="../../bower_components/social-links/social-link.html">
+-->
+
+<dom-module id="view-footer">
+    <template>
+        <style include="app-styles">
+            :host {
+                @apply --flex;
+                @apply --flex-grow;
+                justify-content: center;
+                background: var(--color-primary);
+                color: #fff;
+                padding: 1rem;
+            }
+        </style>
+        <footer>
+            &copy Andrew Noblet
+            <!--<social-link network="github" href="https://github.com/anoblet"></social-link>-->
+        </footer>
+    </template>
+    <script>
+        class ViewFooter extends Polymer.Element {
+            static get is() {
+                return 'view-footer';
+            }
+
+            static get properties() {
+                return {}
+            }
+
+            static get observers() {
+                return []
+            }
+        }
+
+        window.customElements.define(ViewFooter.is, ViewFooter);
+    </script>
+</dom-module>

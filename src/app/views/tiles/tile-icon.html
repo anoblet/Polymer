@@ -1,0 +1,24 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="tile-icon">
+    <template>
+        <paper-icon-button icon="[[icon]]"></paper-icon-button>
+    </template>
+    <script>
+        class TileIcon extends Polymer.Element {
+            static get is() {
+                return 'tile-icon';
+            }
+
+            static get properties() {
+                return {
+                    icon: {
+                        type: String
+                    }
+                }
+            }
+        }
+        window.customElements.define(TileIcon.is, TileIcon);
+    </script>
+</dom-module>

@@ -1,0 +1,52 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="fact-finder-adapter">
+    <template>
+    </template>
+    <script>
+        class FactFinderAdapter extends Polymer.Element {
+            static get is() {
+                return 'fact-finder-adapter';
+            }
+
+            static get properties() {
+                return {
+                    input: {
+                        type: Object,
+                        observer: '_inputChanged'
+                    },
+                    output: {
+                        type: Array,
+                        notify: true
+                    },
+                    target: {
+                        type: String
+                    }
+                }
+            }
+
+            _inputChanged(input) {
+                // console.log(input)
+                let data = input.data
+                let header = data.header;
+                let rows = data.rows;
+                let responseFormatted = [];
+                for (let row in rows) {
+                    let newRow = [];
+                    for (let key in header.cells) {
+                        let cell = header.cells[key];
+                        let label = cell.categories[Object.keys(cell.categories)[0]].label;
+                        let value = rows[row].cells[key].value;
+                        newRow.push([label, value]);
+                    }
+                    responseFormatted.push(newRow);
+                }
+
+                // console.log(responseFormatted);
+                this.output = responseFormatted;
+                this.responseFormatted = responseFormatted;
+            }
+        }
+        window.customElements.define(FactFinderAdapter.is, FactFinderAdapter);
+    </script>
+</dom-module>

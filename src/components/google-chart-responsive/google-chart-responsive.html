@@ -1,0 +1,66 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/google-chart/google-chart.html">
+
+<dom-module id="google-chart-responsive">
+    <template>
+        <style include="global-styles">
+            :host {
+                width: 100%;
+                height: 100%;
+            }
+            google-chart {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+        <google-chart type="[[type]]" options="[[options]]" google-chart-celect="_chartSelect" selection-changed="_selectionChanged" data="[[data]]"></google-chart>
+    </template>
+    <script>
+        class GoogleChartResponsive extends Polymer.mixinBehaviors(Polymer.IronResizableBehavior, Polymer.Element) {
+            static get is() {
+                return 'google-chart-responsive';
+            }
+
+            static get properties() {
+                return {
+                    data: {
+                        type: Array
+                    },
+                    options: {
+                        type: Object
+                    },
+                    type: {
+                        type: Object
+                    }
+                }
+            }
+
+            ready() {
+                super.ready();
+                const childElement = this.shadowRoot.querySelector("google-chart");
+                childElement.addEventListener('selection-changed', this._selectionChanged.bind(this));
+                // childElement.addEventListener('google-chart-select', this._selectionChanged.bind(this));
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.addEventListener('iron-resize', e =>
+                    this._resize()
+                );
+            }
+
+            _resize() {
+                console.log("b");
+                this.shadowRoot.querySelector("google-chart").redraw()
+            }
+
+            _selectionChanged(event) {
+                console.log("Here");
+                console.log(event);
+                var event = new CustomEvent('selection-changed', {bubbles: true, composed: true, detail: event.detail});
+                this.dispatchEvent(event)
+            }
+        }
+        window.customElements.define(GoogleChartResponsive.is, GoogleChartResponsive);
+    </script>
+</dom-module>

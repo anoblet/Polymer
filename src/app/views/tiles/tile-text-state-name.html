@@ -1,0 +1,23 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="tile-text-state-name">
+    <template>
+        [[name]]
+    </template>
+    <script>
+        class TitleTextStateName extends Polymer.Element {
+            static get is() {
+                return 'tile-text-state-name';
+            }
+
+            static get properties() {
+                return {
+                    name: {
+                        type: String
+                    }
+                }
+            }
+        }
+        window.customElements.define(TitleTextStateName.is, TitleTextStateName);
+    </script>
+</dom-module>

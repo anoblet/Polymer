@@ -1,0 +1,99 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../styles/global-styles.html">
+<link rel="import" href="../../styles/flex-styles.html">
+<link rel="import" href="../styles/app-styles.html">
+
+<link rel="import" href="../../components/address-lookup/address-lookup.html">
+
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../../lib/map-property/map-property.html">
+
+<dom-module id="view-header">
+    <template>
+        <style include="app-styles global-styles flex-styles">
+            :host {
+                background: var(--color-primary);
+                color: #fff;
+            }
+
+            header {
+                width: 100%;
+            }
+
+            a, a:visited {
+                color: #fff;
+            }
+
+            .grid {
+                width: 100%;
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            #search {
+                grid-column: span 3;
+            }
+        </style>
+        <header>
+            <div class="grid">
+                <div class="item v-align-center">
+                    <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
+                    <!-- <a href="/" no-underline>[[title]]</a> -->
+                </div>
+
+                <div id="search" class="item center">
+                    <!-- <address-lookup v-align-center></address-lookup> -->
+                    <a href="/" no-underline>[[title]]</a>
+                </div>
+                <div class="item v-align-center justify-end">
+                    <!-- <paper-icon-button icon="icons:account-circle"></paper-icon-button> -->
+                    <paper-icon-button icon="icons:search"></paper-icon-button>
+                </div>
+            </div>
+        </header>
+        <app-data data="{{data}}"></app-data>
+        <map-property source="{{data.configuration.menu}}" target="{{menu}}"></map-property>
+    </template>
+
+    <script>
+        class ViewHeader extends Polymer.Element {
+            static get is() {
+                return 'view-header';
+            }
+
+            static get properties() {
+                return {
+                    title: {
+                        type: String,
+                        value: "My Government"
+                    },
+                    menu: {
+                        type: Object
+                    },
+                }
+            }
+
+            static get observers() {
+                return [
+                    "_menuChanged(menu)"
+                ]
+            }
+
+            toggleDrawer() {
+                this.dispatchEvent(new CustomEvent('toggleDrawer', {bubbles: true, composed: true}));
+            }
+
+            _menuChanged(menu) {
+                console.log(menu);
+                if (menu == "0") {
+                    this.$.menu.style.order = "0";
+                } else {
+                    this.$.menu.style.order = "1";
+                }
+            }
+        }
+
+        window.customElements.define(ViewHeader.is, ViewHeader);
+    </script>
+</dom-module>

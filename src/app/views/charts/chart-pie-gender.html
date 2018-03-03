@@ -1,0 +1,62 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-country-gender.html">
+<link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
+
+<dom-module id="chart-pie-gender">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+            }
+        </style>
+        <google-chart-responsive type="pie" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
+
+        <fact-finder program="DEC" _dataset="10_SF1" table="P12" geography-id="[[geographyId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+        <fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>
+    </template>
+    <script>
+        class ChartPieGender extends Polymer.Element {
+            static get is() {
+                return 'chart-pie-gender';
+            }
+
+            static get properties() {
+                return {
+                    chartData: {
+                        type: Array,
+                        computed: '_chartData(data)'
+                    },
+                    data: {
+                        type: Object
+                    },
+                    geographyId: {
+                        type: String
+                    },
+                    options: {
+                        type: Object,
+                        value: function() {
+                            return {
+                                legend: {
+                                    position: 'top',
+                                    alignment: 'center'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            _chartData(data) {
+                // console.log(data);
+                let newData = data[0];
+                let chartData = [];
+                chartData.push(["Gender", "Total"]);
+                chartData.push(["Male", newData[1][1]]);
+                chartData.push(["Female", newData[25][1]]);
+                // console.log(chartData);
+                return chartData;
+            }
+        }
+        window.customElements.define(ChartPieGender.is, ChartPieGender);
+    </script>
+</dom-module>

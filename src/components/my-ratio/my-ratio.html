@@ -1,0 +1,49 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-ratio">
+    <template>
+        <style>
+            .ratio-outer {
+                position: relative;
+            }
+
+            .ratio-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            :host([one-one]) .ratio-outer {
+                padding-top: 100%;
+            }
+
+            :host([four-three]) .ratio-outer {
+                padding-top: 75%;
+            }
+
+            :host([sixteen-nine]) .ratio-outer {
+                padding-top: 56.25%;
+            }
+        </style>
+        <div class="ratio-outer">
+            <div class="ratio-inner">
+                <slot></slot>
+            </div>
+        </div>
+    </template>
+    <script>
+        class MyRatio extends Polymer.Element {
+            static get is() {
+                return 'my-ratio';
+            }
+
+            static get properties() {
+                return {}
+            }
+        }
+
+        window.customElements.define(MyRatio.is, MyRatio);
+    </script>
+</dom-module>

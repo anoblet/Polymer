@@ -2,17 +2,16 @@
   "entrypoint": "index.html",
   "shell": "src/app-root.html",
   "fragments": [
+    "src/app/views/pages/page-home.html",
+    "src/app/views/pages/page-state.html",
+    "src/app/views/pages/page-country.html",
+    "src/app/views/pages/page-settings.html",
+    "src/components/x-map.html",
+    "src/components/address-lookup/address-lookup.html",
+    "src/components/app-data.html",
     "src/styles/global-styles.html",
     "src/styles/flex-styles.html",
-    "src/app/styles/app-styles.html",
-    "src/app/pages/app-home.html",
-    "src/app/blocks/my-city.html",
-    "src/app/blocks/my-county.html",
-    "src/app/blocks/my-state.html",
-    "src/blocks/x-map.html",
-    "src/app/pages/page-state.html",
-    "src/components/app-data.html",
-    "src/components/address-lookup/address-lookup.html"
+    "src/app/styles/app-styles.html"
   ],
   "sources": [
     "images/**/*"

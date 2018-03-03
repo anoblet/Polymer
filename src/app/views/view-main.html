@@ -1,0 +1,41 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../components/my-card/my-card.html">
+<link rel="import" href="../../../bower_components/my-paypal/my-paypal.html">
+
+<dom-module id="view-main">
+    <template>
+        <style include="global-styles app-styles">
+            :host {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .grid[rows="3"] {
+                grid-template-rows: repeat(3, 1fr);
+            }
+        </style>
+        <main class="grid">
+            <slot></slot>
+            <my-card>
+                <div class="card-content center">
+                    <my-paypal></my-paypal>
+                </div>
+            </my-card>
+            </div>
+        </main>
+    </template>
+    <script>
+        class ViewMain extends Polymer.Element {
+            static get is() {
+                return 'view-main';
+            }
+
+            static get properties() {
+                return {}
+            }
+        }
+
+        window.customElements.define(ViewMain.is, ViewMain);
+    </script>
+</dom-module>

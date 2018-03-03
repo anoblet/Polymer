@@ -3,10 +3,6 @@
 <dom-module id="global-styles">
     <template>
         <style>
-            :host {
-                --color-primary: #2196f3;
-            }
-
             :host([flex]) {
                 display: flex;
             }
@@ -73,6 +69,101 @@
 
             [flex-disabled] {
                 display: initial;
+            }
+
+            /* Ratios */
+
+            .ratio {
+                position: relative;
+                height: 0;
+            }
+
+            .ratio-outer {
+                position: relative;
+                height: 0;
+                overflow: auto;
+            }
+
+            .ratio-inner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            .ratio-1-1 {
+                @apply --ratio;
+                padding-top: 100%;
+            }
+
+            .ratio-3-2 {
+                @apply --ratio;
+                padding-top: 66%;
+            }
+
+            .ratio-4-3 {
+                @apply --ratio;
+                padding-top: 75%;
+            }
+
+            .ratio-16-9 {
+                @apply --ratio;
+                padding-top: 56.25%;
+            }
+
+            [style*="--aspect-ratio"] > :first-child {
+                width: 100%;
+            }
+
+            @supports (--custom:property) {
+                [style*="--aspect-ratio"] {
+                    position: relative;
+                }
+                [style*="--aspect-ratio"]::before {
+                    content: "";
+                    display: block;
+                    padding-bottom: calc(100% / (var(--aspect-ratio)));
+                }
+                [style*="--aspect-ratio"] > :first-child {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                }
+            }
+
+            /* Grid */
+
+            .grid {
+                display: grid;
+                grid-gap: 1rem;
+                /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); */
+            }
+
+            /* Positioning */
+
+            .absolute {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            /* Miscellaneous */
+
+            .v-align-center {
+                display: flex;
+                align-items: center;
+            }
+
+            .justify-end {
+                justify-content: flex-end;
+            }
+
+            .text-right {
+                text-align: right;
             }
         </style>
     </template>

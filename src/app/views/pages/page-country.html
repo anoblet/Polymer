@@ -1,0 +1,105 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
+<link rel="import" href="../../../../lib/map-property/map-property.html">
+<link rel="import" href="../../../components/my-card/my-card.html">
+<link rel="import" href="../../../components/app-data.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-country-terrain.html">
+<link rel="import" href="../../views/charts/chart-map-country.html">
+<link rel="import" href="../../views/charts/chart-bar-population-country.html">
+<link rel="import" href="../../views/charts/chart-text-population.html">
+<link rel="import" href="../../views/charts/chart-pie-terrain.html">
+<link rel="import" href="../../views/charts/chart-pie-gender.html">
+<link rel="import" href="../../views/charts/chart-bar-gender.html">
+
+<dom-module id="page-country">
+    <template>
+        <style include="global-styles app-styles"></style>
+        <app-data data="{{data}}"></app-data>
+        <map-property source="[[data.location.country]]" target="{{country}}"></map-property>
+        <map-property source="[[data.configuration.cardRatio]]" target="{{cardRatio}}"></map-property>
+        <my-grid>
+            <my-card ratio="[[cardRatio]]" href="javascript:history.back()">
+                <div class="card-content center">
+                    <paper-icon-button icon="arrow-back" noink></paper-icon-button>
+                </div>
+            </my-card>
+            <my-card ratio="[[cardRatio]]">
+                <div class="card-content">
+                    <chart-map-country></chart-map-country>
+                </div>
+            </my-card>
+            <my-card ratio="[[cardRatio]]">
+                <div class="card-title">Population</div>
+                <div class="card-content flex-center">
+                    <chart-text-population geography-id="[[geographyId]]"></chart-text-population>
+                </div>
+                <div class="card-actions">
+                    <paper-button>
+                        Button
+                    </paper-button>
+                </div>
+            </my-card>
+            <my-card ratio="[[cardRatio]]">
+                <div class="card-title">Terrain</div>
+                <div class="card-content">
+                    <chart-pie-terrain geography-id="[[geographyId]]"></chart-pie-terrain>
+                </div>
+            </my-card>
+            <my-card ratio="[[cardRatio]]">
+                <div class="card-title">Gender</div>
+                <div class="card-content">
+                    <chart-pie-gender geography-id="[[geographyId]]"></chart-pie-gender>
+                </div>
+            </my-card>
+            <my-card ratio="[[cardRatio]]" rows="2" columns="2">
+                <div class="card-title">Gender</div>
+                <div class="card-content">
+                    <chart-bar-gender geography-id="[[geographyId]]"></chart-bar-gender>
+                </div>
+            </my-card>
+            <my-card ratio="[[cardRatio]]">
+                <div class="card-content">
+                    Placeholder
+                </div>
+            </my-card>
+            <my-card ratio="[[cardRatio]]">
+                <div class="card-content">
+                    Placeholder
+                </div>
+            </my-card>
+            <my-card ratio="[[cardRatio]]">
+                <div class="card-content">
+                    Placeholder
+                </div>
+            </my-card>
+        </my-grid>
+    </template>
+    <script>
+        class PageCountry extends Polymer.Element {
+            static get is() {
+                return 'page-country';
+            }
+
+            static get properties() {
+                return {
+                    country: {
+                        type: String
+                    },
+                    geographyId: {
+                        type: String,
+                        value: "0100000US"
+                    },
+                    ratio: {
+                        type: String,
+                        value: "4:3"
+                    }
+                }
+            }
+        }
+
+        window.customElements.define(PageCountry.is, PageCountry);
+    </script>
+</dom-module>

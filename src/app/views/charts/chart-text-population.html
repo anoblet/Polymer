@@ -1,0 +1,42 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-population.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-adapter.html">
+
+<dom-module id="chart-text-population">
+    <template>
+        <fact-finder-population geography-id="[[geographyId]]" response="{{response}}"></fact-finder-population>
+        <fact-finder-adapter input="[[response]]" output="{{data}}" target="googleCharts"></fact-finder-adapter>
+        [[population]]
+    </template>
+    <script>
+        class ChartTextPopulation extends Polymer.Element {
+            static get is() {
+                return 'chart-text-population';
+            }
+
+            static get properties() {
+                return {
+                    geographyId: {
+                        type: String
+                    },
+                    data: {
+                        type: Object,
+                        notify: true
+                    },
+                    population: {
+                        type: String,
+                        computed: '_mapData(data)'
+                    }
+                }
+            }
+
+            _mapData(data) {
+                // console.log("Mapping");
+                let population = data[0][0][1];
+                let formatted = population.toLocaleString()
+                return formatted;
+            }
+        }
+        window.customElements.define(ChartTextPopulation.is, ChartTextPopulation);
+    </script>
+</dom-module>

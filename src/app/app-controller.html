@@ -1,13 +1,26 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/iron-location/iron-location.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
 
 <dom-module id="app-controller">
     <template>
-        <iron-location path="{{__path}}" use-hash-as-path></iron-location>
         <!--
-        <app-route route="{{__path}}" pattern="/:state" data="{{routeData}}" tail="{{subroute}}"></app-route>
+        <iron-location path="{{__path}}" use-hash-as-path></iron-location>
+        -->
+        <app-location route="{{route}}"></app-location>
+        <app-route route="{{route}}" pattern="/:view" data="{{routeData}}" tail="{{subRoute}}"></app-route>
+        <!--
+        <app-route route="{{route}}" pattern="/state/:state" data="{{routeData}}" tail="{{subroute}}"></app-route>
+        -->
+        <!--
         <app-route route="{{subroute}}" pattern="/:city" data="{{subrouteData}}"></app-route>
         -->
+        <div style="position: absolute; top: 0; left: 0; z-index: 10">
+            <!--
+            [[routeData]]Test
+            -->
+        </div>
     </template>
     <script>
         class AppController extends Polymer.Element {
@@ -16,12 +29,20 @@
             }
 
             static get properties() {
-                return {}
+                return {
+                    routeData: {
+                        type: Object
+                    },
+                    subRoute: {
+                        type: Object
+                    }
+                }
             }
 
             static get observers() {
                 return [
-                    '__pathChanged(__path)'
+                    // '__pathChanged(__path)',
+                    'routeChanged(route)'
                 ]
             }
 
@@ -57,7 +78,7 @@
                     }
                 }
 
-                console.log(route.src);
+                // console.log(route.src);
 
                 let view = Application.shadowRoot.querySelector('app-view');
 
@@ -71,6 +92,18 @@
                         view.appendChild(child);
                     });
                 }
+
+                window.dispatchEvent(new CustomEvent('pageChanged', __path));
+            }
+
+            routeChanged(route) {
+                console.log(route);
+                console.log(this.routeData);
+                // @todo Fix
+                let view = Application.shadowRoot.querySelector('app-view');
+                // .shadowRoot.querySelector("view-main");
+                view.set("routeData", this.routeData);
+                view.set("subRoute", this.subRoute);
             }
         }
 

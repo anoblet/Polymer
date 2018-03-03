@@ -1,0 +1,158 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
+<link rel="import" href="../../../../lib/map-property/map-property.html">
+<link rel="import" href="../../../components/my-card/my-card.html">
+<link rel="import" href="../../../components/app-data.html">
+<link rel="import" href="../charts/chart-map-country.html">
+<link rel="import" href="../charts/chart-map-state.html">
+<link rel="import" href="../tiles/tile-text-city-name.html">
+<link rel="import" href="../tiles/tile-text-country-name.html">
+<link rel="import" href="../tiles/tile-text-state-name.html">
+
+<dom-module id="page-home">
+    <template>
+        <style include="global-styles app-styles">
+            my-grid > * {
+                order: 3;
+            }
+
+            #country {
+                order: 1;
+            }
+
+            #state {
+                order: 2;
+            }
+        </style>
+        <app-data data="{{data}}"></app-data>
+        <map-property source="[[data.location.city]]" target="{{city}}"></map-property>
+        <map-property source="[[data.location.state]]" target="{{state}}"></map-property>
+        <map-property source="[[data.configuration.cardRatio]]" target="{{cardRatio}}"></map-property>
+        <my-grid>
+            <!--
+            <my-card ratio="[[cardRatio]]" href="/city">
+                <div class="card-title">
+                    <a href="/city">My City</a>
+                </div>
+                <div class="card-content center">
+                    <tiles-text-city-name name="[[city.name]]"></tiles-text-city-name>
+                </div>
+                <div class="card-actions">
+                    <a href="/state">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            -->
+            <my-card id="state" ratio="[[cardRatio]]" href="/state">
+                <div class="card-title">
+                    <a href="/state">My State</a>
+                </div>
+                <div class="card-content center">
+                    <tile-text-state-name name="[[state.name]]"></tile-text-state-name>
+                </div>
+                <div class="card-actions">
+                    <a href="/state">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            <my-card id="country" ratio="[[cardRatio]]" href="/country">
+                <div class="card-title">
+                    <a href="/country">My Country</a>
+                </div>
+                <div class="card-content center">
+                    <tile-text-country-name name="United States"></tile-text-country-name>
+                </div>
+                <div class="card-actions">
+                    <a href="/country">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            <my-card ratio="[[cardRatio]]" href="/country">
+                <div class="card-title">
+                    <a href="/country">My County</a>
+                </div>
+                <div class="card-content center">
+                    <tile-text-country-name name="County"></tile-text-country-name>
+                </div>
+                <div class="card-actions">
+                    <a href="/country">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            <!--
+            <my-card ratio="[[cardRatio]]" href="/country">
+                <div class="card-title">
+                    <a href="/country">My City</a>
+                </div>
+                <div class="card-content center">
+                    <tile-text-country-name name="City"></tile-text-country-name>
+                </div>
+                <div class="card-actions">
+                    <a href="/country">
+                        <paper-button>More</paper-button>
+                    </a>
+                </div>
+            </my-card>
+            -->
+            <template is="dom-if" if="[[complex]]">
+                <my-card ratio="[[cardRatio]]" href="/state">
+                    <div class="card-title">
+                        <a href="/state">My State</a>
+                    </div>
+                    <div class="card-content">
+                        <chart-map-state name="[[state.name]]"></chart-map-state>
+                    </div>
+                    <div class="card-actions">
+                        <a href="/state">
+                            <paper-button>More</paper-button>
+                        </a>
+                    </div>
+                </my-card>
+                <my-card ratio="[[cardRatio]]" href="/country">
+                    <div class="card-title">
+                        <a href="/country">My Country</a>
+                    </div>
+                    <div class="card-content">
+                        <chart-map-country></chart-map-country>
+                    </div>
+                    <div class="card-actions">
+                        <a href="/country">
+                            <paper-button>More</paper-button>
+                        </a>
+                    </div>
+                </my-card>
+            </template>
+        </my-grid>
+    </template>
+    <script>
+        class PageHome extends Polymer.Element {
+            static get is() {
+                return 'page-home';
+            }
+
+            static get properties() {
+                return {
+                    city: {
+                        type: Object
+                    },
+                    complex: {
+                        type: Boolean,
+                        value: false
+                    },
+                    ratio: {
+                        type: String,
+                        value: "4:3"
+                    }
+
+                }
+            }
+        }
+
+        window.customElements.define(PageHome.is, PageHome);
+    </script>
+</dom-module>

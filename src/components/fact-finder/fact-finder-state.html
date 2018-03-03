@@ -1,0 +1,85 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="./fact-finder.html">
+<link rel="import" href="./fact-finder-adapter.html">
+
+<dom-module id="fact-finder-state">
+    <template>
+        <fact-finder
+                program="DEC"
+                _dataset="10_SF1"
+                table="G001"
+                geography-id="0100000US.04000"
+                data-element-id="STATE,NAME,STUSAB"
+                key="c97423c3f598951d2138d69861730b9154cd7230"
+                response="{{response}}">
+        </fact-finder>
+        <fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>
+    </template>
+    <script>
+        /**
+         * @todo Not receiving the correct state abbreviation
+         */
+        class FactFinderState extends Polymer.Element {
+            static get is() {
+                return 'fact-finder-state';
+            }
+
+            static get properties() {
+                return {
+                    abbreviation: {
+                        type: String
+                    },
+                    data: {
+                        type: Array,
+                        observer: '_dataChanged',
+                        notify: true
+                    },
+                    geographyId: {
+                        type: String,
+                        notify: true
+                    },
+                    index: {
+                        type: String,
+                        notify: true
+                    },
+                    name: {
+                        type: String,
+                        observer: '_nameChanged'
+                    }
+                }
+            }
+
+            _dataChanged(data) {
+                this._map();
+            }
+
+            _map() {
+                if (this.data) {
+                    if(this.name) {
+                        /*
+                        let nameArray = this.name.split("-");
+                        let newArray = [];
+                        for (let i = 0; i < nameArray.length; i++) {
+                            newArray.push(nameArray[i].charAt(0).toUpperCase() + nameArray[i].substr(1));
+                        }
+                        let newName = newArray.join(" ");
+                        */
+                        for (let i = 0; i < this.data.length; i++) {
+                            if (this.data[i][1][1] == this.name) {
+                                this.set('index', i);
+                                this.set('geographyId', "0400000US" + this.data[i][0][1]);
+                            }
+                        }
+                    }
+                }
+            }
+
+            _nameChanged(name) {
+                // console.log(name);
+                this._map();
+            }
+        }
+
+        window.customElements.define(FactFinderState.is, FactFinderState);
+    </script>
+</dom-module>

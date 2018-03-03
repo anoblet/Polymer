@@ -1,0 +1,65 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-adapter.html">
+
+<dom-module id="chart-pie-terrain">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+            }
+        </style>
+        <google-chart-responsive type="pie" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
+
+        <fact-finder program="DEC" _dataset="10_SF1" table="G001" geography-id="[[geographyId]]" data-element-id="AREALAND,AREAWATR" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+        <fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>
+    </template>
+    <script>
+        class ChartPieTerrain extends Polymer.Element {
+            static get is() {
+                return 'chart-pie-terrain';
+            }
+
+            static get properties() {
+                return {
+                    chartData: {
+                        type: Array,
+                        computed: '_chartData(data)'
+                    },
+                    data: {
+                        type: Object
+                    },
+                    geographyId: {
+                        type: String
+                    },
+                    options: {
+                        type: Object,
+                        value: function() {
+                            return {
+                                legend: {
+                                    position: 'top',
+                                    alignment: 'center'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            _chartData(data) {
+                console.log(data);
+                let chartData = data[0];
+                chartData[0][0] = "Land";
+                chartData[0][1] = Number(chartData[0][1]);
+                chartData[1][0] = "Water";
+                chartData[1][1] = Number(chartData[1][1]);
+                chartData.unshift(["Type", "Area"])
+                console.log(chartData);
+                return chartData;
+            }
+        }
+        window.customElements.define(ChartPieTerrain.is, ChartPieTerrain);
+    </script>
+</dom-module>

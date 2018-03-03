@@ -1,0 +1,92 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-adapter.html">
+
+<dom-module id="chart-map-country">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+            }
+        </style>
+        <fact-finder
+                program="DEC"
+                _dataset="10_SF1"
+                table="G001"
+                geography-id="0100000US.04000"
+                data-element-id="NAME"
+                key="c97423c3f598951d2138d69861730b9154cd7230"
+                response="{{response}}">
+        </fact-finder>
+        <fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>
+        <google-chart-responsive type="geo" options="[[options]]" selection-changed="_selectionChanged"
+                                 data="[[chartData]]"></google-chart-responsive>
+    </template>
+    <script>
+        class ChartMapCountry extends Polymer.Element {
+            static get is() {
+                return 'chart-map-country';
+            }
+
+            static get properties() {
+                return {
+                    country: {
+                        type: String,
+                        value: "US",
+                    },
+                    data: {
+                        type: Object,
+                    },
+                    options: {
+                        type: Object,
+                        value: function () {
+                            return {
+                                region: "US",
+                                resolution: "provinces",
+                                colorAxis: {
+                                    colors: ['#00853f', 'black', '#e31b23']
+                                },
+                                datalessRegionColor: '#90caf9',
+                                defaultColor: '#90caf9',
+                            }
+                        }
+                    },
+                    chartData: {
+                        type: Array,
+                        computed: '_chartData(data)'
+                    }
+                }
+            }
+
+            _chartData(data) {
+                console.log(data);
+                let chartData = [];
+                // chartData.push(["country"]);
+                chartData.push(["state"]);
+                if (data) {
+                    for (let i = 0; i < data.length; i++) {
+                        chartData.push([data[i][0][1]]);
+                    }
+                }
+                console.log(chartData);
+                // chartData.push([country]);
+                return chartData;
+            }
+
+            _selectionChanged(event) {
+                let row = event.detail.value[0].row;
+                let state = this.chartData[row + 1];
+                this.set("state", state)
+                console.log(this.chartData[row]);
+            }
+
+            ready() {
+                super.ready();
+                this.addEventListener('selection-changed', this._selectionChanged.bind(this));
+            }
+        }
+
+        window.customElements.define(ChartMapCountry.is, ChartMapCountry);
+    </script>
+</dom-module>

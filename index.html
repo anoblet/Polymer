@@ -27,22 +27,23 @@
 
     <script src="./bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 
+    <!--<link rel="import" href="./src/components/google-tag/google-tag.html">-->
     <link rel="import" href="./src/app-root.html">
 
     <style>
+        html {
+            box-sizing: border-box;
+            font-size: 62.5%;
+        }
+
+        html, body {
+            min-height: 100vh;
+        }
+
         *,
         *::before,
         *::after {
             box-sizing: inherit;
-        }
-
-        html, body {
-            height: 100vh;
-        }
-
-        html {
-            box-sizing: border-box;
-            font-size: 62.5%;
         }
 
         body {
@@ -58,5 +59,6 @@
 </head>
 <body unresolved>
 <app-root></app-root>
+<!--<google-tag></google-tag>-->
 </body>
 </html>

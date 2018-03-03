@@ -1,9 +1,8 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-
 <link rel="import" href="../../../bower_components/iron-icons/device-icons.html">
 <link rel="import" href="../../../bower_components/google-apis/google-maps-api.html">
 <link rel="import" href="../../../bower_components/paper-input/paper-input.html">
-
+<link rel="import" href="../../../lib/map-property/map-property.html">
 <link rel="import" href="../app-data.html">
 
 <dom-module id="address-lookup">
@@ -32,13 +31,21 @@
             <iron-icon icon="device:gps-fixed" slot="suffix" on-click="locate"></iron-icon>
         </paper-input>
         <app-data id="data" data="{{data}}"></app-data>
-        <map-object source="{{data.location}}" target="{{location}}"></map-object>
+        <map-property source="{{data.location}}" target="{{location}}"></map-property>
         <google-maps-api id="map-api" api-key="AIzaSyCBAWWZHNX-gLrnIweoezSmpIjLEN7antk" version="3.exp" on-api-load="mapApiLoaded"></google-maps-api>
     </template>
     <script>
         class AddressLookup extends Polymer.Element {
             static get is() {
                 return 'address-lookup';
+            }
+
+            static get properties() {
+                return {
+                    location: {
+                        type: Object
+                    }
+                }
             }
             _autocomplete() {
                 let input = this.$.autocomplete.inputElement.inputElement;
@@ -94,6 +101,7 @@
 
                     if (result.address_components[i].types[0] == 'administrative_area_level_1') {
                         location.state = {};
+                        location.state.abbreviation = result.address_components[i].short_name;
                         location.state.name = result.address_components[i].long_name;
                     }
                 }
@@ -104,7 +112,7 @@
                 this.set('location.latitude', location.latitude);
                 this.set('location.longitude', location.longitude);
                 this.set('location.city', location.city);
-                // this.set('location.state', location.state);
+                this.set('location.state', location.state);
                 this.notifyPath("data.location");
                 // this.set("location", location);
             }

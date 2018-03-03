@@ -1,0 +1,114 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="fact-finder">
+    <template>
+        <iron-ajax url="[[urlFormatted]]" params="[[formatParams()]]" on-response="handleResponse" auto></iron-ajax>
+    </template>
+    <script>
+        class FactFinder extends Polymer.Element {
+            static get is() {
+                return 'fact-finder';
+            }
+
+            static get properties() {
+                return {
+                    _dataset: {
+                        type: String
+                    },
+                    dataElementId: {
+                        type: String
+                    },
+                    geographyId: {
+                        type: String
+                    },
+                    key: {
+                        type: String
+                    },
+                    language: {
+                        type: String,
+                        value: "en"
+                    },
+                    table: {
+                        type: String
+                    },
+                    program: {
+                        type: String
+                    },
+                    response: {
+                        type: Object,
+                        notify: true
+                    },
+                    responseFormatted: {
+                        type: Object,
+                        notify: true
+                    },
+                    url: {
+                        type: String,
+                        value: "https://factfinder.census.gov/service"
+                    },
+                    urlFormatted: {
+                        type: String,
+                        computed: 'formatUrl(geographyId)'
+                    },
+                    version: {
+                        type: String,
+                        value: "v1"
+                    }
+                }
+            }
+
+            formatParams() {
+                return {
+                    "key": this.key
+                }
+            }
+
+            formatUrl() {
+                console.log("Formatting URL: ");
+                let url = this.url
+                    + "/data/" + this.version
+                    + "/" + this.language
+                    + "/programs/" + this.program
+                    + "/datasets/" + this._dataset
+                    + "/tables/" + this.table
+                    + "/data";
+                if (this.geographyId) {
+                    url += "/" + this.geographyId;
+                }
+                if (this.dataElementId) {
+                    url += "/" + this.dataElementId;
+                }
+
+                return url;
+            }
+
+            handleResponse(event) {
+                let data = event.detail.response.data;
+                let header = data.header;
+                let rows = data.rows;
+                let responseFormatted = [];
+                for (let row in rows) {
+                    let newRow = [];
+                    for (let key in header.cells) {
+                        let cell = header.cells[key];
+                        let label = cell.categories[Object.keys(cell.categories)[0]].label;
+                        let value = rows[row].cells[key].value;
+                        newRow.push([label, value]);
+                    }
+                    responseFormatted.push(newRow);
+                }
+
+                // console.log(responseFormatted);
+                this.response = event.detail.response;
+                this.responseFormatted = responseFormatted;
+            }
+
+            stringify(obj) {
+                return JSON.stringify(obj);
+            }
+        }
+
+        window.customElements.define(FactFinder.is, FactFinder);
+    </script>
+</dom-module>

@@ -1,0 +1,35 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="./fact-finder.html">
+
+<dom-module id="fact-finder-population-country">
+    <template>
+        <fact-finder program="DEC" _dataset="10_SF1" table="P1" geography-id="0100000US" key="c97423c3f598951d2138d69861730b9154cd7230" response-formatted="{{responseFormatted}}"></fact-finder>
+    </template>
+    <script>
+        class FactFinderPopulationCountry extends Polymer.Element {
+            static get is() {
+                return 'fact-finder-population-country';
+            }
+
+            static get properties() {
+                return {
+                    data: {
+                        type: Object,
+                        notify: true
+                    },
+                    responseFormatted: {
+                        type: Object,
+                        observer: "_responseFormattedChanged"
+                    }
+                }
+            }
+
+            _responseFormattedChanged(responseFormatted) {
+                console.log(responseFormatted[0]);
+                let data = responseFormatted[0][0][1];
+                this.set("data", data)
+            }
+        }
+        window.customElements.define(FactFinderPopulationCountry.is, FactFinderPopulationCountry);
+    </script>
+</dom-module>

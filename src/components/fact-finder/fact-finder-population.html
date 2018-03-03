@@ -1,0 +1,48 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="./fact-finder.html">
+
+<dom-module id="fact-finder-population">
+    <template>
+        <fact-finder program="PEP" _dataset="2012" table="PEPANNRES" geography-id="[[geographyId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+    </template>
+    <script>
+        class FactFinderPopulation extends Polymer.Element {
+            static get is() {
+                return 'fact-finder-population';
+            }
+
+            static get properties() {
+                return {
+                    data: {
+                        type: Array,
+                        notify: true
+                    },
+                    geographyId: {
+                        type: String
+                    },
+                    response: {
+                        type: Array,
+                        notify: true
+                    },
+                    responseFormatted: {
+                        type: Array,
+                        notify: true
+                    }
+                }
+            }
+
+            static get observers() {
+                return [
+                    "responseFormattedChanged(responseFormatted)"
+                ]
+            }
+
+            responseFormattedChanged(responseFormatted) {
+                let newresponseFormatted = responseFormatted[0];
+                newresponseFormatted.unshift(["responseFormatted","Population"]);
+                this.data = newresponseFormatted;
+            }
+        }
+        window.customElements.define(FactFinderPopulation.is, FactFinderPopulation);
+    </script>
+</dom-module>
