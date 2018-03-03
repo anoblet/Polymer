@@ -6,18 +6,10 @@
     "src/app/views/pages/page-state.html",
     "src/app/views/pages/page-country.html",
     "src/app/views/pages/page-settings.html",
-    "src/components/x-map.html",
-    "src/components/address-lookup/address-lookup.html",
-    "src/components/app-data.html",
-    "src/styles/global-styles.html",
-    "src/styles/flex-styles.html",
-    "src/app/styles/app-styles.html"
   ],
   "sources": [
-    "images/**/*"
   ],
   "extraDependencies": [
-    "bower.json",
     "manifest.json",
     "bower_components/webcomponentsjs/*.js"
   ],
