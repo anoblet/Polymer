@@ -7,12 +7,13 @@
 <link rel="import" href="../../../components/my-card/my-card.html">
 <link rel="import" href="../../../components/app-data.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder-country-terrain.html">
-<link rel="import" href="../../views/charts/chart-map-country.html">
-<link rel="import" href="../../views/charts/chart-bar-population-country.html">
-<link rel="import" href="../../views/charts/chart-text-population.html">
-<link rel="import" href="../../views/charts/chart-pie-terrain.html">
-<link rel="import" href="../../views/charts/chart-pie-gender.html">
-<link rel="import" href="../../views/charts/chart-bar-gender.html">
+<link rel="import" href="../charts/chart-map-country.html">
+<link rel="import" href="../charts/chart-bar-population-country.html">
+<link rel="import" href="../charts/chart-text-housing.html">
+<link rel="import" href="../charts/chart-text-population.html">
+<link rel="import" href="../charts/chart-pie-terrain.html">
+<link rel="import" href="../charts/chart-pie-gender.html">
+<link rel="import" href="../charts/chart-bar-gender.html">
 
 <dom-module id="page-country">
     <template>
@@ -58,6 +59,12 @@
                 <div class="card-title">Gender</div>
                 <div class="card-content">
                     <chart-bar-gender geography-id="[[geographyId]]"></chart-bar-gender>
+                </div>
+            </my-card>
+            <my-card ratio="[[cardRatio]]">
+                <div class="card-title">Housing Units</div>
+                <div class="card-content center">
+                    <chart-text-housing geography-id="0100000US"></chart-text-housing>
                 </div>
             </my-card>
             <my-card ratio="[[cardRatio]]">

@@ -1,0 +1,43 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-adapter.html">
+
+<dom-module id="chart-text-housing">
+    <template>
+        <fact-finder program="DEC" _dataset="10_SF1" table="H1" geography-id="[[geographyId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+        <fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>
+        [[housingUnits]]
+    </template>
+    <script>
+        class ChartTextHousing extends Polymer.Element {
+            static get is() {
+                return 'chart-text-housing';
+            }
+
+            static get properties() {
+                return {
+                    geographyId: {
+                        type: String
+                    },
+                    data: {
+                        type: Object,
+                        notify: true
+                    },
+                    housingUnits: {
+                        type: String,
+                        computed: '_mapData(data)'
+                    }
+                }
+            }
+
+            _mapData(data) {
+                // console.log("Mapping");
+                console.log(data);
+                let housingUnits = data[0][0][1];
+                let formatted = housingUnits.toLocaleString()
+                return formatted;
+            }
+        }
+        window.customElements.define(ChartTextHousing.is, ChartTextHousing);
+    </script>
+</dom-module>
