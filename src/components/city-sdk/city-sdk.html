@@ -1,0 +1,54 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../../bower_components/iron-jsonp-library/iron-jsonp-library.html">
+<link rel="import" href="../../../bower_components/byutv-jsonp/byutv-jsonp.html">
+
+<dom-module id="city-sdk">
+    <template>
+        <iron-ajax url="[[baseUrl]]" headers="[[getHeaders()]]" params="[[getParams()]]" on-response="handleResponse" auto></iron-ajax>
+        <iron-jsonp-library library-url="[[baseUrl]]" notify-event="api-load" library-loaded="{{loaded}}"></iron-jsonp-library>
+        <byutv-jsonp auto headers="[[getHeaders()]]" url="[[baseUrl]]" params='{"userId":"1"}' on-response="handleResponse" debounce-duration="300"></byutv-jsonp>
+    </template>
+    <script>
+        class CitySdk extends Polymer.Element {
+            static get is() {
+                return 'city-sdk';
+            }
+
+            static get properties() {
+                return {
+                    apiKey: {
+                        type: String
+                    },
+                    baseUrl: {
+                        type: String,
+                        value: 'http://citysdk.commerce.gov'
+                    },
+                    headers: {
+                        type: Object,
+                        value: function() {
+                            return {
+                                "Authorization": "Basic test"
+                            }
+                        }
+                    },
+                    params: {
+                        type: Object
+                    }
+                }
+            }
+
+            getHeaders() {
+                return {
+                    Authorization: "Basic " + this.apiKey
+                }
+            }
+
+            getParams() {
+                console.log(this.params);
+                return this.params;
+            }
+        }
+        window.customElements.define(CitySdk.is, CitySdk);
+    </script>
+</dom-module>

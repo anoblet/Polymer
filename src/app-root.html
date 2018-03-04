@@ -6,11 +6,12 @@
 <link rel="import" href="./styles/global-styles.html">
 <link rel="import" href="./styles/flex-styles.html">
 <link rel="import" href="./app/styles/app-styles.html">
-<link rel="import" href="./app/app-model.html">
+<!--<link rel="import" href="./app/app-model.html">-->
 <link rel="import" href="./app/app-controller.html">
 <link rel="import" href="./app/app-view.html">
 <link rel="import" href="./components/app-data.html">
-<link rel="import" href="./components/google-analytics/google-analytics.html">
+<link rel="import" href="./components/city-sdk/city-sdk.html">
+<!--<link rel="import" href="./components/google-analytics/google-analytics.html">-->
 
 <dom-module id="app-root">
     <template>
@@ -21,12 +22,14 @@
             }
         </style>
 
-        <app-model></app-model>
+        <!--<app-model></app-model>-->
         <app-view></app-view>
         <app-controller></app-controller>
         <app-data id="data" data="{{data}}"></app-data>
-        <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
-        <google-analytics></google-analytics>
+        <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]"
+                   county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
+        <!--<google-analytics></google-analytics>-->
+        <!--<city-sdk apiKey="c97423c3f598951d2138d69861730b9154cd7230" params="{'zip': '21401','state': 'MD','level': 'state','sublevel': False,'api': 'acs5','year': 2010,'variables': ['income', 'population']}"></city-sdk>-->
     </template>
     <script>
         class AppRoot extends Polymer.Element {
