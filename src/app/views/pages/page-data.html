@@ -54,11 +54,19 @@
                         type: Array,
                         // computed: '_chartData(data)'
                     },
+                    chartType: {
+                        type: String,
+                        observer: '_chartType',
+                        value: 'table'
+                    },
                     chartTypes: {
                         type: Array,
                         value: function() {
                             return [
+                                "area",
                                 "bar",
+                                "bubble",
+                                "geo",
                                 "pie",
                                 "table"
                             ]
@@ -71,6 +79,16 @@
                     response: {
                         type: Object,
                         observer: '_responseChanged'
+                    }
+                }
+            }
+
+            _chartType(type) {
+                if(type == "geo") {
+                    this.options = {
+                        region: "US",
+                        resolution: "provinces",
+                        defaultColor: '#90caf9'
                     }
                 }
             }
