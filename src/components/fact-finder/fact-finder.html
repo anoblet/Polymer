@@ -43,13 +43,17 @@
                         type: Object,
                         notify: true
                     },
+                    tables: {
+                        type: Boolean,
+                        value: false
+                    },
                     url: {
                         type: String,
                         value: "https://factfinder.census.gov/service"
                     },
                     urlFormatted: {
                         type: String,
-                        computed: 'formatUrl(geographyId)'
+                        computed: 'formatUrl(_dataset, geographyId, table)'
                     },
                     version: {
                         type: String,
@@ -71,20 +75,24 @@
                     + "/" + this.language
                     + "/programs/" + this.program
                     + "/datasets/" + this._dataset
-                    + "/tables/" + this.table
-                    + "/data";
-                if (this.geographyId) {
-                    url += "/" + this.geographyId;
+                    + "/tables/";
+                if (this.table) {
+                    url += this.table + "/data/";
+                    if (this.geographyId) {
+                        url += "/" + this.geographyId;
+                    }
+                    if (this.dataElementId) {
+                        url += "/" + this.dataElementId;
+                    }
                 }
-                if (this.dataElementId) {
-                    url += "/" + this.dataElementId;
-                }
+
 
                 return url;
             }
 
             handleResponse(event) {
                 let data = event.detail.response.data;
+                /*
                 let header = data.header;
                 let rows = data.rows;
                 let responseFormatted = [];
@@ -98,10 +106,11 @@
                     }
                     responseFormatted.push(newRow);
                 }
+                */
 
                 // console.log(responseFormatted);
                 this.response = event.detail.response;
-                this.responseFormatted = responseFormatted;
+                // this.responseFormatted = responseFormatted;
             }
 
             stringify(obj) {
