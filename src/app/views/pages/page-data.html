@@ -40,7 +40,7 @@
                     </paper-dropdown-menu>
                 </div>
             </my-card>
-            <my-card ratio style="--aspect-ratio:1:1;">
+            <my-card ratio="1:1">
                 <div class="card-title">[[currentTable]]</div>
                 <div class="card-content">
                     <google-chart-responsive type="[[chartType]]" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
@@ -82,7 +82,7 @@
                     },
                     geographyId: {
                         type: String,
-                        value: "0100000US"
+                        value: "0100000US.04000"
                     },
                     response: {
                         type: Object,
