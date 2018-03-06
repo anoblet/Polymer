@@ -26,10 +26,27 @@
             }
 
             _tables(response) {
-                let tables = [];
+                console.log(response);
+                /*
+                let tableIds = [];
+                let tableLabels = [];
                 for(let i =0; i < response.tables.length; i++) {
-                    tables.push(response.tables[i].id);
+                    tableIds.push(response.tables[i].id);
+                    tableLabels.push(response.tables[i].label);
+                    // tables.push(response.tables[i].id);
                 }
+                let tables = [tableIds,tableLables];
+                */
+
+                // Object syntax
+                let tables= [];
+                for(let i =0; i < response.tables.length; i++) {
+                    let table = {};
+                    table.id = response.tables[i].id;
+                    table.label = response.tables[i].label;
+                    tables.push(table);
+                }
+
                 return tables;
             }
         }

@@ -11,28 +11,37 @@
 
 <dom-module id="page-data">
     <template>
-        <style>
+        <style include="global-styles app-styles">
             :host {
                 width: 100%;
             }
+
+            my-grid {
+                grid-template-columns: auto;
+            }
         </style>
-        <paper-input label="Geography ID" value="{{geographyId}}"></paper-input>
-        <paper-dropdown-menu label="Table" selected-item-label="{{table}}">
-            <paper-listbox slot="dropdown-content">
-                <template is="dom-repeat" items="[[tables]]">
-                    <paper-item>[[item]]</paper-item>
-                </template>
-            </paper-listbox>
-        </paper-dropdown-menu>
-        <paper-dropdown-menu label="Chart Type" selected-item-label="{{chartType}}">
-            <paper-listbox slot="dropdown-content">
-                <template is="dom-repeat" items="[[chartTypes]]">
-                    <paper-item>[[item]]</paper-item>
-                </template>
-            </paper-listbox>
-        </paper-dropdown-menu>
         <my-grid>
             <my-card>
+                <div class="card-content">
+                    <paper-input label="Geography ID" value="{{geographyId}}"></paper-input>
+                    <paper-dropdown-menu label="Table" selected-item-label="{{table}}">
+                        <paper-listbox slot="dropdown-content">
+                            <template is="dom-repeat" items="[[tables]]">
+                                <paper-item>[[item.id]]</paper-item>
+                            </template>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                    <paper-dropdown-menu label="Chart Type" selected-item-label="{{chartType}}">
+                        <paper-listbox slot="dropdown-content">
+                            <template is="dom-repeat" items="[[chartTypes]]">
+                                <paper-item>[[item]]</paper-item>
+                            </template>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                </div>
+            </my-card>
+            <my-card ratio style="--aspect-ratio:1:1;">
+                <div class="card-title">[[currentTable]]</div>
                 <div class="card-content">
                     <google-chart-responsive type="[[chartType]]" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
                 </div>
@@ -52,7 +61,6 @@
                 return {
                     chartData: {
                         type: Array,
-                        // computed: '_chartData(data)'
                     },
                     chartType: {
                         type: String,
@@ -61,7 +69,7 @@
                     },
                     chartTypes: {
                         type: Array,
-                        value: function() {
+                        value: function () {
                             return [
                                 "area",
                                 "bar",
@@ -79,12 +87,17 @@
                     response: {
                         type: Object,
                         observer: '_responseChanged'
+                    },
+                    table: {
+                        type: String,
+                        value: "P1",
+                        observer: '_tableChanged'
                     }
                 }
             }
 
             _chartType(type) {
-                if(type == "geo") {
+                if (type == "geo") {
                     this.options = {
                         region: "US",
                         resolution: "provinces",
@@ -94,14 +107,14 @@
             }
 
             _responseChanged(response) {
+                let data = response.data;
                 console.log(response);
-                if(response.data);
+                if (data) ;
                 else {
                     return;
                 }
-                let headerCells = response.data.header.cells;
-                let rows = response.data.rows;
-                let headers = [];
+                let headerCells = data.header.cells;
+                let rows = data.rows;
 
                 let newData = [];
                 let newRow = [];
@@ -131,6 +144,17 @@
                 console.log(newData);
 
                 this.chartData = newData;
+            }
+
+            _tableChanged(table) {
+                console.log(table);
+                if (this.tables) {
+                    for (let i = 0; i < this.tables.length; i++) {
+                        if (this.tables[i].id == this.table) {
+                            this.currentTable = this.tables[i].label;
+                        }
+                    }
+                }
             }
         }
 
