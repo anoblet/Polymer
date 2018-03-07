@@ -10,6 +10,7 @@
 <link rel="import" href="../../../components/fact-finder/fact-finder-tables.html">
 <link rel="import" href="../../../components/my-card/my-card.html">
 <link rel="import" href="../../../components/state-select.html">
+<link rel="import" href="../../../components/summary-select.html">
 
 <dom-module id="page-data">
     <template>
@@ -30,8 +31,11 @@
             <my-card>
                 <div class="card-content">
                     <paper-input label="Geography ID" value="{{geographyId}}"></paper-input>
-                    <state-select geography-id="{{geographyId}}"></state-select>
-                    <paper-dropdown-menu label="Table" selected-item-label="{{table}}">
+                    <summary-select is-federal="{{isFederal}}" level="{{summaryLevel}}"></summary-select>
+                    <template is="dom-if" if="[[_isSummaryLevel(summaryLevel, 'state')]]">
+                        <state-select geography-id="{{geographyId}}"></state-select>
+                    </template>
+                    <paper-dropdown-menu label="Table">
                         <paper-listbox slot="dropdown-content" selected="{{currentTableIndex}}">
                             <template is="dom-repeat" items="[[tables]]">
                                 <paper-item>[[item.id]]</paper-item>
@@ -181,6 +185,11 @@
                     this.currentTableLabel = table.label;
                     console.log(this.tables[index]);
                 }
+            }
+
+            _isSummaryLevel(summaryLevel, level) {
+                console.log(level);
+                return (summaryLevel === level);
             }
 
             _responseChanged(response) {

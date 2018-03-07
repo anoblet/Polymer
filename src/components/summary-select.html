@@ -1,0 +1,29 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="summary-select">
+    <template>
+        <paper-dropdown-menu label="Summary level">
+            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{level}}">
+                <paper-item value="federal">Federal</paper-item>
+                <paper-item value="state">State</paper-item>
+            </paper-listbox>
+        </paper-dropdown-menu>
+    </template>
+    <script>
+        class SummarySelect extends Polymer.Element {
+            static get is() {
+                return 'summary-select';
+            }
+
+            static get properties() {
+                return {
+                    level: {
+                        type: String,
+                        notify: true
+                    }
+                }
+            }
+        }
+        window.customElements.define(SummarySelect.is, SummarySelect);
+    </script>
+</dom-module>
