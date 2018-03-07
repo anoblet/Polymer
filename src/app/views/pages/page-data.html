@@ -52,7 +52,7 @@
                 <div class="card-content">
                     <paper-listbox multi selected-values="{{selectedColumns}}">
                         <template is="dom-repeat" items="[[chartColumns]]">
-                            <paper-item selected>[[item]]</paper-item>
+                            <paper-item selected>[[item.label]]</paper-item>
                         </template>
                     </paper-listbox>
                 </div>
@@ -60,6 +60,7 @@
             <my-card ratio="1:1">
                 <div class="card-title">[[currentTableLabel]]</div>
                 <div class="card-content">
+                    <!--<google-chart-responsive type="[[chartType]]" options="[[chartOptions]]" cols="[[chartColumns]]" rows="[[chartRows]]"></google-chart-responsive>-->
                     <google-chart-responsive type="[[chartType]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>
                 </div>
             </my-card>
@@ -174,7 +175,7 @@
             _currentTableIndexChanged(index) {
                 console.log(index);
                 console.log(this.tables);
-                if(this.tables) {
+                if (this.tables) {
                     let table = this.tables[index];
                     this.currentTableId = table.id;
                     this.currentTableLabel = table.label;
@@ -183,37 +184,44 @@
             }
 
             _responseChanged(response) {
-                let data = response.data;
-                if (data) ;
+                console.log(response);
+                if (response.data) {
+                }
+                // No data
                 else {
                     return;
                 }
-                console.log(data);
-                let headerCells = data.header.cells;
+                let data = response.data;
+                // console.log(data);
+                let dataColumns = data.header.cells;
                 let dataRows = data.rows;
 
                 let newData = [];
                 let columns = [];
                 let newRow = [];
                 newRow.push("Location");
-                columns.push("Location");
-                let selectedItems = [];
-                let index = 0;
-                let numberOfColumns = Object.keys(headerCells).length;
-                let selectedColumns = Array.apply(null, {length: numberOfColumns}).map(Number.call, Number);
-
-                for (let header in headerCells) {
-                    selectedItems.push(index);
-                    index++;
-                    let categories = headerCells[header].categories;
+                columns.push({type: "string", label: "Location"});
+                // let selectedItems = [];
+                // let index = 0;
+                for (let header in dataColumns) {
+                    let categories = dataColumns[header].categories;
+                    let type = dataColumns[header].valueType;
                     for (let category in categories) {
+                        let column = {};
+                        column.type = type;
+                        column.label = categories[category].label;
                         newRow.push(categories[category].label);
-                        columns.push(categories[category].label);
+                        columns.push(column);
                     }
                 }
-                this.selectedColumns = selectedColumns;
                 this.dataColumns = columns;
                 this.chartColumns = columns;
+
+                let numberOfColumns = Object.keys(dataColumns).length;
+                // console.log("Number of columns: ", numberOfColumns);
+                let selectedColumns = Array.apply(null, {length: numberOfColumns}).map(Number.call, Number);
+                this.selectedColumns = selectedColumns;
+
                 newData.push(newRow);
 
                 let rows = [];
@@ -232,6 +240,8 @@
 
                 this.dataRows = rows;
                 this.chartRows = rows;
+                console.log(columns);
+                console.log(rows);
 
                 console.log("Chart data:");
                 console.log(newData);
@@ -243,7 +253,18 @@
             _selectedColumnsChanged(columns) {
                 console.log(columns);
                 console.log(this.selectedColumns);
-                // console.log(this.chartColumns);
+                if (this.data) {
+                    let chartData = []
+                    for (let i = 0; i < this.data.length; i++) {
+                        let newRow = [];
+                        for (let i2 = 0; i2 < this.selectedColumns.length; i2++) {
+                            newRow.push(this.data[i][this.selectedColumns[i2]])
+                        }
+                        chartData.push(newRow);
+                    }
+                    console.log(chartData);
+                    this.chartData = chartData;
+                }
             }
 
             _tableChanged(table) {
