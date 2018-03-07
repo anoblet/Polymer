@@ -1,14 +1,14 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
-<link rel="import" href="../../../components/fact-finder/fact-finder.html">
-<link rel="import" href="../../../components/fact-finder/fact-finder-tables.html">
-<link rel="import" href="../../../components/my-card/my-card.html">
-<link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
 <link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../../../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
+<link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder.html">
+<link rel="import" href="../../../components/fact-finder/fact-finder-tables.html">
+<link rel="import" href="../../../components/my-card/my-card.html">
 
 <dom-module id="page-data">
     <template>
@@ -30,14 +30,14 @@
                 <div class="card-content">
                     <paper-input label="Geography ID" value="{{geographyId}}"></paper-input>
                     <paper-dropdown-menu label="Table" selected-item-label="{{table}}">
-                        <paper-listbox slot="dropdown-content">
+                        <paper-listbox slot="dropdown-content" selected="{{currentTableIndex}}">
                             <template is="dom-repeat" items="[[tables]]">
                                 <paper-item>[[item.id]]</paper-item>
                             </template>
                         </paper-listbox>
                     </paper-dropdown-menu>
                     <paper-dropdown-menu label="Chart Type" selected-item-label="{{chartType}}">
-                        <paper-listbox slot="dropdown-content">
+                        <paper-listbox slot="dropdown-content" selected="{{chartTypeIndex}}">
                             <template is="dom-repeat" items="[[chartTypes]]">
                                 <paper-item>[[item]]</paper-item>
                             </template>
@@ -46,13 +46,13 @@
                 </div>
             </my-card>
             <my-card ratio="1:1">
-                <div class="card-title">[[currentTable]]</div>
+                <div class="card-title">[[currentTableLabel]]</div>
                 <div class="card-content">
                     <google-chart-responsive type="[[chartType]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>
                 </div>
             </my-card>
         </my-grid>
-        <fact-finder program="DEC" _dataset="10_SF1" table="[[table]]" geography-id="[[geographyId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+        <fact-finder program="DEC" _dataset="10_SF1" table="[[currentTableId]]" geography-id="[[geographyId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
         <fact-finder-tables tables="{{tables}}"></fact-finder-tables>
         <!--<fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>-->
     </template>
@@ -75,6 +75,11 @@
                         observer: '_chartType',
                         value: 'table'
                     },
+                    chartTypeIndex: {
+                        type: Number,
+                        observer: 'chartTypeIndexChanged',
+                        value: 5
+                    },
                     chartTypes: {
                         type: Array,
                         value: function () {
@@ -92,6 +97,17 @@
                         type: String,
                         value: "Population"
                     },
+                    currentTableIndex: {
+                        type: Number,
+                        observer: '_currentTableIndexChanged',
+                        value: 74
+                    },
+                    currentTableId: {
+                        type: String,
+                    },
+                    currentTableLabel: {
+                        type: String,
+                    },
                     geographyId: {
                         type: String,
                         value: "0100000US.04000"
@@ -102,8 +118,11 @@
                     },
                     table: {
                         type: String,
-                        value: "P1",
-                        observer: '_tableChanged'
+                        // observer: '_tableChanged'
+                    },
+                    tables: {
+                        type: Array,
+                        observer: '_tablesChanged'
                     }
                 }
             }
@@ -118,6 +137,17 @@
                 }
                 else {
                     this.chartOptions = {};
+                }
+            }
+
+            _currentTableIndexChanged(index) {
+                console.log(index);
+                console.log(this.tables);
+                if(this.tables) {
+                    let table = this.tables[index];
+                    this.currentTableId = table.id;
+                    this.currentTableLabel = table.label;
+                    console.log(this.tables[index]);
                 }
             }
 
@@ -156,8 +186,10 @@
                 // newData.push(headers);
                 // newData.push(data);
 
+                console.log("Chart data:");
                 console.log(newData);
 
+                this.data = newData;
                 this.chartData = newData;
             }
 
@@ -170,6 +202,10 @@
                         }
                     }
                 }
+            }
+
+            _tablesChanged(tables) {
+                this._currentTableIndexChanged(this.currentTableIndex);
             }
         }
 
