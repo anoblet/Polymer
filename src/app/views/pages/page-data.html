@@ -4,6 +4,8 @@
 <link rel="import" href="../../../components/fact-finder/fact-finder.html">
 <!--<link rel="import" href="../../../components/fact-finder/fact-finder-adapter.html">-->
 <link rel="import" href="../../../components/fact-finder/fact-finder-tables.html">
+<link rel="import" href="../../../components/my-card/my-card.html">
+<link rel="import" href="../../../../lib/my-grid/my-grid.html">
 <link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
@@ -43,7 +45,7 @@
             <my-card ratio="1:1">
                 <div class="card-title">[[currentTable]]</div>
                 <div class="card-content">
-                    <google-chart-responsive type="[[chartType]]" options="[[options]]" data="[[chartData]]"></google-chart-responsive>
+                    <google-chart-responsive type="[[chartType]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>
                 </div>
             </my-card>
         </my-grid>
@@ -61,6 +63,9 @@
                 return {
                     chartData: {
                         type: Array,
+                    },
+                    chartOptions: {
+                        type: Object
                     },
                     chartType: {
                         type: String,
@@ -80,6 +85,10 @@
                             ]
                         }
                     },
+                    currentTable: {
+                        type: String,
+                        value: "Population"
+                    },
                     geographyId: {
                         type: String,
                         value: "0100000US.04000"
@@ -98,11 +107,14 @@
 
             _chartType(type) {
                 if (type == "geo") {
-                    this.options = {
+                    this.chartOptions = {
                         region: "US",
                         resolution: "provinces",
                         defaultColor: '#90caf9'
                     }
+                }
+                else {
+                    this.chartOptions = {};
                 }
             }
 
