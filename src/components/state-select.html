@@ -1,0 +1,75 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../components/fact-finder/fact-finder-state.html">
+<dom-module id="state-select">
+    <template>
+        <fact-finder-state index={{selected}} name="[[name]]" geography-id="{{geographyId}}"
+                           data="{{data}}"></fact-finder-state>
+        <paper-dropdown-menu label="Select your state">
+            <paper-listbox slot="dropdown-content" selected="{{selected}}">
+                <template is="dom-repeat" items="{{data}}">
+                    <paper-item>[[_getName(item)]]</paper-item>
+                </template>
+            </paper-listbox>
+        </paper-dropdown-menu>
+    </template>
+    <script>
+        class StateSelect extends Polymer.Element {
+            static get is() {
+                return 'state-select';
+            }
+
+            static get properties() {
+                return {
+                    selected: {
+                        type: Number,
+                        observer: '_selectedChanged'
+                    },
+                    geographyId: {
+                        type: String,
+                        notify: true
+                    },
+                    name: {
+                        type: String,
+                        // observer: '_nameChanged',
+                        notify: true
+                    },
+                    redirect: {
+                        type: Boolean,
+                        value: false
+                    }
+                }
+            }
+
+            _getName(state) {
+                return state[1][1];
+            }
+
+            _selectedChanged(selected) {
+                // console.log(selected);
+                if (this.data) {
+                    let name = this.data[selected][1][1];
+                    let nameArray = name.split(" ");
+                    let newArray = [];
+                    for (let i = 0; i < nameArray.length; i++) {
+                        newArray.push(nameArray[i].charAt(0).toLowerCase() + nameArray[i].substr(1));
+                    }
+                    let newName = newArray.join("-");
+                    if (this.data) {
+                        this.set("name", name);
+                        if(this.redirect) {
+                            window.history.pushState({}, null, 'state/' + newName);
+                            window.dispatchEvent(new CustomEvent('location-changed'));
+                        }
+                        // this.geographyId = "0400000US" + this.data[selected][0][1];
+                    }
+                    // console.log(this.geographyId);
+                }
+            }
+        }
+
+        window.customElements.define(StateSelect.is, StateSelect);
+    </script>
+</dom-module>
