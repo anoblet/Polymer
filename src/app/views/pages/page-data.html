@@ -188,6 +188,7 @@
                 else {
                     return;
                 }
+                console.log(data);
                 let headerCells = data.header.cells;
                 let dataRows = data.rows;
 
@@ -196,13 +197,21 @@
                 let newRow = [];
                 newRow.push("Location");
                 columns.push("Location");
+                let selectedItems = [];
+                let index = 0;
+                let numberOfColumns = Object.keys(headerCells).length;
+                let selectedColumns = Array.apply(null, {length: numberOfColumns}).map(Number.call, Number);
+
                 for (let header in headerCells) {
+                    selectedItems.push(index);
+                    index++;
                     let categories = headerCells[header].categories;
                     for (let category in categories) {
                         newRow.push(categories[category].label);
                         columns.push(categories[category].label);
                     }
                 }
+                this.selectedColumns = selectedColumns;
                 this.dataColumns = columns;
                 this.chartColumns = columns;
                 newData.push(newRow);
@@ -234,7 +243,7 @@
             _selectedColumnsChanged(columns) {
                 console.log(columns);
                 console.log(this.selectedColumns);
-                console.log(this.chartColumns);
+                // console.log(this.chartColumns);
             }
 
             _tableChanged(table) {
