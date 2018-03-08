@@ -42,6 +42,17 @@
                     <template is="dom-if" if="[[_isSummaryLevel(summaryLevel, 'state')]]">
                         <state-select geography-id="{{geographyId}}"></state-select>
                     </template>
+                    <paper-dropdown-menu label="Program">
+                        <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{program}}">
+                            <paper-item value="ASC">ASC</paper-item>
+                            <paper-item value="DEC">DEC</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                    <paper-dropdown-menu label="Dataset">
+                        <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{_dataset}}">
+                            <paper-item value="10_SF1">Census Summary File</paper-item>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
                     <paper-dropdown-menu label="Table">
                         <paper-listbox slot="dropdown-content" selected="{{currentTableIndex}}">
                             <template is="dom-repeat" items="[[tables]]">
@@ -67,6 +78,9 @@
                         </template>
                     </paper-listbox>
                 </div>
+                <div class="card-actions">
+                    <paper-button>Select All</paper-button>
+                </div>
             </my-card>
             <my-card ratio="1:1">
                 <div class="card-title">[[currentTableLabel]]</div>
@@ -76,7 +90,7 @@
                 </div>
             </my-card>
         </my-grid>
-        <fact-finder program="DEC" _dataset="10_SF1" table="[[currentTableId]]" geography-id="[[geographyId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+        <fact-finder program="[[program]]" _dataset="[[_dataset]]" table="[[currentTableId]]" geography-id="[[geographyId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
         <fact-finder-tables tables="{{tables}}"></fact-finder-tables>
         <!--<fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>-->
     </template>
