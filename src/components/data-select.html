@@ -1,7 +1,19 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="./fact-finder/fact-finder.html">
 
 <dom-module id="data-select">
     <template>
+        <paper-dropdown-menu label="Set">
+            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{_dataset}}">
+                <template is="dom-repeat" items="{{sets}}">
+                    <paper-item value="[[item.id]]">[[item.label]]</paper-item>
+                </template>
+            </paper-listbox>
+        </paper-dropdown-menu>
+        <fact-finder program="{{program}}" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
     </template>
     <script>
         class DataSelect extends Polymer.Element {
@@ -10,9 +22,34 @@
             }
 
             static get properties() {
-                return {}
+                return {
+                    _dataset: {
+                        type: String,
+                        notify: true
+                    },
+                    sets: {
+                        type: Array,
+                        computed: '_computeSets(response)'
+                    },
+                    response: {
+                        type: Object,
+                        // observer: '_responseChanged'
+                    }
+                }
+            }
+
+            _computeSets(response) {
+                console.log("Sets");
+                console.log(response.datasets);
+                return response.datasets;
+            }
+
+            _responseChanged(response) {
+                console.log("sets");
+                console.log(response);
             }
         }
+
         window.customElements.define(DataSelect.is, DataSelect);
     </script>
 </dom-module>

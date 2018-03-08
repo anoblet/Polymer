@@ -12,7 +12,7 @@
 <link rel="import" href="../../../components/state-select.html">
 <link rel="import" href="../../../components/summary-select.html">
 <link rel="import" href="../../../components/program-select.html">
-<link rel="import" href="../../../components/set-select.html">
+<link rel="import" href="../../../components/data-select.html">
 <link rel="import" href="../../../components/table-select.html">
 
 <dom-module id="page-data">
@@ -46,7 +46,7 @@
                         <state-select geography-id="{{geographyId}}"></state-select>
                     </template>
                     <program-select program="{{program}}"></program-select>
-                    <set-select program="{{program}}" _dataset="{{_dataset}}"></set-select>
+                    <data-select program="{{program}}" _dataset="{{_dataset}}"></data-select>
                     <table-select program="{{program}}" _dataset="{{_dataset}}" table="{{table}}"></table-select>
                     <paper-dropdown-menu label="Chart Type" selected-item-label="{{chartType}}">
                         <paper-listbox slot="dropdown-content" selected="{{chartTypeIndex}}">
