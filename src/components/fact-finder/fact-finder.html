@@ -53,7 +53,7 @@
                     },
                     urlFormatted: {
                         type: String,
-                        computed: 'formatUrl(_dataset, geographyId, table)'
+                        computed: 'formatUrl(key, program, _dataset, geographyId, table)'
                     },
                     version: {
                         type: String,
@@ -70,23 +70,26 @@
 
             formatUrl() {
                 console.log("Formatting URL: ");
-                let url = this.url
-                    + "/data/" + this.version
-                    + "/" + this.language
-                    + "/programs/" + this.program
-                    + "/datasets/" + this._dataset
-                    + "/tables/";
-                if (this.table) {
-                    url += this.table + "/data/";
-                    if (this.geographyId) {
-                        url += "/" + this.geographyId;
-                    }
-                    if (this.dataElementId) {
-                        url += "/" + this.dataElementId;
-                    }
+                let url = this.url + "/data/" + this.version +"/" + this.language + "/programs/";
+                if (this.program) {
+                    url += this.program;
+                    url += "/datasets/"
                 }
-
-
+                if (this._dataset) {
+                    url += this._dataset;
+                    url += "/tables/";
+                }
+                if (this.table) {
+                    url += this.table;
+                    url += "/data/";
+                }
+                if (this.geographyId) {
+                    url += "/" + this.geographyId;
+                }
+                if (this.dataElementId) {
+                    url += "/" + this.dataElementId;
+                }
+                console.log("URL: ", url);
                 return url;
             }
 
