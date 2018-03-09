@@ -3,6 +3,7 @@
 <link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../../../bower_components/paper-tooltip/paper-tooltip.html">
 <link rel="import" href="../../../../bower_components/neon-animation/web-animations.html">
 <link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
 <link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
@@ -31,18 +32,31 @@
             }
 
             #columns {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                /*display: grid;*/
+                /*grid-template-columns: repeat(auto-fill, minmax(16.5%, 1fr));*/
+                display: flex;
+                flex-wrap: wrap;
                 width: 100%;
-                overflow: auto;
+                /*overflow: auto;*/
+            }
+
+            #columns > * {
+                display: flex;
+                width: 16.5%;
+            }
+
+            #columns paper-item > span {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         </style>
         <my-grid>
             <my-card>
                 <div class="card-content">
                     <paper-input label="Geography ID" value="{{geographyId}}"></paper-input>
-                    <summary-select is-federal="{{isFederal}}" level="{{summaryLevel}}"></summary-select>
-                    <template is="dom-if" if="[[_isSummaryLevel(summaryLevel, 'state')]]">
+                    <summary-select level="{{geographyId}}"></summary-select>
+                    <template is="dom-if" if="[[_isSummaryLevel(geographyId, 'state')]]">
                         <state-select geography-id="{{geographyId}}"></state-select>
                     </template>
                     <program-select program="{{program}}"></program-select>
@@ -58,11 +72,17 @@
                 </div>
             </my-card>
             <my-card>
-                <div class="card-title">Columns</div>
+                <div class="card-title">
+                    Columns
+                    <div class="text-right"><paper-icon-button icon="icons:arrow-drop-down"></paper-icon-button></div>
+                </div>
                 <div class="card-content">
                     <paper-listbox id="columns" multi selected-values="{{selectedColumns}}">
                         <template is="dom-repeat" items="[[chartColumns]]">
-                            <paper-item selected>[[item.label]]</paper-item>
+                            <paper-item class="">
+                                <span>[[item.label]]</span>
+                                <paper-tooltip>[[item.label]]</paper-tooltip>
+                            </paper-item>
                         </template>
                     </paper-listbox>
                 </div>
@@ -90,6 +110,10 @@
 
             static get properties() {
                 return {
+                    _dataset: {
+                        type: String,
+                        value: "10_SF1"
+                    },
                     chartData: {
                         type: Array,
                     },
@@ -141,6 +165,10 @@
                         type: String,
                         value: "0100000US.04000"
                     },
+                    program: {
+                        type: String,
+                        value: "DEC"
+                    },
                     response: {
                         type: Object,
                         observer: '_responseChanged'
@@ -151,7 +179,7 @@
                     },
                     table: {
                         type: String,
-                        // observer: '_tableChanged'
+                        value: "P1"
                     },
                     tables: {
                         type: Array,

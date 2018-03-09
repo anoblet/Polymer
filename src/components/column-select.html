@@ -4,32 +4,32 @@
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 <link rel="import" href="./fact-finder/fact-finder.html">
 
-<dom-module id="set-select">
+<dom-module id="column-select">
     <template>
-        <paper-dropdown-menu label="Set">
-            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{_dataset}}">
-                <template is="dom-repeat" items="{{sets}}">
+        <paper-dropdown-menu label="Column Select">
+            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{columns}}">
+                <template is="dom-repeat" items="{{columns}}">
                     <paper-item value="[[item.id]]">[[item.label]]</paper-item>
                 </template>
             </paper-listbox>
         </paper-dropdown-menu>
-        <fact-finder program="{{program}}" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+        <fact-finder program="key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
     </template>
     <script>
-        class SetSelect extends Polymer.Element {
+        class ColumnSelect extends Polymer.Element {
             static get is() {
-                return 'set-select';
+                return 'column-select';
             }
 
             static get properties() {
                 return {
-                    _dataset: {
+                    column: {
                         type: String,
                         notify: true
                     },
-                    sets: {
+                    columns: {
                         type: Array,
-                        computed: '_computeSets(response)'
+                        computed: '_computeColumns(response)'
                     },
                     response: {
                         type: Object,
@@ -38,18 +38,18 @@
                 }
             }
 
-            _computeSets(response) {
-                console.log("Sets");
-                console.log(response.datasets);
-                return response.datasets;
+            _computeColumns(response) {
+                console.log("Columns");
+                console.log(response.columns);
+                return response.columns;
             }
 
             _responseChanged(response) {
-                console.log("sets");
+                console.log("Columns");
                 console.log(response);
             }
         }
 
-        window.customElements.define(SetSelect.is, SetSelect);
+        window.customElements.define(ColumnSelect.is, ColumnSelect);
     </script>
 </dom-module>
