@@ -6,14 +6,14 @@
 
 <dom-module id="column-select">
     <template>
-        <paper-dropdown-menu label="Column Select">
-            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{columns}}">
-                <template is="dom-repeat" items="{{columns}}">
-                    <paper-item value="[[item.id]]">[[item.label]]</paper-item>
-                </template>
-            </paper-listbox>
-        </paper-dropdown-menu>
-        <fact-finder program="key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
+            <paper-dropdown-menu label="Column Select">
+                <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{columns}}">
+                    <template is="dom-repeat" items="{{columns}}">
+                        <paper-item value="[[item.id]]">[[item.label]]</paper-item>
+                    </template>
+                </paper-listbox>
+            </paper-dropdown-menu>
+        <fact-finder program="[[program" _dataset="[[_dataset]]" table="[[table]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
     </template>
     <script>
         class ColumnSelect extends Polymer.Element {

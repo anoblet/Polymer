@@ -6,6 +6,7 @@
 <link rel="import" href="../../../../bower_components/paper-tooltip/paper-tooltip.html">
 <link rel="import" href="../../../../bower_components/neon-animation/web-animations.html">
 <link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
+<link rel="import" href="../../../../bower_components/iron-collapse/iron-collapse.html">
 <link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder-tables.html">
@@ -50,6 +51,10 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
+
+            iron-collapse {
+                width: 100%;
+            }
         </style>
         <my-grid>
             <my-card>
@@ -72,23 +77,29 @@
                 </div>
             </my-card>
             <my-card>
-                <div class="card-title">
-                    Columns
-                    <div class="text-right"><paper-icon-button icon="icons:arrow-drop-down"></paper-icon-button></div>
+                <div class="card-title flex">
+                    <div class="flex align-center">
+                        Columns
+                    </div>
+                    <div class="flex grow align-center justify-end">
+                        <paper-icon-button icon="icons:arrow-drop-down" on-click="collapseColumns"></paper-icon-button>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <paper-listbox id="columns" multi selected-values="{{selectedColumns}}">
-                        <template is="dom-repeat" items="[[chartColumns]]">
-                            <paper-item class="">
-                                <span>[[item.label]]</span>
-                                <paper-tooltip>[[item.label]]</paper-tooltip>
-                            </paper-item>
-                        </template>
-                    </paper-listbox>
-                </div>
-                <div class="card-actions">
-                    <paper-button>Select All</paper-button>
-                </div>
+                <iron-collapse id="columnsCollapse">
+                    <div class="card-content">
+                        <paper-listbox id="columns" multi selected-values="{{selectedColumns}}">
+                            <template is="dom-repeat" items="[[chartColumns]]">
+                                <paper-item class="">
+                                    <span>[[item.label]]</span>
+                                    <paper-tooltip>[[item.label]]</paper-tooltip>
+                                </paper-item>
+                            </template>
+                        </paper-listbox>
+                    </div>
+                    <div class="card-actions">
+                        <paper-button>Select All</paper-button>
+                    </div>
+                </iron-collapse>
             </my-card>
             <my-card ratio="1:1">
                 <div class="card-title">[[currentTableLabel]]</div>
@@ -211,6 +222,10 @@
                         // width: '100%'
                     };
                 }
+            }
+
+            collapseColumns() {
+                this.$.columnsCollapse.toggle();
             }
 
             _currentTableIndexChanged(index) {
