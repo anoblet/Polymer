@@ -3,7 +3,7 @@
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 <link rel="import" href="./fact-finder/fact-finder.html">
 
-<dom-module id="column-select">
+<dom-module id="columns-select">
     <template>
         <paper-listbox multi selected-values="{{selectedColumns}}">
             <template is="dom-repeat" items="{{columns}}">
@@ -16,9 +16,9 @@
         <fact-finder program="[[program]]" _dataset="[[_dataset]]" table="[[table]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
     </template>
     <script>
-        class ColumnSelect extends Polymer.Element {
+        class ColumnsSelect extends Polymer.Element {
             static get is() {
-                return 'column-select';
+                return 'columns-select';
             }
 
             static get properties() {
@@ -73,6 +73,6 @@
             }
         }
 
-        window.customElements.define(ColumnSelect.is, ColumnSelect);
+        window.customElements.define(ColumnsSelect.is, ColumnsSelect);
     </script>
 </dom-module>

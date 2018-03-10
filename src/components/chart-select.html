@@ -1,0 +1,46 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="chart-select">
+    <template>
+        <paper-dropdown-menu label="Chart Type" selected-item-label="{{chart}}">
+            <paper-listbox slot="dropdown-content" selected="{{chartTypeIndex}}">
+                <template is="dom-repeat" items="[[charts]]">
+                    <paper-item>[[item]]</paper-item>
+                </template>
+            </paper-listbox>
+        </paper-dropdown-menu>
+    </template>
+    <script>
+        class ChartSelect extends Polymer.Element {
+            static get is() {
+                return 'chart-select';
+            }
+
+            static get properties() {
+                return {
+                    chart: {
+                        type: String,
+                        notify: true,
+                        value: 'column'
+                    },
+                    charts: {
+                        type: Array,
+                        value: function() {
+                            return [
+                                'area',
+                                'bar',
+                                'bubble',
+                                'candlestick',
+                                'column',
+                                'geo',
+                                'pie',
+                                'table'
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+        window.customElements.define(ChartSelect.is, ChartSelect);
+    </script>
+</dom-module>

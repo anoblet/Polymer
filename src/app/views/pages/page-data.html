@@ -13,7 +13,8 @@
 <link rel="import" href="../../../components/fact-finder/fact-finder.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder-tables.html">
 <link rel="import" href="../../../components/my-card/my-card.html">
-<link rel="import" href="../../../components/column-select.html">
+<link rel="import" href="../../../components/chart-select.html">
+<link rel="import" href="../../../components/columns-select.html">
 <link rel="import" href="../../../components/state-select.html">
 <link rel="import" href="../../../components/summary-select.html">
 <link rel="import" href="../../../components/program-select.html">
@@ -70,13 +71,7 @@
                     <program-select program="{{program}}"></program-select>
                     <data-select program="{{program}}" _dataset="{{_dataset}}"></data-select>
                     <table-select program="{{program}}" _dataset="{{_dataset}}" table="{{table}}"></table-select>
-                    <paper-dropdown-menu label="Chart Type" selected-item-label="{{chartType}}">
-                        <paper-listbox slot="dropdown-content" selected="{{chartTypeIndex}}">
-                            <template is="dom-repeat" items="[[chartTypes]]">
-                                <paper-item>[[item]]</paper-item>
-                            </template>
-                        </paper-listbox>
-                    </paper-dropdown-menu>
+                    <chart-select chart="{{chart}}"></chart-select>
                 </div>
             </my-card>
             <my-card>
@@ -90,7 +85,7 @@
                 </div>
                 <iron-collapse id="columnsCollapse">
                     <div class="card-content">
-                        <column-select program="[[program]]" _dataset="[[_dataset]]" table="[[table]]" selected-columns="{{selectedColumns}}"></column-select>
+                        <columns-select program="[[program]]" _dataset="[[_dataset]]" table="[[table]]" selected-columns="{{selectedColumns}}"></columns-select>
                     </div>
                 </iron-collapse>
             </my-card>
@@ -98,7 +93,7 @@
                 <div class="card-title">[[currentTableLabel]]</div>
                 <div class="card-content">
                     <!--<google-chart-responsive type="[[chartType]]" options="[[chartOptions]]" cols="[[chartColumns]]" rows="[[chartRows]]"></google-chart-responsive>-->
-                    <google-chart-responsive type="[[chartType]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>
+                    <google-chart-responsive type="[[chart]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>
                 </div>
             </my-card>
         </my-grid>
@@ -134,22 +129,6 @@
                         type: Number,
                         observer: '_chartTypeIndexChanged',
                         value: 7
-                    },
-                    chartTypes: {
-                        type: Array,
-                        value: function () {
-                            return [
-                                'area',
-                                'bar',
-                                'bubble',
-                                'candlestick',
-                                'column',
-                                // 'donut',
-                                'geo',
-                                'pie',
-                                'table'
-                            ]
-                        }
                     },
                     currentTable: {
                         type: String,
