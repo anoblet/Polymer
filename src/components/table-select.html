@@ -23,6 +23,12 @@
 
             static get properties() {
                 return {
+                    _dataset: {
+                        type: String,
+                    },
+                    program: {
+                        type: String,
+                    },
                     table: {
                         type: String,
                         notify: true
@@ -33,20 +39,15 @@
                     },
                     response: {
                         type: Object,
-                        // observer: '_responseChanged'
                     }
                 }
             }
 
             _computeTables(response) {
-                console.log("Tables");
-                console.log(response);
+                // console.log("Tables");
+                // console.log(response.tables);
+                console.log("Tables", response.tables);
                 return response.tables;
-            }
-
-            _responseChanged(response) {
-                console.log("Tables");
-                console.log(response);
             }
         }
 
