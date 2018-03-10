@@ -125,6 +125,9 @@
                         type: String,
                         value: "10_SF1"
                     },
+                    chartColumns: {
+                        type: Array,
+                    },
                     chartData: {
                         type: Array,
                     },
@@ -138,7 +141,7 @@
                     },
                     chartTypeIndex: {
                         type: Number,
-                        observer: 'chartTypeIndexChanged',
+                        observer: '_chartTypeIndexChanged',
                         value: 7
                     },
                     chartTypes: {
@@ -222,6 +225,10 @@
                         // width: '100%'
                     };
                 }
+            }
+
+            _chartTypeIndexChanged(index) {
+
             }
 
             collapseColumns() {

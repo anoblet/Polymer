@@ -27,26 +27,22 @@
                         type: String,
                         notify: true
                     },
-                    sets: {
+                    program: {
+                        type: String,
+                    },
+                    _datasets: {
                         type: Array,
-                        computed: '_computeSets(response)'
+                        computed: '_computeDatasets(response)'
                     },
                     response: {
                         type: Object,
-                        // observer: '_responseChanged'
                     }
                 }
             }
 
-            _computeSets(response) {
-                console.log("Sets");
-                console.log(response.datasets);
+            _computeDataets(response) {
+                console.log("Datasets: ", response.datasets);
                 return response.datasets;
-            }
-
-            _responseChanged(response) {
-                console.log("sets");
-                console.log(response);
             }
         }
 
