@@ -71,7 +71,7 @@
                     <program-select program="{{program}}"></program-select>
                     <data-select program="{{program}}" _dataset="{{_dataset}}"></data-select>
                     <table-select program="{{program}}" _dataset="{{_dataset}}" table="{{table}}"></table-select>
-                    <chart-select chart="{{chart}}"></chart-select>
+                    <chart-select chart="{{chart}}" options="{{chartOptions}}"></chart-select>
                 </div>
             </my-card>
             <my-card>
@@ -96,6 +96,12 @@
                     <google-chart-responsive type="[[chart]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>
                 </div>
             </my-card>
+            <my-card>
+                <div class="card-title">Raw ouput</div>
+                <div class="card-content">
+                    [[stringify(response)]]
+                </div>
+            </my-card>
         </my-grid>
         <fact-finder program="[[program]]" _dataset="[[_dataset]]" table="[[table]]" geography-id="[[geographyId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
     </template>
@@ -111,24 +117,8 @@
                         type: String,
                         value: "10_SF1"
                     },
-                    chartColumns: {
-                        type: Array,
-                    },
-                    chartData: {
-                        type: Array,
-                    },
                     chartOptions: {
                         type: Object
-                    },
-                    chartType: {
-                        type: String,
-                        observer: '_chartType',
-                        value: 'table'
-                    },
-                    chartTypeIndex: {
-                        type: Number,
-                        observer: '_chartTypeIndexChanged',
-                        value: 7
                     },
                     currentTable: {
                         type: String,
@@ -179,10 +169,13 @@
             }
 
             _chartType(type) {
+                /*
                 if (type == "geo") {
                     this.chartOptions = {
                         region: "US",
-                        resolution: "provinces",
+                        resolution: "p" +
+                        "" +
+                        "rovinces",
                         defaultColor: '#90caf9'
                     }
                 }
@@ -195,6 +188,7 @@
                         // width: '100%'
                     };
                 }
+                */
             }
 
             _chartTypeIndexChanged(index) {
@@ -303,6 +297,10 @@
                     console.log(chartData);
                     this.chartData = chartData;
                 }
+            }
+
+            stringify(data) {
+                return JSON.stringify(data, null, 2);
             }
 
             _tableChanged(table) {

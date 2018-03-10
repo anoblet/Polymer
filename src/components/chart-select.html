@@ -3,7 +3,7 @@
 <dom-module id="chart-select">
     <template>
         <paper-dropdown-menu label="Chart Type" selected-item-label="{{chart}}">
-            <paper-listbox slot="dropdown-content" selected="{{chartTypeIndex}}">
+            <paper-listbox slot="dropdown-content" selected="{{chartIndex}}">
                 <template is="dom-repeat" items="[[charts]]">
                     <paper-item>[[item]]</paper-item>
                 </template>
@@ -20,8 +20,13 @@
                 return {
                     chart: {
                         type: String,
-                        notify: true,
-                        value: 'column'
+                        value: 'column',
+                        observer: '_chartChanged',
+                        notify: true
+                    },
+                    chartIndex: {
+                        type: Number,
+                        value: 4
                     },
                     charts: {
                         type: Array,
@@ -37,7 +42,35 @@
                                 'table'
                             ]
                         }
+                    },
+                    options: {
+                        type: Object,
+                        notify: true
                     }
+                }
+            }
+
+            _chartChanged(chart) {
+                this.options = {};
+                if (chart == "geo") {
+                    this.options = {
+                        region: "US",
+                        resolution: "provinces",
+                        defaultColor: '#90caf9'
+                    }
+                }
+                else {
+                    this.options = {
+                        chartArea: {
+                            width: '80%',
+                            height: '80%'
+                        },
+                        legend: {
+                            alignment: 'center',
+                            position: 'top',
+                        },
+                        // width: '100%'
+                    };
                 }
             }
         }
