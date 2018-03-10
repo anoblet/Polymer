@@ -8,7 +8,7 @@
     <template>
         <paper-dropdown-menu label="Set">
             <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{_dataset}}">
-                <template is="dom-repeat" items="{{sets}}">
+                <template is="dom-repeat" items="{{_datasets}}">
                     <paper-item value="[[item.id]]">[[item.label]]</paper-item>
                 </template>
             </paper-listbox>
@@ -40,7 +40,7 @@
                 }
             }
 
-            _computeDataets(response) {
+            _computeDatasets(response) {
                 console.log("Datasets: ", response.datasets);
                 return response.datasets;
             }
