@@ -60,7 +60,7 @@
         </style>
         <my-grid>
             <my-card>
-                <div class="card-content">
+                <div class="card-content flex justify-around">
                     <paper-input label="Geography ID" value="{{geographyId}}"></paper-input>
                     <summary-select level="{{geographyId}}"></summary-select>
                     <template is="dom-if" if="[[_isSummaryLevel(geographyId, 'state')]]">
