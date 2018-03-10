@@ -13,6 +13,7 @@
 <link rel="import" href="../../../components/fact-finder/fact-finder.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder-tables.html">
 <link rel="import" href="../../../components/my-card/my-card.html">
+<link rel="import" href="../../../components/column-select.html">
 <link rel="import" href="../../../components/state-select.html">
 <link rel="import" href="../../../components/summary-select.html">
 <link rel="import" href="../../../components/program-select.html">
@@ -79,27 +80,17 @@
                 </div>
             </my-card>
             <my-card>
-                <div class="card-title flex">
+                <div class="card-title flex"  on-click="collapseColumns">
                     <div class="flex align-center">
                         Columns
                     </div>
                     <div class="flex grow align-center justify-end">
-                        <paper-icon-button icon="icons:arrow-drop-down" on-click="collapseColumns"></paper-icon-button>
+                        <paper-icon-button icon="icons:arrow-drop-down"></paper-icon-button>
                     </div>
                 </div>
                 <iron-collapse id="columnsCollapse">
                     <div class="card-content">
-                        <paper-listbox id="columns" multi selected-values="{{selectedColumns}}">
-                            <template is="dom-repeat" items="[[chartColumns]]">
-                                <paper-item class="">
-                                    <span>[[item.label]]</span>
-                                    <paper-tooltip>[[item.label]]</paper-tooltip>
-                                </paper-item>
-                            </template>
-                        </paper-listbox>
-                    </div>
-                    <div class="card-actions">
-                        <paper-button>Select All</paper-button>
+                        <column-select program="[[program]]" _dataset="[[_dataset]]" table="[[table]]" selected-columns="{{selectedColumns}}"></column-select>
                     </div>
                 </iron-collapse>
             </my-card>
@@ -112,8 +103,6 @@
             </my-card>
         </my-grid>
         <fact-finder program="[[program]]" _dataset="[[_dataset]]" table="[[table]]" geography-id="[[geographyId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
-        <!--<fact-finder-tables tables="{{tables}}"></fact-finder-tables>-->
-        <!--<fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>-->
     </template>
     <script>
         class PageData extends Polymer.Element {
