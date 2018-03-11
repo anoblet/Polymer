@@ -48,6 +48,9 @@
                     options: {
                         type: Object,
                         notify: true
+                    },
+                    primaryColor: {
+                        type: String
                     }
                 }
             }
@@ -91,6 +94,7 @@
                 super.disconnectedCallback();
                 window.removeEventListener('styleChanged', this._boundListener);
             }
+
         }
         window.customElements.define(ChartSelect.is, ChartSelect);
     </script>
