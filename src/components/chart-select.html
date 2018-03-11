@@ -50,6 +50,11 @@
                 }
             }
 
+            constructor() {
+                super();
+                this._boundListener = this._styleChanged.bind(this);
+            }
+
             _chartChanged(chart) {
                 this.options = {
                     chartArea: {
@@ -66,6 +71,21 @@
                     this.options.resolution = "provinces";
                     this.options.defaultColor= '#90caf9'
                 }
+            }
+
+            _styleChanged(style) {
+                console.log("Here");
+                // (function () { console.log(new Error().stack); })();
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                window.addEventListener('styleChanged', this._boundListener);
+            }
+
+            disconnectedCallback() {
+                super.disconnectedCallback();
+                window.removeEventListener('styleChanged', this._boundListener);
             }
         }
         window.customElements.define(ChartSelect.is, ChartSelect);

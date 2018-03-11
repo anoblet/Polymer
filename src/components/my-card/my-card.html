@@ -79,16 +79,21 @@
                 display: flex;
                 padding: 2rem;
                 background: var(--color-primary);
-                color: var(--color-secondary);
+                color: #fff;
             }
 
             .card-title {
                 display: flex;
             }
+
+            .card-content {
+                overflow: auto;
+            }
         </style>
         <div class="reset">
             <a href="[[href]]">
                 <paper-card>
+                    <!--
                     <template is="dom-if" if="[[collapse]]">
                         <div class="card-title">
                             <div class="flex grow align-center">
@@ -104,18 +109,32 @@
                             </div>
                         </iron-collapse>
                     </template>
+                    -->
                     <template is="dom-if" if="[[gen2]]">
-                        <div class="card-header">
+                        <div class="card-header" on-click="collapseElement">
                             <div class="flex grow align-center">
                                 <slot name="title"></slot>
                             </div>
                             <div class="flex align-center justify-end">
-                                <slot name="header-right"></slot>
+                                <slot name="header-right">
+                                    <template is="dom-if" if="[[collapse]]">
+                                        <paper-icon-button icon="icons:arrow-drop-down"></paper-icon-button>
+                                    </template>
+                                </slot>
                             </div>
                         </div>
-                        <div class="card-content">
-                            <slot name="content"></slot>
-                        </div>
+                        <template is="dom-if" if="[[collapse]]">
+                            <iron-collapse id="collapse">
+                                <div class="card-content">
+                                    <slot name="content"></slot>
+                                </div>
+                            </iron-collapse>
+                        </template>
+                        <template is="dom-if" if="[[!collapse]]">
+                            <div class="card-content">
+                                <slot name="content"></slot>
+                            </div>
+                        </template>
                     </template>
                     <slot></slot>
                 </paper-card>
