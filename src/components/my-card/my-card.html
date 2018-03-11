@@ -97,7 +97,16 @@
                             </div>
                         </iron-collapse>
                     </template>
-                    <slot name="content"></slot>
+                    <template is="dom-if" if="[[gen2]]">
+                        <div class="card-title">
+                            <div class="flex grow align-center">
+                                <slot name="title"></slot>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <slot name="content"></slot>
+                        </div>
+                    </template>
                     <slot></slot>
                 </paper-card>
             </a>
@@ -114,6 +123,10 @@
                     collapse: {
                         type: Boolean,
                         value: false
+                    },
+                    gen2: {
+                        type: Boolean,
+                        value: false,
                     },
                     href: {
                         type: String

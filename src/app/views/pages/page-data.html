@@ -1,14 +1,7 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../../../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../../../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
-<link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
-<link rel="import" href="../../../../bower_components/paper-tooltip/paper-tooltip.html">
 <link rel="import" href="../../../../bower_components/neon-animation/web-animations.html">
 <link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
-<link rel="import" href="../../../../bower_components/iron-collapse/iron-collapse.html">
 <link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder-tables.html">
@@ -31,38 +24,11 @@
             my-grid {
                 grid-template-columns: auto;
             }
-
-            my-card .card-content {
-                height: 100%;
-            }
-
-            #columns {
-                /*display: grid;*/
-                /*grid-template-columns: repeat(auto-fill, minmax(16.5%, 1fr));*/
-                display: flex;
-                flex-wrap: wrap;
-                width: 100%;
-                /*overflow: auto;*/
-            }
-
-            #columns > * {
-                display: flex;
-                width: 16.5%;
-            }
-
-            #columns paper-item > span {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            iron-collapse {
-                width: 100%;
-            }
         </style>
         <my-grid>
-            <my-card>
-                <div class="card-content flex justify-around">
+            <my-card gen2>
+                <div slot="title">Table</div>
+                <div slot="content" class="flex justify-around">
                     <paper-input label="Geography ID" value="{{geographyId}}"></paper-input>
                     <summary-select level="{{geographyId}}"></summary-select>
                     <template is="dom-if" if="[[_isSummaryLevel(geographyId, 'state')]]">
@@ -74,24 +40,15 @@
                     <chart-select chart="{{chart}}" options="{{chartOptions}}"></chart-select>
                 </div>
             </my-card>
-            <my-card>
-                <div class="card-title flex"  on-click="collapseColumns">
-                    <div class="flex align-center">
-                        Columns
-                    </div>
-                    <div class="flex grow align-center justify-end">
-                        <paper-icon-button icon="icons:arrow-drop-down"></paper-icon-button>
-                    </div>
+            <my-card collapse>
+                <div slot="title">Columns</div>
+                <div slot="content">
+                    <columns-select program="[[program]]" _dataset="[[_dataset]]" table="[[table]]" selected-columns="{{selectedColumns}}"></columns-select>
                 </div>
-                <iron-collapse id="columnsCollapse">
-                    <div class="card-content">
-                        <columns-select program="[[program]]" _dataset="[[_dataset]]" table="[[table]]" selected-columns="{{selectedColumns}}"></columns-select>
-                    </div>
-                </iron-collapse>
             </my-card>
-            <my-card ratio="1:1">
-                <div class="card-title">[[currentTableLabel]]</div>
-                <div class="card-content">
+            <my-card gen2 ratio="1:1">
+                <div slot="title">Chart</div>
+                <div slot="content" class="full-height">
                     <!--<google-chart-responsive type="[[chartType]]" options="[[chartOptions]]" cols="[[chartColumns]]" rows="[[chartRows]]"></google-chart-responsive>-->
                     <google-chart-responsive type="[[chart]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>
                 </div>
@@ -168,37 +125,6 @@
                 ]
             }
 
-            _chartType(type) {
-                /*
-                if (type == "geo") {
-                    this.chartOptions = {
-                        region: "US",
-                        resolution: "p" +
-                        "" +
-                        "rovinces",
-                        defaultColor: '#90caf9'
-                    }
-                }
-                else {
-                    this.chartOptions = {
-                        legend: {
-                            alignment: 'center',
-                            position: 'top',
-                        },
-                        // width: '100%'
-                    };
-                }
-                */
-            }
-
-            _chartTypeIndexChanged(index) {
-
-            }
-
-            collapseColumns() {
-                this.$.columnsCollapse.toggle();
-            }
-
             _currentTableIndexChanged(index) {
                 console.log(index);
                 console.log(this.tables);
@@ -208,6 +134,10 @@
                     this.currentTableLabel = table.label;
                     console.log(this.tables[index]);
                 }
+            }
+
+            _isEqual(prop1, prop2) {
+                return (prop1 === prop2);
             }
 
             _isSummaryLevel(summaryLevel, level) {
@@ -301,21 +231,6 @@
 
             stringify(data) {
                 return JSON.stringify(data, null, 2);
-            }
-
-            _tableChanged(table) {
-                console.log(table);
-                if (this.tables) {
-                    for (let i = 0; i < this.tables.length; i++) {
-                        if (this.tables[i].id == this.table) {
-                            this.currentTable = this.tables[i].label;
-                        }
-                    }
-                }
-            }
-
-            _tablesChanged(tables) {
-                this._currentTableIndexChanged(this.currentTableIndex);
             }
         }
 
