@@ -13,6 +13,7 @@
 <link rel="import" href="../../../components/program-select.html">
 <link rel="import" href="../../../components/data-select.html">
 <link rel="import" href="../../../components/table-select.html">
+<link rel="import" href="../../../components/explore-options.html">
 
 <dom-module id="page-data">
     <template>
@@ -40,6 +41,12 @@
                     <chart-select chart="{{chart}}" options="{{chartOptions}}"></chart-select>
                 </div>
             </my-card>
+            <my-card gen2>
+                <div slot="title">Options</div>
+                <div slot="content">
+                    <explore-options program="{{program}}" _dataset="{{_dataset}}" table="{{table}}" chart="{{chart}}"></explore-options>
+                </div>
+            </my-card>
             <my-card collapse>
                 <div slot="title">Columns</div>
                 <div slot="content">
@@ -48,6 +55,9 @@
             </my-card>
             <my-card gen2 ratio="1:1">
                 <div slot="title">Chart</div>
+                <div slot="header-right">
+                    <chart-select chart="{{chart}}" options="{{chartOptions}}"></chart-select>
+                </div>
                 <div slot="content" class="full-height">
                     <!--<google-chart-responsive type="[[chartType]]" options="[[chartOptions]]" cols="[[chartColumns]]" rows="[[chartRows]]"></google-chart-responsive>-->
                     <google-chart-responsive type="[[chart]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>
