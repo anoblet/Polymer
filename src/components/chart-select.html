@@ -9,6 +9,8 @@
                 </template>
             </paper-listbox>
         </paper-dropdown-menu>
+        <app-data data="{{data}}"></app-data>
+        <map-property source="{{data.configuration.primaryColor}}" target="{{primaryColor}}"></map-property>
     </template>
     <script>
         class ChartSelect extends Polymer.Element {
@@ -61,6 +63,7 @@
                         width: '80%',
                         height: '80%'
                     },
+                    // colors: [this.primaryColor],
                     legend: {
                         alignment: 'center',
                         position: 'top',
@@ -73,9 +76,10 @@
                 }
             }
 
-            _styleChanged(style) {
+            _styleChanged(e) {
                 console.log("Here");
-                // (function () { console.log(new Error().stack); })();
+                (function () { console.log(new Error().stack); })();
+                console.log(e)
             }
 
             connectedCallback() {

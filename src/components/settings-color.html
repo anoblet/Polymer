@@ -36,14 +36,12 @@
             }
 
             _primaryColorChanged(color) {
-                this.dispatchEvent(new CustomEvent('colorChanged', {bubbles: true, composed: true, detail: {type: 'primary', color: color}}));
                 let style = {};
                 style['--color-primary'] = color;
                 this.dispatchEvent(new CustomEvent('styleChanged', {bubbles: true, composed: true, detail: style}));
             }
 
             _secondaryColorChanged(color) {
-                this.dispatchEvent(new CustomEvent('colorChanged', {bubbles: true, composed: true, detail: {type: 'primary', color: color}}));
                 let style = {};
                 style['--color-secondary'] = color;
                 this.dispatchEvent(new CustomEvent('styleChanged', {bubbles: true, composed: true, detail: style}));
