@@ -2,6 +2,7 @@
 
 <dom-module id="settings-color">
     <template>
+        Primary Color: <paper-swatch-picker color="{{primaryColor}}"></paper-swatch-picker>
     </template>
     <script>
         class SettingsColor extends Polymer.Element {
@@ -10,7 +11,12 @@
             }
 
             static get properties() {
-                return {}
+                return {
+                    primaryColor: {
+                        type: String,
+                        value: '#2196f3'
+                    }
+                }
             }
         }
         window.customElements.define(SettingsColor.is, SettingsColor);
