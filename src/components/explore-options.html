@@ -1,4 +1,8 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="summary-select.html">
+<link rel="import" href="state-select.html">
+<link rel="import" href="program-select.html">
 
 <dom-module id="explore-options">
     <template>
@@ -12,7 +16,7 @@
             <paper-input label="Geography ID" value="{{geographyId}}"></paper-input>
         </template>
         <summary-select level="{{geographyId}}"></summary-select>
-        <template is="dom-if" if="[[_isSummaryLevel(geographyId, 'state')]]">
+        <template is="dom-if" if="[[_isEqual(geographyId, 'state')]]">
             <state-select geography-id="{{geographyId}}"></state-select>
         </template>
         <program-select program="{{program}}" _dataset="{{_dataset}}" table="{{table}}"></program-select>
@@ -49,6 +53,10 @@
                         notify: true
                     }
                 }
+            }
+
+            _isEqual(prop1, prop2) {
+                return (prop1 === prop2)
             }
         }
 

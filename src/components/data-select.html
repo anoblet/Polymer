@@ -7,9 +7,9 @@
 <dom-module id="data-select">
     <template>
         <paper-dropdown-menu label="Set">
-            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{_dataset}}">
+            <paper-listbox slot="dropdown-content" attr-for-selected="name" selected="{{_dataset}}">
                 <template is="dom-repeat" items="{{_datasets}}">
-                    <paper-item value="[[item.id]]">[[item.label]]</paper-item>
+                    <paper-item name="[[item.id]]">[[item.label]]</paper-item>
                 </template>
             </paper-listbox>
         </paper-dropdown-menu>

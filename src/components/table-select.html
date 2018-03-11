@@ -7,9 +7,9 @@
 <dom-module id="table-select">
     <template>
         <paper-dropdown-menu label="Table Select">
-            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{table}}">
+            <paper-listbox slot="dropdown-content" attr-for-selected="name" selected="{{table}}">
                 <template is="dom-repeat" items="{{tables}}">
-                    <paper-item value="[[item.id]]">[[item.label]]</paper-item>
+                    <paper-item name="[[item.id]]">[[item.label]]</paper-item>
                 </template>
             </paper-listbox>
         </paper-dropdown-menu>
