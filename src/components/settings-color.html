@@ -2,7 +2,17 @@
 
 <dom-module id="settings-color">
     <template>
-        Primary Color: <paper-swatch-picker color="{{primaryColor}}"></paper-swatch-picker>
+        <app-data data="{{data}}"></app-data>
+        <map-property source="{{data.configuration.primaryColor}}" target="{{primaryColor}}"></map-property>
+        <map-property source="{{data.configuration.secondaryColor}}" target="{{secondaryColor}}"></map-property>
+        <div>
+            Primary Color:
+            <paper-swatch-picker color="{{primaryColor}}"></paper-swatch-picker>
+        </div>
+        <div>
+            Secondary Color:
+            <paper-swatch-picker color="{{secondaryColor}}"></paper-swatch-picker>
+        </div>
     </template>
     <script>
         class SettingsColor extends Polymer.Element {
@@ -14,9 +24,29 @@
                 return {
                     primaryColor: {
                         type: String,
-                        value: '#2196f3'
+                        value: '#2196f3',
+                        observer: '_primaryColorChanged'
+                    },
+                    secondaryColor: {
+                        type: String,
+                        value: '#2196f3',
+                        observer: '_secondaryColorChanged'
                     }
                 }
+            }
+
+            _primaryColorChanged(color) {
+                this.dispatchEvent(new CustomEvent('colorChanged', {bubbles: true, composed: true, detail: {type: 'primary', color: color}}));
+                let style = {};
+                style['--color-primary'] = color;
+                this.dispatchEvent(new CustomEvent('styleChanged', {bubbles: true, composed: true, detail: style}));
+            }
+
+            _secondaryColorChanged(color) {
+                this.dispatchEvent(new CustomEvent('colorChanged', {bubbles: true, composed: true, detail: {type: 'primary', color: color}}));
+                let style = {};
+                style['--color-secondary'] = color;
+                this.dispatchEvent(new CustomEvent('styleChanged', {bubbles: true, composed: true, detail: style}));
             }
         }
         window.customElements.define(SettingsColor.is, SettingsColor);
