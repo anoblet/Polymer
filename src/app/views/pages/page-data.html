@@ -68,8 +68,8 @@
                     <template is="dom-if" if="[[_isSummaryLevel(geographyId, 'state')]]">
                         <state-select geography-id="{{geographyId}}"></state-select>
                     </template>
-                    <program-select program="{{program}}"></program-select>
-                    <data-select program="{{program}}" _dataset="{{_dataset}}"></data-select>
+                    <program-select program="{{program}}" _dataset="{{_dataset}}" table="{{table}}"></program-select>
+                    <data-select program="{{program}}" _dataset="{{_dataset}}" table="{{table}}"></data-select>
                     <table-select program="{{program}}" _dataset="{{_dataset}}" table="{{table}}"></table-select>
                     <chart-select chart="{{chart}}" options="{{chartOptions}}"></chart-select>
                 </div>
@@ -96,9 +96,9 @@
                     <google-chart-responsive type="[[chart]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>
                 </div>
             </my-card>
-            <my-card>
-                <div class="card-title">Raw ouput</div>
-                <div class="card-content">
+            <my-card collapse>
+                <div slot="title">Raw ouput</div>
+                <div slot="content">
                     [[stringify(response)]]
                 </div>
             </my-card>

@@ -1,10 +1,23 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-tooltip/paper-tooltip.html">
 <link rel="import" href="./fact-finder/fact-finder.html">
 
 <dom-module id="columns-select">
     <template>
+        <style>
+            paper-listbox {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(16.5%, 1fr));
+            }
+
+            paper-item {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        </style>
         <paper-listbox multi selected-values="{{selectedColumns}}">
             <template is="dom-repeat" items="{{columns}}">
                 <paper-item>

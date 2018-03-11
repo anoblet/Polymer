@@ -1,5 +1,6 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../bower_components/iron-collapse/iron-collapse.html">
 
 <dom-module id="my-card">
     <template>
@@ -73,10 +74,30 @@
                 padding: 2rem;
                 max-height: 100%;
             }
+
+            .card-title {
+                display: flex;
+            }
         </style>
         <div class="reset">
             <a href="[[href]]">
                 <paper-card>
+                    <template is="dom-if" if="[[collapse]]">
+                        <div class="card-title">
+                            <div class="flex grow align-center">
+                                <slot name="title"></slot>
+                            </div>
+                            <div class="flex align-center justify-end">
+                                <paper-icon-button icon="icons:arrow-drop-down" on-click="collapseElement"></paper-icon-button>
+                            </div>
+                        </div>
+                        <iron-collapse id="collapse">
+                            <div class="card-content">
+                                <slot name="content"></slot>
+                            </div>
+                        </iron-collapse>
+                    </template>
+                    <slot name="content"></slot>
                     <slot></slot>
                 </paper-card>
             </a>
@@ -90,17 +111,31 @@
 
             static get properties() {
                 return {
+                    collapse: {
+                        type: Boolean,
+                        value: false
+                    },
+                    href: {
+                        type: String
+                    },
+                    href: {
+                        type: String
+                    },
                     ratio: {
                         type: String,
                         reflectToAttribute: true
                     },
-                    href: {
-                        type: String
-                    },
-                    href: {
+                    title: {
                         type: String
                     }
                 }
+            }
+
+            collapseElement(e) {
+                console.log(e);
+                console.log(this);
+                // this.$.collapse.toggle();
+                this.shadowRoot.querySelector("iron-collapse").toggle();
             }
 
             ready() {

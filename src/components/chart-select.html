@@ -1,9 +1,9 @@
-<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
 <dom-module id="chart-select">
     <template>
-        <paper-dropdown-menu label="Chart Type" selected-item-label="{{chart}}">
-            <paper-listbox slot="dropdown-content" selected="{{chartIndex}}">
+        <paper-dropdown-menu label="Chart" selected-item-label="{{chart}}">
+            <paper-listbox slot="dropdown-content" selected="{{index}}">
                 <template is="dom-repeat" items="[[charts]]">
                     <paper-item>[[item]]</paper-item>
                 </template>
@@ -24,7 +24,7 @@
                         observer: '_chartChanged',
                         notify: true
                     },
-                    chartIndex: {
+                    index: {
                         type: Number,
                         value: 4
                     },
@@ -51,26 +51,20 @@
             }
 
             _chartChanged(chart) {
-                this.options = {};
-                if (chart == "geo") {
-                    this.options = {
-                        region: "US",
-                        resolution: "provinces",
-                        defaultColor: '#90caf9'
+                this.options = {
+                    chartArea: {
+                        width: '80%',
+                        height: '80%'
+                    },
+                    legend: {
+                        alignment: 'center',
+                        position: 'top',
                     }
-                }
-                else {
-                    this.options = {
-                        chartArea: {
-                            width: '80%',
-                            height: '80%'
-                        },
-                        legend: {
-                            alignment: 'center',
-                            position: 'top',
-                        },
-                        // width: '100%'
-                    };
+                };
+                if (chart == "geo") {
+                    this.options.region = "US";
+                    this.options.resolution = "provinces";
+                    this.options.defaultColor= '#90caf9'
                 }
             }
         }
