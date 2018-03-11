@@ -27,24 +27,8 @@
             }
         </style>
         <my-grid>
-            <!--
-            <my-card gen2>
-                <div slot="title">Table</div>
-                <div slot="content" class="flex justify-around">
-                    <paper-input label="Geography ID" value="{{geographyId}}"></paper-input>
-                    <summary-select level="{{geographyId}}"></summary-select>
-                    <template is="dom-if" if="[[_isSummaryLevel(geographyId, 'state')]]">
-                        <state-select geography-id="{{geographyId}}"></state-select>
-                    </template>
-                    <program-select program="{{program}}" _dataset="{{_dataset}}" table="{{table}}"></program-select>
-                    <data-select program="{{program}}" _dataset="{{_dataset}}" table="{{table}}"></data-select>
-                    <table-select program="{{program}}" _dataset="{{_dataset}}" table="{{table}}"></table-select>
-                    <chart-select chart="{{chart}}" options="{{chartOptions}}"></chart-select>
-                </div>
-            </my-card>
-            -->
             <my-card gen2 collapse>
-                <div slot="title">Options</div>
+                <div slot="title">Table</div>
                 <div slot="content">
                     <explore-options program="{{program}}" _dataset="{{_dataset}}" table="{{table}}" chart="{{chart}}"></explore-options>
                 </div>
@@ -92,18 +76,6 @@
                     chartOptions: {
                         type: Object
                     },
-
-                    currentTableIndex: {
-                        type: Number,
-                        observer: '_currentTableIndexChanged',
-                        value: 74
-                    },
-                    currentTableId: {
-                        type: String,
-                    },
-                    currentTableLabel: {
-                        type: String,
-                    },
                     geographyId: {
                         type: String,
                         value: "0100000US.04000"
@@ -125,8 +97,7 @@
                         value: "P1"
                     },
                     tables: {
-                        type: Array,
-                        observer: '_tablesChanged'
+                        type: Array
                     }
                 }
             }
@@ -138,6 +109,7 @@
             }
 
             _currentTableIndexChanged(index) {
+                /*
                 console.log(index);
                 console.log(this.tables);
                 if (this.tables) {
@@ -146,6 +118,7 @@
                     this.currentTableLabel = table.label;
                     console.log(this.tables[index]);
                 }
+                */
             }
 
             _isEqual(prop1, prop2) {
