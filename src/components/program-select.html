@@ -7,9 +7,9 @@
 <dom-module id="program-select">
     <template>
         <paper-dropdown-menu label="Program Select">
-            <paper-listbox slot="dropdown-content" attr-for-selected="value" selected="{{program}}">
+            <paper-listbox slot="dropdown-content" attr-for-selected="name" selected="{{program}}">
                 <template is="dom-repeat" items="{{programs}}">
-                    <paper-item value="[[item.id]]">[[item.label]]</paper-item>
+                    <paper-item name="[[item.id]]">[[item.label]]</paper-item>
                 </template>
             </paper-listbox>
         </paper-dropdown-menu>
