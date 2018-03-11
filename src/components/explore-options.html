@@ -2,7 +2,15 @@
 
 <dom-module id="explore-options">
     <template>
-        <paper-input label="Geography ID" value="{{geographyId}}"></paper-input>
+        <style>
+            :host {
+                display: flex;
+                justify-content: space-around;
+            }
+        </style>
+        <template is="dom-if" if="[[advanced]]">
+            <paper-input label="Geography ID" value="{{geographyId}}"></paper-input>
+        </template>
         <summary-select level="{{geographyId}}"></summary-select>
         <template is="dom-if" if="[[_isSummaryLevel(geographyId, 'state')]]">
             <state-select geography-id="{{geographyId}}"></state-select>
@@ -20,6 +28,10 @@
 
             static get properties() {
                 return {
+                    advanced: {
+                        type: Boolean,
+                        value: false
+                    },
                     program: {
                         type: String,
                         notify: true
@@ -35,6 +47,7 @@
                 }
             }
         }
+
         window.customElements.define(ExploreOptions.is, ExploreOptions);
     </script>
 </dom-module>
