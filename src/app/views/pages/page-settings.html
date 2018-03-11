@@ -10,15 +10,21 @@
 <link rel="import" href="../../../components/app-data.html">
 <link rel="import" href="../../../components/my-card/my-card.html">
 <link rel="import" href="../../../components/select-state.html">
+<link rel="import" href="../../../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
 
 <dom-module id="page-settings">
     <template>
-        <style include="global-styles app-styles"></style>
+        <style include="global-styles app-styles">
+            :host {
+                background: var(--primaryColor);
+            }
+        </style>
         <app-data data="{{data}}"></app-data>
         <map-property source="{{data.configuration}}" target="{{configuration}}"></map-property>
         <map-property source="{{data.configuration.toolbar}}" target="{{toolbar}}"></map-property>
         <map-property source="{{data.configuration.menu}}" target="{{menu}}"></map-property>
         <map-property source="{{data.configuration.cardRatio}}" target="{{cardRatio}}"></map-property>
+        <map-property source="{{data.configuration.primaryColor}}" target="{{primaryColor}}"></map-property>
         <my-grid>
             <my-card>
                 <div class="card-title">Settings</div>
@@ -53,6 +59,7 @@
                                     </paper-listbox>
                                 </paper-dropdown-menu>
                             </div>
+                            Primary Color: <paper-swatch-picker color="{{primaryColor}}"></paper-swatch-picker>
                         </template>
                     </div>
                 </div>
@@ -73,6 +80,10 @@
 
             static get properties() {
                 return {
+                    primaryColor: {
+                        type: 'String',
+                        observer: '_primaryColorChanged'
+                    },
                     configuration: {
                         type: Object
                     },
@@ -100,6 +111,13 @@
 
             static get observers() {
                 return []
+            }
+
+            _primaryColorChanged(color) {
+                this.dispatchEvent(new CustomEvent('colorChanged', {bubbles: true, composed: true, detail: {type: 'primary', color: color}}));
+                let style = {};
+                style['--color-primary'] = color;
+                this.dispatchEvent(new CustomEvent('styleChanged', {bubbles: true, composed: true, detail: style}));
             }
 
             ready() {

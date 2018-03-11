@@ -19,6 +19,8 @@
             :host {
                 @apply --flex;
                 @apply --flex-grow;
+
+                --color-primary: #2196f3;;
             }
         </style>
 
@@ -79,7 +81,26 @@
                     country: {}
                 }
                 this.set("data.location", location);
+
+                // this.addEventListener('colorChanged', this.colorChanged);
+                this.addEventListener('styleChanged', this.styleChanged);
             }
+
+            colorChanged(e) {
+                console.log(e);
+                console.log(e)
+                let type = '--color-' + e.detail.type;
+                let color = e.detail.color;
+                let style = {};
+                style[type] = color;
+                this.updateStyles(style);
+            }
+
+            styleChanged(e) {
+                let style = e.detail;
+                this.updateStyles(style);
+            }
+
         }
 
         window.customElements.define(AppRoot.is, AppRoot);
