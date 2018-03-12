@@ -26,6 +26,10 @@
             Color #4:
             <paper-swatch-picker color="{{colorFour}}"></paper-swatch-picker>
         </div>
+        <div>
+            Page background color:
+            <paper-swatch-picker color="{{styles.pageBackgroundColor}}"></paper-swatch-picker>
+        </div>
     </template>
     <script>
         class SettingsColor extends Polymer.Element {
@@ -56,8 +60,20 @@
                     style: {
                         type: Object,
                         computed: '_computeStyle(primaryColor, secondaryColor, colorThree, colorFour)'
+                    },
+                    styles: {
+                        type: Object,
+                        value: function() {
+                            return {};
+                        }
                     }
                 }
+            }
+
+            static get observers() {
+                return [
+                    '_stylesChanged(styles.*)'
+                ]
             }
 
             _computeStyle(primaryColor, secondaryColor, colorThree, colorFour) {
@@ -79,6 +95,18 @@
                 let style = {};
                 style['--color-secondary'] = color;
                 this.dispatchEvent(new CustomEvent('styleChanged', {bubbles: true, composed: true, detail: style}));
+            }
+
+            _stylesChanged(change) {
+                console.log(change);
+                console.log(this.styles);
+                let newStyles = {};
+                let keys = Object.keys(this.styles);
+                for(let i = 0; i < keys.length; i++) {
+                    newStyles['--' + keys[i]] = this.styles[keys[i]];
+                }
+                console.log(newStyles);
+                this.dispatchEvent(new CustomEvent('styleChanged', {bubbles: true, composed: true, detail: newStyles}));
             }
         }
         window.customElements.define(SettingsColor.is, SettingsColor);
