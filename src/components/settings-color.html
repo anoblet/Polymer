@@ -1,31 +1,16 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="app-data.html">
-<link rel="import" href="../../lib/map-property/map-property.html">
 <link rel="import" href="../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
+<link rel="import" href="../../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
 
 <dom-module id="settings-color">
     <template>
-        <app-data data="{{data}}"></app-data>
-        <map-property source="{{data.configuration.primaryColor}}" target="{{primaryColor}}"></map-property>
-        <map-property source="{{data.configuration.secondaryColor}}" target="{{secondaryColor}}"></map-property>
-        <map-property source="{{data.configuration.colorThree}}" target="{{colorThree}}"></map-property>
-        <map-property source="{{data.configuration.colorFour}}" target="{{colorFour}}"></map-property>
-        <!--<map-property source="{{styles}}" target="{{data.configuration.styles}}"></map-property>-->
         <div>
             Primary Color:
-            <paper-swatch-picker color="{{primaryColor}}"></paper-swatch-picker>
+            <paper-swatch-picker color="{{styles.primaryColor}}"></paper-swatch-picker>
         </div>
         <div>
             Secondary Color:
-            <paper-swatch-picker color="{{secondaryColor}}"></paper-swatch-picker>
-        </div>
-        <div>
-            Color #3:
-            <paper-swatch-picker color="{{colorThree}}"></paper-swatch-picker>
-        </div>
-        <div>
-            Color #4:
-            <paper-swatch-picker color="{{colorFour}}"></paper-swatch-picker>
+            <paper-swatch-picker color="{{styles.secondaryColor}}"></paper-swatch-picker>
         </div>
         <div>
             Page background color:
@@ -49,28 +34,6 @@
 
             static get properties() {
                 return {
-                    primaryColor: {
-                        type: String,
-                        value: '#2196f3',
-                        observer: '_primaryColorChanged'
-                    },
-                    secondaryColor: {
-                        type: String,
-                        value: '#2196f3',
-                        observer: '_secondaryColorChanged'
-                    },
-                    colorThree: {
-                        type: String,
-                        value: '#2196f3',
-                    },
-                    colorFour: {
-                        type: String,
-                        value: '#2196f3',
-                    },
-                    style: {
-                        type: Object,
-                        computed: '_computeStyle(primaryColor, secondaryColor, colorThree, colorFour)'
-                    },
                     styles: {
                         type: Object,
                         value: {}
@@ -84,47 +47,24 @@
                 ]
             }
 
-            _computeStyle(primaryColor, secondaryColor, colorThree, colorFour) {
-                let style = {};
-                style['--color-primary'] = primaryColor;
-                style['--color-secondary'] = secondaryColor;
-                style['--color-three'] = colorThree;
-                style['--cclor-four'] = colorFour;
-                this.dispatchEvent(new CustomEvent('styleChanged', {bubbles: true, composed: true, detail: style}));
-            }
-
-            _primaryColorChanged(color) {
-                let style = {};
-                style['--color-primary'] = color;
-                this.dispatchEvent(new CustomEvent('styleChanged', {bubbles: true, composed: true, detail: style}));
-            }
-
-            _secondaryColorChanged(color) {
-                let style = {};
-                style['--color-secondary'] = color;
-                this.dispatchEvent(new CustomEvent('styleChanged', {bubbles: true, composed: true, detail: style}));
-            }
-
             _stylesChanged(change) {
                 console.log("Updating styles: ");
                 console.log(change);
-                if(this.styles) {
-                    let newStyles = {};
-                    console.log(this.styles);
-                    let keys = Object.keys(this.styles);
-                    for (let i = 0; i < keys.length; i++) {
-                        let style = keys[i];
-                        let newStyle = style.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
-                        newStyles['--' + newStyle] = this.styles[keys[i]];
-                        // newStyles['--' + keys[i]] = this.styles[keys[i]];
+                let newStyles = {};
+                console.log(this.styles);
+                let keys = Object.keys(this.styles);
+                for (let i = 0; i < keys.length; i++) {
+                    let style = keys[i];
+                    let newStyle = style.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
+                    newStyles['--' + newStyle] = this.styles[keys[i]];
+                    // newStyles['--' + keys[i]] = this.styles[keys[i]];
 
-                    }
-                    this.dispatchEvent(new CustomEvent('styleChanged', {
-                        bubbles: true,
-                        composed: true,
-                        detail: newStyles
-                    }));
                 }
+                this.dispatchEvent(new CustomEvent('styleChanged', {
+                    bubbles: true,
+                    composed: true,
+                    detail: newStyles
+                }));
             }
         }
 
