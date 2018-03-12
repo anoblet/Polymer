@@ -8,6 +8,7 @@
         <style include="global-styles app-styles">
             :host {
                 position: relative;
+                /*background: var(--card-content-background-color);*/
             }
 
             :host([ratio])::before {
@@ -91,6 +92,7 @@
 
             .card-content {
                 overflow: auto;
+                background: var(--card-content-background-color);
             }
         </style>
         <div class="reset">
