@@ -81,8 +81,8 @@
                 display: flex;
                 align-items: center;
                 padding: 0 2rem 0 2rem;
-                background: var(--card-header-color);
-                color: #fff;
+                background: var(--card-header-background-color);
+                color: var(--card-header-text-color);
                 height: 64px;
             }
 
@@ -98,19 +98,24 @@
         <div class="reset">
             <a href="[[href]]">
                 <paper-card>
+                    <template is="dom-if" if="[[_isEqual(version, 1)]]">
+                        <slot></slot>
+                    </template>
                     <template is="dom-if" if="[[_isEqual(version, 2)]]">
-                        <div class="card-header" on-click="collapseElement">
-                            <div class="flex grow align-center">
-                                <slot name="title"></slot>
+                        <template is="dom-if" if="[[!noTitle]]">
+                            <div class="card-header" on-click="collapseElement">
+                                <div class="flex grow align-center">
+                                    <slot name="title"></slot>
+                                </div>
+                                <div class="flex align-center justify-end">
+                                    <slot name="header-right">
+                                        <template is="dom-if" if="[[collapsable]]">
+                                            <paper-icon-button icon="icons:arrow-drop-down"></paper-icon-button>
+                                        </template>
+                                    </slot>
+                                </div>
                             </div>
-                            <div class="flex align-center justify-end">
-                                <slot name="header-right">
-                                    <template is="dom-if" if="[[collapsable]]">
-                                        <paper-icon-button icon="icons:arrow-drop-down"></paper-icon-button>
-                                    </template>
-                                </slot>
-                            </div>
-                        </div>
+                        </template>
                         <template is="dom-if" if="[[collapsable]]">
                             <iron-collapse id="collapse">
                                 <div class="card-content">
@@ -124,7 +129,6 @@
                             </div>
                         </template>
                     </template>
-                    <slot></slot>
                 </paper-card>
             </a>
         </div>
@@ -143,6 +147,10 @@
                     },
                     href: {
                         type: String
+                    },
+                    noTitle: {
+                        type: Boolean,
+                        value: false
                     },
                     ratio: {
                         type: String,

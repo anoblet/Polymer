@@ -28,13 +28,13 @@
                 </div>
             </my-card>
             <my-card ratio="[[cardRatio]]">
-                <div class="card-content">
+                <div slot="content" class="full-height">
                     <chart-map-country></chart-map-country>
                 </div>
             </my-card>
             <my-card ratio="[[cardRatio]]">
-                <div class="card-title">Population</div>
-                <div class="card-content flex-center">
+                <div slot="title">Population</div>
+                <div slot="content" class="full-height">
                     <chart-text-population geography-id="[[geographyId]]"></chart-text-population>
                 </div>
                 <div class="card-actions">
@@ -44,41 +44,41 @@
                 </div>
             </my-card>
             <my-card ratio="[[cardRatio]]">
-                <div class="card-title">Terrain</div>
-                <div class="card-content">
+                <div slot="title">Terrain</div>
+                <div slot="content" class="full-height">
                     <chart-pie-terrain geography-id="[[geographyId]]"></chart-pie-terrain>
                 </div>
             </my-card>
             <my-card ratio="[[cardRatio]]">
-                <div class="card-title">Gender</div>
-                <div class="card-content">
+                <div slot="title">Gender</div>
+                <div slot="content" class="full-height">
                     <chart-pie-gender geography-id="[[geographyId]]"></chart-pie-gender>
                 </div>
             </my-card>
             <my-card ratio="[[cardRatio]]" rows="2" columns="2">
-                <div class="card-title">Gender</div>
-                <div class="card-content">
+                <div slot="title">Gender</div>
+                <div slot="content" class="full-height">
                     <chart-bar-gender geography-id="[[geographyId]]"></chart-bar-gender>
                 </div>
             </my-card>
             <my-card ratio="[[cardRatio]]">
-                <div class="card-title">Housing Units</div>
-                <div class="card-content center">
+                <div slot="title">Housing Units</div>
+                <div slot="content" class="full-height">
                     <chart-text-housing geography-id="0100000US"></chart-text-housing>
                 </div>
             </my-card>
             <my-card ratio="[[cardRatio]]">
-                <div class="card-content">
+                <div slot="content">
                     Placeholder
                 </div>
             </my-card>
             <my-card ratio="[[cardRatio]]">
-                <div class="card-content">
+                <div slot="content">
                     Placeholder
                 </div>
             </my-card>
             <my-card ratio="[[cardRatio]]">
-                <div class="card-content">
+                <div slot="content">
                     Placeholder
                 </div>
             </my-card>
