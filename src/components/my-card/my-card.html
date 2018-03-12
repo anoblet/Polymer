@@ -98,44 +98,27 @@
         <div class="reset">
             <a href="[[href]]">
                 <paper-card>
-                    <!--
-                    <template is="dom-if" if="[[collapse]]">
-                        <div class="card-title">
-                            <div class="flex grow align-center">
-                                <slot name="title"></slot>
-                            </div>
-                            <div class="flex align-center justify-end">
-                                <paper-icon-button icon="icons:arrow-drop-down" on-click="collapseElement"></paper-icon-button>
-                            </div>
-                        </div>
-                        <iron-collapse id="collapse">
-                            <div class="card-content">
-                                <slot name="content"></slot>
-                            </div>
-                        </iron-collapse>
-                    </template>
-                    -->
-                    <template is="dom-if" if="[[gen2]]">
+                    <template is="dom-if" if="[[_isEqual(version, 2)]]">
                         <div class="card-header" on-click="collapseElement">
                             <div class="flex grow align-center">
                                 <slot name="title"></slot>
                             </div>
                             <div class="flex align-center justify-end">
                                 <slot name="header-right">
-                                    <template is="dom-if" if="[[collapse]]">
+                                    <template is="dom-if" if="[[collapsable]]">
                                         <paper-icon-button icon="icons:arrow-drop-down"></paper-icon-button>
                                     </template>
                                 </slot>
                             </div>
                         </div>
-                        <template is="dom-if" if="[[collapse]]">
+                        <template is="dom-if" if="[[collapsable]]">
                             <iron-collapse id="collapse">
                                 <div class="card-content">
                                     <slot name="content"></slot>
                                 </div>
                             </iron-collapse>
                         </template>
-                        <template is="dom-if" if="[[!collapse]]">
+                        <template is="dom-if" if="[[!collapsable]]">
                             <div class="card-content">
                                 <slot name="content"></slot>
                             </div>
@@ -154,7 +137,7 @@
 
             static get properties() {
                 return {
-                    collapse: {
+                    collapsable: {
                         type: Boolean,
                         value: false
                     },
@@ -165,8 +148,8 @@
                     href: {
                         type: String
                     },
-                    href: {
-                        type: String
+                    legacy: {
+                        type: Boolean
                     },
                     ratio: {
                         type: String,
@@ -174,8 +157,16 @@
                     },
                     title: {
                         type: String
+                    },
+                    version: {
+                        type: Number,
+                        value: 2
                     }
                 }
+            }
+
+            _isEqual(prop1, prop2) {
+                return (prop1 === prop2);
             }
 
             collapseElement(e) {

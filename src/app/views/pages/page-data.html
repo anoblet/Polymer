@@ -23,19 +23,19 @@
             }
         </style>
         <my-grid columns="auto">
-            <my-card gen2 collapse>
+            <my-card collapsable>
                 <div slot="title">Table</div>
                 <div slot="content">
                     <explore-options program="{{program}}" _dataset="{{_dataset}}" table="{{table}}" chart="{{chart}}"></explore-options>
                 </div>
             </my-card>
-            <my-card gen2 collapse>
+            <my-card collapsable>
                 <div slot="title">Columns</div>
                 <div slot="content">
                     <columns-select program="[[program]]" _dataset="[[_dataset]]" table="[[table]]" selected-columns="{{selectedColumns}}"></columns-select>
                 </div>
             </my-card>
-            <my-card gen2 ratio="3:2">
+            <my-card ratio="3:2">
                 <div slot="title">Chart</div>
                 <div slot="header-right">
                     <chart-select chart="{{chart}}" options="{{chartOptions}}"></chart-select>
@@ -45,7 +45,7 @@
                     <google-chart-responsive type="[[chart]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>
                 </div>
             </my-card>
-            <my-card gen2 collapse>
+            <my-card collapsable>
                 <div slot="title">Raw ouput</div>
                 <div slot="content">
                     [[stringify(response)]]

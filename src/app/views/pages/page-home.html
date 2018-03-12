@@ -46,10 +46,12 @@
             </my-card>
             -->
             <my-card id="state" ratio="[[cardRatio]]" href="/state">
-                <div class="card-title">
-                    <a href="/state">My State</a>
+                <div slot="title">
+                    <!--<a href="/state">-->
+                        My State
+                    <!--</a>-->
                 </div>
-                <div class="card-content center">
+                <div slot="content">
                     <tile-text-state-name name="[[state.name]]"></tile-text-state-name>
                 </div>
                 <div class="card-actions">
@@ -59,10 +61,12 @@
                 </div>
             </my-card>
             <my-card id="country" ratio="[[cardRatio]]" href="/country">
-                <div class="card-title">
-                    <a href="/country">My Country</a>
+                <div slot="title">
+                    <!--<a href="/country">-->
+                        My Country
+                    <!--</a>-->
                 </div>
-                <div class="card-content center">
+                <div slot="content">
                     <tile-text-country-name name="United States"></tile-text-country-name>
                 </div>
                 <div class="card-actions">
@@ -72,10 +76,12 @@
                 </div>
             </my-card>
             <my-card ratio="[[cardRatio]]" href="/country">
-                <div class="card-title">
-                    <a href="/country">My County</a>
+                <div slot="title">
+                    <!--<a href="/country">-->
+                        My County
+                    <!--</a>-->
                 </div>
-                <div class="card-content center">
+                <div slot="content">
                     <tile-text-country-name name="County"></tile-text-country-name>
                 </div>
                 <div class="card-actions">
@@ -85,8 +91,8 @@
                 </div>
             </my-card>
             <my-card ratio="[[cardRatio]]" href="/data">
-                <div class="card-title"></div>
-                <div class="card-content center">
+                <div slot="title">Explore</div>
+                <div slot="content">
                     Explore
                 </div>
                 <div class="card-actions">
@@ -110,6 +116,7 @@
                 </div>
             </my-card>
             -->
+            <!--
             <template is="dom-if" if="[[complex]]">
                 <my-card ratio="[[cardRatio]]" href="/state">
                     <div class="card-title">
@@ -138,6 +145,7 @@
                     </div>
                 </my-card>
             </template>
+            -->
         </my-grid>
     </template>
     <script>
