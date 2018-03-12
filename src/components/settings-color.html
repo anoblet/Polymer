@@ -10,6 +10,7 @@
         <map-property source="{{data.configuration.secondaryColor}}" target="{{secondaryColor}}"></map-property>
         <map-property source="{{data.configuration.colorThree}}" target="{{colorThree}}"></map-property>
         <map-property source="{{data.configuration.colorFour}}" target="{{colorFour}}"></map-property>
+        <!--<map-property source="{{styles}}" target="{{data.configuration.styles}}"></map-property>-->
         <div>
             Primary Color:
             <paper-swatch-picker color="{{primaryColor}}"></paper-swatch-picker>
@@ -34,6 +35,7 @@
             Card header color:
             <paper-swatch-picker color="{{styles.cardHeaderColor}}"></paper-swatch-picker>
         </div>
+        <app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>
     </template>
     <script>
         class SettingsColor extends Polymer.Element {
@@ -67,9 +69,7 @@
                     },
                     styles: {
                         type: Object,
-                        value: function() {
-                            return {};
-                        }
+                        value: {}
                     }
                 }
             }
@@ -102,18 +102,28 @@
             }
 
             _stylesChanged(change) {
-                let newStyles = {};
-                let keys = Object.keys(this.styles);
-                for(let i = 0; i < keys.length; i++) {
-                    let style = keys[i];
-                    let newStyle = style.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
-                    newStyles['--' + newStyle] = this.styles[keys[i]];
-                    // newStyles['--' + keys[i]] = this.styles[keys[i]];
+                console.log("Updating styles: ");
+                console.log(change);
+                if(this.styles) {
+                    let newStyles = {};
+                    console.log(this.styles);
+                    let keys = Object.keys(this.styles);
+                    for (let i = 0; i < keys.length; i++) {
+                        let style = keys[i];
+                        let newStyle = style.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
+                        newStyles['--' + newStyle] = this.styles[keys[i]];
+                        // newStyles['--' + keys[i]] = this.styles[keys[i]];
 
+                    }
+                    this.dispatchEvent(new CustomEvent('styleChanged', {
+                        bubbles: true,
+                        composed: true,
+                        detail: newStyles
+                    }));
                 }
-                this.dispatchEvent(new CustomEvent('styleChanged', {bubbles: true, composed: true, detail: newStyles}));
             }
         }
+
         window.customElements.define(SettingsColor.is, SettingsColor);
     </script>
 </dom-module>
