@@ -12,6 +12,7 @@
 <link rel="import" href="../../../components/my-card/my-card.html">
 <link rel="import" href="../../../components/select-state.html">
 <link rel="import" href="../../../components/settings-color.html">
+<link rel="import" href="../../../components/settings-styles.html">
 
 <dom-module id="page-settings">
     <template>
@@ -64,10 +65,18 @@
                     </div>
                 </div>
             </my-card>
+            <!--
             <my-card gen2>
                 <div slot="title">Colors</div>
                 <div slot="content">
                     <settings-color primary-color="{{primaryColor}}"></settings-color>
+                </div>
+            </my-card>
+            -->
+            <my-card>
+                <div slot="title">Styles</div>
+                <div slot="content">
+                    <settings-styles></settings-styles>
                 </div>
             </my-card>
             <my-card gen2>

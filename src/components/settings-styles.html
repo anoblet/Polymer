@@ -1,0 +1,76 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+<link rel="import" href="../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
+
+<dom-module id="settings-styles">
+    <template>
+        <div>
+            Page background color:
+            <paper-swatch-picker color="{{styles.pageBackgroundColor}}"></paper-swatch-picker>
+        </div>
+        <div>
+            Card header background color:
+            <paper-swatch-picker color="{{styles.cardHeaderBackgroundColor}}"></paper-swatch-picker>
+        </div>
+        <div>
+            Card header text color:
+            <paper-swatch-picker color="{{styles.cardHeaderTextColor}}"></paper-swatch-picker>
+        </div>
+        <div>
+            Card content background color:
+            <paper-swatch-picker color="{{styles.cardContentBackgroundColor}}"></paper-swatch-picker>
+        </div>
+        <div>
+            Toolbar background color:
+            <paper-swatch-picker color="{{styles.toolbarBackgroundColor}}"></paper-swatch-picker>
+        </div>
+        <app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>
+    </template>
+    <script>
+        class SettingsStyles extends Polymer.Element {
+            static get is() {
+                return 'settings-styles';
+            }
+
+            static get properties() {
+                return {
+                    styles: {
+                        type: Object,
+                        value: {}
+                    }
+                }
+            }
+
+            static get observers() {
+                return [
+                    '_stylesChanged(styles.*)'
+                ]
+            }
+
+            _stylesChanged(change) {
+                console.log("Updating styles: ");
+                let newStyles = {};
+                let keys = Object.keys(this.styles);
+                for (let i = 0; i < keys.length; i++) {
+                    let style = keys[i];
+                    // Hyphen
+                    let newStyle = this._camelToHyphen(style);
+                    newStyles['--' + newStyle] = this.styles[keys[i]];
+
+                    // Camel case
+                    // newStyles['--' + keys[i]] = this.styles[keys[i]];
+                }
+                this.dispatchEvent(new CustomEvent('styleChanged', {
+                    bubbles: true,
+                    composed: true,
+                    detail: newStyles
+                }));
+            }
+
+            _camelToHyphen(str) {
+                return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
+            }
+        }
+        window.customElements.define(SettingsStyles.is, SettingsStyles);
+    </script>
+</dom-module>

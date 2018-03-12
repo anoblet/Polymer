@@ -15,7 +15,7 @@
 <link rel="import" href="../../../components/table-select.html">
 <link rel="import" href="../../../components/explore-options.html">
 
-<dom-module id="page-data">
+<dom-module id="page-explore">
     <template>
         <style include="global-styles app-styles">
             :host {
@@ -48,16 +48,16 @@
             <my-card collapsable>
                 <div slot="title">Raw ouput</div>
                 <div slot="content">
-                    [[stringify(response)]]
+                    <pre>[[stringify(response)]]</pre>
                 </div>
             </my-card>
         </my-grid>
         <fact-finder program="[[program]]" _dataset="[[_dataset]]" table="[[table]]" geography-id="[[geographyId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
     </template>
     <script>
-        class PageData extends Polymer.Element {
+        class PageExplore extends Polymer.Element {
             static get is() {
-                return 'page-data';
+                return 'page-explore';
             }
 
             static get properties() {
@@ -215,6 +215,6 @@
             }
         }
 
-        window.customElements.define(PageData.is, PageData);
+        window.customElements.define(PageExplore.is, PageExplore);
     </script>
 </dom-module>
