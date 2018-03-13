@@ -47,14 +47,15 @@
                 ]
             }
 
+            /*
             _stylesChanged(change) {
                 console.log(change);
-                /*
+                /!*
                 let baseKeys = Object.keys(change.base);
                 if(!baseKeys.length) {
                     return;
                 }
-                */
+                *!/
                 console.log("Updating styles: ");
                 let newStyles = {};
                 let keys = Object.keys(this.styles);
@@ -72,6 +73,24 @@
                     composed: true,
                     detail: newStyles
                 }));
+            }
+            */
+
+            _stylesChanged(change) {
+                console.log(change);
+                /*
+                let baseKeys = Object.keys(change.base);
+                if(!baseKeys.length) {
+                    return;
+                }
+                */
+                /*
+                    this.dispatchEvent(new CustomEvent('stylesChanged', {
+                    bubbles: true,
+                    composed: true,
+                    detail: this.styles
+                }));
+                */
             }
 
             _camelToHyphen(str) {

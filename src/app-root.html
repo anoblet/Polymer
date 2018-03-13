@@ -30,10 +30,10 @@
         <app-view></app-view>
         <app-controller></app-controller>
         <app-data id="data" data="{{data}}"></app-data>
-        <us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]"
-                   county="{{data.location.county}}" state="{{data.location.state}}"></us-census>
+        <!--<us-census latitude="[[data.location.latitude]]" longitude="[[data.location.longitude]]" county="{{data.location.county}}" state="{{data.location.state}}"></us-census>-->
         <!--<google-analytics></google-analytics>-->
         <!--<city-sdk apiKey="c97423c3f598951d2138d69861730b9154cd7230" params="{'zip': '21401','state': 'MD','level': 'state','sublevel': False,'api': 'acs5','year': 2010,'variables': ['income', 'population']}"></city-sdk>-->
+        <app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>
     </template>
     <script>
         class AppRoot extends Polymer.Element {
@@ -66,6 +66,12 @@
                 }
             }
 
+            static get observers() {
+                return [
+                    '_stylesChanged(styles.*)'
+                ]
+            }
+
             constructor() {
                 super();
                 window.Application = this;
@@ -88,9 +94,38 @@
                 this.addEventListener('styleChanged', this.styleChanged);
             }
 
+            /*
             styleChanged(e) {
                 let style = e.detail;
                 this.updateStyles(style);
+            }
+            */
+
+            _stylesChanged(change) {
+                console.log(change);
+                /*
+                let baseKeys = Object.keys(change.base);
+                if(!baseKeys.length) {
+                    return;
+                }
+                */
+                console.log("Updating styles: ");
+                let newStyles = {};
+                let keys = Object.keys(this.styles);
+                for (let i = 0; i < keys.length; i++) {
+                    let style = keys[i];
+                    // Camelcase-style
+                    // newStyles['--' + keys[i]] = this.styles[keys[i]];
+
+                    // Hyphen-style
+                    let newStyle = this._camelToHyphen(style);
+                    newStyles['--' + newStyle] = this.styles[keys[i]];
+                }
+                this.updateStyles(newStyles);
+            }
+
+            _camelToHyphen(str) {
+                return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
             }
         }
 
