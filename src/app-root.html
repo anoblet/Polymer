@@ -91,7 +91,7 @@
                 }
                 this.set("data.location", location);
 
-                //this.addEventListener('stylesChanged', this.styleChanged);
+                this.addEventListener('stylesChanged', this._stylesChanged);
             }
 
             _stylesChanged(change) {

@@ -84,13 +84,11 @@
                     return;
                 }
                 */
-                /*
-                    this.dispatchEvent(new CustomEvent('stylesChanged', {
+                this.dispatchEvent(new CustomEvent('stylesChanged', {
                     bubbles: true,
                     composed: true,
-                    detail: this.styles
+                    // detail: change
                 }));
-                */
             }
 
             _camelToHyphen(str) {
