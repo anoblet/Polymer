@@ -47,47 +47,12 @@
                 ]
             }
 
-            /*
             _stylesChanged(change) {
                 console.log(change);
-                /!*
-                let baseKeys = Object.keys(change.base);
-                if(!baseKeys.length) {
-                    return;
-                }
-                *!/
-                console.log("Updating styles: ");
-                let newStyles = {};
-                let keys = Object.keys(this.styles);
-                for (let i = 0; i < keys.length; i++) {
-                    let style = keys[i];
-                    // Hyphen
-                    let newStyle = this._camelToHyphen(style);
-                    newStyles['--' + newStyle] = this.styles[keys[i]];
-
-                    // Camel case
-                    // newStyles['--' + keys[i]] = this.styles[keys[i]];
-                }
-                this.dispatchEvent(new CustomEvent('styleChanged', {
+                this.dispatchEvent(new CustomEvent('stylesChangedEvent', {
                     bubbles: true,
                     composed: true,
-                    detail: newStyles
-                }));
-            }
-            */
-
-            _stylesChanged(change) {
-                console.log(change);
-                /*
-                let baseKeys = Object.keys(change.base);
-                if(!baseKeys.length) {
-                    return;
-                }
-                */
-                this.dispatchEvent(new CustomEvent('stylesChanged', {
-                    bubbles: true,
-                    composed: true,
-                    // detail: change
+                    detail: change
                 }));
             }
 
