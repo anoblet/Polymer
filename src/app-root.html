@@ -90,16 +90,8 @@
                 }
                 this.set("data.location", location);
 
-                // this.addEventListener('colorChanged', this.colorChanged);
-                this.addEventListener('styleChanged', this.styleChanged);
+                //this.addEventListener('stylesChanged', this.styleChanged);
             }
-
-            /*
-            styleChanged(e) {
-                let style = e.detail;
-                this.updateStyles(style);
-            }
-            */
 
             _stylesChanged(change) {
                 console.log(change);
