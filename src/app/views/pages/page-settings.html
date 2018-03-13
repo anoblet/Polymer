@@ -128,12 +128,6 @@
                 return []
             }
 
-            _primaryColorChanged(color) {
-                let style = {};
-                style['--color-primary'] = color;
-                this.dispatchEvent(new CustomEvent('styleChanged', {bubbles: true, composed: true, detail: style}));
-            }
-
             ready() {
                 super.ready();
                 this.configuration = this.configuration || {};
