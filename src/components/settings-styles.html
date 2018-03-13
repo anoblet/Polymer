@@ -49,11 +49,14 @@
 
             _stylesChanged(change) {
                 console.log(change);
-                this.dispatchEvent(new CustomEvent('stylesChangedEvent', {
-                    bubbles: true,
-                    composed: true,
-                    detail: change
-                }));
+                let styles = change.base;
+                if(Object.keys(styles).length) {
+                    this.dispatchEvent(new CustomEvent('stylesChangedEvent', {
+                        bubbles: true,
+                        composed: true,
+                        detail: change
+                    }));
+                }
             }
 
             _camelToHyphen(str) {
