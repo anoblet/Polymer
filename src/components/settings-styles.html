@@ -1,33 +1,42 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
 <link rel="import" href="../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
+<link rel="import" href="HelperMixin.html">
 
 <dom-module id="settings-styles">
     <template>
-        <div>
-            Page background color:
-            <paper-swatch-picker color="{{styles.pageBackgroundColor}}"></paper-swatch-picker>
-        </div>
-        <div>
-            Card header background color:
-            <paper-swatch-picker color="{{styles.cardHeaderBackgroundColor}}"></paper-swatch-picker>
-        </div>
-        <div>
-            Card header text color:
-            <paper-swatch-picker color="{{styles.cardHeaderTextColor}}"></paper-swatch-picker>
-        </div>
-        <div>
-            Card content background color:
-            <paper-swatch-picker color="{{styles.cardContentBackgroundColor}}"></paper-swatch-picker>
-        </div>
-        <div>
-            Toolbar background color:
-            <paper-swatch-picker color="{{styles.toolbarBackgroundColor}}"></paper-swatch-picker>
-        </div>
+        <template is="dom-if" if="[[_isEqual(version, 1)]]">
+            <div>
+                Page background color:
+                <paper-swatch-picker color="{{styles.pageBackgroundColor}}"></paper-swatch-picker>
+            </div>
+            <div>
+                Card header background color:
+                <paper-swatch-picker color="{{styles.cardHeaderBackgroundColor}}"></paper-swatch-picker>
+            </div>
+            <div>
+                Card header text color:
+                <paper-swatch-picker color="{{styles.cardHeaderTextColor}}"></paper-swatch-picker>
+            </div>
+            <div>
+                Card content background color:
+                <paper-swatch-picker color="{{styles.cardContentBackgroundColor}}"></paper-swatch-picker>
+            </div>
+            <div>
+                Toolbar background color:
+                <paper-swatch-picker color="{{styles.toolbarBackgroundColor}}"></paper-swatch-picker>
+            </div>
+        </template>
+        <template is="dom-if" if="[[_isEqual(version, '2')]]">
+            <div class="grid">
+                <paper-input label="Primary color" value="{{styles.primaryColor}}"></paper-input>
+                <paper-swatch-picker color="{{styles.primaryColor}}"></paper-swatch-picker>
+            </div>
+        </template>
         <app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>
     </template>
     <script>
-        class SettingsStyles extends Polymer.Element {
+        class SettingsStyles extends HelperMixin(Polymer.Element) {
             static get is() {
                 return 'settings-styles';
             }
@@ -37,6 +46,10 @@
                     styles: {
                         type: Object,
                         value: {}
+                    },
+                    version: {
+                        type: String,
+                        value: "1"
                     }
                 }
             }
@@ -63,6 +76,7 @@
                 return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
             }
         }
+
         window.customElements.define(SettingsStyles.is, SettingsStyles);
     </script>
 </dom-module>
