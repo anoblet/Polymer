@@ -9,6 +9,7 @@
 <link rel="import" href="../tiles/tile-text-city-name.html">
 <link rel="import" href="../tiles/tile-text-country-name.html">
 <link rel="import" href="../tiles/tile-text-state-name.html">
+<link rel="import" href="../../../components/HelperMixin.html">
 
 <dom-module id="page-home">
     <template>
@@ -45,85 +46,15 @@
                 </div>
             </my-card>
             -->
-            <my-card id="state" no-title ratio="[[cardRatio]]" href="/state">
-                <div slot="title">
-                    <!--<a href="/state">-->
+            <template is="dom-if" if="[[_isEqual('version', 1)]]">
+                <my-card id="state" no-title ratio="[[cardRatio]]" href="/state">
+                    <div slot="title">
+                        <!--<a href="/state">-->
                         My State
-                    <!--</a>-->
-                </div>
-                <div slot="content" class="center">
-                    <tile-text-state-name name="[[state.name]]"></tile-text-state-name>
-                </div>
-                <div class="card-actions">
-                    <a href="/state">
-                        <paper-button>More</paper-button>
-                    </a>
-                </div>
-            </my-card>
-            <my-card id="country" ratio="[[cardRatio]]" href="/country">
-                <div slot="title">
-                    <!--<a href="/country">-->
-                        My Country
-                    <!--</a>-->
-                </div>
-                <div slot="content">
-                    <tile-text-country-name name="United States"></tile-text-country-name>
-                </div>
-                <div class="card-actions">
-                    <a href="/country">
-                        <paper-button>More</paper-button>
-                    </a>
-                </div>
-            </my-card>
-            <my-card ratio="[[cardRatio]]" href="/country">
-                <div slot="title">
-                    <!--<a href="/country">-->
-                        My County
-                    <!--</a>-->
-                </div>
-                <div slot="content">
-                    <tile-text-country-name name="County"></tile-text-country-name>
-                </div>
-                <div class="card-actions">
-                    <a href="/country">
-                        <paper-button>More</paper-button>
-                    </a>
-                </div>
-            </my-card>
-            <my-card ratio="[[cardRatio]]" href="/explore">
-                <div slot="title">Explore</div>
-                <div slot="content">
-                    Explore
-                </div>
-                <div class="card-actions">
-                    <a href="/country">
-                        <paper-button></paper-button>
-                    </a>
-                </div>
-            </my-card>
-            <!--
-            <my-card ratio="[[cardRatio]]" href="/country">
-                <div class="card-title">
-                    <a href="/country">My City</a>
-                </div>
-                <div class="card-content center">
-                    <tile-text-country-name name="City"></tile-text-country-name>
-                </div>
-                <div class="card-actions">
-                    <a href="/country">
-                        <paper-button>More</paper-button>
-                    </a>
-                </div>
-            </my-card>
-            -->
-            <!--
-            <template is="dom-if" if="[[complex]]">
-                <my-card ratio="[[cardRatio]]" href="/state">
-                    <div class="card-title">
-                        <a href="/state">My State</a>
+                        <!--</a>-->
                     </div>
-                    <div class="card-content">
-                        <chart-map-state name="[[state.name]]"></chart-map-state>
+                    <div slot="content" class="center">
+                        <tile-text-state-name name="[[state.name]]"></tile-text-state-name>
                     </div>
                     <div class="card-actions">
                         <a href="/state">
@@ -131,12 +62,14 @@
                         </a>
                     </div>
                 </my-card>
-                <my-card ratio="[[cardRatio]]" href="/country">
-                    <div class="card-title">
-                        <a href="/country">My Country</a>
+                <my-card id="country" ratio="[[cardRatio]]" href="/country">
+                    <div slot="title">
+                        <!--<a href="/country">-->
+                        My Country
+                        <!--</a>-->
                     </div>
-                    <div class="card-content">
-                        <chart-map-country></chart-map-country>
+                    <div slot="content">
+                        <tile-text-country-name name="United States"></tile-text-country-name>
                     </div>
                     <div class="card-actions">
                         <a href="/country">
@@ -144,12 +77,87 @@
                         </a>
                     </div>
                 </my-card>
+                <my-card ratio="[[cardRatio]]" href="/country">
+                    <div slot="title">
+                        <!--<a href="/country">-->
+                        My County
+                        <!--</a>-->
+                    </div>
+                    <div slot="content">
+                        <tile-text-country-name name="County"></tile-text-country-name>
+                    </div>
+                    <div class="card-actions">
+                        <a href="/country">
+                            <paper-button>More</paper-button>
+                        </a>
+                    </div>
+                </my-card>
+                <my-card ratio="[[cardRatio]]" href="/explore">
+                    <div slot="title">Explore</div>
+                    <div slot="content">
+                        Explore
+                    </div>
+                    <div class="card-actions">
+                        <a href="/country">
+                            <paper-button></paper-button>
+                        </a>
+                    </div>
+                </my-card>
+                <!--
+                <my-card ratio="[[cardRatio]]" href="/country">
+                    <div class="card-title">
+                        <a href="/country">My City</a>
+                    </div>
+                    <div class="card-content center">
+                        <tile-text-country-name name="City"></tile-text-country-name>
+                    </div>
+                    <div class="card-actions">
+                        <a href="/country">
+                            <paper-button>More</paper-button>
+                        </a>
+                    </div>
+                </my-card>
+                -->
+                <!--
+                <template is="dom-if" if="[[complex]]">
+                    <my-card ratio="[[cardRatio]]" href="/state">
+                        <div class="card-title">
+                            <a href="/state">My State</a>
+                        </div>
+                        <div class="card-content">
+                            <chart-map-state name="[[state.name]]"></chart-map-state>
+                        </div>
+                        <div class="card-actions">
+                            <a href="/state">
+                                <paper-button>More</paper-button>
+                            </a>
+                        </div>
+                    </my-card>
+                    <my-card ratio="[[cardRatio]]" href="/country">
+                        <div class="card-title">
+                            <a href="/country">My Country</a>
+                        </div>
+                        <div class="card-content">
+                            <chart-map-country></chart-map-country>
+                        </div>
+                        <div class="card-actions">
+                            <a href="/country">
+                                <paper-button>More</paper-button>
+                            </a>
+                        </div>
+                    </my-card>
+                </template>
+                -->
             </template>
-            -->
+            <template is="dom-if" if="[[_isEqual(version, 2)]]">
+                <my-card no-title href="/explore">
+                    <div slot="content" class="full-height full-width center">Explore</div>
+                </my-card>
+            </template>
         </my-grid>
     </template>
     <script>
-        class PageHome extends Polymer.Element {
+        class PageHome extends HelperMixin(Polymer.Element) {
             static get is() {
                 return 'page-home';
             }
@@ -166,8 +174,11 @@
                     ratio: {
                         type: String,
                         value: "4:3"
+                    },
+                    version: {
+                        type: Number,
+                        value: 1
                     }
-
                 }
             }
         }
