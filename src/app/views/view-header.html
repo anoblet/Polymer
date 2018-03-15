@@ -9,18 +9,25 @@
 <link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../../lib/map-property/map-property.html">
+<link rel="import" href="../../../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../../components/HelperMixin.html">
+
 
 <dom-module id="view-header">
     <template>
         <style include="app-styles global-styles flex-styles">
             :host {
+                /*
                 display: flex;
                 align-items: center;
                 height: 58px;
                 padding-left: 16px;
                 padding-right: 16px;
-                background: var(--primary-color);
                 color: #fff;
+                */
+                background: var(--primary-color);
             }
 
             header {
@@ -39,30 +46,56 @@
             #search {
                 grid-column: span 3;
             }
+
+            #center {
+                grid-column: span 3;
+            }
+
+            paper-icon-button {
+                color: #fff;
+            }
         </style>
         <header>
-            <div class="grid">
-                <div class="item v-align-center">
-                    <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
-                    <!-- <a href="/" no-underline>[[title]]</a> -->
-                </div>
+            <!--<app-toolbar>Test</app-toolbar>-->
+            <template is="dom-if" if="[[_isEqual(version, 1)]]">
+                <div class="grid">
+                    <div class="item v-align-center">
+                        <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
+                        <!-- <a href="/" no-underline>[[title]]</a> -->
+                    </div>
 
-                <div id="search" class="item center">
-                    <!-- <address-lookup v-align-center></address-lookup> -->
-                    <a href="/" no-underline>[[title]]</a>
+                    <div id="search" class="item center">
+                        <!-- <address-lookup v-align-center></address-lookup> -->
+                        <a href="/" no-underline>[[title]]</a>
+                    </div>
+                    <div class="item v-align-center justify-end">
+                        <!-- <paper-icon-button icon="icons:account-circle"></paper-icon-button> -->
+                        <paper-icon-button icon="icons:search"></paper-icon-button>
+                    </div>
                 </div>
-                <div class="item v-align-center justify-end">
-                    <!-- <paper-icon-button icon="icons:account-circle"></paper-icon-button> -->
-                    <paper-icon-button icon="icons:search"></paper-icon-button>
-                </div>
-            </div>
+            </template>
+            <template is="dom-if" if="[[_isEqual(version, 2)]]">
+                <app-header slot="header" fixed condenses effects="waterfall">
+                    <app-toolbar>
+                        <div class="grid">
+                            <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
+                            <div id="center" class="center">
+                                <a href="/">
+                                    <div main-title>[[title]]</div>
+                                </a>
+                            </div>
+                            <div></div>
+                        </div>
+                    </app-toolbar>
+                </app-header>
+            </template>
         </header>
         <app-data data="{{data}}"></app-data>
         <map-property source="{{data.configuration.menu}}" target="{{menu}}"></map-property>
     </template>
 
     <script>
-        class ViewHeader extends Polymer.Element {
+        class ViewHeader extends HelperMixin(Polymer.Element) {
             static get is() {
                 return 'view-header';
             }
@@ -76,6 +109,10 @@
                     menu: {
                         type: Object
                     },
+                    version: {
+                        type: Number,
+                        value: 1
+                    }
                 }
             }
 
@@ -91,7 +128,7 @@
 
             _menuChanged(menu) {
                 console.log(menu);
-                if (menu == "0") {
+                if(menu == "0") {
                     this.$.menu.style.order = "0";
                 } else {
                     this.$.menu.style.order = "1";

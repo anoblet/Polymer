@@ -9,47 +9,61 @@
 
 <dom-module id="view-drawer">
     <template>
-        <style>
-            :host {
-                @apply --flex;
-                @apply --flex-grow;
-                height: 100%;
-                /* background: var(--color-primary); */
-                overflow: auto;
-                width: 192px;
-                transition: width 0.5s;
-                --app-menu: {
-                    white-space: nowrap;
-                    background: initial;
+        <template is="dom-if" if="[[_isEqual(version, 1)]]">
+            <style>
+                :host {
+                    @apply --flex;
+                    @apply --flex-grow;
+                    height: 100%;
+                    /* background: var(--color-primary); */
+                    overflow: auto;
+                    width: 192px;
+                    transition: width 0.5s;
+                    --app-menu: {
+                        white-space: nowrap;
+                        background: initial;
+                    }
                 }
-            }
 
-            :host([hidden]) {
-                width: 0;
-            }
+                :host([hidden]) {
+                    width: 0;
+                }
 
-            nav {
-                @apply --flex;
-                @apply --flex-grow;
-            }
+                nav {
+                    @apply --flex;
+                    @apply --flex-grow;
+                }
 
-            app-menu {
-                width: 100%;
-            }
-        </style>
-        <app-data data="{{data}}"></app-data>
-        <map-property source="[[data.location]]" target="{{location}}"></map-property>
-        <nav>
-            <app-menu>
-                <a class="app-menu-item" href="/settings">
-                    <app-menu-icon-item icon="icons:build" on-click="toggle">Settings</app-menu-icon-item>
-                </a>
-            </app-menu>
-        </nav>
+                app-menu {
+                    width: 100%;
+                }
+            </style>
+            <app-data data="{{data}}"></app-data>
+            <map-property source="[[data.location]]" target="{{location}}"></map-property>
+            <nav>
+                <app-menu>
+                    <a class="app-menu-item" href="/settings">
+                        <app-menu-icon-item icon="icons:build" on-click="toggle">Settings</app-menu-icon-item>
+                    </a>
+                </app-menu>
+            </nav>
+        </template>
+        <template is="dom-if" if="[[_isEqual(version, 2)]]">
+            <style include="app-styles">
+                :host {
+                    width: 192px;
+                }
+            </style>
+            <nav>
+                <paper-listbox>
+                    <a href="/settings"><paper-item>Settings</paper-item></a>
+                </paper-listbox>
+            </nav>
+        </template>
     </template>
 
     <script>
-        class ViewDrawer extends Polymer.Element {
+        class ViewDrawer extends HelperMixin(Polymer.Element) {
             static get is() {
                 return 'view-drawer';
             }
@@ -65,6 +79,10 @@
                     },
                     data: {
                         type: Object
+                    },
+                    version: {
+                        type: Number,
+                        value: 1
                     }
                 }
             }
