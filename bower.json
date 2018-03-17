@@ -36,7 +36,8 @@
     "x-grid": "https://github.com/anoblet/x-grid.git",
     "iron-jsonp-library": "PolymerElements/iron-jsonp-library#^2.1.0",
     "paper-checkbox": "PolymerElements/paper-checkbox#^2.0.2",
-    "paper-swatch-picker": "PolymerElements/paper-swatch-picker#^2.2.0"
+    "paper-swatch-picker": "PolymerElements/paper-swatch-picker#^2.2.0",
+    "my-singleton": "https://github.com/anoblet/my-singleton.git"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",

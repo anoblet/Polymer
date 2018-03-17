@@ -3,7 +3,8 @@
 <link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../../lib/map-property/map-property.html">
-<link rel="import" href="app-data.html">
+<link rel="import" href="../../bower_components/my-singleton/my-singleton.html">
+
 
 <dom-module id="chart-select">
     <template>
@@ -14,8 +15,8 @@
                 </template>
             </paper-listbox>
         </paper-dropdown-menu>
-        <app-data data="{{data}}"></app-data>
-        <map-property source="{{data.configuration.primaryColor}}" target="{{primaryColor}}"></map-property>
+        <my-singleton property="styles" value="{{styles}}"></my-singleton>
+        [[styles.primaryColor]]
     </template>
     <script>
         class ChartSelect extends Polymer.Element {
@@ -37,7 +38,7 @@
                     },
                     charts: {
                         type: Array,
-                        value: function() {
+                        value: function () {
                             return [
                                 'area',
                                 'bar',
@@ -56,8 +57,18 @@
                     },
                     primaryColor: {
                         type: String
+                    },
+                    styles: {
+                        type: Object,
+                        // observer: '_stylesChanged'
                     }
                 }
+            }
+
+            static get observers() {
+                return [
+                    '_stylesChanged(styles.*)'
+                ]
             }
 
             constructor() {
@@ -66,32 +77,40 @@
             }
 
             _chartChanged(chart) {
+                console.log(this.styles);
                 this.options = {
                     chartArea: {
                         width: '80%',
                         height: '80%'
                     },
-                    // colors: [this.primaryColor],
                     legend: {
                         alignment: 'center',
                         position: 'top',
                     }
                 };
-                if (chart == "geo") {
+                if(chart == "geo") {
                     this.options.region = "US";
                     this.options.resolution = "provinces";
-                    this.options.defaultColor= '#90caf9'
+                    this.options.defaultColor = '#90caf9'
+                }
+
+                if(this.styles) {
+                    this.options.colors = [this.styles.primaryColor]
                 }
             }
 
             _styleChanged(e) {
                 console.log("Here");
-                (function () { console.log(new Error().stack); })();
+                (function () {
+                    console.log(new Error().stack);
+                })();
                 console.log(e)
             }
 
             connectedCallback() {
                 super.connectedCallback();
+                console.log(this.styles);
+                // this.set("options.colors", [this.styles.primaryColor]),
                 window.addEventListener('styleChanged', this._boundListener);
             }
 
@@ -100,7 +119,13 @@
                 window.removeEventListener('styleChanged', this._boundListener);
             }
 
+            _stylesChanged(styles) {
+                console.log("Here");
+                this.set("options.colors", [this.styles.primaryColor]);
+            }
+
         }
+
         window.customElements.define(ChartSelect.is, ChartSelect);
     </script>
 </dom-module>

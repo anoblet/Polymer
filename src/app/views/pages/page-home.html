@@ -150,6 +150,9 @@
                 -->
             </template>
             <template is="dom-if" if="[[_isEqual(version, 2)]]">
+                <my-card no-title href="/country">
+                    <div slot="content" class="full-height full-width center">Country</div>
+                </my-card>
                 <my-card no-title href="/explore">
                     <div slot="content" class="full-height full-width center">Explore</div>
                 </my-card>

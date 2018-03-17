@@ -6,6 +6,8 @@
 <link rel="import" href="./app/app-controller.html">
 <link rel="import" href="./app/app-view.html">
 <link rel="import" href="./components/app-data.html">
+<link rel="import" href="../bower_components/paper-swatch-picker/paper-swatch-picker.html">
+<link rel="import" href="../bower_components/my-singleton/my-singleton.html">
 
 <dom-module id="app-root">
     <template>
@@ -28,6 +30,7 @@
 
         <app-view></app-view>
         <app-controller></app-controller>
+        <paper-swatch-picker id="colors" class="hidden"></paper-swatch-picker>
         <app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>
     </template>
     <script>
@@ -88,6 +91,12 @@
                 this.addEventListener('stylesChangedEvent', this._stylesChangedEvent);
             }
 
+            connectedCallback() {
+                super.connectedCallback();
+                console.log("Here");
+                this._randomPrimaryColor();
+            }
+
             _stylesChanged(change) {
                 console.log(change);
                 let styles = change.base;
@@ -112,6 +121,17 @@
 
             _camelToHyphen(str) {
                 return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
+            }
+
+            _randomPrimaryColor() {
+                let items = this.shadowRoot.querySelector("paper-swatch-picker").defaultColors();
+                var color = items[Math.floor(Math.random()*items.length)];
+                setTimeout(() => {
+                    this.set("styles.primaryColor", color);
+                }, 2000);
+                setTimeout(() => {
+                    this._randomPrimaryColor();
+                }, 60000);
             }
         }
 
