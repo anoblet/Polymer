@@ -37,6 +37,10 @@
         <my-singleton property="styles" value="{{styles}}"></my-singleton>
     </template>
     <script>
+        const debug = function(msg) {
+            console.log(msg);
+        }
+
         class AppRoot extends Polymer.Element {
             static get is() {
                 return 'app-root';

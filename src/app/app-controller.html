@@ -51,10 +51,12 @@
             */
             __pathChanged(__path) {
                 // Is the path to a single component?
-                console.log(__path);
+                if(this.debug) {
+                    console.log(__path);
+                }
 
                 let isComponent = __path.startsWith("/component/");
-                if (isComponent) {
+                if(isComponent) {
                     let parts = __path.split("/");
                     console.log(parts);
                     parts.shift();
@@ -71,8 +73,8 @@
                     let model = Application.shadowRoot.querySelector('app-model');
                     let routes = model.config.routes;
 
-                    for (let i = 0; i < routes.length; i++) {
-                        if (__path == routes[i].href) {
+                    for(let i = 0; i < routes.length; i++) {
+                        if(__path == routes[i].href) {
                             var route = routes[i];
                         }
                     }
@@ -82,11 +84,11 @@
 
                 let view = Application.shadowRoot.querySelector('app-view');
 
-                if (route) {
+                if(route) {
                     Polymer.importHref(this.resolveUrl(route.src), function (e) {
                         let child = document.createElement(route.tag);
                         let element = view.querySelector('*');
-                        if (element) {
+                        if(element) {
                             element.parentNode.removeChild(element);
                         }
                         view.appendChild(child);
@@ -101,7 +103,7 @@
                 console.log(this.routeData);
 
                 // Lazy load new views
-                if (this.routeData) {
+                if(this.routeData) {
                     let view = this.routeData.view || 'home';
                     const resolvedPageUrl = this.resolveUrl('views/pages/page-' + view + '.html');
                     Polymer.importHref(resolvedPageUrl, null);
