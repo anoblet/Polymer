@@ -14,6 +14,7 @@
 <link rel="import" href="../../../components/data-select.html">
 <link rel="import" href="../../../components/table-select.html">
 <link rel="import" href="../../../components/explore-options.html">
+<link rel="import" href="../../../../bower_components/my-singleton/my-singleton.html">
 
 <dom-module id="page-explore">
     <template>
@@ -22,6 +23,7 @@
                 width: 100%;
             }
         </style>
+        <my-singleton property="styles" value="{{styles}}"></my-singleton>
         <my-grid columns="auto">
             <my-card collapsable>
                 <div slot="title">Table</div>
@@ -43,6 +45,7 @@
                 <div slot="content" class="full-height">
                     <!--<google-chart-responsive type="[[chartType]]" options="[[chartOptions]]" cols="[[chartColumns]]" rows="[[chartRows]]"></google-chart-responsive>-->
                     <google-chart-responsive type="[[chart]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>
+                    [[styles.primaryColor]]
                 </div>
             </my-card>
             <my-card collapsable>
@@ -87,6 +90,9 @@
                     selectedColumns: {
                         type: Array,
                         observer: '_selectedColumnsChanged'
+                    },
+                    styles: {
+                        type: Object
                     },
                     table: {
                         type: String,
@@ -208,10 +214,6 @@
                     console.log(chartData);
                     this.chartData = chartData;
                 }
-            }
-
-            stringify(data) {
-                return JSON.stringify(data, null, 2);
             }
         }
 

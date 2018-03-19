@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+<link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
 <link rel="import" href="../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
 <link rel="import" href="../../bower_components/my-singleton/my-singleton.html">
 <link rel="import" href="HelperMixin.html">
@@ -29,11 +30,14 @@
             </div>
         </template>
         <template is="dom-if" if="[[_isEqual(version, '2')]]">
+            <!--<app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>-->
+            <my-singleton property="styles" value="{{styles}}"></my-singleton>
             <div class="grid">
                 <div>
                     <paper-input label="Primary color" value="{{styles.primaryColor}}"></paper-input>
                     <paper-swatch-picker color="{{styles.primaryColor}}"></paper-swatch-picker>
-                    <paper-button on-click="randomPrimaryColor">Random!</paper-button>
+                    <paper-button on-click="randomPrimaryColor">Randomize!</paper-button>
+
                 </div>
                 <div>
                     <paper-input label="Secondary color" value="{{styles.secondaryColor}}"></paper-input>
@@ -41,8 +45,8 @@
                     <paper-button on-click="randomPrimaryColor">Random!</paper-button>
                 </div>
             </div>
+            [[styles.primaryColor]]
         </template>
-        <my-singleton property="styles" value="{{styles}}"></my-singleton>
     </template>
     <script>
         class SettingsStyles extends HelperMixin(Polymer.Element) {
@@ -53,8 +57,7 @@
             static get properties() {
                 return {
                     styles: {
-                        type: Object,
-                        value: {}
+                        type: Object
                     },
                     version: {
                         type: String,
@@ -69,39 +72,30 @@
                 ]
             }
 
-            connectedCallback() {
-                /*
-                super.connectedCallback();
-                let items = this.$$("paper-swatch-picker").defaultColors();
-                var item = items[Math.floor(Math.random()*items.length)];
-                // console.log(item);
-                // this.styles.primaryColor = item;
-                setTimeout(() => {
-                    this.set("styles.primaryColor", item);
-                }, 2000);
-                // this.notifyPath("styles.primaryColor");
-                */
+            ready() {
+                super.ready();
+                // this.styles = this.styles || {};
             }
 
             _stylesChanged(change) {
-                console.log(change);
+                // Check if there's information in the change
                 let styles = change.base;
-                if(Object.keys(styles).length) {
-                    this.dispatchEvent(new CustomEvent('stylesChangedEvent', {
-                        bubbles: true,
-                        composed: true,
-                        detail: change
-                    }));
+
+                if(styles) {
+                    // Check if it's an empty object
+                    if(Object.keys(styles).length) {
+                        // Forward the event
+                        this.dispatchEvent(new CustomEvent('stylesChangedEvent', {
+                            bubbles: true,
+                            composed: true,
+                            detail: change
+                        }));
+                    }
                 }
             }
 
             _camelToHyphen(str) {
                 return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
-            }
-
-            _randomPrimaryColor() {
-                let colors;
-                this.set("styles.primaryColor", color);
             }
         }
 

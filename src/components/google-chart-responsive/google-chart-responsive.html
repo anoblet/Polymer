@@ -13,7 +13,8 @@
                 height: 100%;
             }
         </style>
-        <google-chart type="[[type]]" options="[[options]]" google-chart-celect="_chartSelect" selection-changed="_selectionChanged" rows="[[rows]]" cols="[[cols]]" data="[[data]]"></google-chart>
+        <my-singleton property="styles" value="{{styles}}"></my-singleton>
+        <google-chart id="chart" type="[[type]]" options="[[options]]" google-chart-celect="_chartSelect" selection-changed="_selectionChanged" rows="[[rows]]" cols="[[cols]]" data="[[data]]"></google-chart>
     </template>
     <script>
         class GoogleChartResponsive extends Polymer.mixinBehaviors(Polymer.IronResizableBehavior, Polymer.Element) {
@@ -41,6 +42,12 @@
                 }
             }
 
+            static get observers() {
+                return [
+                    '_stylesChanged(styles.*)'
+                ]
+            }
+
             ready() {
                 super.ready();
                 const childElement = this.shadowRoot.querySelector("google-chart");
@@ -56,15 +63,22 @@
             }
 
             _resize() {
-                console.log("b");
                 this.shadowRoot.querySelector("google-chart").redraw()
             }
 
             _selectionChanged(event) {
-                console.log("Here");
-                console.log(event);
                 var event = new CustomEvent('selection-changed', {bubbles: true, composed: true, detail: event.detail});
                 this.dispatchEvent(event)
+            }
+
+            _stylesChanged(styles) {
+                let chart = this.shadowRoot.querySelector("google-chart");
+                if(chart.options) {
+                    chart.options.colors = [this.styles.primaryColor];
+                }
+                console.log("Chart");
+                this.set("options.colors", [this.styles.primaryColor]);
+                chart.redraw();
             }
         }
         window.customElements.define(GoogleChartResponsive.is, GoogleChartResponsive);

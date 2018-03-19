@@ -8,6 +8,8 @@
 <link rel="import" href="./components/app-data.html">
 <link rel="import" href="../bower_components/paper-swatch-picker/paper-swatch-picker.html">
 <link rel="import" href="../bower_components/my-singleton/my-singleton.html">
+<link rel="import" href="../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+
 
 <dom-module id="app-root">
     <template>
@@ -32,6 +34,7 @@
         <app-controller></app-controller>
         <paper-swatch-picker id="colors" class="hidden"></paper-swatch-picker>
         <app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>
+        <my-singleton property="styles" value="{{styles}}"></my-singleton>
     </template>
     <script>
         class AppRoot extends Polymer.Element {
@@ -94,7 +97,7 @@
             connectedCallback() {
                 super.connectedCallback();
                 console.log("Here");
-                this._randomPrimaryColor();
+                // this._randomPrimaryColor();
             }
 
             _stylesChanged(change) {

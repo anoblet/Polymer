@@ -1,13 +1,16 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
 <link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../../lib/map-property/map-property.html">
 <link rel="import" href="../../bower_components/my-singleton/my-singleton.html">
-
+<link rel="import" href="../../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+<link rel="import" href="HelperMixin.html">
 
 <dom-module id="chart-select">
     <template>
+        <my-singleton property="styles" value="{{styles}}"></my-singleton>
         <paper-dropdown-menu label="Chart" selected-item-label="{{chart}}">
             <paper-listbox slot="dropdown-content" selected="{{index}}">
                 <template is="dom-repeat" items="[[charts]]">
@@ -15,11 +18,9 @@
                 </template>
             </paper-listbox>
         </paper-dropdown-menu>
-        <my-singleton property="styles" value="{{styles}}"></my-singleton>
-        [[styles.primaryColor]]
     </template>
     <script>
-        class ChartSelect extends Polymer.Element {
+        class ChartSelect extends Polymer.MutableData(HelperMixin(Polymer.Element)) {
             static get is() {
                 return 'chart-select';
             }
@@ -59,8 +60,12 @@
                         type: String
                     },
                     styles: {
-                        type: Object,
+                        type: Object
                         // observer: '_stylesChanged'
+                    },
+                    stylesTest: {
+                        type: Object,
+                        computed: '_stringify(styles)'
                     }
                 }
             }
@@ -73,7 +78,7 @@
 
             constructor() {
                 super();
-                this._boundListener = this._styleChanged.bind(this);
+                // this._boundListener = this._styleChanged.bind(this);
             }
 
             _chartChanged(chart) {
@@ -94,9 +99,9 @@
                     this.options.defaultColor = '#90caf9'
                 }
 
-                if(this.styles) {
+                // if(this.styles) {
                     this.options.colors = [this.styles.primaryColor]
-                }
+                // }
             }
 
             _styleChanged(e) {
@@ -111,12 +116,12 @@
                 super.connectedCallback();
                 console.log(this.styles);
                 // this.set("options.colors", [this.styles.primaryColor]),
-                window.addEventListener('styleChanged', this._boundListener);
+                // window.addEventListener('styleChanged', this._boundListener);
             }
 
             disconnectedCallback() {
                 super.disconnectedCallback();
-                window.removeEventListener('styleChanged', this._boundListener);
+                // window.removeEventListener('styleChanged', this._boundListener);
             }
 
             _stylesChanged(styles) {
