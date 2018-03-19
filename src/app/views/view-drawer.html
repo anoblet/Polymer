@@ -55,7 +55,7 @@
                 }
             </style>
             <nav>
-                <paper-listbox>
+                <paper-listbox on-click="close">
                     <a href="/settings"><paper-item>Settings</paper-item></a>
                 </paper-listbox>
             </nav>
@@ -85,6 +85,10 @@
                         value: 1
                     }
                 }
+            }
+
+            close() {
+                this.hidden = true;
             }
 
             toggle() {
