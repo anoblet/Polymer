@@ -1,5 +1,6 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../../bower_components/google-chart/google-chart.html">
+<link rel="import" href="../../../bower_components/my-singleton/my-singleton.html">
 
 <dom-module id="google-chart-responsive">
     <template>
@@ -15,6 +16,7 @@
         </style>
         <my-singleton property="styles" value="{{styles}}"></my-singleton>
         <google-chart id="chart" type="[[type]]" options="[[options]]" google-chart-celect="_chartSelect" selection-changed="_selectionChanged" rows="[[rows]]" cols="[[cols]]" data="[[data]]"></google-chart>
+        [[styles.primaryColor]]
     </template>
     <script>
         class GoogleChartResponsive extends Polymer.mixinBehaviors(Polymer.IronResizableBehavior, Polymer.Element) {
@@ -50,8 +52,8 @@
 
             ready() {
                 super.ready();
-                const childElement = this.shadowRoot.querySelector("google-chart");
-                childElement.addEventListener('selection-changed', this._selectionChanged.bind(this));
+                // const childElement = this.shadowRoot.querySelector("google-chart");
+                // childElement.addEventListener('selection-changed', this._selectionChanged.bind(this));
                 // childElement.addEventListener('google-chart-select', this._selectionChanged.bind(this));
             }
 
@@ -71,13 +73,12 @@
                 this.dispatchEvent(event)
             }
 
-            _stylesChanged(styles) {
+            _stylesChanged(change) {
                 let chart = this.shadowRoot.querySelector("google-chart");
-                if(chart.options) {
-                    chart.options.colors = [this.styles.primaryColor];
-                }
-                console.log("Chart");
-                this.set("options.colors", [this.styles.primaryColor]);
+                chart.options = chart.options || {};
+                chart.options.colors = [this.styles.primaryColor];
+                // console.log("Chart");
+                // this.set("options.colors", [this.styles.primaryColor]);
                 chart.redraw();
             }
         }

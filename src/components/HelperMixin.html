@@ -6,6 +6,10 @@
                     return (prop1 === prop2);
                 }
 
+                _camelToHyphen(str) {
+                    return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
+                }
+
                 _stringify(obj) {
                     return JSON.stringify(obj);
                 }

@@ -9,6 +9,7 @@
 <link rel="import" href="../bower_components/paper-swatch-picker/paper-swatch-picker.html">
 <link rel="import" href="../bower_components/my-singleton/my-singleton.html">
 <link rel="import" href="../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+<link rel="import" href="./components/HelperMixin.html">
 
 
 <dom-module id="app-root">
@@ -41,7 +42,7 @@
             console.log(msg);
         }
 
-        class AppRoot extends Polymer.Element {
+        class AppRoot extends HelperMixin(Polymer.Element) {
             static get is() {
                 return 'app-root';
             }
@@ -95,39 +96,32 @@
                 }
                 this.set("data.location", location);
 
-                this.addEventListener('stylesChangedEvent', this._stylesChangedEvent);
+                // this.addEventListener('stylesChangedEvent', this._stylesChangedEvent);
             }
 
             connectedCallback() {
                 super.connectedCallback();
-                console.log("Here");
-                // this._randomPrimaryColor();
+                this._randomPrimaryColor();
             }
 
             _stylesChanged(change) {
-                console.log(change);
                 let styles = change.base;
-                console.log("Updating styles: ");
-                let newStyles = {};
+                let cssStyles = {};
                 let keys = Object.keys(styles);
                 for (let i = 0; i < keys.length; i++) {
                     let style = keys[i];
                     // Camelcase-style
-                    // newStyles['--' + keys[i]] = this.styles[keys[i]];
+                    // cssStyles['--' + keys[i]] = this.styles[keys[i]];
 
                     // Hyphen-style
-                    let newStyle = this._camelToHyphen(style);
-                    newStyles['--' + newStyle] = styles[keys[i]];
+                    let cssStyle = this._camelToHyphen(style);
+                    cssStyles['--' + cssStyle] = styles[keys[i]];
                 }
-                this.updateStyles(newStyles);
+                this.updateStyles(cssStyles);
             }
 
             _stylesChangedEvent(e) {
                 this._stylesChanged(e.detail);
-            }
-
-            _camelToHyphen(str) {
-                return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
             }
 
             _randomPrimaryColor() {
