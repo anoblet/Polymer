@@ -99,7 +99,7 @@
             <app-header-layout>
                 <app-header fixed effects="waterfall" slot="header">
                     <app-toolbar>
-                        <view-header></view-header>
+                        <view-header version="3"></view-header>
                     </app-toolbar>
                 </app-header>
                 <app-drawer-layout id="drawerLayout" force-narrow>
@@ -108,14 +108,16 @@
                             <view-drawer version="2"></view-drawer>
                         </div>
                     </app-drawer>
-                    <iron-pages selected="[[routeData.view]]" attr-for-selected="page-name">
-                        <page-home page-name="" version="2"></page-home>
-                        <page-explore page-name="explore"></page-explore>
-                        <page-country page-name="country"></page-country>
-                        <page-county page-name="county"></page-county>
-                        <page-settings page-name="settings"></page-settings>
-                        <page-state page-name="state" route="{{subRoute}}"></page-state>
-                    </iron-pages>
+                    <view-main>
+                        <iron-pages selected="[[routeData.view]]" attr-for-selected="page-name">
+                            <page-home page-name="" version="2"></page-home>
+                            <page-explore page-name="explore"></page-explore>
+                            <page-country page-name="country"></page-country>
+                            <page-county page-name="county"></page-county>
+                            <page-settings page-name="settings"></page-settings>
+                            <page-state page-name="state" route="{{subRoute}}"></page-state>
+                        </iron-pages>
+                    </view-main>
                 </app-drawer-layout>
             </app-header-layout>
         </template>

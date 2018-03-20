@@ -14,80 +14,63 @@
 <link rel="import" href="../../../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../../components/HelperMixin.html">
 
+<link rel="import" href="../../app/styles/app-styles.html">
+
 
 <dom-module id="view-header">
     <template>
-        <style include="app-styles global-styles flex-styles">
-            :host {
-                background: var(--primary-color);
-            }
-
-            header {
-                width: 100%;
-            }
-
-            a, a:visited {
-                color: #fff;
-            }
-
-            .grid {
-                width: 100%;
-                grid-template-columns: repeat(5, 1fr);
-            }
-
-            #search {
-                grid-column: span 3;
-            }
-
-            #center {
-                grid-column: span 3;
-            }
-
-            paper-icon-button {
-                color: #fff;
-            }
-        </style>
-        <header>
-            <!--<app-toolbar>Test</app-toolbar>-->
-            <template is="dom-if" if="[[_isEqual(version, 1)]]">
-                <div class="grid">
-                    <div class="item v-align-center">
-                        <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
-                        <!-- <a href="/" no-underline>[[title]]</a> -->
-                    </div>
-
-                    <div id="search" class="item center">
-                        <!-- <address-lookup v-align-center></address-lookup> -->
-                        <a href="/" no-underline>[[title]]</a>
-                    </div>
-                    <div class="item v-align-center justify-end">
-                        <!-- <paper-icon-button icon="icons:account-circle"></paper-icon-button> -->
-                        <paper-icon-button icon="icons:search"></paper-icon-button>
-                    </div>
+        <style include="app-styles"></style>
+        <!--<app-toolbar>Test</app-toolbar>-->
+        <template is="dom-if" if="[[_isEqual(version, 1)]]">
+            <div class="grid">
+                <div class="item v-align-center">
+                    <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
+                    <!-- <a href="/" no-underline>[[title]]</a> -->
                 </div>
-            </template>
-            <template is="dom-if" if="[[_isEqual(version, 2)]]">
-                <app-header slot="header" fixed condenses effects="waterfall">
-                    <app-toolbar>
-                        <div class="grid">
-                            <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
-                            <div id="center" class="center">
-                                <a href="/">
-                                    <div main-title>[[title]]</div>
-                                </a>
-                            </div>
-                            <div></div>
+
+                <div id="search" class="item center">
+                    <!-- <address-lookup v-align-center></address-lookup> -->
+                    <a href="/" no-underline>[[title]]</a>
+                </div>
+                <div class="item v-align-center justify-end">
+                    <!-- <paper-icon-button icon="icons:account-circle"></paper-icon-button> -->
+                    <paper-icon-button icon="icons:search"></paper-icon-button>
+                </div>
+            </div>
+        </template>
+        <template is="dom-if" if="[[_isEqual(version, 2)]]">
+            <app-header slot="header" fixed condenses effects="waterfall">
+                <app-toolbar>
+                    <div class="grid">
+                        <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
+                        <div id="center" class="center">
+                            <a href="/">
+                                <div main-title>[[title]]</div>
+                            </a>
                         </div>
-                    </app-toolbar>
-                </app-header>
-            </template>
-        </header>
-        <app-data data="{{data}}"></app-data>
-        <map-property source="{{data.configuration.menu}}" target="{{menu}}"></map-property>
+                        <div></div>
+                    </div>
+                </app-toolbar>
+            </app-header>
+        </template>
         <template is="dom-if" if="[[_isEqual(version, 3)]]">
             <style>
                 :host {
                     width: 100%;
+                }
+
+                .grid {
+                    display: grid;
+                    width: 100%;
+                    grid-template-columns: repeat(5, 1fr);
+                }
+
+                #center {
+                    grid-column: span 3;
+                }
+
+                #center a {
+                    color: #fff;
                 }
             </style>
             <div class="grid">
