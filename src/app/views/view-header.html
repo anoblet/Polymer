@@ -19,14 +19,6 @@
     <template>
         <style include="app-styles global-styles flex-styles">
             :host {
-                /*
-                display: flex;
-                align-items: center;
-                height: 58px;
-                padding-left: 16px;
-                padding-right: 16px;
-                color: #fff;
-                */
                 background: var(--primary-color);
             }
 
@@ -92,6 +84,22 @@
         </header>
         <app-data data="{{data}}"></app-data>
         <map-property source="{{data.configuration.menu}}" target="{{menu}}"></map-property>
+        <template is="dom-if" if="[[_isEqual(version, 3)]]">
+            <style>
+                :host {
+                    width: 100%;
+                }
+            </style>
+            <div class="grid">
+                <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
+                <div id="center" class="center">
+                    <a href="/">
+                        <div main-title>[[title]]</div>
+                    </a>
+                </div>
+                <div></div>
+            </div>
+        </template>
     </template>
 
     <script>
