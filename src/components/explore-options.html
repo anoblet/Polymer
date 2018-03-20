@@ -5,6 +5,7 @@
 <link rel="import" href="program-select.html">
 <link rel="import" href="data-select.html">
 <link rel="import" href="table-select.html">
+<link rel="import" href="HelperMixin.html">
 
 <dom-module id="explore-options">
     <template>
@@ -27,7 +28,7 @@
         <!--<chart-select chart="{{chart}}" options="{{chartOptions}}"></chart-select>-->
     </template>
     <script>
-        class ExploreOptions extends Polymer.Element {
+        class ExploreOptions extends HelperMixin(Polymer.Element) {
             static get is() {
                 return 'explore-options';
             }
