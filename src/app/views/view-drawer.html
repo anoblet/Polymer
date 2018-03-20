@@ -92,7 +92,9 @@
             }
 
             toggle() {
+                console.log("Toggle");
                 this.hidden = !this.hidden;
+                window.dispatchEvent(new CustomEvent('drawerToggled', {bubbles: true, composed: true}));
             }
         }
 

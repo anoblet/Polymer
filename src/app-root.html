@@ -31,7 +31,7 @@
             }
         </style>
 
-        <app-view></app-view>
+        <app-view version="2"></app-view>
         <app-controller></app-controller>
         <paper-swatch-picker id="colors" class="hidden"></paper-swatch-picker>
         <app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>
@@ -108,6 +108,7 @@
             connectedCallback() {
                 super.connectedCallback();
                 this._randomPrimaryColor();
+                window.addEventListener('drawerToggled', this.test);
             }
 
             _stylesChanged(change) {

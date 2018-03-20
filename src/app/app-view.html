@@ -18,62 +18,111 @@
 <link rel="lazy-import" href="views/pages/page-settings.html">
 <link rel="lazy-import" href="views/pages/page-state.html">
 
+<link rel="import" href="../../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+
 <dom-module id="app-view">
     <template>
-        <style include="global-styles flex-styles app-styles">
-            :host {
-                @apply --flex;
-                @apply --flex-grow;
-            }
+        <template is="dom-if" if="[[_isEqual(version, 1)]]">
+            <style include="global-styles flex-styles app-styles">
+                :host {
+                    @apply --flex;
+                    @apply --flex-grow;
+                }
 
-            x-grid {
-                /*display: initial;*/
-            }
+                x-grid {
+                    /*display: initial;*/
+                }
 
-            view-header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 1
-            }
+                view-header {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    z-index: 1
+                }
 
-            view-drawer, view-main {
-                margin-top: 64px;
-            }
+                view-drawer, view-main {
+                    margin-top: 64px;
+                }
 
-            view-footer {
-                width: 100%;
-            }
-        </style>
-        <x-grid>
-            <x-grid-row shrink-disabled>
-                <view-header version="2"></view-header>
-            </x-grid-row>
-            <x-grid-row flex grow>
-                <x-grid-column grow-disabled>
-                    <view-drawer id="drawer" version="2"></view-drawer>
-                </x-grid-column>
-                <x-grid-column flex>
-                    <view-main>
-                        <iron-pages selected="[[routeData.view]]" attr-for-selected="page-name">
-                            <page-home page-name="" version="2"></page-home>
-                            <page-explore page-name="explore"></page-explore>
-                            <page-country page-name="country"></page-country>
-                            <page-county page-name="county"></page-county>
-                            <page-settings page-name="settings"></page-settings>
-                            <page-state page-name="state" route="{{subRoute}}"></page-state>
-                        </iron-pages>
-                    </view-main>
-                </x-grid-column>
-            </x-grid-row>
-            <x-grid-row shrink-disabled>
-                <view-footer></view-footer>
-            </x-grid-row>
-        </x-grid>
+                view-footer {
+                    width: 100%;
+                }
+            </style>
+            <x-grid>
+                <x-grid-row shrink-disabled>
+                    <view-header version="2"></view-header>
+                </x-grid-row>
+                <x-grid-row flex grow>
+                    <x-grid-column grow-disabled>
+                        <!--<view-drawer id="drawer" version="2"></view-drawer>-->
+                    </x-grid-column>
+                    <x-grid-column flex>
+                        <view-main>
+                            <iron-pages selected="[[routeData.view]]" attr-for-selected="page-name">
+                                <page-home page-name="" version="2"></page-home>
+                                <page-explore page-name="explore"></page-explore>
+                                <page-country page-name="country"></page-country>
+                                <page-county page-name="county"></page-county>
+                                <page-settings page-name="settings"></page-settings>
+                                <page-state page-name="state" route="{{subRoute}}"></page-state>
+                            </iron-pages>
+                        </view-main>
+                    </x-grid-column>
+                </x-grid-row>
+                <x-grid-row shrink-disabled>
+                    <view-footer></view-footer>
+                </x-grid-row>
+            </x-grid>
+        </template>
+        <template is="dom-if" if="[[_isEqual(version, 2)]]">
+            <style>
+                :host {
+                    width: 100%;
+                }
+
+                app-header {
+                    background-color: var(--primary-color);
+                    color: #fff;
+                }
+
+                .drawer-content {
+                    margin-top: 80px;
+                    height: calc(100% - 80px);
+                    overflow: auto;
+                }
+            </style>
+            <app-header-layout>
+                <app-header fixed effects="waterfall" slot="header">
+                    <app-toolbar>
+                        <paper-icon-button id="toggle" icon="menu" on-click="toggle"></paper-icon-button>
+                        <div main-title>Inbox</div>
+                    </app-toolbar>
+                </app-header>
+                <app-drawer-layout id="drawerLayout" force-narrow>
+                    <app-drawer slot="drawer">
+                        <div class="drawer-content">
+                            <view-drawer version="2"></view-drawer>
+                        </div>
+                    </app-drawer>
+                    <iron-pages selected="[[routeData.view]]" attr-for-selected="page-name">
+                        <page-home page-name="" version="2"></page-home>
+                        <page-explore page-name="explore"></page-explore>
+                        <page-country page-name="country"></page-country>
+                        <page-county page-name="county"></page-county>
+                        <page-settings page-name="settings"></page-settings>
+                        <page-state page-name="state" route="{{subRoute}}"></page-state>
+                    </iron-pages>
+                </app-drawer-layout>
+            </app-header-layout>
+        </template>
     </template>
     <script>
-        class AppView extends Polymer.Element {
+        class AppView extends HelperMixin(Polymer.Element) {
             static get is() {
                 return 'app-view';
             }
@@ -85,6 +134,10 @@
                     },
                     subRoute: {
                         type: Object
+                    },
+                    version: {
+                        type: Number,
+                        value: 1
                     }
                 }
             }
@@ -93,8 +146,19 @@
                 super.connectedCallback();
 
                 this.addEventListener('toggleDrawer', function () {
+                    // this.$.drawer.toggle();
                     this.$.drawer.hidden = !this.$.drawer.hidden;
+                    window.dispatchEvent(new CustomEvent('drawerToggled', {bubbles: true, composed: true}));
                 })
+            }
+
+            toggle() {
+                let drawerLayout = this.shadowRoot.querySelector("app-drawer-layout");
+                if(drawerLayout.forceNarrow || !drawerLayout.narrow) {
+                    drawerLayout.forceNarrow = !drawerLayout.forceNarrow;
+                } else {
+                    drawerLayout.drawer.toggle();
+                }
             }
         }
 
