@@ -52,13 +52,20 @@
             <style include="app-styles">
                 :host {
                     width: 192px;
+                    height: 100%;
                     display: block;
                 }
             </style>
             <nav>
-                <paper-listbox on-click="close">
-                    <a href="/settings"><paper-item>Settings</paper-item></a>
-                </paper-listbox>
+                <my-card no-title class="full-width full-height">
+                    <div slot="card-content">
+                        <paper-listbox on-click="close">
+                            <a href="/settings">
+                                <paper-item>Settings</paper-item>
+                            </a>
+                        </paper-listbox>
+                    </div>
+                </my-card>
             </nav>
         </template>
     </template>
