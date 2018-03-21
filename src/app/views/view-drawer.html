@@ -52,9 +52,9 @@
         <template is="dom-if" if="[[_isEqual(version, 2)]]">
             <style include="app-styles">
                 :host {
-                    width: 192px;
+                    /*width: 192px;*/
                     height: 100%;
-                    padding: 1rem;
+                    padding: 1rem 0 1rem 1rem;
                 }
             </style>
             <nav class="full">
@@ -81,7 +81,9 @@
                 return {
                     hidden: {
                         type: Boolean,
-                        value: true
+                        value: true,
+                        notify: true,
+                        reflectToAttribute: true
                     },
                     location: {
                         type: Object

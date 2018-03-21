@@ -177,14 +177,36 @@
                 #grid {
                     grid-auto-rows: min-content;
                 }
+
+                #inner-grid {
+                    grid-template-columns: repeat(6, 1fr);
+                    grid-auto-flow: column;
+                    grid-auto-columns: min-content auto;
+                }
+
+                #inner-grid[drawer-hidden] {
+                    grid-auto-columns: auto;
+                }
+
+                view-drawer {
+                    grid-column: span 1;
+                }
+
+                view-main {
+                    grid-column: span 5;
+                }
+
+                #inner-grid[drawer-hidden] view-main {
+                    grid-column: span 6;
+                }
             </style>
             <div id="grid" class="full grid">
                 <div id="top">
                     <view-header version="3"></view-header>
                 </div>
                 <div id="middle">
-                    <div class="full flex">
-                        <view-drawer version="2"></view-drawer>
+                    <div id="inner-grid" class="full grid" drawer-hidden$="[[drawerHidden]]">
+                        <view-drawer version="2" hidden="{{drawerHidden}}"></view-drawer>
                         <view-main>
                             <iron-pages selected="[[routeData.view]]" attr-for-selected="page-name">
                                 <page-home page-name="" version="2"></page-home>
@@ -219,7 +241,7 @@
                     version: {
                         type: Number,
                         value: 1
-                    }
+                    },
                 }
             }
 
