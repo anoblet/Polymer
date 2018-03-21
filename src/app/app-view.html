@@ -26,8 +26,13 @@
 
 <dom-module id="app-view">
     <template>
+        <style include="global-styles flex-styles app-styles">
+            :host {
+                width: 100%;
+            }
+        </style>
         <template is="dom-if" if="[[_isEqual(version, 1)]]">
-            <style include="global-styles flex-styles app-styles">
+            <style>
                 :host {
                     @apply --flex;
                     @apply --flex-grow;
@@ -125,6 +130,77 @@
                 </app-drawer-layout>
             </app-header-layout>
         </template>
+        <template is="dom-if" if="[[_isEqual(version, 3)]]">
+            <style>
+                #grid {
+                    grid-template-columns: repeat(6, 1fr);
+                    grid-auto-flow: row dense;
+                    grid-auto-rows: min-content;;
+                }
+
+                #header, #footer {
+                    grid-column: span 6;
+                }
+
+                #drawer {
+                    grid-column: span 2;
+                }
+
+                #main {
+                    grid-column: span 4;
+                }
+            </style>
+            <div id="grid" class="grid full">
+                <div id="header">
+                    <view-header version="3"></view-header>
+                </div>
+                <div id="drawer">
+                    <view-drawer></view-drawer>
+                </div>
+                <div id="main">
+                    <view-main>
+                        <iron-pages selected="[[routeData.view]]" attr-for-selected="page-name">
+                            <page-home page-name="" version="2"></page-home>
+                            <page-explore page-name="explore"></page-explore>
+                            <page-country page-name="country"></page-country>
+                            <page-county page-name="county"></page-county>
+                            <page-settings page-name="settings"></page-settings>
+                            <page-state page-name="state" route="{{subRoute}}"></page-state>
+                        </iron-pages>
+                    </view-main>
+                </div>
+                <div id="footer"></div>
+            </div>
+        </template>
+        <template is="dom-if" if="[[_isEqual(version, 4)]]">
+            <style>
+                #grid {
+                    grid-auto-rows: min-content;
+                }
+            </style>
+            <div id="grid" class="grid full">
+                <div id="header">
+                    <view-header version="3"></view-header>
+                </div>
+                <div id="middle">
+                    <div class="full flex">
+                        <view-drawer id="drawer"></view-drawer>
+                        <view-main>
+                            <iron-pages selected="[[routeData.view]]" attr-for-selected="page-name">
+                                <page-home page-name="" version="2"></page-home>
+                                <page-explore page-name="explore"></page-explore>
+                                <page-country page-name="country"></page-country>
+                                <page-county page-name="county"></page-county>
+                                <page-settings page-name="settings"></page-settings>
+                                <page-state page-name="state" route="{{subRoute}}"></page-state>
+                            </iron-pages>
+                        </view-main>
+                    </div>
+                </div>
+                <div id="footer">
+                </div>
+            </div>
+        </template>
     </template>
     <script>
         class AppView extends HelperMixin(Polymer.Element) {
@@ -157,12 +233,16 @@
             }
 
             toggle() {
+                /*
                 let drawerLayout = this.shadowRoot.querySelector("app-drawer-layout");
                 if(drawerLayout.forceNarrow || !drawerLayout.narrow) {
                     drawerLayout.forceNarrow = !drawerLayout.forceNarrow;
                 } else {
                     drawerLayout.drawer.toggle();
                 }
+                */
+                // this.$.drawer.toggle();
+                this.shadowRoot.querySelector("view-drawer").toggle();
             }
         }
 

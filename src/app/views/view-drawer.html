@@ -9,6 +9,7 @@
 
 <dom-module id="view-drawer">
     <template>
+        <style include="app-styles"></style>
         <template is="dom-if" if="[[_isEqual(version, 1)]]">
             <style>
                 :host {
@@ -56,9 +57,9 @@
                     display: block;
                 }
             </style>
-            <nav>
-                <my-card no-title class="full-width full-height">
-                    <div slot="card-content">
+            <nav class="full">
+                <my-card no-title class="full">
+                    <div slot="content">
                         <paper-listbox on-click="close">
                             <a href="/settings">
                                 <paper-item>Settings</paper-item>

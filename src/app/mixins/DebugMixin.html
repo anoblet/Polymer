@@ -1,0 +1,22 @@
+<script>
+    (function () {
+        DebugMixin = function (superClass) {
+            return class extends superClass {
+                static get properties() {
+                    return {
+                        debug: {
+                            type: Boolean,
+                            value: false
+                        }
+                    }
+                }
+
+                console(msg) {
+                    if(this.debug) {
+                        console.log(msg);
+                    }
+                }
+            }
+        }
+    })();
+</script>

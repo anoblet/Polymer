@@ -2,6 +2,7 @@
 <link rel="import" href="../../bower_components/iron-location/iron-location.html">
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="mixins/DebugMixin.html">
 
 <dom-module id="app-controller">
     <template>
@@ -23,7 +24,7 @@
         </div>
     </template>
     <script>
-        class AppController extends Polymer.Element {
+        class AppController extends DebugMixin(Polymer.Element) {
             static get is() {
                 return 'app-controller';
             }
@@ -51,9 +52,7 @@
             */
             __pathChanged(__path) {
                 // Is the path to a single component?
-                if(this.debug) {
-                    console.log(__path);
-                }
+                this.debug(__path);
 
                 let isComponent = __path.startsWith("/component/");
                 if(isComponent) {
@@ -99,8 +98,8 @@
             }
 
             routeChanged(route) {
-                console.log(route);
-                console.log(this.routeData);
+                this.console(route);
+                this.console(this.routeData);
 
                 // Lazy load new views
                 if(this.routeData) {
