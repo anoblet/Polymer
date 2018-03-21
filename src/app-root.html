@@ -1,23 +1,27 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+
 <link rel="import" href="../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
-<link rel="import" href="./styles/global-styles.html">
-<link rel="import" href="./styles/flex-styles.html">
-<link rel="import" href="./app/styles/app-styles.html">
+<link rel="import" href="../bower_components/paper-swatch-picker/paper-swatch-picker.html">
+
+<link rel="import" href="../bower_components/my-singleton/my-singleton.html">
+
 <link rel="import" href="./app/app-controller.html">
 <link rel="import" href="./app/app-view.html">
-<link rel="import" href="./components/app-data.html">
-<link rel="import" href="../bower_components/paper-swatch-picker/paper-swatch-picker.html">
-<link rel="import" href="../bower_components/my-singleton/my-singleton.html">
-<link rel="import" href="../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+
 <link rel="import" href="./components/HelperMixin.html">
 
+<link rel="import" href="./app/styles/app-styles.html">
 
 <dom-module id="app-root">
     <template>
-        <style include="global-styles flex-styles app-styles">
+        <style include="app-styles">
             :host {
+                /*
                 @apply --flex;
                 @apply --flex-grow;
+                */
+                width: 100%;
+
                 /*background: var(--pageBackgroundColor);*/
                 background: var(--page-background-color);
 
@@ -30,12 +34,10 @@
                 --secondary-color-dark: #bc5100;
             }
         </style>
-
-        <app-view version="4"></app-view>
         <app-controller></app-controller>
-        <paper-swatch-picker id="colors" class="hidden"></paper-swatch-picker>
-        <app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>
         <my-singleton property="styles" value="{{styles}}"></my-singleton>
+        <app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>
+        <app-view version="4"></app-view>
     </template>
     <script>
         const debug = function(msg) {

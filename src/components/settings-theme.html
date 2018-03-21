@@ -1,0 +1,52 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="settings-theme">
+    <template>
+        <paper-dropdown-menu selected="{{theme}}">
+            <paper-listbox>
+                <template is="dom-repeat" items="[[themes]]" as="theme">
+                    <paper-item>[[theme.name]]</paper-item>
+                </template>
+            </paper-listbox>
+        </paper-dropdown-menu>
+    </template>
+    <script>
+        class SettingsTheme extends Polymer.Element {
+            static get is() {
+                return 'settings-theme';
+            }
+
+            static get properties() {
+                return {
+                    themes: function() {
+                        return [
+                            {
+                                name: "red",
+                                colors: [
+                                    {
+                                        "50": "#FFEBEE",
+                                        "100": "#FFCDD2",
+                                        "200": "#EF9A9A",
+                                        "300": "#E57373",
+                                        "400": "#EF5350",
+                                        "500": "#F44336",
+                                        "600": "#E53935",
+                                        "700": "#D32F2F",
+                                        "800": "#C62828",
+                                        "900": "#B71C1C",
+                                        "A100": "#FF8A80",
+                                        "A200": "#FF5252",
+                                        "A400": "#FF1744",
+                                        "A700": "#D50000",
+
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+        window.customElements.define(SettingsTheme.is, SettingsTheme);
+    </script>
+</dom-module>
