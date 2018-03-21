@@ -30,14 +30,12 @@
             </div>
         </template>
         <template is="dom-if" if="[[_isEqual(version, '2')]]">
-            <!--<app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>-->
             <my-singleton property="styles" value="{{styles}}"></my-singleton>
             <div class="grid">
                 <div>
                     <paper-input label="Primary color" value="{{styles.primaryColor}}"></paper-input>
                     <paper-swatch-picker color="{{styles.primaryColor}}"></paper-swatch-picker>
-                    <paper-button on-click="randomPrimaryColor">Randomize!</paper-button>
-
+                    <paper-button on-click="randomPrimaryColor">Random!</paper-button>
                 </div>
                 <div>
                     <paper-input label="Secondary color" value="{{styles.secondaryColor}}"></paper-input>
@@ -95,6 +93,13 @@
 
             _camelToHyphen(str) {
                 return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
+            }
+
+            randomPrimaryColor() {
+                let items = document.createElement("paper-swatch-picker").defaultColors();
+                var color = items[Math.floor(Math.random()*items.length)];
+                console.log(color);
+                this.set("styles.primaryColor", color);
             }
         }
 
