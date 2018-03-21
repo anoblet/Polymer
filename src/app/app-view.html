@@ -227,12 +227,11 @@
                 super.connectedCallback();
 
                 this.addEventListener('toggleDrawer', function () {
-                    this.toggle();
-                    window.dispatchEvent(new CustomEvent('drawerToggled', {bubbles: true, composed: true}));
+                    this.toggleDrawer();
                 })
             }
 
-            toggle() {
+            toggleDrawer() {
                 /*
                 let drawerLayout = this.shadowRoot.querySelector("app-drawer-layout");
                 if(drawerLayout.forceNarrow || !drawerLayout.narrow) {
