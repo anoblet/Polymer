@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="HelperMixin.html">
 
 <dom-module id="my-chart">
     <template>
@@ -6,7 +7,7 @@
         <google-chart-responsive data="[[data]]" options="[[options]]" type="[[type]]"></google-chart-responsive>
     </template>
     <script>
-        class MyChart extends Polymer.Element {
+        class MyChart extends HelperMixin(Polymer.Element) {
             static get is() {
                 return 'my-chart';
             }
@@ -19,10 +20,20 @@
                     options: {
                         type: Object
                     },
+                    theme: {
+                        type: Object,
+                        observer: '_themeChanged'
+                    },
                     type: {
                         type: String
                     }
                 }
+            }
+
+            _themeChanged(theme) {
+                console.log(theme);
+                let colors = _objectValues(theme.colors);
+                this.set("colors", colors)
             }
         }
         window.customElements.define(MyChart.is, MyChart);

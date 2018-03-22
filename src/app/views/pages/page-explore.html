@@ -2,7 +2,7 @@
 <link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../../../bower_components/neon-animation/web-animations.html">
 <link rel="import" href="../../../../bower_components/my-grid/my-grid.html">
-<link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
+<!--<link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">-->
 <link rel="import" href="../../../components/fact-finder/fact-finder.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder-tables.html">
 <link rel="import" href="../../../components/my-card/my-card.html">
@@ -15,6 +15,7 @@
 <link rel="import" href="../../../components/table-select.html">
 <link rel="import" href="../../../components/explore-options.html">
 <link rel="import" href="../../../../bower_components/my-singleton/my-singleton.html">
+<link rel="import" href="../../../components/my-chart.html">
 
 <dom-module id="page-explore">
     <template>
@@ -44,7 +45,8 @@
                 </div>
                 <div slot="content" class="full-height">
                     <!--<google-chart-responsive type="[[chartType]]" options="[[chartOptions]]" cols="[[chartColumns]]" rows="[[chartRows]]"></google-chart-responsive>-->
-                    <google-chart-responsive type="[[chart]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>
+                    <!--<google-chart-responsive type="[[chart]]" options="[[chartOptions]]" data="[[chartData]]"></google-chart-responsive>-->
+                    <my-chart data="[[chartData]]" options="[[chartOptions]]" type="[[chart]]"></my-chart>
                 </div>
             </my-card>
             <my-card collapsable>
