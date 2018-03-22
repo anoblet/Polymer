@@ -12,6 +12,7 @@
 <link rel="import" href="../../../components/my-card/my-card.html">
 <link rel="import" href="../../../components/select-state.html">
 <link rel="import" href="../../../components/settings-styles.html">
+<link rel="import" href="../../../components/settings-theme.html">
 
 <dom-module id="page-settings">
     <template>
@@ -62,6 +63,12 @@
                             </div>
                         </template>
                     </div>
+                </div>
+            </my-card>
+            <my-card>
+                <div slot="title">Theme</div>
+                <div slot="content">
+                    <settings-theme></settings-theme>
                 </div>
             </my-card>
             <my-card>

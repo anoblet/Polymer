@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-chart">
+    <template>
+        <my-singleton property="theme" value="{{theme}}"></my-singleton>
+        <google-chart-responsive data="[[data]]" options="[[options]]" type="[[type]]"></google-chart-responsive>
+    </template>
+    <script>
+        class MyChart extends Polymer.Element {
+            static get is() {
+                return 'my-chart';
+            }
+
+            static get properties() {
+                return {
+                    data: {
+                        type: Object
+                    },
+                    options: {
+                        type: Object
+                    },
+                    type: {
+                        type: String
+                    }
+                }
+            }
+        }
+        window.customElements.define(MyChart.is, MyChart);
+    </script>
+</dom-module>
