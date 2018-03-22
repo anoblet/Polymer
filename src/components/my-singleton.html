@@ -52,13 +52,13 @@
 
                 connectedCallback() {
                     super.connectedCallback();
-                    // console.log("Check 1");
                     if(this.value) {
                         data[this.property] = this.value;
                     }
                     // Default to an object
                     // data[this.property] = data[this.property] || {};
-                    this.value = data[this.property];
+                    this.set("value", data[this.property]);
+                    // this.value = data[this.property];
                     instance.subscribers[this.property] = instance.subscribers[this.property] || [];
                     instance.subscribers[this.property].push(this);
                 }
@@ -70,16 +70,15 @@
                 }
 
                 _valueChanged(change) {
-                    // console.log("Check 2");
                     // Is this necessary?
                     data[this.property] = change.base;
+                    console.log(change);
+                    // (function () { console.log(new Error().stack); })();
                     if(!isRoot) {
                         isRoot = true;
-                        // console.log(instance.subscribers[this.property]);
                         if(instance.subscribers[this.property]) {
                             instance.subscribers[this.property].forEach(e => {
-                                // console.log(e.value);
-                                // e.set("value", instance.value);
+                                // e.set("value", data[this.property]);
                                 e.notifyPath(change.path);
                             });
                         }

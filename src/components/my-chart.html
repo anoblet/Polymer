@@ -35,8 +35,9 @@
 
             _themeChanged(theme) {
                 console.log(theme);
-                let colors = _objectValues(theme.colors);
-                this.set("colors", colors)
+                let colors = this._objectValues(theme.colors);
+                console.log(colors);
+                this.set("options.colors", colors);
             }
         }
         window.customElements.define(MyChart.is, MyChart);

@@ -17,6 +17,7 @@
                 </template>
             </paper-listbox>
         </paper-dropdown-menu>
+        [[theme.name]]
     </template>
     <script>
         class SettingsTheme extends Polymer.Element {
@@ -81,6 +82,8 @@
 
             _themeIndexChanged(index) {
                 this.set("theme", this.themes[index]);
+                this.theme = this.themes[index];
+                console.log(this.theme);
                 this.set("styles.primaryColor", this.themes[index].colors[500]);
             }
         }

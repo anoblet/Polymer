@@ -8,6 +8,7 @@
 <link rel="import" href="./app/app-controller.html">
 <link rel="import" href="./app/app-view.html">
 
+<link rel="import" href="./app/mixins/DebugMixin.html">
 <link rel="import" href="./components/HelperMixin.html">
 
 <link rel="import" href="./app/styles/app-styles.html">
@@ -36,17 +37,18 @@
         </style>
         <app-controller></app-controller>
         <my-singleton property="styles" value="{{styles}}"></my-singleton>
-        <my-singleton property="theme" value="{{theme}}"></my-singleton>
-        <app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>
-        <app-localstorage-document key="theme" data="{{theme}}"></app-localstorage-document>
+        <!--<my-singleton property="theme" value="{{theme}}"></my-singleton>-->
+        <!--<app-localstorage-document key="styles" data="{{styles}}"></app-localstorage-document>-->
+        <!--<app-localstorage-document key="theme" data="{{theme}}"></app-localstorage-document>-->
         <app-view version="4"></app-view>
+        [[theme.name]]test
     </template>
     <script>
         const debug = function(msg) {
             console.log(msg);
         }
 
-        class AppRoot extends HelperMixin(Polymer.Element) {
+        class AppRoot extends DebugMixin(HelperMixin(Polymer.Element)) {
             static get is() {
                 return 'app-root';
             }
@@ -78,13 +80,18 @@
                         value: function() {
                             return {};
                         }
+                    },
+                    theme: {
+                        type: Object,
+                        observer: '_themeChanged'
                     }
                 }
             }
 
             static get observers() {
                 return [
-                    '_stylesChanged(styles.*)'
+                    '_stylesChanged(styles.*)',
+                    // '_themeChanged(theme.*)'
                 ]
             }
 
@@ -116,6 +123,7 @@
             }
 
             _stylesChanged(change) {
+                this.console("Styles updating");
                 let styles = change.base;
                 let cssStyles = {};
                 let keys = Object.keys(styles);
@@ -144,6 +152,12 @@
                 setTimeout(() => {
                     this._randomPrimaryColor();
                 }, 60000);
+            }
+
+            _themeChanged(theme) {
+                console.log("Here");
+                console.log(theme);
+                console.log(theme.name);
             }
         }
 
