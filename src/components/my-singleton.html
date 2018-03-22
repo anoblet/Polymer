@@ -1,0 +1,94 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="my-singleton">
+    <script>
+        /**
+         * `my-singleton`
+         *
+         * Currently limited to objects
+         *
+         * @customElement
+         * @polymer
+         * @demo demo/index.html
+         */
+        (function () {
+            let data = {};
+            let instance;
+            let subscribers = {};
+            let isRoot = false;
+
+            class MySingleton extends Polymer.MutableData(Polymer.Element) {
+                static get is() {
+                    return 'my-singleton';
+                }
+
+                static get properties() {
+                    return {
+                        property: {
+                            type: String
+                        },
+                        subscribers: {
+                            type: Array,
+                            value: subscribers
+                        },
+                        value: {
+                            type: Object,
+                            notify: true
+                        }
+                    };
+                }
+
+                static get observers() {
+                    return [
+                        '_valueChanged(value.*)'
+                    ]
+                }
+
+                constructor() {
+                    super();
+                    // Set authoritative instance
+                    if(!instance) instance = this;
+                }
+
+                connectedCallback() {
+                    super.connectedCallback();
+                    // console.log("Check 1");
+                    if(this.value) {
+                        data[this.property] = this.value;
+                    }
+                    // Default to an object
+                    // data[this.property] = data[this.property] || {};
+                    this.value = data[this.property];
+                    instance.subscribers[this.property] = instance.subscribers[this.property] || [];
+                    instance.subscribers[this.property].push(this);
+                }
+
+                disconnectedCallback() {
+                    super.disconnectedCallback();
+                    var index = instance.subscribers[this.property].indexOf(this);
+                    if(index > -1) instance.subscribers[this.property].splice(index, 1)
+                }
+
+                _valueChanged(change) {
+                    // console.log("Check 2");
+                    // Is this necessary?
+                    data[this.property] = change.base;
+                    if(!isRoot) {
+                        isRoot = true;
+                        // console.log(instance.subscribers[this.property]);
+                        if(instance.subscribers[this.property]) {
+                            instance.subscribers[this.property].forEach(e => {
+                                // console.log(e.value);
+                                // e.set("value", instance.value);
+                                e.notifyPath(change.path);
+                            });
+                        }
+                        isRoot = false;
+                    }
+                }
+            }
+
+            window.customElements.define(MySingleton.is, MySingleton);
+        })();
+    </script>
+</dom-module>
