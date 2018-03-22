@@ -12,6 +12,9 @@
                 }
 
                 console(msg) {
+                    if(Application.debugAll) {
+                        this.debug = true;
+                    }
                     if(this.debug) {
                         console.log(msg);
                     }

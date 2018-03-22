@@ -15,15 +15,22 @@
             let data = {};
             let instance;
             let subscribers = {};
-            let isRoot = false;
+            let isRoot = true;
 
-            class MySingleton extends Polymer.MutableData(Polymer.Element) {
+            class MySingleton extends Polymer.Element {
                 static get is() {
                     return 'my-singleton';
                 }
 
                 static get properties() {
                     return {
+                        data: {
+                            value: data
+                        },
+                        init: {
+                            type: Boolean,
+                            value: false
+                        },
                         property: {
                             type: String
                         },
@@ -33,7 +40,8 @@
                         },
                         value: {
                             type: Object,
-                            notify: true
+                            notify: true,
+                            value: data[this.property]
                         }
                     };
                 }
@@ -50,15 +58,26 @@
                     if(!instance) instance = this;
                 }
 
+                ready() {
+                    super.ready();
+
+                }
+
                 connectedCallback() {
                     super.connectedCallback();
-                    if(this.value) {
-                        data[this.property] = this.value;
-                    }
+                    // if(this.value) {
+                    // data[this.property] = this.value;
+                    // }
                     // Default to an object
                     // data[this.property] = data[this.property] || {};
-                    this.set("value", data[this.property]);
+                    // this.set("value", data[this.property]);
                     // this.value = data[this.property];
+                    console.log("Initialize default values");
+                    // console.log(this);
+                    this.set("value", this.data[this.property])
+                    // this.value = this.data[this.property];
+                    // console.log("Done initializing default values");
+                    this.init = true;
                     instance.subscribers[this.property] = instance.subscribers[this.property] || [];
                     instance.subscribers[this.property].push(this);
                 }
@@ -70,20 +89,43 @@
                 }
 
                 _valueChanged(change) {
+                    // console.log("New value:", change.value);
                     // Is this necessary?
-                    data[this.property] = change.base;
-                    console.log(change);
+                    // console.log(instance.subscribers[this.property]);
                     // (function () { console.log(new Error().stack); })();
-                    if(!isRoot) {
-                        isRoot = true;
-                        if(instance.subscribers[this.property]) {
-                            instance.subscribers[this.property].forEach(e => {
-                                // e.set("value", data[this.property]);
-                                e.notifyPath(change.path);
-                            });
-                        }
-                        isRoot = false;
+                    if(this.value === change.base) {
+                        // return;
                     }
+                    if(this.init) {
+                        if(isRoot) {
+                            isRoot = false;
+                            this.data[this.property] = change.base;
+                            if(instance.subscribers[this.property]) {
+                                instance.subscribers[this.property].forEach(e => {
+                                    if(e === this) {
+                                        console.log("Same instance");
+                                    }
+                                    else {
+                                        // console.log(e);
+                                        console.log("Updating");
+                                        e.set(change.path, change.base);
+                                        // e.notifyPath(change.path);
+                                    }
+                                });
+                            }
+                            isRoot = true;
+                        }
+                        else {
+                            // console.log("Not root");
+                        }
+                    }
+                    else {
+                        // console.log("First run");
+                    }
+                }
+
+                _updateSubscribers() {
+
                 }
             }
 

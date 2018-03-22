@@ -8,7 +8,7 @@
 
 <dom-module id="settings-theme">
     <template>
-        <my-singleton property="styles" value="{{styles}}"></my-singleton>
+        <!--<my-singleton property="styles" value="{{styles}}"></my-singleton>-->
         <my-singleton property="theme" value="{{theme}}"></my-singleton>
         <paper-dropdown-menu>
             <paper-listbox slot="dropdown-content" selected="{{themeIndex}}">
@@ -17,6 +17,7 @@
                 </template>
             </paper-listbox>
         </paper-dropdown-menu>
+        [[theme]]
         [[theme.name]]
     </template>
     <script>
@@ -82,8 +83,8 @@
 
             _themeIndexChanged(index) {
                 this.set("theme", this.themes[index]);
-                this.theme = this.themes[index];
-                console.log(this.theme);
+                // this.theme = this.themes[index];
+                // console.log(this.theme);
                 this.set("styles.primaryColor", this.themes[index].colors[500]);
             }
         }
