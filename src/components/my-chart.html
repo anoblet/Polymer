@@ -1,8 +1,10 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="google-chart-responsive/google-chart-responsive.html">
 <link rel="import" href="HelperMixin.html">
 
 <dom-module id="my-chart">
     <template>
+        [[theme]]
         <my-singleton property="theme" value="{{theme}}"></my-singleton>
         <google-chart-responsive data="[[data]]" options="[[options]]" type="[[type]]"></google-chart-responsive>
     </template>
@@ -25,7 +27,8 @@
                         observer: '_themeChanged'
                     },
                     type: {
-                        type: String
+                        type: String,
+                        value: "pie"
                     }
                 }
             }
