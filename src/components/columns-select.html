@@ -64,8 +64,8 @@
             }
 
             _computeColumns(response) {
-                console.log("Columns");
-                console.log(response);
+                //console.log("Columns");
+                //console.log(response);
                 let columns = [];
                 columns.push({label: "Geography"});
                 let dataColumns = Object.values(response.table.valueDataElements);
@@ -76,7 +76,7 @@
                     column.label = dataCategories[0].label;
                     columns.push(column);
                 }
-                console.log(columns);
+                //console.log(columns);
 
                 return columns;
             }

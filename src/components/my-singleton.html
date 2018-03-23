@@ -72,7 +72,7 @@
                     // data[this.property] = data[this.property] || {};
                     // this.set("value", data[this.property]);
                     // this.value = data[this.property];
-                    console.log("Initialize default values");
+                    //console.log("Initialize default values");
                     // console.log(this);
                     this.set("value", this.data[this.property])
                     // this.value = this.data[this.property];
@@ -101,11 +101,11 @@
                             if(instance.subscribers[this.property]) {
                                 instance.subscribers[this.property].forEach(e => {
                                     if(e === this) {
-                                        console.log("Same instance");
+                                        //console.log("Same instance");
                                     }
                                     else {
-                                        console.log("Updating");
-                                        console.log(e);
+                                        //console.log("Updating");
+                                        //console.log(e);
                                         e.set(change.path, change.value);
                                         e.notifyPath(change.path);
                                     }

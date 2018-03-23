@@ -4,7 +4,6 @@
 
 <dom-module id="my-chart">
     <template>
-        [[theme]]
         <my-singleton property="theme" value="{{theme}}"></my-singleton>
         <google-chart-responsive data="[[data]]" options="[[options]]" type="[[type]]"></google-chart-responsive>
     </template>
@@ -34,9 +33,9 @@
             }
 
             _themeChanged(theme) {
-                console.log(theme);
+                //console.log(theme);
                 let colors = this._objectValues(theme.colors);
-                console.log(colors);
+                //console.log(colors);
                 let chart = this.shadowRoot.querySelector("google-chart-responsive");
                 chart.chart.options = chart.chart.options || {};
                 chart.chart.options.colors = colors;

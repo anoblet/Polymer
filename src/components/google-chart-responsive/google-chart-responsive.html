@@ -55,17 +55,6 @@
                 this._boundListener = this._resize.bind(this);
             }
 
-            ready() {
-                super.ready();
-                // const childElement = this.shadowRoot.querySelector("google-chart");
-                // childElement.addEventListener('selection-changed', this._selectionChanged.bind(this));
-                // childElement.addEventListener('google-chart-select', this._selectionChanged.bind(this));
-                console.log("Here");
-
-
-                // Observe one or multiple elements
-            }
-
             connectedCallback() {
                 super.connectedCallback();
                 this.addEventListener('iron-resize', e =>

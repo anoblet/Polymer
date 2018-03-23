@@ -157,9 +157,9 @@
             }
 
             _themeChanged(theme) {
-                // console.log("Here");
-                // console.log(theme);
-                // console.log(theme.name);
+                let styles = {};
+                styles["--primary-color"] = theme.colors[500];
+                this.updateStyles(styles);
             }
         }
 

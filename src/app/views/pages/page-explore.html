@@ -130,12 +130,12 @@
             }
 
             _isSummaryLevel(summaryLevel, level) {
-                console.log(level);
+                //console.log(level);
                 return (summaryLevel === level);
             }
 
             _responseChanged(response) {
-                console.log(response);
+                //console.log(response);
                 if (response.data) {
                 }
                 // No data
@@ -191,19 +191,19 @@
 
                 this.dataRows = rows;
                 this.chartRows = rows;
-                console.log(columns);
-                console.log(rows);
+                //console.log(columns);
+                //console.log(rows);
 
-                console.log("Chart data:");
-                console.log(newData);
+                //console.log("Chart data:");
+                //console.log(newData);
 
                 this.data = newData;
                 this.chartData = newData;
             }
 
             _selectedColumnsChanged(columns) {
-                console.log(columns);
-                console.log(this.selectedColumns);
+                //console.log(columns);
+                //console.log(this.selectedColumns);
                 if (this.data) {
                     let chartData = []
                     for (let i = 0; i < this.data.length; i++) {
@@ -213,7 +213,7 @@
                         }
                         chartData.push(newRow);
                     }
-                    console.log(chartData);
+                    //console.log(chartData);
                     this.chartData = chartData;
                 }
             }

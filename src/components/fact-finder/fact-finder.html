@@ -69,7 +69,7 @@
             }
 
             formatUrl() {
-                console.log("Formatting URL: ");
+                //console.log("Formatting URL: ");
                 let url = this.url + "/data/" + this.version +"/" + this.language + "/programs/";
                 if (this.program) {
                     url += this.program;
@@ -89,7 +89,7 @@
                 if (this.dataElementId) {
                     url += "/" + this.dataElementId;
                 }
-                console.log("URL: ", url);
+                //console.log("URL: ", url);
                 return url;
             }
 
