@@ -16,6 +16,7 @@
 <link rel="import" href="../../../components/explore-options.html">
 <link rel="import" href="../../../../src/components/my-singleton.html">
 <link rel="import" href="../../../components/my-chart.html">
+<link rel="import" href="../../../components/HelperMixin.html">
 
 <dom-module id="page-explore">
     <template>
@@ -52,14 +53,14 @@
             <my-card collapsable>
                 <div slot="title">Raw ouput</div>
                 <div slot="content">
-                    <pre>[[stringify(response)]]</pre>
+                    <pre>[[_stringify(response)]]</pre>
                 </div>
             </my-card>
         </my-grid>
         <fact-finder program="[[program]]" _dataset="[[_dataset]]" table="[[table]]" geography-id="[[geographyId]]" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
     </template>
     <script>
-        class PageExplore extends Polymer.Element {
+        class PageExplore extends HelperMixin(Polymer.Element) {
             static get is() {
                 return 'page-explore';
             }

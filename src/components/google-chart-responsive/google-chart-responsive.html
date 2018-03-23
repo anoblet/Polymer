@@ -82,6 +82,7 @@
                 });
                 ro.observe(this);
                 window.addEventListener('drawerToggled', this._boundListener);
+                this.chart = this.shadowRoot.querySelector("google-chart");
             }
 
             disconnectedCallback() {

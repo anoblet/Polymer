@@ -93,9 +93,7 @@
                     // Is this necessary?
                     // console.log(instance.subscribers[this.property]);
                     // (function () { console.log(new Error().stack); })();
-                    if(this.value === change.base) {
-                        // return;
-                    }
+
                     if(this.init) {
                         if(isRoot) {
                             isRoot = false;
@@ -106,10 +104,10 @@
                                         console.log("Same instance");
                                     }
                                     else {
-                                        // console.log(e);
                                         console.log("Updating");
-                                        e.set(change.path, change.base);
-                                        // e.notifyPath(change.path);
+                                        console.log(e);
+                                        e.set(change.path, change.value);
+                                        e.notifyPath(change.path);
                                     }
                                 });
                             }

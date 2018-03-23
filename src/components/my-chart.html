@@ -37,6 +37,10 @@
                 console.log(theme);
                 let colors = this._objectValues(theme.colors);
                 console.log(colors);
+                let chart = this.shadowRoot.querySelector("google-chart-responsive");
+                chart.chart.options = chart.chart.options || {};
+                chart.chart.options.colors = colors;
+                this.set("options.colors", colors);
                 this.set("options.colors", colors);
             }
         }
