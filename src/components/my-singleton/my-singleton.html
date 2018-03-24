@@ -1,4 +1,4 @@
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
 <dom-module id="my-singleton">
     <script>
@@ -24,9 +24,6 @@
 
                 static get properties() {
                     return {
-                        data: {
-                            value: data
-                        },
                         init: {
                             type: Boolean,
                             value: false
@@ -40,8 +37,7 @@
                         },
                         value: {
                             type: Object,
-                            notify: true,
-                            // value: data[this.property]
+                            notify: true
                         }
                     };
                 }
@@ -54,7 +50,7 @@
 
                 connectedCallback() {
                     super.connectedCallback();
-                    this.set("value", this.data[this.property])
+                    this.set("value", data[this.property])
                     this.init = true;
                     subscribers[this.property] = subscribers[this.property] || [];
                     subscribers[this.property].push(this);
@@ -71,7 +67,7 @@
                         // Is this the first instance firing?
                         if(isRoot) {
                             isRoot = false;
-                            this.data[this.property] = change.base;
+                            data[this.property] = change.base;
                             if(subscribers[this.property]) {
                                 subscribers[this.property].forEach(e => {
                                     if(e !== this){
