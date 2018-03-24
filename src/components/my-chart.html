@@ -33,14 +33,13 @@
             }
 
             _themeChanged(theme) {
-                //console.log(theme);
                 let colors = this._objectValues(theme.colors);
-                //console.log(colors);
                 let chart = this.shadowRoot.querySelector("google-chart-responsive");
                 chart.chart.options = chart.chart.options || {};
+                if(this.type == "geo") {
+                    chart.chart.options.defaultColor = theme.colors["500"];
+                }
                 chart.chart.options.colors = colors;
-                this.set("options.colors", colors);
-                this.set("options.colors", colors);
             }
         }
         window.customElements.define(MyChart.is, MyChart);

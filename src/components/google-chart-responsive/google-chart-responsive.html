@@ -6,10 +6,10 @@
     <template>
         <style include="global-styles">
             :host {
+                position: relative;
                 display: block;
                 width: 100%;
                 height: 100%;
-                position: relative;
             }
 
             google-chart {
@@ -76,7 +76,7 @@
                 });
                 ro.observe(this);
                 //window.addEventListener('drawerToggled', this._boundListener);
-                //this.chart = this.shadowRoot.querySelector("google-chart");
+                this.chart = this.shadowRoot.querySelector("google-chart");
             }
 
             disconnectedCallback() {

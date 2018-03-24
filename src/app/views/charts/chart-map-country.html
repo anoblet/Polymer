@@ -44,13 +44,6 @@
                             return {
                                 region: "US",
                                 resolution: "provinces",
-                                /*
-                                colorAxis: {
-                                    colors: ['#00853f', 'black', '#e31b23']
-                                },
-                                datalessRegionColor: '#90caf9',
-                                defaultColor: '#90caf9',
-                                */
                             }
                         }
                     },
@@ -62,7 +55,7 @@
             }
 
             _chartData(data) {
-                console.log(data);
+                // console.log(data);
                 let chartData = [];
                 // chartData.push(["country"]);
                 chartData.push(["state"]);
@@ -80,7 +73,7 @@
                 let row = event.detail.value[0].row;
                 let state = this.chartData[row + 1];
                 this.set("state", state)
-                console.log(this.chartData[row]);
+                // console.log(this.chartData[row]);
             }
 
             ready() {
