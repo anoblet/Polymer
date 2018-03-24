@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>Government</title>
+    <script src="./bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <link rel="import" href="./src/components/my-singleton.html">
+    <link rel="import" href="./bower_components/polymer/lib/elements/dom-bind.html">
+    <link rel="import" href="./bower_components/paper-input/paper-input.html">
+</head>
+<body>
+<dom-bind>
+    <template>
+        Property 1:
+        <paper-input value="{{value1}}"></paper-input>
+        <paper-input value="{{value2}}"></paper-input>
+        Property 2:
+        <paper-input value="{{value3}}"></paper-input>
+        <paper-input value="{{value4}}"></paper-input>
+        <my-singleton property="property1" value="{{value1}}"></my-singleton>
+        <my-singleton property="property1" value="{{value2}}"></my-singleton>
+        <my-singleton property="property2" value="{{value3}}"></my-singleton>
+        <my-singleton property="property2" value="{{value4}}"></my-singleton>
+    </template>
+</dom-bind>
+</body>
+</html>

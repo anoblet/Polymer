@@ -41,7 +41,7 @@
                         value: {
                             type: Object,
                             notify: true,
-                            value: data[this.property]
+                            // value: data[this.property]
                         }
                     };
                 }
@@ -52,73 +52,41 @@
                     ]
                 }
 
-                constructor() {
-                    super();
-                    // Set authoritative instance
-                    if(!instance) instance = this;
-                }
-
-                ready() {
-                    super.ready();
-
-                }
-
                 connectedCallback() {
                     super.connectedCallback();
-                    // if(this.value) {
-                    // data[this.property] = this.value;
-                    // }
-                    // Default to an object
-                    // data[this.property] = data[this.property] || {};
-                    // this.set("value", data[this.property]);
-                    // this.value = data[this.property];
-                    //console.log("Initialize default values");
-                    // console.log(this);
                     this.set("value", this.data[this.property])
-                    // this.value = this.data[this.property];
-                    // console.log("Done initializing default values");
                     this.init = true;
-                    instance.subscribers[this.property] = instance.subscribers[this.property] || [];
-                    instance.subscribers[this.property].push(this);
+                    subscribers[this.property] = subscribers[this.property] || [];
+                    subscribers[this.property].push(this);
                 }
 
                 disconnectedCallback() {
                     super.disconnectedCallback();
-                    var index = instance.subscribers[this.property].indexOf(this);
-                    if(index > -1) instance.subscribers[this.property].splice(index, 1)
+                    var index = subscribers[this.property].indexOf(this);
+                    if(index > -1) subscribers[this.property].splice(index, 1)
                 }
 
                 _valueChanged(change) {
-                    // console.log("New value:", change.value);
-                    // Is this necessary?
-                    // console.log(instance.subscribers[this.property]);
-                    // (function () { console.log(new Error().stack); })();
-
                     if(this.init) {
+                        // Is this the first instance firing?
                         if(isRoot) {
                             isRoot = false;
                             this.data[this.property] = change.base;
-                            if(instance.subscribers[this.property]) {
-                                instance.subscribers[this.property].forEach(e => {
-                                    if(e === this) {
-                                        //console.log("Same instance");
-                                    }
-                                    else {
-                                        //console.log("Updating");
-                                        //console.log(e);
+                            if(subscribers[this.property]) {
+                                subscribers[this.property].forEach(e => {
+                                    if(e !== this){
                                         e.set(change.path, change.value);
-                                        e.notifyPath(change.path);
                                     }
                                 });
                             }
                             isRoot = true;
                         }
                         else {
-                            // console.log("Not root");
+                            console.log("Stopping the bubbling of updates.");
                         }
                     }
                     else {
-                        // console.log("First run");
+                        console.log("No need to update on first run.");
                     }
                 }
 
