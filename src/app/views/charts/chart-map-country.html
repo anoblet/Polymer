@@ -55,25 +55,21 @@
             }
 
             _chartData(data) {
-                // console.log(data);
                 let chartData = [];
-                // chartData.push(["country"]);
                 chartData.push(["state"]);
                 if (data) {
                     for (let i = 0; i < data.length; i++) {
                         chartData.push([data[i][0][1]]);
                     }
                 }
-                // console.log(chartData);
-                // chartData.push([country]);
                 return chartData;
             }
 
             _selectionChanged(event) {
                 let row = event.detail.value[0].row;
                 let state = this.chartData[row + 1];
-                this.set("state", state)
-                // console.log(this.chartData[row]);
+                this.set("state", state);
+                console.log("Selection changed");
             }
 
             ready() {
