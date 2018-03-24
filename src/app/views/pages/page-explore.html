@@ -135,12 +135,9 @@
             }
 
             _responseChanged(response) {
-                //console.log(response);
                 // No data
                 if (!response.data) return;
-
                 let data = response.data;
-                // console.log(data);
                 let dataColumns = data.header.cells;
                 let dataRows = data.rows;
 
@@ -149,8 +146,6 @@
                 let newRow = [];
                 newRow.push("Geography");
                 columns.push({type: "string", label: "Geography"});
-                // let selectedItems = [];
-                // let index = 0;
                 for (let header in dataColumns) {
                     let categories = dataColumns[header].categories;
                     let type = dataColumns[header].valueType;
@@ -188,11 +183,6 @@
 
                 this.dataRows = rows;
                 this.chartRows = rows;
-                //console.log(columns);
-                //console.log(rows);
-
-                //console.log("Chart data:");
-                //console.log(newData);
 
                 this.data = newData;
                 this.chartData = newData;
