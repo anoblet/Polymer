@@ -136,12 +136,9 @@
 
             _responseChanged(response) {
                 //console.log(response);
-                if (response.data) {
-                }
                 // No data
-                else {
-                    return;
-                }
+                if (!response.data) return;
+
                 let data = response.data;
                 // console.log(data);
                 let dataColumns = data.header.cells;
@@ -150,8 +147,8 @@
                 let newData = [];
                 let columns = [];
                 let newRow = [];
-                newRow.push("Location");
-                columns.push({type: "string", label: "Location"});
+                newRow.push("Geography");
+                columns.push({type: "string", label: "Geography"});
                 // let selectedItems = [];
                 // let index = 0;
                 for (let header in dataColumns) {

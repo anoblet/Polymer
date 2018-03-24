@@ -10,18 +10,9 @@
                 width: 100%;
             }
         </style>
-        <fact-finder
-                program="DEC"
-                _dataset="10_SF1"
-                table="G001"
-                geography-id="0100000US.04000"
-                data-element-id="NAME"
-                key="c97423c3f598951d2138d69861730b9154cd7230"
-                response="{{response}}">
-        </fact-finder>
+        <fact-finder program="DEC" _dataset="10_SF1" table="G001" geography-id="0100000US.04000" data-element-id="NAME" key="c97423c3f598951d2138d69861730b9154cd7230" response="{{response}}"></fact-finder>
         <fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>
-        <my-chart type="geo" options="[[options]]" selection-changed="_selectionChanged"
-                                 data="[[chartData]]"></my-chart>
+        <my-chart type="geo" options="[[options]]" selection-changed="_selectionChanged" data="[[chartData]]"></my-chart>
     </template>
     <script>
         class ChartMapCountry extends Polymer.Element {
@@ -49,12 +40,13 @@
                     },
                     chartData: {
                         type: Array,
-                        computed: '_chartData(data)'
+                        computed: '_chartData(response)'
                     }
                 }
             }
 
-            _chartData(data) {
+            _chartData(response) {
+                console.log(response);
                 let chartData = [];
                 chartData.push(["state"]);
                 if (data) {
