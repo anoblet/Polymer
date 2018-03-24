@@ -13,6 +13,7 @@
 <link rel="import" href="../../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../../../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../../components/HelperMixin.html">
+<link rel="import" href="../../components/address-lookup/address-lookup.html">
 
 <dom-module id="view-header">
     <template>
@@ -57,6 +58,8 @@
                     width: 100%;
                     background: var(--primary-color);
                     color: #fff;
+                    padding-left: 16px;
+                    padding-right: 16px;
                 }
 
                 .grid {
@@ -76,11 +79,18 @@
             <div class="grid full center">
                 <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
                 <div id="center" class="center">
-                    <a href="/">
-                        <div main-title>[[title]]</div>
-                    </a>
+                    <template is="dom-if" if="[[searchActive]]">
+                        <address-lookup></address-lookup>
+                    </template>
+                    <template is="dom-if" if="[[!searchActive]]">
+                        <a href="/">
+                            <div main-title>[[title]]</div>
+                        </a>
+                    </template>
                 </div>
-                <div></div>
+                <div class="text-right">
+                    <paper-icon-button icon="icons:search" on-click="toggleSearch"></paper-icon-button>
+                </div>
             </div>
         </template>
     </template>
@@ -93,6 +103,10 @@
 
             static get properties() {
                 return {
+                    searchActive: {
+                        type: Boolean,
+                        value: false
+                    },
                     title: {
                         type: String,
                         value: "My Government"
@@ -124,6 +138,10 @@
                 } else {
                     this.$.menu.style.order = "1";
                 }
+            }
+
+            toggleSearch() {
+                this.searchActive = !this.searchActive;
             }
         }
 

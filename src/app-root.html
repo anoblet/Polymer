@@ -157,8 +157,9 @@
             }
 
             _themeChanged(theme) {
-                let styles = {};
-                styles["--primary-color"] = theme.colors[500];
+                let styles = {
+                    "--primary-color": theme.colors[500]
+                };
                 this.updateStyles(styles);
             }
         }

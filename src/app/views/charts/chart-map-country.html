@@ -1,7 +1,7 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../../components/google-chart-responsive/google-chart-responsive.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder.html">
 <link rel="import" href="../../../components/fact-finder/fact-finder-adapter.html">
+<link rel="import" href="../../../components/my-chart.html">
 
 <dom-module id="chart-map-country">
     <template>
@@ -20,8 +20,8 @@
                 response="{{response}}">
         </fact-finder>
         <fact-finder-adapter input="[[response]]" output="{{data}}"></fact-finder-adapter>
-        <google-chart-responsive type="geo" options="[[options]]" selection-changed="_selectionChanged"
-                                 data="[[chartData]]"></google-chart-responsive>
+        <my-chart type="geo" options="[[options]]" selection-changed="_selectionChanged"
+                                 data="[[chartData]]"></my-chart>
     </template>
     <script>
         class ChartMapCountry extends Polymer.Element {
