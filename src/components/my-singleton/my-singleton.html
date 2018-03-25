@@ -41,10 +41,11 @@
 
                 connectedCallback() {
                     super.connectedCallback();
+                    // If store has been set, sync.
                     if(data[this.property]) {
                         this.value = data[this.property];
-                    }
-                    else {
+                    } else {
+                        // If instance provides a value, set the store.
                         if(this.value) {
                             data[this.property] = this.value;
                         }
