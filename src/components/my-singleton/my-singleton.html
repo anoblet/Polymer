@@ -54,8 +54,7 @@
                 connectedCallback() {
                     super.connectedCallback();
                     if(data[this.property]) {
-                        // this.value = data[this.property];
-                        this.set("value", data[this.property]);
+                        this.value = data[this.property];
                     }
                     else {
                         if(this.value) {
@@ -90,10 +89,6 @@
                     else {
                         console.log("Stopping the bubbling of updates.");
                     }
-                }
-
-                _updateSubscribers() {
-
                 }
             }
 
