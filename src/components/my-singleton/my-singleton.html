@@ -66,12 +66,15 @@
                     if(!this.connected) return;
                     // Don't update unnecessarily
                     if(!isRoot) return;
-                    // Loop instances and update
+                    // Make sure we have subscribers
                     if(!subscribers[this.property]) return;
+                    // Loop instances and update
                     isRoot = false;
                     subscribers[this.property].forEach(e => {
+                        // Don't set the same instance
                         if(e !== this) {
                             e.set(change.path, change.value);
+                            // Needed for mutable changes
                             e.notifyPath(change.path);
                         }
                     });
