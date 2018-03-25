@@ -24,19 +24,8 @@
 
                 static get properties() {
                     return {
-                        data: {
-                            value: data
-                        },
-                        init: {
-                            type: Boolean,
-                            value: false
-                        },
                         property: {
                             type: String
-                        },
-                        subscribers: {
-                            type: Array,
-                            value: subscribers
                         },
                         value: {
                             type: Object,
@@ -63,6 +52,7 @@
                     }
                     subscribers[this.property] = subscribers[this.property] || [];
                     subscribers[this.property].push(this);
+                    this.connected = true;
                 }
 
                 disconnectedCallback() {
@@ -72,23 +62,23 @@
                 }
 
                 _valueChanged(change) {
-                    // Is this the first instance firing?
-                    if(isRoot) {
+                    // Don't propagate on first run
+                    if(!this.connected) return;
+                    // Don't update unnecessarily
+                    if(!isRoot) return;
+                    // Loop instances and update
+                    if(subscribers[this.property]) {
                         isRoot = false;
-                        if(subscribers[this.property]) {
-                            subscribers[this.property].forEach(e => {
-                                if(e !== this) {
-                                    e.set(change.path, change.value);
-                                    e.notifyPath(change.path);
-                                }
-                            });
-                        }
-                        data[this.property] = change.base;
+                        subscribers[this.property].forEach(e => {
+                            if(e !== this) {
+                                e.set(change.path, change.value);
+                                e.notifyPath(change.path);
+                            }
+                        });
                         isRoot = true;
                     }
-                    else {
-                        console.log("Stopping the bubbling of updates.");
-                    }
+                    // Update our store
+                    data[this.property] = change.base;
                 }
             }
 
