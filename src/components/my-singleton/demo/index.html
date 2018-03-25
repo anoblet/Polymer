@@ -19,14 +19,24 @@
         Property 2:
         <paper-input value="{{value3}}"></paper-input>
         <paper-input value="{{value4}}"></paper-input>
-        <my-singleton property="property1" value="{{value1}}"></my-singleton>
-        <my-singleton property="property1" value="{{value2}}"></my-singleton>
-        <my-singleton property="property2" value="{{value3}}"></my-singleton>
-        <my-singleton property="property2" value="{{value4}}"></my-singleton>
-        <my-singleton property="property3" value="{{string}}"></my-singleton>
-        <my-singleton property="property3" value="{{stringTest}}"></my-singleton>
-        [[string]]
-        [[stringTest]]
+        <div>
+            String
+            <paper-input value="{{string}}"></paper-input>
+            [[stringTest]]
+            <!--<my-singleton property="property3" value="{{string}}"></my-singleton>-->
+            <!--<my-singleton property="property3" value="{{stringTest}}"></my-singleton>-->
+        </div>
+        <div>
+            Object
+            <paper-input value="{{object.value}}"></paper-input>
+            [[objectTest.value]]
+            <my-singleton id="object" property="property4" value="{{object}}"></my-singleton>
+            <my-singleton id="objectTest" property="property4" value="{{objectTest}}"></my-singleton>
+        </div>
+        <!--<my-singleton property="property1" value="{{value1}}"></my-singleton>-->
+        <!--<my-singleton property="property1" value="{{value2}}"></my-singleton>-->
+        <!--<my-singleton property="property2" value="{{value3}}"></my-singleton>-->
+        <!--<my-singleton property="property2" value="{{value4}}"></my-singleton>-->
     </template>
     <script>
         class TestComponent extends Polymer.Element {
@@ -41,7 +51,12 @@
                     },
                     object: {
                         value: {
-                            test: "test"
+                            value: "value1"
+                        }
+                    },
+                    objectTest: {
+                        value: {
+                            value: "value2"
                         }
                     },
                     array: {

@@ -24,6 +24,9 @@
 
                 static get properties() {
                     return {
+                        data: {
+                            value: data
+                        },
                         init: {
                             type: Boolean,
                             value: false
@@ -50,11 +53,14 @@
 
                 connectedCallback() {
                     super.connectedCallback();
-                    if(this.value) {
-                        data[this.property] = this.value;
+                    if(data[this.property]) {
+                        this.value = data[this.property];
                     }
-                    this.set("value", data[this.property])
-                    this.init = true;
+                    else {
+                        if(this.value) {
+                            data[this.property] = this.value;
+                        }
+                    }
                     subscribers[this.property] = subscribers[this.property] || [];
                     subscribers[this.property].push(this);
                 }
@@ -66,26 +72,21 @@
                 }
 
                 _valueChanged(change) {
-                    if(this.init) {
-                        // Is this the first instance firing?
-                        if(isRoot) {
-                            isRoot = false;
-                            data[this.property] = change.base;
-                            if(subscribers[this.property]) {
-                                subscribers[this.property].forEach(e => {
-                                    if(e !== this){
-                                        e.set(change.path, change.value);
-                                    }
-                                });
-                            }
-                            isRoot = true;
+                    // Is this the first instance firing?
+                    if(isRoot) {
+                        isRoot = false;
+                        if(subscribers[this.property]) {
+                            subscribers[this.property].forEach(e => {
+                                if(e !== this) {
+                                    e.set(change.path, change.value);
+                                    e.notifyPath(change.path);
+                                }
+                            });
                         }
-                        else {
-                            console.log("Stopping the bubbling of updates.");
-                        }
+                        isRoot = true;
                     }
                     else {
-                        console.log("No need to update on first run.");
+                        console.log("Stopping the bubbling of updates.");
                     }
                 }
 
