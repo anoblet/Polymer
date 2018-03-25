@@ -66,16 +66,15 @@
                     // Don't update unnecessarily
                     if(!isRoot) return;
                     // Loop instances and update
-                    if(subscribers[this.property]) {
-                        isRoot = false;
-                        subscribers[this.property].forEach(e => {
-                            if(e !== this) {
-                                e.set(change.path, change.value);
-                                e.notifyPath(change.path);
-                            }
-                        });
-                        isRoot = true;
-                    }
+                    if(!subscribers[this.property]) return;
+                    isRoot = false;
+                    subscribers[this.property].forEach(e => {
+                        if(e !== this) {
+                            e.set(change.path, change.value);
+                            e.notifyPath(change.path);
+                        }
+                    });
+                    isRoot = true;
                     // Update our store
                     data[this.property] = change.base;
                 }
