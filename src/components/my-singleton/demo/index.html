@@ -8,6 +8,7 @@
     <link rel="import" href="../../../../src/components/my-singleton/my-singleton.html">
     <link rel="import" href="../../../../bower_components/polymer/lib/elements/dom-bind.html">
     <link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
+    <link rel="import" href="../../../../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
 </head>
 <body>
 <test-component></test-component>
@@ -32,6 +33,7 @@
             [[objectTest.value]]
             <my-singleton id="object" property="property4" value="{{object}}"></my-singleton>
             <my-singleton id="objectTest" property="property4" value="{{objectTest}}"></my-singleton>
+            <app-localstorage-document key="object" data="{{object}}"></app-localstorage-document>
         </div>
         <!--<my-singleton property="property1" value="{{value1}}"></my-singleton>-->
         <!--<my-singleton property="property1" value="{{value2}}"></my-singleton>-->
