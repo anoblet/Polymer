@@ -50,6 +50,9 @@
 
                 connectedCallback() {
                     super.connectedCallback();
+                    if(this.value) {
+                        data[this.property] = this.value;
+                    }
                     this.set("value", data[this.property])
                     this.init = true;
                     subscribers[this.property] = subscribers[this.property] || [];
