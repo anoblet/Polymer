@@ -41,17 +41,19 @@
 
                 connectedCallback() {
                     super.connectedCallback();
-                    // If store has been set, sync.
+                    // If the store has been set, then sync.
                     if(data[this.property]) {
                         this.value = data[this.property];
                     } else {
-                        // If instance provides a value, set the store.
+                        // If the instance provides an initial value, set the store.
                         if(this.value) {
                             data[this.property] = this.value;
                         }
                     }
+                    // Add the instance to the subscriber list
                     subscribers[this.property] = subscribers[this.property] || [];
                     subscribers[this.property].push(this);
+                    // Clear the initial element resolution flag
                     this.connected = true;
                 }
 
