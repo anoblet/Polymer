@@ -42,10 +42,6 @@
         <app-view version="4"></app-view>
     </template>
     <script>
-        const debug = function(msg) {
-            console.log(msg);
-        }
-
         class AppRoot extends DebugMixin(HelperMixin(Polymer.Element)) {
             static get is() {
                 return 'app-root';
