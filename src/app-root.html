@@ -98,33 +98,12 @@
                 window.Application = this;
             }
 
-            ready() {
-                super.ready();
-
-                this.Controller = this.shadowRoot.querySelector("app-controller");
-
-                // Allow the location property to be written to
-                /*
-                let location = {
-                    city: {},
-                    state: {},
-                    country: {}
-                }
-                */
-                //this.set("data.location", location);
-
-                //this.addEventListener('stylesChangedEvent', this._stylesChangedEvent);
-            }
-
             connectedCallback() {
                 super.connectedCallback();
                 //this._randomPrimaryColor();
-                //window.addEventListener('drawerToggled', this.test);
             }
 
             _stylesChanged(change) {
-                this.console("Styles updating");
-                // console.log(change);
                 let styles = change.base;
                 let cssStyles = {};
                 let keys = Object.keys(styles);
