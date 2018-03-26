@@ -3,42 +3,52 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>Government</title>
-    <script src="../../../../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-    <link rel="import" href="../../../../src/components/my-singleton/my-singleton.html">
-    <link rel="import" href="../../../../bower_components/polymer/lib/elements/dom-bind.html">
-    <link rel="import" href="../../../../bower_components/paper-input/paper-input.html">
-    <link rel="import" href="../../../../bower_components/app-storage/app-localstorage/app-localstorage-document.html">
+
+    <title>my-singleton demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../paper-input/paper-input.html">
+    <link rel="import" href="../my-singleton.html">
+
+    <custom-style>
+        <style is="custom-style" include="demo-pages-shared-styles">
+        </style>
+    </custom-style>
 </head>
 <body>
-<test-component></test-component>
+<div class="vertical-section-container centered">
+    <h3>Basic my-singleton demo</h3>
+    <demo-snippet>
+        <template>
+            <my-singleton key="test" value="{{instance1}}"></my-singleton>
+            <my-singleton key="test" value="{{instance2}}"></my-singleton>
+                Instance 1
+                <paper-input value="{{instance1}}"></paper-input>
+                Instance 2
+                <paper-input value="{{instance2}}"></paper-input>
+        </template>
+    </demo-snippet>
+</div>
 <dom-module id="test-component">
     <template>
-        Property 1:
-        <paper-input value="{{value1}}"></paper-input>
-        <paper-input value="{{value2}}"></paper-input>
-        Property 2:
-        <paper-input value="{{value3}}"></paper-input>
-        <paper-input value="{{value4}}"></paper-input>
         <div>
             String
             <paper-input value="{{string}}"></paper-input>
-            [[stringTest]]
-            <!--<my-singleton property="property3" value="{{string}}"></my-singleton>-->
-            <!--<my-singleton property="property3" value="{{stringTest}}"></my-singleton>-->
+            <paper-input value="{{stringTest}}"></paper-input>
+            <my-singleton property="string" value="{{string}}"></my-singleton>
+            <my-singleton property="string" value="{{stringTest}}"></my-singleton>
         </div>
         <div>
             Object
             <paper-input value="{{object.value}}"></paper-input>
-            [[objectTest.value]]
-            <my-singleton id="object" property="property4" value="{{object}}"></my-singleton>
-            <my-singleton id="objectTest" property="property4" value="{{objectTest}}"></my-singleton>
-            <app-localstorage-document key="object" data="{{object}}"></app-localstorage-document>
-        </div>
-        <!--<my-singleton property="property1" value="{{value1}}"></my-singleton>-->
-        <!--<my-singleton property="property1" value="{{value2}}"></my-singleton>-->
-        <!--<my-singleton property="property2" value="{{value3}}"></my-singleton>-->
-        <!--<my-singleton property="property2" value="{{value4}}"></my-singleton>-->
+            <paper-input value="{{objectTest.value}}"></paper-input>
+            <my-singleton id="object" property="object" value="{{object}}"></my-singleton>
+            <my-singleton id="objectTest" property="object" value="{{objectTest}}"></my-singleton>
+            <!--<app-localstorage-document key="object" data="{{object}}"></app-localstorage-document>-->
+        </div>z
     </template>
     <script>
         class TestComponent extends Polymer.Element {
