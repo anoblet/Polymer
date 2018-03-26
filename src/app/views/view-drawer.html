@@ -55,18 +55,23 @@
                     /*width: 192px;*/
                     height: 100%;
                     padding: 1rem 0 1rem 1rem;
+
+                    --paper-listbox-background-color: #eee;
                 }
             </style>
             <nav class="full">
-                <my-card no-title class="full">
-                    <div slot="content">
+                <!--<my-card no-title class="full">-->
+                    <!--<div slot="content">-->
                         <paper-listbox on-click="close">
+                            <a href="/">
+                                <paper-item>Dashboard</paper-item>
+                            </a>
                             <a href="/settings">
                                 <paper-item>Settings</paper-item>
                             </a>
                         </paper-listbox>
-                    </div>
-                </my-card>
+                    <!--</div>-->
+                <!--</my-card>-->
             </nav>
         </template>
     </template>
