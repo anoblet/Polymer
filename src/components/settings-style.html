@@ -5,7 +5,7 @@
 <link rel="import" href="my-singleton/my-singleton.html">
 <link rel="import" href="HelperMixin.html">
 
-<dom-module id="settings-styles">
+<dom-module id="settings-style">
     <template>
         <template is="dom-if" if="[[_isEqual(version, 1)]]">
             <div>
@@ -30,7 +30,7 @@
             </div>
         </template>
         <template is="dom-if" if="[[_isEqual(version, '2')]]">
-            <!--<my-singleton property="styles" value="{{styles}}"></my-singleton>-->
+            <my-singleton property="styles" value="{{styles}}"></my-singleton>
             <div class="grid">
                 <div>
                     <paper-input label="Primary color" value="{{styles.primaryColor}}"></paper-input>
@@ -42,13 +42,22 @@
                     <paper-swatch-picker color="{{styles.secondaryColor}}"></paper-swatch-picker>
                     <paper-button on-click="randomPrimaryColor">Random!</paper-button>
                 </div>
+                <!-- Card -->
+                <paper-dropdown-menu label="Card ratio" selected-item-label="{{cardRatio}}">
+                    <paper-listbox slot="dropdown-content">
+                        <paper-item>1:1</paper-item>
+                        <paper-item>3:2</paper-item>
+                        <paper-item>4:3</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+                <!-- End card -->
             </div>
         </template>
     </template>
     <script>
-        class SettingsStyles extends HelperMixin(Polymer.Element) {
+        class SettingsStyle extends HelperMixin(Polymer.Element) {
             static get is() {
-                return 'settings-styles';
+                return 'settings-style';
             }
 
             static get properties() {
@@ -98,11 +107,10 @@
             randomPrimaryColor() {
                 let items = document.createElement("paper-swatch-picker").defaultColors();
                 var color = items[Math.floor(Math.random()*items.length)];
-                console.log(color);
                 this.set("styles.primaryColor", color);
             }
         }
 
-        window.customElements.define(SettingsStyles.is, SettingsStyles);
+        window.customElements.define(SettingsStyle.is, SettingsStyle);
     </script>
 </dom-module>

@@ -104,20 +104,22 @@
                 this.Controller = this.shadowRoot.querySelector("app-controller");
 
                 // Allow the location property to be written to
+                /*
                 let location = {
                     city: {},
                     state: {},
                     country: {}
                 }
-                this.set("data.location", location);
+                */
+                //this.set("data.location", location);
 
-                // this.addEventListener('stylesChangedEvent', this._stylesChangedEvent);
+                //this.addEventListener('stylesChangedEvent', this._stylesChangedEvent);
             }
 
             connectedCallback() {
                 super.connectedCallback();
-                // this._randomPrimaryColor();
-                window.addEventListener('drawerToggled', this.test);
+                //this._randomPrimaryColor();
+                //window.addEventListener('drawerToggled', this.test);
             }
 
             _stylesChanged(change) {
